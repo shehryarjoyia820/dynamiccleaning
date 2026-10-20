@@ -39,7 +39,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
     <>
       <AdminTitle title="Contacts & subscribers">
         <div className="flex flex-wrap gap-2">
-          <Link href="/admin/contacts/import" className="inline-flex items-center gap-2 rounded-md bg-amber px-3 py-2 text-sm font-bold text-ink hover:bg-amber-deep">
+          <Link href="/admin/contacts/import" className="inline-flex items-center gap-2 rounded-md bg-accent-deep px-3 py-2 text-sm font-bold text-white hover:bg-accent-hover">
             <Upload className="h-4 w-4" aria-hidden /> Upload emails
           </Link>
           <Link href={`/admin/emails/campaigns/new${sp.tag ? `?tag=${encodeURIComponent(sp.tag)}` : ''}`} className="inline-flex items-center gap-2 rounded-md bg-charcoal px-3 py-2 text-sm font-semibold text-white">
@@ -59,7 +59,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
           </Link>
         ))}
         {sp.tag ? (
-          <Link href={`/admin/contacts${qs({ tag: undefined })}`} className="rounded-full bg-amber/15 px-3 py-1.5 text-sm font-semibold text-amber-ink">tag: {sp.tag} ✕</Link>
+          <Link href={`/admin/contacts${qs({ tag: undefined })}`} className="rounded-full bg-accent/15 px-3 py-1.5 text-sm font-semibold text-accent-ink">tag: {sp.tag} ✕</Link>
         ) : null}
       </div>
 
@@ -91,7 +91,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
                 <td className="px-4 py-3">
                   <div className="flex flex-wrap gap-1">
                     {(c.tags as string[]).map((t) => (
-                      <Link key={t} href={`/admin/contacts?tag=${encodeURIComponent(t)}`} className="rounded bg-offwhite px-1.5 py-0.5 text-xs hover:bg-amber/15">{t}</Link>
+                      <Link key={t} href={`/admin/contacts?tag=${encodeURIComponent(t)}`} className="rounded bg-offwhite px-1.5 py-0.5 text-xs hover:bg-accent/15">{t}</Link>
                     ))}
                   </div>
                 </td>

@@ -24,7 +24,7 @@ export default function GalleryPage() {
           {PHOTOS.length === 0 ? (
             <>
               <Reveal className="mb-8 flex items-center gap-3 rounded-lg border border-ink/10 bg-white p-4 text-muted shadow-card">
-                <Camera className="h-5 w-5 shrink-0 text-amber-ink" aria-hidden />
+                <Camera className="h-5 w-5 shrink-0 text-accent-ink" aria-hidden />
                 Real photos of our vehicle, team and equipment are coming soon. Below are illustrations of our service.
               </Reveal>
               <ul className="grid gap-6 md:grid-cols-3">

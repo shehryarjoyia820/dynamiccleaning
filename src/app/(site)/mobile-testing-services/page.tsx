@@ -57,16 +57,16 @@ export default function ServicesPage() {
           <ul className="mt-12 grid gap-6 md:grid-cols-3">
             {TESTS.map((t, i) => (
               <Reveal as="li" key={t.title} delay={i * 100} className="card group transition-transform duration-300 hover:-translate-y-1">
-                <t.icon className="h-10 w-10 text-amber-ink transition-transform group-hover:scale-110" aria-hidden />
+                <t.icon className="h-10 w-10 text-accent-ink transition-transform group-hover:scale-110" aria-hidden />
                 <h3 className="mt-4 text-3xl">{t.title}</h3>
                 <p className="mt-1 text-sm font-semibold text-green-ink">{t.who}</p>
                 <p className="mt-3 text-muted">{t.text}</p>
-                <Link href={t.href} className="mt-4 inline-block font-semibold text-amber-ink underline underline-offset-4">Learn more<span className="sr-only"> about {t.title.toLowerCase()}</span></Link>
+                <Link href={t.href} className="mt-4 inline-block font-semibold text-accent-ink underline underline-offset-4">Learn more<span className="sr-only"> about {t.title.toLowerCase()}</span></Link>
               </Reveal>
             ))}
           </ul>
           <p className="mt-6 text-sm text-muted">
-            Test methods are set by CARB. See <Link href="/clean-truck-check" className="font-semibold text-amber-ink underline underline-offset-4">Clean Truck Check explained</Link> for the full requirements table.
+            Test methods are set by CARB. See <Link href="/clean-truck-check" className="font-semibold text-accent-ink underline underline-offset-4">Clean Truck Check explained</Link> for the full requirements table.
           </p>
         </div>
       </section>
@@ -76,7 +76,7 @@ export default function ServicesPage() {
           <ul className="mt-12 grid gap-6 md:grid-cols-3">
             {BENEFITS.map((b, i) => (
               <Reveal as="li" key={b.title} delay={i * 100} className="card-dark">
-                <b.icon className="h-9 w-9 text-amber" aria-hidden />
+                <b.icon className="h-9 w-9 text-accent" aria-hidden />
                 <h3 className="mt-4 text-2xl">{b.title}</h3>
                 <p className="mt-2 text-white/80">{b.text}</p>
               </Reveal>

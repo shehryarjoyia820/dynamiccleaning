@@ -4,6 +4,7 @@ import { StickyMobileBar, WhatsAppFab } from '@/components/contact-bars';
 import { Footer } from '@/components/footer';
 import { Header } from '@/components/header';
 import { JsonLd, organizationSchema } from '@/components/seo';
+import { SubscribePopup } from '@/components/subscribe-popup';
 
 export default function SiteLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -16,6 +17,7 @@ export default function SiteLayout({ children }: { children: React.ReactNode }) 
       <Footer />
       <WhatsAppFab />
       <StickyMobileBar />
+      <SubscribePopup />
       <RevealObserver />
       <Analytics />
     </BookingProvider>

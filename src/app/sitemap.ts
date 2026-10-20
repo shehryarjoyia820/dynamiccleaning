@@ -23,6 +23,10 @@ const STATIC = [
   '/contact',
   '/privacy',
   '/terms',
+  '/cookies',
+  '/disclaimer',
+  '/accessibility',
+  '/do-not-sell',
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {

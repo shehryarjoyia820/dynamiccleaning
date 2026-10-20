@@ -26,21 +26,21 @@ export default async function ServiceAreasPage() {
         intro="We cover Los Angeles, Orange, Riverside, San Bernardino, San Diego and Imperial counties. If your city is not listed, just ask."
         crumbs={[{ name: 'Service Areas', path: '/service-areas' }]}
       />
-      <section className="bg-[#1B1D23] py-section text-white">
+      <section className="bg-[#0F141B] py-section text-white">
         <div className="container grid items-start gap-12 lg:grid-cols-[1fr_1.4fr]">
           <CaliforniaMap areas={areas} className="mx-auto w-full max-w-md lg:sticky lg:top-28" />
           <div className="grid gap-10">
             <Reveal>
-              <h2 className="text-3xl text-amber">Ports</h2>
+              <h2 className="text-3xl text-accent">Ports</h2>
               <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                 {PORTS.map((p) => (
                   <li key={p.slug}>
                     <Link
                       href={`/ports/${p.slug}`}
-                      className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-amber/60"
+                      className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-accent/60"
                     >
                       <span className="font-display text-xl font-semibold uppercase">{p.name}</span>
-                      <ArrowRight className="h-5 w-5 text-amber transition-transform group-hover:translate-x-1" aria-hidden />
+                      <ArrowRight className="h-5 w-5 text-accent transition-transform group-hover:translate-x-1" aria-hidden />
                     </Link>
                   </li>
                 ))}
@@ -51,16 +51,16 @@ export default async function ServiceAreasPage() {
               if (!list.length) return null;
               return (
                 <Reveal key={r}>
-                  <h2 className="text-3xl text-amber">{r}</h2>
+                  <h2 className="text-3xl text-accent">{r}</h2>
                   <ul className="mt-4 grid gap-3 sm:grid-cols-2">
                     {list.map((a) => (
                       <li key={a.slug}>
                         <Link
                           href={`/service-areas/${a.slug}`}
-                          className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-amber/60"
+                          className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-accent/60"
                         >
                           <span className="font-display text-xl font-semibold uppercase">{a.name}</span>
-                          <ArrowRight className="h-5 w-5 text-amber transition-transform group-hover:translate-x-1" aria-hidden />
+                          <ArrowRight className="h-5 w-5 text-accent transition-transform group-hover:translate-x-1" aria-hidden />
                         </Link>
                       </li>
                     ))}

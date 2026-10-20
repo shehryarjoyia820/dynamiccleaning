@@ -12,7 +12,7 @@ export default async function CampaignsPage() {
   return (
     <>
       <AdminTitle title="Send proposals">
-        <Link href="/admin/emails/campaigns/new" className="inline-flex items-center gap-2 rounded-md bg-amber px-4 py-2 text-sm font-bold text-ink hover:bg-amber-deep">
+        <Link href="/admin/emails/campaigns/new" className="inline-flex items-center gap-2 rounded-md bg-accent-deep px-4 py-2 text-sm font-bold text-white hover:bg-accent-hover">
           <Send className="h-4 w-4" aria-hidden /> New send
         </Link>
       </AdminTitle>
@@ -23,7 +23,7 @@ export default async function CampaignsPage() {
           ['3. Send', '/admin/emails/campaigns/new', 'Pick the group, add follow-ups, click send.'],
         ].map(([t, href, d]) => (
           <li key={t}>
-            <Link href={href} className="card block !p-4 hover:border-amber-ink">
+            <Link href={href} className="card block !p-4 hover:border-accent-ink">
               <span className="font-display text-lg font-bold uppercase">{t}</span>
               <span className="block text-muted">{d}</span>
             </Link>

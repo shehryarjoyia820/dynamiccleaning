@@ -36,7 +36,7 @@ export default function FleetPage() {
           <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {FEATURES.map((f, i) => (
               <Reveal as="li" key={f.title} delay={i * 80} className="card">
-                <f.icon className="h-9 w-9 text-amber-ink" aria-hidden />
+                <f.icon className="h-9 w-9 text-accent-ink" aria-hidden />
                 <h3 className="mt-4 text-2xl">{f.title}</h3>
                 <p className="mt-2 text-muted">{f.text}</p>
               </Reveal>

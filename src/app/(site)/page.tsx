@@ -58,7 +58,7 @@ export default async function HomePage() {
           <ul className="grid gap-px overflow-hidden rounded-xl bg-white/10 shadow-lift sm:grid-cols-3">
             {TRUST.map((t, i) => (
               <Reveal as="li" key={t.title} delay={i * 90} className="flex items-center gap-4 bg-steel p-5 text-white sm:p-6">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-amber/15 text-amber">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-accent/15 text-accent">
                   <t.icon className="h-6 w-6" aria-hidden />
                 </span>
                 <span>
@@ -112,7 +112,7 @@ export default async function HomePage() {
             <HowItWorks />
           </div>
           <Reveal className="mt-12 text-center">
-            <Link href="/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-amber-ink hover:text-ink">
+            <Link href="/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-accent-ink hover:text-ink">
               What to have ready <ArrowRight className="h-5 w-5" aria-hidden />
             </Link>
           </Reveal>
@@ -128,12 +128,12 @@ export default async function HomePage() {
               <Reveal as="li" key={a.title} delay={i * 100}>
                 <Link
                   href={a.href}
-                  className="group flex h-full flex-col rounded-xl border border-white/10 bg-steel p-7 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-amber/60"
+                  className="group flex h-full flex-col rounded-xl border border-white/10 bg-steel p-7 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-accent/60"
                 >
-                  <a.icon className="h-10 w-10 text-amber transition-transform duration-300 group-hover:scale-110" aria-hidden />
+                  <a.icon className="h-10 w-10 text-accent transition-transform duration-300 group-hover:scale-110" aria-hidden />
                   <h3 className="mt-5 text-3xl">{a.title}</h3>
                   <p className="mt-3 flex-1 text-white/80">{a.text}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 font-display font-bold uppercase text-amber">
+                  <span className="mt-6 inline-flex items-center gap-2 font-display font-bold uppercase text-accent">
                     Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Link>
@@ -146,7 +146,7 @@ export default async function HomePage() {
       <MobileVsShop />
 
       {/* Southern California coverage */}
-      <section className="relative overflow-hidden bg-[#1B1D23] py-section text-white">
+      <section className="relative overflow-hidden bg-[#0F141B] py-section text-white">
         <div className="container grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           <CaliforniaMap areas={areas} className="mx-auto w-full max-w-md" />
           <div>
@@ -159,7 +159,7 @@ export default async function HomePage() {
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {REGIONS.map((r, i) => (
                 <Reveal key={r} delay={i * 80}>
-                  <h3 className="text-xl text-amber">{r}</h3>
+                  <h3 className="text-xl text-accent">{r}</h3>
                   <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
                     {areas
                       .filter((a) => a.region === r)
@@ -174,7 +174,7 @@ export default async function HomePage() {
                 </Reveal>
               ))}
               <Reveal delay={320}>
-                <h3 className="text-xl text-amber">Ports</h3>
+                <h3 className="text-xl text-accent">Ports</h3>
                 <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
                   {PORTS.map((p) => (
                     <li key={p.slug}>

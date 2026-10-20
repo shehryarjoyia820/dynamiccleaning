@@ -57,7 +57,7 @@ export default function ImportPage() {
               </details>
             ) : null}
             {state.ok && state.tag ? (
-              <Link href={`/admin/emails/campaigns/new?tag=${encodeURIComponent(state.tag)}`} className="mt-3 inline-flex items-center gap-2 rounded-md bg-amber px-4 py-2 text-sm font-bold text-ink hover:bg-amber-deep">
+              <Link href={`/admin/emails/campaigns/new?tag=${encodeURIComponent(state.tag)}`} className="mt-3 inline-flex items-center gap-2 rounded-md bg-accent-deep px-4 py-2 text-sm font-bold text-white hover:bg-accent-hover">
                 <Send className="h-4 w-4" aria-hidden /> Send proposal to these contacts
               </Link>
             ) : null}

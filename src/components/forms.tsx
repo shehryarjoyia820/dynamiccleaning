@@ -52,7 +52,7 @@ function Field({
   return (
     <div className={className}>
       <label htmlFor={id} className="label">
-        {label} {required ? <span className="text-amber-ink" aria-hidden>*</span> : <span className="font-normal text-muted">(optional)</span>}
+        {label} {required ? <span className="text-accent-ink" aria-hidden>*</span> : <span className="font-normal text-muted">(optional)</span>}
       </label>
       {children({ id, name, required, 'aria-invalid': error ? true : undefined, 'aria-describedby': error ? errId : undefined })}
       {hint && !error ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
@@ -91,10 +91,10 @@ function Consent({ error }: { error?: string }) {
   return (
     <div>
       <div className="flex items-start gap-3">
-        <input id={id} type="checkbox" name="consent" value="yes" required className="mt-1 h-5 w-5 shrink-0 accent-amber-ink" />
+        <input id={id} type="checkbox" name="consent" value="yes" required className="mt-1 h-5 w-5 shrink-0 accent-accent-ink" />
         <label htmlFor={id} className="text-sm text-muted">
           I agree that Diesel Dynamix may contact me by phone, text, WhatsApp or email about this request. We never sell your information. See our{' '}
-          <Link href="/privacy" className="font-semibold text-amber-ink underline underline-offset-4" target="_blank">
+          <Link href="/privacy" className="font-semibold text-accent-ink underline underline-offset-4" target="_blank">
             Privacy Policy
           </Link>
           .
@@ -219,7 +219,7 @@ export function BookingForm({
         </button>
         <p className="mt-2 text-center text-sm text-muted">
           Prefer to talk?{' '}
-          <a href={LINKS.tel} data-track="call_click" className="font-semibold text-amber-ink underline underline-offset-4">
+          <a href={LINKS.tel} data-track="call_click" className="font-semibold text-accent-ink underline underline-offset-4">
             Call {SITE.phoneDisplay}
           </a>
         </p>

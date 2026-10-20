@@ -46,7 +46,7 @@ function LoginForm() {
       </button>
       <button
         type="button"
-        className="text-sm font-semibold text-amber-ink underline underline-offset-4"
+        className="text-sm font-semibold text-accent-ink underline underline-offset-4"
         onClick={async (e) => {
           const email = (e.currentTarget.form?.elements.namedItem('email') as HTMLInputElement | null)?.value;
           if (!email) return setError('Enter your email first.');
@@ -71,7 +71,7 @@ export default function LoginPage() {
           <LoginForm />
         </Suspense>
         <p className="mt-8 text-center text-sm text-muted">
-          First time? <a href="/admin/setup" className="font-semibold text-amber-ink underline underline-offset-4">Set up the admin account</a>
+          First time? <a href="/admin/setup" className="font-semibold text-accent-ink underline underline-offset-4">Set up the admin account</a>
         </p>
       </div>
     </main>

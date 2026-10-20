@@ -1,9 +1,10 @@
 import type { Config } from 'tailwindcss';
 
 /**
- * Brand tokens from the Diesel Dynamix brief (section 3).
- * `amber-ink` and `green-ink` are darker variants for text on light
- * backgrounds, where the base amber/green fail WCAG AA contrast.
+ * Brand tokens: black, blue and green.
+ * - accent: blue for text, icons and lines on dark backgrounds (6:1 on charcoal)
+ * - accent-deep / accent-hover: blue button fills with white text (5.5:1)
+ * - accent-ink / green-ink: darker shades for text on light backgrounds (AA)
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
@@ -15,13 +16,13 @@ const config: Config = {
     },
     extend: {
       colors: {
-        charcoal: '#16181D',
-        steel: { DEFAULT: '#2A2E36', light: '#3A3F49' },
-        offwhite: '#F4F4F2',
-        ink: '#111318',
-        muted: { DEFAULT: '#4A5160', dark: '#9AA0AA' },
-        amber: { DEFAULT: '#F5A524', deep: '#DC8C12', ink: '#8F5600' },
-        green: { DEFAULT: '#1E9E5A', ink: '#15703F' },
+        charcoal: '#0B0F14',
+        steel: { DEFAULT: '#161C24', light: '#232B36' },
+        offwhite: '#F4F6F9',
+        ink: '#0F172A',
+        muted: { DEFAULT: '#475569', dark: '#94A3B8' },
+        accent: { DEFAULT: '#4C8DFF', deep: '#1F5FE0', hover: '#184BB8', ink: '#1D4ED8' },
+        green: { DEFAULT: '#16A34A', bright: '#22C55E', ink: '#15803D' },
       },
       fontFamily: {
         display: ['var(--font-display)', 'Arial Narrow', 'system-ui', 'sans-serif'],

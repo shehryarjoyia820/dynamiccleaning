@@ -28,9 +28,9 @@ export default async function BlogPage() {
                   <time dateTime={p.published_at} className="text-sm text-muted">
                     {formatDate(p.published_at)}
                   </time>
-                  <h2 className="mt-2 text-2xl group-hover:text-amber-ink">{p.title}</h2>
+                  <h2 className="mt-2 text-2xl group-hover:text-accent-ink">{p.title}</h2>
                   <p className="mt-3 flex-1 text-muted">{p.excerpt}</p>
-                  <span className="mt-5 inline-flex items-center gap-2 font-display font-bold uppercase text-amber-ink">
+                  <span className="mt-5 inline-flex items-center gap-2 font-display font-bold uppercase text-accent-ink">
                     Read more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Link>

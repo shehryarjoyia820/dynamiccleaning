@@ -52,6 +52,13 @@ Add `dieseldynamix.com` (and `www`) under Vercel → Project → Domains, update
 - **AEO:** `/llms.txt` summarises the business for AI assistants. Pages carry FAQPage, HowTo, Service and BreadcrumbList structured data plus "Quick answer" boxes.
 - The California keyword plan from the brief is mapped page by page in `SEO.md`. Verify search volumes in Google Keyword Planner or Ahrefs.
 
+## 6. Google AdSense
+
+1. Apply at [adsense.google.com](https://adsense.google.com) with the **custom domain** (AdSense does not approve `vercel.app` addresses), once `dieseldynamix.com` is connected.
+2. Set `NEXT_PUBLIC_ADSENSE_CLIENT=ca-pub-…` in Vercel and redeploy. This adds the verification meta tag, serves `/ads.txt` and loads Auto ads after the visitor makes a cookie choice (personalised if accepted, non-personalised if rejected or if the browser sends Global Privacy Control).
+3. The policy pages AdSense reviewers look for are in place: Privacy Policy (with Google advertising cookie disclosure and opt-out links), Cookie Policy, Terms, Disclaimer, Do Not Sell or Share (CCPA/CPRA), Accessibility, About and Contact.
+4. Ads compete with your Book / Call buttons. Consider turning Auto ads off on `/book` and service-area pages in the AdSense dashboard.
+
 ## Before launch (client to verify)
 
 - [ ] WhatsApp Business is active on (858) 342-8328

@@ -28,10 +28,12 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image' },
   formatDetection: { telephone: false },
+  // Lets Google AdSense verify site ownership.
+  ...(process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? { other: { 'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT } } : {}),
 };
 
 export const viewport: Viewport = {
-  themeColor: '#16181D',
+  themeColor: '#0B0F14',
   width: 'device-width',
   initialScale: 1,
 };

@@ -47,7 +47,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
           <div className="max-h-[90dvh] overflow-y-auto p-5 sm:p-8">
             <div className="mb-5 flex items-start justify-between gap-4">
               <div>
-                <p className="eyebrow text-amber-ink">Book mobile testing</p>
+                <p className="eyebrow text-accent-ink">Book mobile testing</p>
                 <h2 id="book-modal-title" className="mt-2 text-3xl">
                   We come to you
                 </h2>

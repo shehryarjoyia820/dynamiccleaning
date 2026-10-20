@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { Logo } from '@/components/brand';
 import { WhatsAppIcon } from '@/components/contact-bars';
+import { CookieSettingsButton } from '@/components/cookie-settings-button';
 import { NewsletterForm } from '@/components/newsletter';
 import { DISCLAIMER, FOOTER_LINKS, LINKS, SITE } from '@/lib/site';
 
@@ -18,22 +19,22 @@ export function Footer() {
           </p>
           <ul className="mt-6 space-y-3">
             <li>
-              <a href={LINKS.tel} data-track="call_click" className="inline-flex items-center gap-3 font-display text-2xl font-bold hover:text-amber">
-                <Phone className="h-5 w-5 text-amber" aria-hidden /> {SITE.phoneDisplay}
+              <a href={LINKS.tel} data-track="call_click" className="inline-flex items-center gap-3 font-display text-2xl font-bold hover:text-accent">
+                <Phone className="h-5 w-5 text-accent" aria-hidden /> {SITE.phoneDisplay}
               </a>
             </li>
             <li>
-              <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" className="inline-flex items-center gap-3 hover:text-amber">
+              <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" className="inline-flex items-center gap-3 hover:text-accent">
                 <WhatsAppIcon className="h-5 w-5 text-[#25D366]" /> WhatsApp us
               </a>
             </li>
             <li>
-              <a href={LINKS.mailService} data-track="email_click" className="inline-flex items-center gap-3 hover:text-amber">
-                <Mail className="h-5 w-5 text-amber" aria-hidden /> {SITE.emailService}
+              <a href={LINKS.mailService} data-track="email_click" className="inline-flex items-center gap-3 hover:text-accent">
+                <Mail className="h-5 w-5 text-accent" aria-hidden /> {SITE.emailService}
               </a>
             </li>
             <li className="inline-flex items-center gap-3 text-muted-dark">
-              <MapPin className="h-5 w-5 text-amber" aria-hidden /> Serving Southern California
+              <MapPin className="h-5 w-5 text-accent" aria-hidden /> Serving Southern California
             </li>
           </ul>
           <div className="mt-8 max-w-sm">
@@ -42,7 +43,7 @@ export function Footer() {
         </div>
         {FOOTER_LINKS.map((col) => (
           <nav key={col.title} aria-label={col.title}>
-            <h2 className="eyebrow text-amber">{col.title}</h2>
+            <h2 className="eyebrow text-accent">{col.title}</h2>
             <ul className="mt-4 space-y-2.5">
               {col.links.map((l) => (
                 <li key={l.href}>
@@ -57,9 +58,9 @@ export function Footer() {
       </div>
       <div className="border-t border-white/10">
         <div className="container py-6 text-sm text-muted-dark">
-          <p className="rounded-md border border-amber/30 bg-amber/5 p-4 text-white/90" role="note">
-            <strong className="text-amber">Independent provider notice:</strong> {DISCLAIMER} For official program rules see{' '}
-            <a href={LINKS.carbCtc} target="_blank" rel="noopener noreferrer" className="font-semibold text-amber underline underline-offset-4">
+          <p className="rounded-md border border-accent/30 bg-accent/5 p-4 text-white/90" role="note">
+            <strong className="text-accent">Independent provider notice:</strong> {DISCLAIMER} For official program rules see{' '}
+            <a href={LINKS.carbCtc} target="_blank" rel="noopener noreferrer" className="font-semibold text-accent underline underline-offset-4">
               CARB Clean Truck Check
             </a>
             .
@@ -69,6 +70,11 @@ export function Footer() {
             <ul className="flex flex-wrap gap-x-5 gap-y-2">
               <li><Link href="/privacy" className="hover:text-white">Privacy Policy</Link></li>
               <li><Link href="/terms" className="hover:text-white">Terms</Link></li>
+              <li><Link href="/cookies" className="hover:text-white">Cookie Policy</Link></li>
+              <li><Link href="/disclaimer" className="hover:text-white">Disclaimer</Link></li>
+              <li><Link href="/accessibility" className="hover:text-white">Accessibility</Link></li>
+              <li><Link href="/do-not-sell" className="hover:text-white">Do Not Sell or Share My Info</Link></li>
+              <li><CookieSettingsButton className="hover:text-white" /></li>
               <li><Link href="/sitemap.xml" className="hover:text-white">Sitemap</Link></li>
             </ul>
           </div>

@@ -74,7 +74,7 @@ export default async function PortPage({ params }: { params: Promise<{ slug: str
         <div className="container grid gap-12 lg:grid-cols-[1.1fr_1fr]">
           <div className="grid content-start gap-8">
             <QuickAnswer question={`Where can I get Clean Truck Check near the ${port.name}?`}>
-              Diesel Dynamix tests trucks on-site near the {port.name}. Call or WhatsApp <a href={`tel:${SITE.phoneE164}`} className="font-semibold text-amber-ink underline">{SITE.phoneDisplay}</a> or book online and we come to your yard.
+              Diesel Dynamix tests trucks on-site near the {port.name}. Call or WhatsApp <a href={`tel:${SITE.phoneE164}`} className="font-semibold text-accent-ink underline">{SITE.phoneDisplay}</a> or book online and we come to your yard.
             </QuickAnswer>
             <Reveal className="prose-dd">
               <h2>Mobile testing for {port.name} trucks</h2>

@@ -15,17 +15,17 @@ export function CityTicker({ areas }: { areas: ServiceArea[] }) {
           <Link
             href={it.href}
             tabIndex={hidden ? -1 : undefined}
-            className="whitespace-nowrap px-5 font-display text-lg font-semibold uppercase tracking-wide text-ink/80 hover:text-amber-ink"
+            className="whitespace-nowrap px-5 font-display text-lg font-semibold uppercase tracking-wide text-ink/80 hover:text-accent-ink"
           >
             Clean Truck Check {it.label}
           </Link>
-          <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-amber" />
+          <span aria-hidden className="h-1.5 w-1.5 rotate-45 bg-accent" />
         </li>
       ))}
     </ul>
   );
   return (
-    <nav aria-label="Cities we serve" className="group overflow-hidden border-y border-ink/10 bg-amber/10 py-4">
+    <nav aria-label="Cities we serve" className="group overflow-hidden border-y border-ink/10 bg-accent/10 py-4">
       <div className="flex w-max motion-safe:animate-marquee group-hover:[animation-play-state:paused]">
         {row(false)}
         {row(true)}

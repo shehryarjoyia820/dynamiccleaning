@@ -15,11 +15,11 @@ export function sendEmail(opts: { to: string | string[]; subject: string; html: 
 
 export function shell(inner: string, footer?: string) {
   return `<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#111318">
-  <div style="background:#16181D;padding:18px 24px;border-bottom:4px solid #F5A524">
-    <span style="color:#fff;font-weight:800;font-size:22px;letter-spacing:1px">DIESEL <span style="color:#F5A524">DYNAMIX</span></span>
+  <div style="background:#0B0F14;padding:18px 24px;border-bottom:4px solid #4C8DFF">
+    <span style="color:#fff;font-weight:800;font-size:22px;letter-spacing:1px">DIESEL <span style="color:#4C8DFF">DYNAMIX</span></span>
   </div>
   <div style="padding:24px;background:#ffffff">${inner}</div>
-  <div style="padding:16px 24px;background:#F4F4F2;font-size:12px;line-height:1.6;color:#4A5160">
+  <div style="padding:16px 24px;background:#F4F6F9;font-size:12px;line-height:1.6;color:#4A5160">
     ${footer ?? ''}Diesel Dynamix is an independent service provider, not CARB or a California government website.
   </div></div>`;
 }
@@ -33,7 +33,7 @@ export function leadTable(fields: [string, unknown][]) {
 
 export function staffEmail(title: string, fields: [string, unknown][], adminUrl?: string) {
   return shell(`<h2 style="margin:0 0 16px">${esc(title)}</h2>${leadTable(fields)}${
-    adminUrl ? `<p style="margin-top:20px"><a href="${esc(adminUrl)}" style="background:#F5A524;color:#111318;padding:12px 18px;text-decoration:none;font-weight:bold;border-radius:6px">Open in admin</a></p>` : ''
+    adminUrl ? `<p style="margin-top:20px"><a href="${esc(adminUrl)}" style="background:#4C8DFF;color:#111318;padding:12px 18px;text-decoration:none;font-weight:bold;border-radius:6px">Open in admin</a></p>` : ''
   }`);
 }
 

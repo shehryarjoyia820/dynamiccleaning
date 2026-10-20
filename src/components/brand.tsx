@@ -7,9 +7,9 @@ const D_PATH =
 const LINES_PATH = 'M12 16H2a2 2 0 0 0 0 4h10a2 2 0 0 0 0-4ZM12 30H6a2 2 0 0 0 0 4h6a2 2 0 0 0 0-4ZM12 44h-2a2 2 0 0 0 0 4h2a2 2 0 0 0 0-4Z';
 
 const TONES = {
-  dark: { lines: '#F5A524', d: '#F5A524', check: '#F4F4F2' }, // on charcoal
-  light: { lines: '#B86E00', d: '#16181D', check: '#B86E00' }, // on white / off-white
-  mono: { lines: 'currentColor', d: 'currentColor', check: 'currentColor' }, // one color, e.g. on amber
+  dark: { lines: '#4C8DFF', d: '#4C8DFF', check: '#22C55E' }, // blue D, green pass check, on black
+  light: { lines: '#1F5FE0', d: '#0B0F14', check: '#16A34A' }, // black D, on white / off-white
+  mono: { lines: 'currentColor', d: 'currentColor', check: 'currentColor' }, // one color, e.g. white on blue
 } as const;
 
 export function LogoMark({
@@ -45,7 +45,7 @@ export function Logo({
 }) {
   const name = (
     <span className="block whitespace-nowrap font-display font-extrabold uppercase leading-[0.9] tracking-[0.01em]">
-      <span className={onDark ? 'text-offwhite' : 'text-ink'}>Diesel</span> <span className={onDark ? 'text-amber' : 'text-amber-ink'}>Dynamix</span>
+      <span className={onDark ? 'text-offwhite' : 'text-ink'}>Diesel</span> <span className={onDark ? 'text-accent' : 'text-accent-ink'}>Dynamix</span>
     </span>
   );
   const tag = tagline ? (

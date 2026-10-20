@@ -7,7 +7,17 @@ import { track } from '@/components/client-effects';
 import { cn } from '@/lib/utils';
 
 /** Newsletter signup → /api/subscribe (stored as a contact tagged "newsletter"). */
-export function NewsletterForm({ dark = true }: { dark?: boolean }) {
+export function NewsletterForm({
+  dark = true,
+  label = 'Get Clean Truck Check updates',
+  idPrefix = 'nl',
+  onSubscribed,
+}: {
+  dark?: boolean;
+  label?: string;
+  idPrefix?: string;
+  onSubscribed?: () => void;
+}) {
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
   const [msg, setMsg] = useState('');
 
@@ -31,6 +41,7 @@ export function NewsletterForm({ dark = true }: { dark?: boolean }) {
         if (res?.ok) {
           track('subscribe');
           setState('done');
+          onSubscribed?.();
         } else {
           setMsg(json?.error ?? 'Something went wrong. Try again.');
           setState('error');
@@ -40,11 +51,11 @@ export function NewsletterForm({ dark = true }: { dark?: boolean }) {
       <div aria-hidden className="absolute -left-[9999px] h-px w-px overflow-hidden">
         <input type="text" name="website" tabIndex={-1} autoComplete="off" />
       </div>
-      <label htmlFor="nl-email" className={cn('label', dark && 'text-white')}>
-        Get Clean Truck Check updates
+      <label htmlFor={`${idPrefix}-email`} className={cn('label', dark && 'text-white')}>
+        {label}
       </label>
       <div className="flex gap-2">
-        <input id="nl-email" name="email" type="email" required placeholder="you@company.com" autoComplete="email" className="field min-w-0 flex-1" />
+        <input id={`${idPrefix}-email`} name="email" type="email" required placeholder="you@company.com" autoComplete="email" className="field min-w-0 flex-1" />
         <button className="btn-primary shrink-0 !min-h-[48px] !px-4" disabled={state === 'sending'}>
           {state === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" aria-label="Subscribing" /> : 'Subscribe'}
         </button>

@@ -52,7 +52,7 @@ export function SendRunner({ hasDue }: { hasDue: boolean }) {
 
   return (
     <p role="status" className="flex items-center gap-2 rounded-md bg-white px-4 py-2 text-sm font-semibold shadow-card">
-      {running ? <Loader2 className="h-4 w-4 animate-spin text-amber-ink" aria-hidden /> : null}
+      {running ? <Loader2 className="h-4 w-4 animate-spin text-accent-ink" aria-hidden /> : null}
       {status}
     </p>
   );

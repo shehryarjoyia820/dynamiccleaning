@@ -11,7 +11,7 @@ export default async function PostsAdmin() {
   return (
     <>
       <AdminTitle title="Blog posts">
-        <Link href="/admin/content/posts/new" className="inline-flex items-center gap-2 rounded-md bg-amber px-4 py-2 text-sm font-bold text-ink hover:bg-amber-deep">
+        <Link href="/admin/content/posts/new" className="inline-flex items-center gap-2 rounded-md bg-accent-deep px-4 py-2 text-sm font-bold text-white hover:bg-accent-hover">
           <Plus className="h-4 w-4" aria-hidden /> New post
         </Link>
       </AdminTitle>

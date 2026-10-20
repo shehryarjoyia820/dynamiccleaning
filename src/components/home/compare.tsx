@@ -22,7 +22,7 @@ export function MobileVsShop() {
               <tr>
                 <th scope="col" className="w-1/3 bg-offwhite px-4 py-4 sm:px-6"><span className="sr-only">Compare</span></th>
                 <th scope="col" className="bg-offwhite px-4 py-4 font-display text-lg uppercase text-muted sm:px-6">Test site</th>
-                <th scope="col" className="bg-charcoal px-4 py-4 font-display text-lg uppercase text-amber sm:px-6">Diesel Dynamix</th>
+                <th scope="col" className="bg-charcoal px-4 py-4 font-display text-lg uppercase text-accent sm:px-6">Diesel Dynamix</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-ink/10">
@@ -32,7 +32,7 @@ export function MobileVsShop() {
                   <td className="px-4 py-4 text-sm text-muted sm:px-6 sm:text-base">
                     <span className="flex items-start gap-2"><X className="mt-0.5 h-4 w-4 shrink-0 text-[#B42318]" aria-hidden />{shop}</span>
                   </td>
-                  <td className="bg-amber/10 px-4 py-4 text-sm font-semibold sm:px-6 sm:text-base">
+                  <td className="bg-accent/10 px-4 py-4 text-sm font-semibold sm:px-6 sm:text-base">
                     <span className="flex items-start gap-2"><Check className="mt-0.5 h-4 w-4 shrink-0 text-green-ink" aria-hidden />{us}</span>
                   </td>
                 </tr>

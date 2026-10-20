@@ -46,7 +46,7 @@ const CONVERTED = ['scheduled', 'completed', 'closed'];
 function inlineMd(s: string) {
   return s
     .replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>')
-    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+|tel:[^\s)]+)\)/g, '<a href="$2" style="color:#8F5600">$1</a>');
+    .replace(/\[([^\]]+)\]\((https?:\/\/[^\s)]+|mailto:[^\s)]+|tel:[^\s)]+)\)/g, '<a href="$2" style="color:#1D4ED8">$1</a>');
 }
 
 /** Minimal Markdown → email-safe HTML. Text is escaped before any markup is added. */

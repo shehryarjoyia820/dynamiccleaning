@@ -7,16 +7,17 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Values from the approved Figma logo file ("Colors & type").
+// Black, blue and green scheme. Logo shape from the Figma logo file.
 const COLORS = [
-  { name: 'Charcoal', role: 'Primary dark: header, hero, footer', hex: '#16181D', rgb: '22, 24, 29', cmyk: '24, 17, 0, 89' },
-  { name: 'Amber', role: 'Accent: buttons, icons, highlights', hex: '#F5A524', rgb: '245, 165, 36', cmyk: '0, 33, 85, 4' },
-  { name: 'Amber deep', role: 'Logo accent on light backgrounds', hex: '#B86E00', rgb: '184, 110, 0', cmyk: '0, 40, 100, 28' },
-  { name: 'Amber ink', role: 'Small amber text on light (WCAG AA)', hex: '#8F5600', rgb: '143, 86, 0', cmyk: '0, 40, 100, 44' },
-  { name: 'Off-white', role: 'Light backgrounds, text on dark', hex: '#F4F4F2', rgb: '244, 244, 242', cmyk: '0, 0, 1, 4' },
-  { name: 'Muted on dark', role: 'Secondary text on charcoal', hex: '#9AA0AA', rgb: '154, 160, 170', cmyk: '9, 6, 0, 33' },
-  { name: 'Steel', role: 'Cards and panels on dark', hex: '#2A2E36', rgb: '42, 46, 54', cmyk: '22, 15, 0, 79' },
-  { name: 'Clean green', role: 'Pass / compliant states', hex: '#1E9E5A', rgb: '30, 158, 90', cmyk: '81, 0, 43, 38' },
+  { name: 'Black', role: 'Primary dark: header, hero, footer, logo “D” on light', hex: '#0B0F14', rgb: '11, 15, 20', cmyk: '45, 25, 0, 92' },
+  { name: 'Steel', role: 'Cards and panels on dark', hex: '#161C24', rgb: '22, 28, 36', cmyk: '39, 22, 0, 86' },
+  { name: 'Signal blue', role: 'Logo “D”, text and icons on dark', hex: '#4C8DFF', rgb: '76, 141, 255', cmyk: '70, 45, 0, 0' },
+  { name: 'Deep blue', role: 'Buttons (white text), logo on light', hex: '#1F5FE0', rgb: '31, 95, 224', cmyk: '86, 58, 0, 12' },
+  { name: 'Blue ink', role: 'Links and small text on light (WCAG AA)', hex: '#1D4ED8', rgb: '29, 78, 216', cmyk: '87, 64, 0, 15' },
+  { name: 'Pass green', role: 'Logo checkmark on dark, success states', hex: '#22C55E', rgb: '34, 197, 94', cmyk: '83, 0, 52, 23' },
+  { name: 'Green', role: 'Logo checkmark on light, “compliant” badges', hex: '#16A34A', rgb: '22, 163, 74', cmyk: '87, 0, 55, 36' },
+  { name: 'Off-white', role: 'Light backgrounds, text on dark', hex: '#F4F6F9', rgb: '244, 246, 249', cmyk: '2, 1, 0, 2' },
+  { name: 'Slate', role: 'Secondary text on dark', hex: '#94A3B8', rgb: '148, 163, 184', cmyk: '20, 11, 0, 28' },
 ];
 
 const FILES = [
@@ -25,7 +26,7 @@ const FILES = [
   ['Stacked logo, for dark backgrounds', '/brand/logo-stacked-dark.svg'],
   ['Mark, on dark', '/brand/mark-on-dark.svg'],
   ['Mark, on light', '/brand/mark-on-light.svg'],
-  ['Mark, one color (e.g. on amber)', '/brand/mark-one-color.svg'],
+  ['Mark, one color (e.g. white on blue)', '/brand/mark-one-color.svg'],
   ['App icon / favicon', '/brand/app-icon.svg'],
 ];
 
@@ -49,7 +50,7 @@ export default function BrandPage() {
               <div className="grid gap-6 sm:grid-cols-3">
                 <div className="grid place-items-center rounded-xl bg-charcoal p-6"><LogoMark className="h-16 w-16" /></div>
                 <div className="grid place-items-center rounded-xl bg-white p-6 shadow-card"><LogoMark tone="light" className="h-16 w-16" /></div>
-                <div className="grid place-items-center rounded-xl bg-amber p-6 text-charcoal"><LogoMark tone="mono" className="h-16 w-16" /></div>
+                <div className="grid place-items-center rounded-xl bg-accent-deep p-6 text-white"><LogoMark tone="mono" className="h-16 w-16" /></div>
                 <div className="flex items-end justify-center gap-4 rounded-xl bg-charcoal p-6 sm:col-span-3">
                   <LogoMark className="h-12 w-12" />
                   <LogoMark className="h-8 w-8" />
@@ -63,7 +64,7 @@ export default function BrandPage() {
             <ul className="prose-dd mt-3">
               <li>Clear space around the logo: at least the width of the “D” stem on every side.</li>
               <li>Minimum size: mark 16 px / 5 mm; horizontal logo 140 px / 35 mm wide.</li>
-              <li>Use the light version on white or off-white, and the one-color mark on amber.</li>
+              <li>Use the light version on white or off-white, and the one-color mark (white) on blue.</li>
               <li>Do not stretch, recolor, rotate, add effects, or place the logo on busy photos without a dark overlay.</li>
               <li>Never combine the logo with the CARB or State of California seal. Diesel Dynamix is an independent company.</li>
             </ul>
@@ -108,13 +109,13 @@ export default function BrandPage() {
             <ul className="mt-4 grid gap-2 sm:grid-cols-2">
               {FILES.map(([label, href]) => (
                 <li key={href}>
-                  <a href={href} download className="flex items-center justify-between rounded-lg border border-ink/10 bg-white px-4 py-3 font-semibold hover:border-amber-ink">
+                  <a href={href} download className="flex items-center justify-between rounded-lg border border-ink/10 bg-white px-4 py-3 font-semibold hover:border-accent-ink">
                     {label} <span className="text-sm text-muted">SVG</span>
                   </a>
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-sm text-muted">Source: Diesel Dynamix Figma logo file.</p>
+            <p className="mt-3 text-sm text-muted">Logo shape from the Diesel Dynamix Figma file, recolored to the black, blue and green scheme.</p>
           </div>
         </div>
       </section>

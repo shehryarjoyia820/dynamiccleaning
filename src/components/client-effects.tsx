@@ -6,13 +6,24 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
+const ADSENSE = process.env.NEXT_PUBLIC_ADSENSE_CLIENT; // ca-pub-XXXXXXXXXXXXXXXX
 const CONSENT_KEY = 'dd-consent';
+const OPEN_SETTINGS = 'dd-open-cookie-settings';
 
 declare global {
   interface Window {
     gtag?: (...args: unknown[]) => void;
     dataLayer?: unknown[];
+    adsbygoogle?: unknown[] & { requestNonPersonalizedAds?: number };
   }
+  interface Navigator {
+    globalPrivacyControl?: boolean;
+  }
+}
+
+/** Re-opens the cookie banner (used by the footer “Cookie settings” link). */
+export function openCookieSettings() {
+  window.dispatchEvent(new Event(OPEN_SETTINGS));
 }
 
 export function track(event: string, params: Record<string, unknown> = {}) {
@@ -46,21 +57,30 @@ export function RevealObserver() {
 }
 
 /**
- * GA4 loads only after the visitor accepts analytics cookies.
- * Every element with data-track="event_name" is reported as a GA4 event
- * (call_click, whatsapp_click, email_click, book_click); mark these as
- * conversions in GA4 along with generate_lead from the forms.
+ * Cookie consent + Google tags (Consent Mode v2).
+ * - GA4 loads only after the visitor accepts.
+ * - AdSense loads once a choice is made: personalised ads if accepted,
+ *   non-personalised ads if rejected.
+ * - A Global Privacy Control signal (CCPA/CPRA opt-out) counts as “reject”.
+ * Every element with data-track="event_name" is reported to GA4
+ * (call_click, whatsapp_click, email_click, book_click, subscribe, generate_lead).
  */
 export function Analytics() {
   const [consent, setConsent] = useState<'granted' | 'denied' | null>(null);
   const [ready, setReady] = useState(false);
+  const needsConsent = Boolean(GA_ID || ADSENSE);
 
   useEffect(() => {
+    let v: string | null = null;
     try {
-      const v = localStorage.getItem(CONSENT_KEY);
-      if (v === 'granted' || v === 'denied') setConsent(v);
+      v = localStorage.getItem(CONSENT_KEY);
     } catch {}
+    if (v === 'granted' || v === 'denied') setConsent(v);
+    else if (navigator.globalPrivacyControl) setConsent('denied');
     setReady(true);
+    const reopen = () => setConsent(null);
+    window.addEventListener(OPEN_SETTINGS, reopen);
+    return () => window.removeEventListener(OPEN_SETTINGS, reopen);
   }, []);
 
   useEffect(() => {
@@ -71,6 +91,13 @@ export function Analytics() {
     document.addEventListener('click', onClick, { capture: true });
     return () => document.removeEventListener('click', onClick, { capture: true });
   }, []);
+
+  // Keep Google's consent state in sync if the visitor changes their mind.
+  useEffect(() => {
+    if (!consent) return;
+    const g = consent === 'granted' ? 'granted' : 'denied';
+    window.gtag?.('consent', 'update', { analytics_storage: g, ad_storage: g, ad_user_data: g, ad_personalization: g });
+  }, [consent]);
 
   const choose = (v: 'granted' | 'denied') => {
     setConsent(v);
@@ -83,30 +110,48 @@ export function Analytics() {
     <>
       {GA_ID && consent === 'granted' ? (
         <>
+          <Script id="consent-default" strategy="afterInteractive">
+            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('consent','default',{analytics_storage:'granted',ad_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'});`}
+          </Script>
           <Script src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} strategy="afterInteractive" />
           <Script id="ga4" strategy="afterInteractive">
-            {`window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}window.gtag=gtag;gtag('js',new Date());gtag('config','${GA_ID}');`}
+            {`gtag('js',new Date());gtag('config','${GA_ID}');`}
           </Script>
         </>
       ) : null}
-      {GA_ID && ready && consent === null ? (
+      {ADSENSE && consent ? (
+        <>
+          {consent === 'denied' ? (
+            <Script id="adsense-npa" strategy="afterInteractive">
+              {`(window.adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1;`}
+            </Script>
+          ) : null}
+          <Script
+            src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE}`}
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
+        </>
+      ) : null}
+      {needsConsent && ready && consent === null ? (
         <div
           role="region"
           aria-label="Cookie notice"
           className="fixed inset-x-3 bottom-[76px] z-50 mx-auto max-w-xl rounded-xl border border-white/10 bg-steel p-4 text-sm text-white shadow-lift md:bottom-6 md:left-6 md:right-auto"
         >
           <p>
-            We use analytics cookies to understand how visitors use this site. No ads, no selling data.{' '}
-            <Link href="/privacy" className="font-semibold text-amber underline underline-offset-4">
-              Privacy Policy
+            We use cookies for analytics{ADSENSE ? ' and advertising (including Google)' : ''}. Essential cookies are always on. You can accept or reject the rest, and change
+            your choice any time in Cookie settings.{' '}
+            <Link href="/cookies" className="font-semibold text-accent underline underline-offset-4">
+              Cookie Policy
             </Link>
           </p>
-          <div className="mt-3 flex gap-2">
+          <div className="mt-3 flex flex-wrap gap-2">
             <button type="button" className="btn-primary !min-h-[40px] !py-1.5 !text-base" onClick={() => choose('granted')}>
-              Accept
+              Accept all
             </button>
             <button type="button" className="btn-ghost-dark !min-h-[40px] !py-1.5 !text-base" onClick={() => choose('denied')}>
-              Decline
+              Reject non-essential
             </button>
           </div>
         </div>

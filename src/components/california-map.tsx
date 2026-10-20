@@ -36,10 +36,10 @@ const VIEW = { x: VX - 4, y: VY - 6, w: VX2 - VX + 8, h: VY2 - VY + 8 };
 const K = VIEW.w / (W + 20);
 
 const REGION_COLORS: Record<string, string> = {
-  'Southern California': '#F5A524',
-  'Central Valley': '#FFB36B',
+  'Southern California': '#4C8DFF',
+  'Central Valley': '#22C55E',
   'Bay Area & Northern California': '#FFFFFF',
-  'Central Coast': '#1E9E5A',
+  'Central Coast': '#16A34A',
 };
 
 export function CaliforniaMap({
@@ -57,15 +57,15 @@ export function CaliforniaMap({
     <div data-reveal className={cn('relative', className)}>
       <svg viewBox={`${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}`} className="h-auto w-full" role="img" aria-labelledby="ca-map-title">
         <title id="ca-map-title">Map of Southern California showing Diesel Dynamix service locations</title>
-        <path d={PATH} fill="#2A2E36" />
-        <path className="ca-outline" d={PATH} fill="none" stroke="#F5A524" strokeWidth={2.5 * K} strokeLinejoin="round" />
-        <text x={VIEW.x + 14} y={VIEW.y + VIEW.h - 14} fill="#9AA0AA" fontSize={11 * K} letterSpacing={2 * K} fontFamily="var(--font-display), sans-serif">
+        <path d={PATH} fill="#161C24" />
+        <path className="ca-outline" d={PATH} fill="none" stroke="#4C8DFF" strokeWidth={2.5 * K} strokeLinejoin="round" />
+        <text x={VIEW.x + 14} y={VIEW.y + VIEW.h - 14} fill="#94A3B8" fontSize={11 * K} letterSpacing={2 * K} fontFamily="var(--font-display), sans-serif">
           PACIFIC OCEAN
         </text>
         {areas.map((a, i) => {
           const [x, y] = project(a.lng, a.lat);
           const on = !highlight || highlight === a.slug;
-          const color = REGION_COLORS[a.region] ?? '#F5A524';
+          const color = REGION_COLORS[a.region] ?? '#4C8DFF';
           const marker = (
             <g key={a.slug} transform={`translate(${x} ${y})`} opacity={on ? 1 : 0.45}>
               {on ? (
@@ -77,7 +77,7 @@ export function CaliforniaMap({
                   style={{ transformBox: 'fill-box', transformOrigin: 'center', animationDelay: `${(i % 6) * 0.4}s` }}
                 />
               ) : null}
-              <circle r={(highlight === a.slug ? 7 : 4.5) * K} fill={color} stroke="#16181D" strokeWidth={1.5 * K} />
+              <circle r={(highlight === a.slug ? 7 : 4.5) * K} fill={color} stroke="#0B0F14" strokeWidth={1.5 * K} />
               {highlight === a.slug ? (
                 <text x={12 * K} y={5 * K} fill="#fff" fontSize={16 * K} fontWeight="700" fontFamily="var(--font-display), sans-serif">
                   {a.name.toUpperCase()}

@@ -30,7 +30,7 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
       <>
         <AdminTitle title="New send" />
         <p className="card max-w-xl">
-          First create an email template. <Link href="/admin/emails/templates/new" className="font-semibold text-amber-ink underline">Create template</Link>
+          First create an email template. <Link href="/admin/emails/templates/new" className="font-semibold text-accent-ink underline">Create template</Link>
         </p>
       </>
     );

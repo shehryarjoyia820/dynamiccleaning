@@ -19,9 +19,9 @@ export default function BookPage() {
         crumbs={[{ name: 'Book Testing', path: '/book' }]}
       >
         <ul className="flex flex-wrap gap-x-6 gap-y-2 text-white/85">
-          <li className="flex items-center gap-2"><MapPinned className="h-5 w-5 text-amber" aria-hidden /> Anywhere in Southern California</li>
-          <li className="flex items-center gap-2"><Clock className="h-5 w-5 text-amber" aria-hidden /> Fast replies</li>
-          <li className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-amber" aria-hidden /> Your details stay private</li>
+          <li className="flex items-center gap-2"><MapPinned className="h-5 w-5 text-accent" aria-hidden /> Anywhere in Southern California</li>
+          <li className="flex items-center gap-2"><Clock className="h-5 w-5 text-accent" aria-hidden /> Fast replies</li>
+          <li className="flex items-center gap-2"><ShieldCheck className="h-5 w-5 text-accent" aria-hidden /> Your details stay private</li>
         </ul>
       </PageHero>
       <section className="py-section">

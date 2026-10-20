@@ -86,8 +86,8 @@ export function HeroSlider() {
 
       <div className="container relative grid min-h-[100svh] items-center gap-10 pb-28 pt-28 sm:pb-24 lg:grid-cols-[minmax(0,1fr)_23rem]">
       <div className="flex flex-col justify-center">
-        <h1 className="eyebrow flex animate-fade-up items-center gap-3 text-amber sm:text-sm">
-          <span aria-hidden className="h-0.5 w-8 bg-amber" />
+        <h1 className="eyebrow flex animate-fade-up items-center gap-3 text-accent sm:text-sm">
+          <span aria-hidden className="h-0.5 w-8 bg-accent" />
           California Clean Truck Check Made Simple
         </h1>
         <div className="relative mt-4 min-h-[9.5rem] sm:min-h-[11rem]" aria-live="off">
@@ -102,14 +102,14 @@ export function HeroSlider() {
             >
               <p className="max-w-3xl font-display text-display-xl font-extrabold uppercase">{s.title}</p>
               <p className="mt-4 flex max-w-xl items-start gap-2 text-lg text-white/85 sm:text-xl">
-                <s.icon className="mt-1 h-5 w-5 shrink-0 text-amber" aria-hidden />
+                <s.icon className="mt-1 h-5 w-5 shrink-0 text-accent" aria-hidden />
                 {s.text}
               </p>
             </div>
           ))}
         </div>
         <p className="mt-2 max-w-xl animate-fade-up font-display text-2xl font-semibold uppercase text-white [animation-delay:120ms]">
-          Mobile CARB emissions testing. <span className="text-amber">We come to you.</span>
+          Mobile CARB emissions testing. <span className="text-accent">We come to you.</span>
         </p>
         <div className="mt-8 animate-fade-up [animation-delay:200ms]">
           <ContactButtons />
@@ -117,7 +117,7 @@ export function HeroSlider() {
         <ul className="mt-6 flex animate-fade-up flex-wrap gap-x-5 gap-y-2 text-sm font-semibold text-white/80 [animation-delay:260ms]">
           {['All of Southern California', 'Tested at your yard', 'Fleets & owner-operators'].map((t) => (
             <li key={t} className="flex items-center gap-1.5">
-              <Check className="h-4 w-4 text-amber" aria-hidden /> {t}
+              <Check className="h-4 w-4 text-accent" aria-hidden /> {t}
             </li>
           ))}
         </ul>
@@ -136,7 +136,7 @@ export function HeroSlider() {
                 aria-current={i === index}
                 className="group grid h-11 w-11 place-items-center"
               >
-                <span className={cn('block h-1.5 rounded-full transition-all duration-300', i === index ? 'w-9 bg-amber' : 'w-4 bg-white/40 group-hover:bg-white/70')} />
+                <span className={cn('block h-1.5 rounded-full transition-all duration-300', i === index ? 'w-9 bg-accent' : 'w-4 bg-white/40 group-hover:bg-white/70')} />
               </button>
             ))}
           </div>
@@ -163,7 +163,7 @@ function QuickQuote() {
         open({ location: String(f.get('where') || '') || undefined, trucks: Number(f.get('trucks')) || undefined });
       }}
     >
-      <p className="eyebrow text-amber">Quick quote</p>
+      <p className="eyebrow text-accent">Quick quote</p>
       <p className="mt-2 font-display text-3xl font-bold uppercase leading-none">Get tested this week</p>
       <p className="mt-2 text-sm text-white/70">Two details and we’ll take it from there.</p>
       <label htmlFor="qq-where" className="mt-5 block text-sm font-semibold text-white">Where are your trucks?</label>

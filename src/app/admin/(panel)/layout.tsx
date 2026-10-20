@@ -27,26 +27,26 @@ export default async function PanelLayout({ children }: { children: React.ReactN
         <div className="flex items-center gap-2 px-5 py-4">
           <LogoMark className="h-8 w-8" />
           <span className="font-display text-lg font-extrabold uppercase">
-            Diesel <span className="text-amber">Dynamix</span>
+            Diesel <span className="text-accent">Dynamix</span>
           </span>
         </div>
         <nav aria-label="Admin" className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:overflow-visible">
           {NAV.map((n) => (
             <Link key={n.href} href={n.href} className="flex shrink-0 items-center gap-2 rounded-md px-3 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-white">
-              <n.icon className="h-4 w-4 text-amber" aria-hidden /> {n.label}
+              <n.icon className="h-4 w-4 text-accent" aria-hidden /> {n.label}
             </Link>
           ))}
           {profile.role === 'admin' ? (
             <Link href="/admin/team" className="flex shrink-0 items-center gap-2 rounded-md px-3 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-white">
-              <Users className="h-4 w-4 text-amber" aria-hidden /> Team
+              <Users className="h-4 w-4 text-accent" aria-hidden /> Team
             </Link>
           ) : null}
           <Link href="/admin/account" className="flex shrink-0 items-center gap-2 rounded-md px-3 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-white">
-            <UserCog className="h-4 w-4 text-amber" aria-hidden /> My account
+            <UserCog className="h-4 w-4 text-accent" aria-hidden /> My account
           </Link>
           <form action={signOut}>
             <button className="flex w-full shrink-0 items-center gap-2 rounded-md px-3 py-2.5 text-sm text-white/85 hover:bg-white/10 hover:text-white">
-              <LogOut className="h-4 w-4 text-amber" aria-hidden /> Sign out
+              <LogOut className="h-4 w-4 text-accent" aria-hidden /> Sign out
             </button>
           </form>
         </nav>

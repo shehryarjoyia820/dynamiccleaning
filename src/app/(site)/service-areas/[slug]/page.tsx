@@ -82,7 +82,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             <QuickAnswer question={`Where can I get a Clean Truck Check in ${area.name}?`}>
               Diesel Dynamix provides mobile Clean Truck Check testing in {area.name}, CA. We come to your truck for OBD tests, smoke opacity tests and visual
               inspections. Call or WhatsApp{' '}
-              <a href={`tel:${SITE.phoneE164}`} className="font-semibold text-amber-ink underline">{SITE.phoneDisplay}</a>.
+              <a href={`tel:${SITE.phoneE164}`} className="font-semibold text-accent-ink underline">{SITE.phoneDisplay}</a>.
             </QuickAnswer>
             <div>
               <SectionHeading eyebrow={`Book in ${area.name}`} title="Request on-site testing" />
@@ -92,23 +92,23 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
             </div>
           </div>
           <div className="grid content-start gap-10">
-            <Reveal className="rounded-xl bg-[#1B1D23] p-6">
+            <Reveal className="rounded-xl bg-[#0F141B] p-6">
               <CaliforniaMap areas={areas} highlight={area.slug} className="mx-auto max-w-sm" />
             </Reveal>
             <div className="grid gap-4 sm:grid-cols-2">
               <Reveal className="card">
-                <Cpu className="h-8 w-8 text-amber-ink" aria-hidden />
+                <Cpu className="h-8 w-8 text-accent-ink" aria-hidden />
                 <h2 className="mt-3 text-2xl">Mobile CARB testing in {area.name}</h2>
                 <p className="mt-2 text-muted">
-                  CARB-verified <Link href="/obd-testing" className="font-semibold text-amber-ink underline">OBD tests</Link> for 2013+ diesel and 2018+
+                  CARB-verified <Link href="/obd-testing" className="font-semibold text-accent-ink underline">OBD tests</Link> for 2013+ diesel and 2018+
                   alternative-fuel trucks, done at your {area.name} location.
                 </p>
               </Reveal>
               <Reveal delay={80} className="card">
-                <Gauge className="h-8 w-8 text-amber-ink" aria-hidden />
+                <Gauge className="h-8 w-8 text-accent-ink" aria-hidden />
                 <h2 className="mt-3 text-2xl">Smoke test in {area.name}</h2>
                 <p className="mt-2 text-muted">
-                  <Link href="/smoke-opacity-test" className="font-semibold text-amber-ink underline">Smoke opacity tests</Link> and visual inspections for
+                  <Link href="/smoke-opacity-test" className="font-semibold text-accent-ink underline">Smoke opacity tests</Link> and visual inspections for
                   older non-OBD engines, on-site in {area.name}.
                 </p>
               </Reveal>
@@ -131,7 +131,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {ports.map((p) => (
                     <li key={p.slug}>
-                      <Link href={`/ports/${p.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-amber-ink hover:text-amber-ink">
+                      <Link href={`/ports/${p.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-accent-ink hover:text-accent-ink">
                         <MapPin className="h-4 w-4" aria-hidden /> Clean Truck Check {p.name}
                       </Link>
                     </li>
@@ -145,7 +145,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {nearby.map((a) => (
                     <li key={a.slug}>
-                      <Link href={`/service-areas/${a.slug}`} className="inline-block rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-amber-ink hover:text-amber-ink">
+                      <Link href={`/service-areas/${a.slug}`} className="inline-block rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-accent-ink hover:text-accent-ink">
                         Clean Truck Check {a.name}
                       </Link>
                     </li>

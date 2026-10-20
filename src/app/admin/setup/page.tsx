@@ -94,14 +94,14 @@ export default async function SetupPage({ searchParams }: { searchParams: Promis
           <h1 className="mt-8 text-4xl">{exists ? 'Owner access' : 'First-time setup'}</h1>
           {exists ? (
             <p className="mt-3 text-muted">
-              The admin account already exists. Normally just <a href="/admin/login" className="font-semibold text-amber-ink underline">sign in</a>. Use the setup code
+              The admin account already exists. Normally just <a href="/admin/login" className="font-semibold text-accent-ink underline">sign in</a>. Use the setup code
               here only to set or reset the password for <strong className="text-ink">{ADMIN_EMAIL ? mask(ADMIN_EMAIL) : 'the admin'}</strong>, or to apply database updates.
             </p>
           ) : (
             <ol className="mt-4 grid gap-3 text-muted">
-              <li className="flex gap-3"><Database className="mt-0.5 h-5 w-5 shrink-0 text-amber-ink" aria-hidden /> Creates the database tables and starter content.</li>
-              <li className="flex gap-3"><KeyRound className="mt-0.5 h-5 w-5 shrink-0 text-amber-ink" aria-hidden /> Creates the admin login for <strong className="text-ink">{ADMIN_EMAIL ? mask(ADMIN_EMAIL) : '(ADMIN_EMAIL not set)'}</strong>.</li>
-              <li className="flex gap-3"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-amber-ink" aria-hidden /> Takes you straight to choose your password.</li>
+              <li className="flex gap-3"><Database className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" aria-hidden /> Creates the database tables and starter content.</li>
+              <li className="flex gap-3"><KeyRound className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" aria-hidden /> Creates the admin login for <strong className="text-ink">{ADMIN_EMAIL ? mask(ADMIN_EMAIL) : '(ADMIN_EMAIL not set)'}</strong>.</li>
+              <li className="flex gap-3"><LockKeyhole className="mt-0.5 h-5 w-5 shrink-0 text-accent-ink" aria-hidden /> Takes you straight to choose your password.</li>
             </ol>
           )}
           <form action={runSetup} className="card mt-6 grid gap-3">

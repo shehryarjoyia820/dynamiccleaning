@@ -17,9 +17,9 @@ export function SemiTruck({
   x,
   y,
   s = 1,
-  body = '#2A2E36',
+  body = '#161C24',
   trailer = '#20232A',
-  accent = '#F5A524',
+  accent = '#4C8DFF',
   puff = true,
   brand = true,
 }: {
@@ -51,11 +51,11 @@ export function SemiTruck({
       <rect x={140} y={-10} width={70} height={60} rx={4} fill="#9FB4C9" opacity={0.35} />
       <rect x={426} y={98} width={10} height={100} rx={3} fill="#8A909C" />
       <rect x={420} y={204} width={26} height={26} rx={3} fill="#9AA1AE" />
-      <rect x={424} y={92} width={14} height={10} rx={2} fill="#FFD9A8" />
+      <rect x={424} y={92} width={14} height={10} rx={2} fill="#E2E8F0" />
       <rect x={196} y={186} width={84} height={34} rx={17} fill="#B9BFCA" />
       <rect x={272} y={-120} width={11} height={130} rx={4} fill="#9AA1AE" />
       {puff ? (
-        <g fill="#1E9E5A" opacity={0.18}>
+        <g fill="#16A34A" opacity={0.18}>
           <circle cx={262} cy={-150} r={16} />
           <circle cx={238} cy={-176} r={22} />
           <circle cx={204} cy={-200} r={28} />
@@ -74,11 +74,11 @@ export function SemiTruck({
 function ServicePickup({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
-      <path d="M0 120V64l40-4 34-50h92l26 50h96q14 0 14 14v46z" fill="#F4F4F2" />
-      <path d="M84 20h70l20 40H58z" fill="#2A2E36" opacity={0.75} />
-      <rect x={86} y={0} width={70} height={10} rx={3} fill="#F5A524" />
-      <rect x={0} y={92} width={302} height={8} fill="#F5A524" />
-      <text x={150} y={86} textAnchor="middle" fontFamily="var(--font-display), Arial Narrow, sans-serif" fontWeight={800} fontSize={20} fill="#16181D">
+      <path d="M0 120V64l40-4 34-50h92l26 50h96q14 0 14 14v46z" fill="#F4F6F9" />
+      <path d="M84 20h70l20 40H58z" fill="#161C24" opacity={0.75} />
+      <rect x={86} y={0} width={70} height={10} rx={3} fill="#4C8DFF" />
+      <rect x={0} y={92} width={302} height={8} fill="#4C8DFF" />
+      <text x={150} y={86} textAnchor="middle" fontFamily="var(--font-display), Arial Narrow, sans-serif" fontWeight={800} fontSize={20} fill="#0B0F14">
         MOBILE TESTING
       </text>
       <Wheel cx={60} cy={124} r={28} />
@@ -87,14 +87,14 @@ function ServicePickup({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   );
 }
 
-function Sky({ id, glow = '#F5A524' }: { id: string; glow?: string }) {
+function Sky({ id, glow = '#4C8DFF' }: { id: string; glow?: string }) {
   return (
     <>
       <defs>
         <linearGradient id={`${id}-sky`} x1="0" y1="0" x2="0" y2="1">
           <stop offset="0" stopColor="#0E0F12" />
           <stop offset="0.6" stopColor="#1C1F26" />
-          <stop offset="1" stopColor="#2A2E36" />
+          <stop offset="1" stopColor="#161C24" />
         </linearGradient>
         <radialGradient id={`${id}-glow`} cx="0.72" cy="0.72" r="0.55">
           <stop offset="0" stopColor={glow} stopOpacity="0.45" />
@@ -112,10 +112,10 @@ function Road() {
   return (
     <>
       <rect y="700" width="1600" height="200" fill="#121317" />
-      <rect y="700" width="1600" height="6" fill="#2A2E36" />
+      <rect y="700" width="1600" height="6" fill="#161C24" />
       {/* dash period 160 divides the 800-unit shift, so the loop is seamless */}
       <g className="motion-safe:animate-road">
-        <path d="M0 810 H3200" stroke="#FFC680" strokeWidth="8" strokeDasharray="80 80" opacity="0.55" />
+        <path d="M0 810 H3200" stroke="#CBD5E1" strokeWidth="8" strokeDasharray="80 80" opacity="0.55" />
       </g>
     </>
   );
@@ -134,24 +134,24 @@ export function SceneHighway() {
 export function SceneOnSite() {
   return (
     <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" className="h-full w-full" aria-hidden>
-      <Sky id="s2" glow="#FFB36B" />
+      <Sky id="s2" glow="#22C55E" />
       <rect y="700" width="1600" height="200" fill="#17191E" />
-      <g stroke="#2A2E36" strokeWidth="4">
+      <g stroke="#161C24" strokeWidth="4">
         <path d="M0 760H1600M0 840H1600" />
       </g>
       {/* yard light */}
       <rect x="1460" y="300" width="10" height="400" fill="#3A3F49" />
       <rect x="1420" y="292" width="70" height="14" rx="4" fill="#9AA1AE" />
-      <path d="M1425 306 L1360 700 H1560 L1490 306Z" fill="#FFE2B8" opacity="0.06" />
+      <path d="M1425 306 L1360 700 H1560 L1490 306Z" fill="#DBEAFE" opacity="0.06" />
       <SemiTruck x={880} y={455} puff={false} />
       <ServicePickup x={1160} y={580} />
       {/* tester cable to truck */}
-      <path d="M1200 650 C1150 690 1060 700 1040 640" fill="none" stroke="#F5A524" strokeWidth="5" strokeDasharray="10 8" />
+      <path d="M1200 650 C1150 690 1060 700 1040 640" fill="none" stroke="#4C8DFF" strokeWidth="5" strokeDasharray="10 8" />
       {/* location pin */}
       <g transform="translate(1290 470)">
-        <circle r="34" fill="#F5A524" opacity="0.25" className="motion-safe:animate-pulse-ring" style={{ transformOrigin: 'center', transformBox: 'fill-box' }} />
-        <path d="M0 -44c-20 0-34 15-34 33 0 24 34 55 34 55s34-31 34-55c0-18-14-33-34-33z" fill="#F5A524" />
-        <circle cy="-12" r="12" fill="#16181D" />
+        <circle r="34" fill="#4C8DFF" opacity="0.25" className="motion-safe:animate-pulse-ring" style={{ transformOrigin: 'center', transformBox: 'fill-box' }} />
+        <path d="M0 -44c-20 0-34 15-34 33 0 24 34 55 34 55s34-31 34-55c0-18-14-33-34-33z" fill="#4C8DFF" />
+        <circle cy="-12" r="12" fill="#0B0F14" />
       </g>
     </svg>
   );
@@ -162,7 +162,7 @@ export function SceneFleet() {
     <svg viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" className="h-full w-full" aria-hidden>
       <Sky id="s3" />
       <rect y="700" width="1600" height="200" fill="#15171B" />
-      <g stroke="#FFC680" strokeWidth="5" opacity="0.35">
+      <g stroke="#CBD5E1" strokeWidth="5" opacity="0.35">
         <path d="M120 900 L260 700M520 900 L590 700M920 900 L930 700M1320 900 L1270 700" />
       </g>
       <SemiTruck x={560} y={380} s={0.62} body="#1F2228" trailer="#1A1C21" brand={false} puff={false} />
@@ -175,7 +175,7 @@ export function SceneFleet() {
         [1130, 330],
       ].map(([cx, cy]) => (
         <g key={cx} transform={`translate(${cx} ${cy})`}>
-          <circle r="26" fill="#1E9E5A" />
+          <circle r="26" fill="#16A34A" />
           <path d="M-11 0 l7 8 l15 -16" fill="none" stroke="#fff" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" />
         </g>
       ))}

@@ -36,7 +36,7 @@ export function StickyMobileBar() {
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-charcoal/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
       <div className="grid grid-cols-3">
         <a href={LINKS.tel} data-track="call_click" className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 text-white active:bg-white/10">
-          <Phone className="h-5 w-5 text-amber" aria-hidden />
+          <Phone className="h-5 w-5 text-accent" aria-hidden />
           <span className="font-display text-sm font-bold uppercase tracking-wide">Call</span>
         </a>
         <a
@@ -56,7 +56,7 @@ export function StickyMobileBar() {
             e.preventDefault();
             open();
           }}
-          className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 bg-amber text-ink active:bg-amber-deep"
+          className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 bg-accent-deep text-white active:bg-accent-hover"
         >
           <CalendarCheck className="h-5 w-5" aria-hidden />
           <span className="font-display text-sm font-bold uppercase tracking-wide">Book</span>
