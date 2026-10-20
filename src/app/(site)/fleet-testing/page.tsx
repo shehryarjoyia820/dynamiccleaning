@@ -1,0 +1,57 @@
+import { CalendarRange, ClipboardList, Layers, Repeat } from 'lucide-react';
+import { CtaBand, PageHero, Reveal, SectionHeading } from '@/components/blocks';
+import { BookingForm } from '@/components/forms';
+import { pageMeta } from '@/components/seo';
+
+export const metadata = pageMeta({
+  title: 'Fleet Clean Truck Check Testing',
+  description:
+    'Multi-truck Clean Truck Check scheduling and recurring testing plans for California fleets. One visit, every truck, no missed deadlines.',
+  path: '/fleet-testing',
+});
+
+const FEATURES = [
+  { icon: Layers, title: 'Multi-truck visits', text: 'We test as many trucks as possible per visit, rotating them so dispatch keeps moving.' },
+  { icon: Repeat, title: 'Recurring testing plans', text: 'We track each truck’s next window and book the visit before the deadline comes up.' },
+  { icon: CalendarRange, title: 'Multiple locations', text: 'Trucks spread across several yards? We plan routes to cover them efficiently.' },
+  { icon: ClipboardList, title: 'Clear reporting', text: 'You get a simple summary of every truck tested, the result and what comes next.' },
+];
+
+export default function FleetPage() {
+  return (
+    <>
+      <PageHero
+        eyebrow="Fleet testing"
+        title="One truck or an entire fleet"
+        intro="Fleet scheduling made simple. We bring the testing to your yard and keep every truck on track."
+        crumbs={[
+          { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
+          { name: 'Fleet Testing', path: '/fleet-testing' },
+        ]}
+      />
+      <section className="py-section">
+        <div className="container">
+          <SectionHeading eyebrow="Built for fleets" title="Testing that runs on your schedule" />
+          <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {FEATURES.map((f, i) => (
+              <Reveal as="li" key={f.title} delay={i * 80} className="card">
+                <f.icon className="h-9 w-9 text-orange-ink" aria-hidden />
+                <h3 className="mt-4 text-2xl">{f.title}</h3>
+                <p className="mt-2 text-muted">{f.text}</p>
+              </Reveal>
+            ))}
+          </ul>
+        </div>
+      </section>
+      <section className="bg-white py-section">
+        <div className="container grid gap-12 lg:grid-cols-[1fr_1.3fr]">
+          <SectionHeading eyebrow="Get a fleet quote" title="Tell us about your fleet" intro="Number of trucks, engine types and locations is all we need to plan the visit." />
+          <Reveal delay={100} className="rounded-xl bg-offwhite p-6 sm:p-8">
+            <BookingForm source="fleet-page" />
+          </Reveal>
+        </div>
+      </section>
+      <CtaBand />
+    </>
+  );
+}
