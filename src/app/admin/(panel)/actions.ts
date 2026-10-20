@@ -59,6 +59,16 @@ export async function deleteLead(id: string) {
   redirect('/admin');
 }
 
+/** Bulk delete from the leads list (admins only). */
+export async function deleteLeads(form: FormData) {
+  const { db } = await requireStaff({ admin: true });
+  const ids = form.getAll('ids').map(String).filter(Boolean).slice(0, 500);
+  if (!ids.length) return fail('Select at least one lead.');
+  const { error } = await db.from('leads').delete().in('id', ids);
+  if (error) return fail(error.message);
+  revalidatePath('/admin');
+}
+
 // ---------------------------------------------------------------- FAQs
 
 export async function saveFaq(form: FormData) {

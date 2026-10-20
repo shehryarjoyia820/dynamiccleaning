@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
-import { deleteContact, saveContact, setContactStatus, setReplied } from '../../email-actions';
+import { deleteContact, saveContact, setContactStatus, setInterested, setReplied } from '../../email-actions';
 import { AdminTitle, SmallButton } from '../../ui';
 
 export const metadata = { title: 'Contact' };
@@ -14,7 +14,7 @@ export default async function ContactPage({ params }: { params: Promise<{ id: st
   const { db, profile } = await requireStaff();
   const [{ data: c }, { data: sends }] = await Promise.all([
     db.from('contacts').select('*').eq('id', id).maybeSingle(),
-    db.from('email_sends').select('id,step,status,sent_at,opened_at,send_after,error,campaigns(id,name),email_templates(name)').eq('contact_id', id).order('created_at', { ascending: false }).limit(100),
+    db.from('email_sends').select('id,step,status,sent_at,opened_at,open_count,send_after,error,campaigns(id,name),email_templates(name)').eq('contact_id', id).order('created_at', { ascending: false }).limit(100),
   ]);
   if (!c) notFound();
 
@@ -44,6 +44,11 @@ export default async function ContactPage({ params }: { params: Promise<{ id: st
             <SmallButton className="justify-self-start">Save</SmallButton>
           </form>
           <div className="mt-6 flex flex-wrap gap-3 border-t border-ink/10 pt-4 text-sm">
+            <form action={setInterested.bind(null, c.id, !(c.tags as string[]).includes('interested'))}>
+              <button className={(c.tags as string[]).includes('interested') ? 'rounded-md bg-green/15 px-3 py-2 font-semibold text-green-ink' : 'rounded-md border border-ink/20 px-3 py-2 font-semibold'}>
+                {(c.tags as string[]).includes('interested') ? '★ Interested (remove)' : '☆ Mark as interested'}
+              </button>
+            </form>
             <form action={setReplied.bind(null, c.id, !c.replied_at)}>
               <button className="rounded-md border border-ink/20 px-3 py-2 font-semibold">{c.replied_at ? 'Clear “replied”' : 'Mark as replied (stops follow-ups)'}</button>
             </form>
@@ -74,7 +79,7 @@ export default async function ContactPage({ params }: { params: Promise<{ id: st
                   <p className="text-muted">
                     <span className="font-semibold uppercase">{s.status}</span>
                     {s.sent_at ? ` · sent ${fmt(s.sent_at)}` : s.status === 'queued' ? ` · scheduled ${fmt(s.send_after)}` : ''}
-                    {s.opened_at ? ` · opened ${fmt(s.opened_at)}` : ''}
+                    {s.opened_at ? ` · opened ${(s as { open_count?: number }).open_count ?? 1}× (first ${fmt(s.opened_at)})` : ''}
                     {s.error && s.status !== 'sent' ? ` · ${s.error}` : ''}
                   </p>
                   {camp ? <Link href={`/admin/emails/campaigns/${camp.id}`} className="text-xs underline">{camp.name}</Link> : null}

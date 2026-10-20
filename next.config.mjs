@@ -10,7 +10,7 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   // The SQL files are read at runtime by /admin/setup to initialise the database.
-  outputFileTracingIncludes: { '/admin/setup': ['./supabase/**/*.sql'] },
+  outputFileTracingIncludes: { '/admin/**': ['./supabase/**/*.sql'], '/api/**': ['./supabase/**/*.sql'] },
   experimental: {
     // Proposal PDFs (max 4 MB) and CSV imports go through server actions.
     serverActions: { bodySizeLimit: '5mb' },

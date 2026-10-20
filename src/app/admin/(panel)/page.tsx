@@ -3,6 +3,8 @@ import { Download } from 'lucide-react';
 import { ENGINE_LABELS, LEAD_STATUSES, requireStaff, type Lead } from '@/lib/admin';
 import { cn } from '@/lib/utils';
 import { AdminTitle, StatusBadge } from './ui';
+import { deleteLeads } from './actions';
+import { BulkForm, RowCheck } from './bulk-form';
 
 export const metadata = { title: 'Leads' };
 
@@ -10,7 +12,8 @@ const PAGE = 50;
 
 export default async function LeadsPage({ searchParams }: { searchParams: Promise<{ status?: string; q?: string; page?: string }> }) {
   const sp = await searchParams;
-  const { db } = await requireStaff();
+  const { db, profile } = await requireStaff();
+  const isAdmin = profile.role === 'admin';
   const status = LEAD_STATUSES.includes(sp.status as never) ? sp.status : undefined;
   const q = (sp.q ?? '').trim().slice(0, 80);
   const page = Math.max(0, Number(sp.page) || 0);
@@ -68,10 +71,12 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
 
       {error ? <p className="rounded-md bg-[#FEE4E2] p-3 text-sm">{error.message}</p> : null}
 
+      <BulkForm action={deleteLeads} noun="lead" canDelete={isAdmin}>
       <div className="overflow-x-auto rounded-xl border border-ink/10 bg-white shadow-card">
         <table className="w-full min-w-[56rem] text-left text-sm">
           <thead className="bg-offwhite text-xs uppercase tracking-wide text-muted">
             <tr>
+              {isAdmin ? <th className="w-10 px-4 py-3"><span className="sr-only">Select</span></th> : null}
               <th className="px-4 py-3">Received</th>
               <th className="px-4 py-3">Name</th>
               <th className="px-4 py-3">Contact</th>
@@ -85,6 +90,7 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
           <tbody className="divide-y divide-ink/10">
             {leads.map((l) => (
               <tr key={l.id} className="hover:bg-offwhite">
+                {isAdmin ? <td className="px-4 py-3"><RowCheck value={l.id} label={l.full_name} show /></td> : null}
                 <td className="whitespace-nowrap px-4 py-3 text-muted">{new Date(l.created_at).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', dateStyle: 'medium', timeStyle: 'short' })}</td>
                 <td className="px-4 py-3">
                   <Link href={`/admin/leads/${l.id}`} className="font-semibold text-ink underline-offset-4 hover:underline">
@@ -108,12 +114,13 @@ export default async function LeadsPage({ searchParams }: { searchParams: Promis
             ))}
             {leads.length === 0 ? (
               <tr>
-                <td colSpan={8} className="px-4 py-10 text-center text-muted">No leads found.</td>
+                <td colSpan={isAdmin ? 9 : 8} className="px-4 py-10 text-center text-muted">No leads found.</td>
               </tr>
             ) : null}
           </tbody>
         </table>
       </div>
+      </BulkForm>
 
       {count && count > PAGE ? (
         <div className="mt-4 flex items-center gap-3 text-sm">

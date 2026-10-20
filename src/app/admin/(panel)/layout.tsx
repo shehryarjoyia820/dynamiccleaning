@@ -3,6 +3,7 @@ import { Suspense } from 'react';
 import { Contact, ExternalLink, FileText, Globe, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
 import { LogoMark } from '@/components/brand';
 import { requireStaff } from '@/lib/admin';
+import { ensureSchema } from '@/lib/db-init';
 import { signOut } from './actions';
 import { AdminNotice } from './notice';
 
@@ -21,6 +22,8 @@ const NAV = [
 
 export default async function PanelLayout({ children }: { children: React.ReactNode }) {
   const { profile } = await requireStaff();
+  // Apply any new database upgrades (no-op once applied).
+  await ensureSchema();
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[15rem_1fr]">
       <aside className="bg-charcoal text-white lg:min-h-screen">

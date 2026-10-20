@@ -2,7 +2,8 @@ import Link from 'next/link';
 import { Download, Send, Upload } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { cn } from '@/lib/utils';
-import { saveContact } from '../email-actions';
+import { deleteContacts, saveContact } from '../email-actions';
+import { BulkForm, RowCheck } from '../bulk-form';
 import { AdminTitle, SmallButton } from '../ui';
 
 export const metadata = { title: 'Contacts' };
@@ -12,7 +13,8 @@ const SOURCES = ['lead', 'subscriber', 'import', 'manual'];
 
 export default async function ContactsPage({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
   const sp = await searchParams;
-  const { db } = await requireStaff();
+  const { db, profile } = await requireStaff();
+  const isAdmin = profile.role === 'admin';
   const q = (sp.q ?? '').trim().slice(0, 80);
   const page = Math.max(0, Number(sp.page) || 0);
 
@@ -58,7 +60,10 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
             {s === 'subscriber' ? 'Subscribers' : s === 'lead' ? 'Form leads' : s === 'import' ? 'Uploaded' : 'Manual'} <span className="opacity-70">({c})</span>
           </Link>
         ))}
-        {sp.tag ? (
+        <Link href={`/admin/contacts${qs({ tag: 'interested', source: undefined, page: undefined })}`} className={cn('rounded-full px-3 py-1.5 text-sm font-semibold', sp.tag === 'interested' ? 'bg-green-ink text-white' : 'bg-green/15 text-green-ink')}>
+          ★ Interested
+        </Link>
+        {sp.tag && sp.tag !== 'interested' ? (
           <Link href={`/admin/contacts${qs({ tag: undefined })}`} className="rounded-full bg-accent/15 px-3 py-1.5 text-sm font-semibold text-accent-ink">tag: {sp.tag} ✕</Link>
         ) : null}
       </div>
@@ -70,10 +75,12 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
         <button className="rounded-md bg-charcoal px-4 text-sm font-semibold text-white">Search</button>
       </form>
 
+      <BulkForm action={deleteContacts} noun="contact" canDelete={isAdmin}>
       <div className="overflow-x-auto rounded-xl border border-ink/10 bg-white shadow-card">
         <table className="w-full min-w-[48rem] text-left text-sm">
           <thead className="bg-offwhite text-xs uppercase tracking-wide text-muted">
             <tr>
+              {isAdmin ? <th className="w-10 px-4 py-3"><span className="sr-only">Select</span></th> : null}
               <th className="px-4 py-3">Email</th>
               <th className="px-4 py-3">Name / company</th>
               <th className="px-4 py-3">Source</th>
@@ -85,6 +92,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
           <tbody className="divide-y divide-ink/10">
             {(data ?? []).map((c) => (
               <tr key={c.id} className="hover:bg-offwhite">
+                {isAdmin ? <td className="px-4 py-3"><RowCheck value={c.id} label={c.email} show /></td> : null}
                 <td className="px-4 py-3"><Link href={`/admin/contacts/${c.id}`} className="font-semibold hover:underline">{c.email}</Link></td>
                 <td className="px-4 py-3">{c.name ?? '—'}{c.company ? <span className="block text-xs text-muted">{c.company}</span> : null}</td>
                 <td className="px-4 py-3 capitalize">{c.source}</td>
@@ -102,10 +110,11 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
                 <td className="whitespace-nowrap px-4 py-3 text-muted">{new Date(c.created_at).toLocaleDateString('en-US')}</td>
               </tr>
             ))}
-            {!data?.length ? <tr><td colSpan={6} className="px-4 py-10 text-center text-muted">No contacts yet. Form leads and newsletter subscribers appear here automatically.</td></tr> : null}
+            {!data?.length ? <tr><td colSpan={isAdmin ? 7 : 6} className="px-4 py-10 text-center text-muted">No contacts yet. Form leads and newsletter subscribers appear here automatically.</td></tr> : null}
           </tbody>
         </table>
       </div>
+      </BulkForm>
       {count && count > PAGE ? (
         <div className="mt-4 flex items-center gap-3 text-sm">
           {page > 0 ? <Link href={`/admin/contacts${qs({ page: String(page - 1) })}`} className="font-semibold underline">← Newer</Link> : null}

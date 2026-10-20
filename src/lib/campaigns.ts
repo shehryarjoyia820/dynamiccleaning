@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { esc, shell } from '@/lib/email';
 import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
-import { SITE } from '@/lib/site';
+import { LINKS, SITE } from '@/lib/site';
 
 export type Contact = {
   id: string;
@@ -36,7 +36,10 @@ export type Audience =
 
 export type Followup = { template_id: string; delay_days: number };
 
-export const MERGE_TAGS = ['{{first_name}}', '{{name}}', '{{company}}', '{{email}}'];
+export const MERGE_TAGS = ['{{first_name}}', '{{name}}', '{{company}}', '{{email}}', '{{book_button}}', '{{whatsapp_button}}'];
+
+/** Tag used for contacts staff mark as interested. */
+export const INTERESTED_TAG = 'interested';
 
 // Leads that reached these statuses have converted, so follow-ups stop.
 const CONVERTED = ['scheduled', 'completed', 'closed'];
@@ -50,6 +53,29 @@ function inlineMd(s: string) {
 }
 
 /** Minimal Markdown → email-safe HTML. Text is escaped before any markup is added. */
+// Email-safe (table-based) call-to-action buttons, placed with {{book_button}} / {{whatsapp_button}}.
+export const BOOK_URL = () => `${SITE.url}/book?utm_source=email&utm_medium=proposal`;
+function emailButton(href: string, label: string, bg: string) {
+  return `<table role="presentation" cellspacing="0" cellpadding="0" style="margin:20px 0"><tr><td style="border-radius:8px;background:${bg}"><a href="${href}" style="display:inline-block;padding:14px 26px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:8px">${label}</a></td></tr></table>`;
+}
+const BUTTONS: Record<string, () => string> = {
+  '{{book_button}}': () => emailButton(BOOK_URL(), 'Schedule Your Booking &rarr;', '#1F5FE0'),
+  '{{whatsapp_button}}': () => emailButton(LINKS.whatsapp, 'Chat on WhatsApp', '#128048'),
+};
+
+/**
+ * Puts the Book button after the first paragraph and the WhatsApp button at
+ * the end, unless the template already places them with merge tags.
+ */
+export function withDefaultButtons(md: string) {
+  if (md.includes('{{book_button}}') || md.includes('{{whatsapp_button}}')) return md;
+  const blocks = md.replace(/\r\n/g, '\n').split(/\n{2,}/);
+  const firstPara = blocks.findIndex((b, i) => i > 0 && b.trim() && !b.trim().startsWith('## '));
+  blocks.splice(firstPara > 0 ? firstPara + 1 : Math.min(1, blocks.length), 0, '{{book_button}}');
+  blocks.push('{{whatsapp_button}}');
+  return blocks.join('\n\n');
+}
+
 export function markdownToHtml(md: string) {
   return md
     .replace(/\r\n/g, '\n')
@@ -57,6 +83,7 @@ export function markdownToHtml(md: string) {
     .map((block) => {
       const b = esc(block.trim());
       if (!b) return '';
+      if (BUTTONS[b]) return BUTTONS[b]();
       if (b.startsWith('## ')) return `<h2 style="font-size:20px;margin:24px 0 8px">${inlineMd(b.slice(3))}</h2>`;
       const lines = b.split('\n');
       if (lines.every((l) => /^[-*] /.test(l)))
@@ -102,13 +129,16 @@ export function unsubscribeUrls(contactId: string) {
 
 export function renderEmail(t: Pick<Template, 'subject' | 'body'>, c: Contact, opts: { sendId?: string; footerAddress: string }) {
   const subject = applyMergeTags(t.subject, c);
-  const bodyMd = applyMergeTags(t.body, c);
+  const bodyMd = withDefaultButtons(applyMergeTags(t.body, c));
   const urls = unsubscribeUrls(c.id);
   const footer = `${opts.footerAddress ? `${esc(opts.footerAddress)}<br>` : ''}You are receiving this because you contacted or subscribed to Diesel Dynamix.
     <a href="${urls.page}" style="color:#4A5160">Unsubscribe</a><br>`;
   const pixel = opts.sendId ? `<img src="${SITE.url}/api/t/${opts.sendId}" width="1" height="1" alt="" style="display:block;border:0">` : '';
   const html = shell(markdownToHtml(bodyMd) + pixel, footer);
-  const text = `${bodyMd.replace(/\*\*/g, '')}\n\n--\n${opts.footerAddress}\nUnsubscribe: ${urls.page}`;
+  const text = `${bodyMd
+    .replace(/\*\*/g, '')
+    .replace('{{book_button}}', `Schedule your booking: ${BOOK_URL()}`)
+    .replace('{{whatsapp_button}}', `Chat on WhatsApp: ${LINKS.whatsapp}`)}\n\n--\n${opts.footerAddress}\nUnsubscribe: ${urls.page}`;
   return {
     subject,
     html,
@@ -180,7 +210,12 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
   const started = Date.now();
   const maxMs = opts.maxMs ?? 45000;
   const stats = { sent: 0, failed: 0, skipped: 0, limited: false, notConfigured: false };
-  if (!mailConfigured()) return { ...stats, notConfigured: true, due: 0 };
+  // Who was emailed in this run, for the live feed on the campaign page.
+  const feed: { email: string; status: 'sent' | 'failed' | 'skipped'; step: number; at: string }[] = [];
+  const log = (email: string | undefined, status: 'sent' | 'failed' | 'skipped', step: number) => {
+    if (email) feed.push({ email, status, step, at: new Date().toISOString() });
+  };
+  if (!mailConfigured()) return { ...stats, notConfigured: true, due: 0, feed };
 
   const { data: footerRow } = await db.from('site_settings').select('value').eq('key', 'email_footer_address').maybeSingle();
   const footerAddress = typeof footerRow?.value === 'string' ? footerRow.value : '';
@@ -221,6 +256,7 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
       if (skip) {
         await finish({ status: 'skipped', error: skip });
         stats.skipped++;
+        log(c?.email, 'skipped', row.step);
         continue;
       }
 
@@ -251,6 +287,7 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
         const sentAt = new Date();
         await finish({ status: 'sent', sent_at: sentAt.toISOString(), error: null });
         stats.sent++;
+        log(c!.email, 'sent', row.step);
         if (row.step === 0) {
           // Time follow-ups from when the first email actually went out.
           const { data: fus } = await db.from('email_sends').select('id,delay_days').eq('campaign_id', row.campaign_id).eq('contact_id', row.contact_id).gt('step', 0).eq('status', 'queued');
@@ -264,6 +301,7 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
         const retry = (cur?.attempts ?? 3) < 3;
         await finish(retry ? { status: 'queued', send_after: new Date(Date.now() + 10 * 60000).toISOString(), error: res.error } : { status: 'failed', error: res.error });
         stats.failed++;
+        log(c!.email, 'failed', row.step);
       }
     }
   }
@@ -274,7 +312,7 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
     if (!count) await db.from('campaigns').update({ status: 'sent' }).eq('id', id).eq('status', 'sending');
   }
   const { count: due } = await db.from('email_sends').select('id', { count: 'exact', head: true }).eq('status', 'queued').lte('send_after', new Date().toISOString());
-  return { ...stats, due: due ?? 0 };
+  return { ...stats, due: due ?? 0, feed };
 }
 
 /** Adds or refreshes a contact without ever re-subscribing someone who opted out. */

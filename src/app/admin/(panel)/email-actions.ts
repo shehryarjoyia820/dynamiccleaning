@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { requireStaff, userError } from '@/lib/admin';
-import { processQueue, renderEmail, startCampaign, upsertContact, type Audience, type Contact, type Followup } from '@/lib/campaigns';
+import { INTERESTED_TAG, processQueue, renderEmail, startCampaign, upsertContact, type Audience, type Contact, type Followup } from '@/lib/campaigns';
 import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
 import { serviceClient } from '@/lib/supabase/clients';
 
@@ -56,6 +56,19 @@ export async function setContactStatus(id: string, status: 'subscribed' | 'unsub
   revalidatePath(`/admin/contacts/${id}`);
 }
 
+/** Adds or removes the "interested" tag (from the contact page or a campaign's recipient list). */
+export async function setInterested(contactId: string, on: boolean) {
+  const { db } = await requireStaff();
+  const { data } = await db.from('contacts').select('tags').eq('id', contactId).single();
+  const tags = new Set<string>((data?.tags as string[]) ?? []);
+  if (on) tags.add(INTERESTED_TAG);
+  else tags.delete(INTERESTED_TAG);
+  await db.from('contacts').update({ tags: Array.from(tags) }).eq('id', contactId);
+  revalidatePath('/admin/contacts');
+  revalidatePath(`/admin/contacts/${contactId}`);
+  revalidatePath('/admin/emails/campaigns', 'layout');
+}
+
 export async function setReplied(id: string, replied: boolean) {
   const { db } = await requireStaff();
   await db.from('contacts').update({ replied_at: replied ? new Date().toISOString() : null }).eq('id', id);
@@ -69,7 +82,17 @@ export async function deleteContact(id: string) {
   redirect('/admin/contacts');
 }
 
-export type ImportResult = { ok: boolean; message: string; tag?: string; added?: number; invalid?: string[] };
+/** Bulk delete from the contacts list (admins only). Their send history goes with them. */
+export async function deleteContacts(form: FormData) {
+  const { db } = await requireStaff({ admin: true });
+  const ids = form.getAll('ids').map(String).filter(Boolean).slice(0, 500);
+  if (!ids.length) return userError('Select at least one contact.');
+  const { error } = await db.from('contacts').delete().in('id', ids);
+  if (error) return userError(error.message);
+  revalidatePath('/admin/contacts');
+}
+
+export type ImportResult ={ ok: boolean; message: string; tag?: string; added?: number; invalid?: string[] };
 
 /** Accepts CSV with a header row (email, name, company, phone) or one email per line. */
 export async function importContacts(_prev: ImportResult | null, form: FormData): Promise<ImportResult> {
@@ -273,7 +296,8 @@ export async function deleteCampaign(id: string) {
 /** Called repeatedly by the campaign page while it is open, so sending doesn't wait for the daily cron. */
 export async function processNow() {
   await requireStaff();
-  return processQueue(svc(), { maxMs: 25000 });
+  // Short rounds (about 6 s) so the page can refresh its live list between batches.
+  return processQueue(svc(), { maxMs: 6000, batch: 5 });
 }
 
 /** One-off proposal (plus optional follow-ups) to a single lead from the lead page. */
