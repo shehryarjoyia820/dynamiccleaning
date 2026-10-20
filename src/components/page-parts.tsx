@@ -20,7 +20,7 @@ export function PageBody({ children, aside }: { children: React.ReactNode; aside
 export function BookCard({ location }: { location?: string }) {
   return (
     <div className="rounded-xl bg-charcoal p-6 text-white shadow-lift">
-      <p className="eyebrow text-orange">We come to you</p>
+      <p className="eyebrow text-amber">We come to you</p>
       <h2 className="mt-2 text-3xl">Book mobile testing</h2>
       <p className="mt-2 text-white/80">Tell us how many trucks and where. We reply fast.</p>
       <div className="mt-5 grid gap-3">

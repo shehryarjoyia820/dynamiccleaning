@@ -1,6 +1,8 @@
 import { NextResponse, type NextRequest } from 'next/server';
-import { createHash } from 'node:crypto';
 import { z } from 'zod';
+import { upsertContact } from '@/lib/campaigns';
+import { mailConfigured } from '@/lib/mailer';
+import { RATE_LIMIT, RATE_WINDOW, clientIpHash, limited, verifyTurnstile } from '@/lib/rate-limit';
 import { serviceClient } from '@/lib/supabase/clients';
 import { INFO_INBOX, SERVICE_INBOX, customerConfirmation, sendEmail, sendTeamSms, staffEmail } from '@/lib/email';
 import { SITE } from '@/lib/site';
@@ -49,35 +51,8 @@ const contact = base.extend({
 
 const schema = z.discriminatedUnion('kind', [booking, contact]);
 
-// Per-instance limiter (5 submissions / 10 minutes / IP), backed by a DB check below.
-const hits = new Map<string, number[]>();
-const WINDOW = 10 * 60 * 1000;
-const LIMIT = 5;
-
-function limited(key: string) {
-  const now = Date.now();
-  const list = (hits.get(key) ?? []).filter((t) => now - t < WINDOW);
-  list.push(now);
-  hits.set(key, list);
-  if (hits.size > 5000) hits.clear();
-  return list.length > LIMIT;
-}
-
-async function verifyTurnstile(token: string | undefined, ip: string) {
-  const secret = process.env.TURNSTILE_SECRET_KEY;
-  if (!secret) return true;
-  if (!token) return false;
-  const res = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
-    method: 'POST',
-    body: new URLSearchParams({ secret, response: token, remoteip: ip }),
-  });
-  const json = (await res.json().catch(() => ({}))) as { success?: boolean };
-  return json.success === true;
-}
-
 export async function POST(req: NextRequest) {
-  const ip = (req.headers.get('x-forwarded-for') ?? '').split(',')[0].trim() || 'unknown';
-  const ipHash = createHash('sha256').update(ip + (process.env.IP_HASH_SALT ?? 'dd')).digest('hex').slice(0, 32);
+  const { ip, ipHash } = clientIpHash(req);
 
   if (limited(ipHash)) {
     return NextResponse.json({ error: 'Too many requests. Please call or WhatsApp us instead.' }, { status: 429 });
@@ -105,7 +80,7 @@ export async function POST(req: NextRequest) {
   }
 
   const db = serviceClient();
-  if (!db && !process.env.RESEND_API_KEY) {
+  if (!db && !mailConfigured()) {
     // Nowhere to deliver the lead: tell the visitor rather than silently dropping it.
     return NextResponse.json(
       { error: `Online booking is not available right now. Please call or WhatsApp ${SITE.phoneDisplay}.` },
@@ -114,9 +89,9 @@ export async function POST(req: NextRequest) {
   }
   let leadId: string | null = null;
   if (db) {
-    const since = new Date(Date.now() - WINDOW).toISOString();
+    const since = new Date(Date.now() - RATE_WINDOW).toISOString();
     const { count } = await db.from('leads').select('id', { count: 'exact', head: true }).eq('ip_hash', ipHash).gte('created_at', since);
-    if ((count ?? 0) >= LIMIT) {
+    if ((count ?? 0) >= RATE_LIMIT) {
       return NextResponse.json({ error: 'Too many requests. Please call or WhatsApp us instead.' }, { status: 429 });
     }
     const row =
@@ -147,6 +122,12 @@ export async function POST(req: NextRequest) {
     const { data, error } = await db.from('leads').insert(row).select('id').single();
     if (error) console.error('[leads] insert failed', error.message);
     leadId = data?.id ?? null;
+    // Everyone who submits a form becomes a contact for proposals and follow-ups.
+    try {
+      await upsertContact(db, { email: d.email, name: d.full_name, company: d.kind === 'booking' ? d.company : null, phone: d.phone || null, source: 'lead', tags: [d.kind], lead_id: leadId });
+    } catch (e) {
+      console.error('[leads] contact upsert failed', e);
+    }
   } else {
     console.warn('[leads] Supabase not configured; lead not stored');
   }

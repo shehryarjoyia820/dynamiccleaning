@@ -4,7 +4,7 @@ import { createContext, useCallback, useContext, useEffect, useRef, useState } f
 import { X } from 'lucide-react';
 import { BookingForm } from '@/components/forms';
 
-type Ctx = { open: (prefill?: { location?: string }) => void };
+type Ctx = { open: (prefill?: { location?: string; trucks?: number }) => void };
 // Outside a provider (e.g. admin), "Book" falls back to the booking page.
 const BookingCtx = createContext<Ctx>({ open: () => window.location.assign('/book') });
 
@@ -15,10 +15,10 @@ export function useBooking() {
 /** Booking modal available from every "Book" button on the site. */
 export function BookingProvider({ children }: { children: React.ReactNode }) {
   const ref = useRef<HTMLDialogElement>(null);
-  const [prefill, setPrefill] = useState<{ location?: string }>({});
+  const [prefill, setPrefill] = useState<{ location?: string; trucks?: number }>({});
   const [mounted, setMounted] = useState(false);
 
-  const open = useCallback((p?: { location?: string }) => {
+  const open = useCallback((p?: { location?: string; trucks?: number }) => {
     setPrefill(p ?? {});
     setMounted(true);
     // The <dialog> is always rendered, so it can open now; its form mounts on the next render.
@@ -47,7 +47,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
           <div className="max-h-[90dvh] overflow-y-auto p-5 sm:p-8">
             <div className="mb-5 flex items-start justify-between gap-4">
               <div>
-                <p className="eyebrow text-orange-ink">Book mobile testing</p>
+                <p className="eyebrow text-amber-ink">Book mobile testing</p>
                 <h2 id="book-modal-title" className="mt-2 text-3xl">
                   We come to you
                 </h2>
@@ -62,7 +62,7 @@ export function BookingProvider({ children }: { children: React.ReactNode }) {
                 <X className="h-5 w-5" />
               </button>
             </div>
-            <BookingForm compact defaultLocation={prefill.location} source="modal" />
+            <BookingForm key={`${prefill.location}-${prefill.trucks}`} compact defaultLocation={prefill.location} defaultTrucks={prefill.trucks} source="modal" />
           </div>
         ) : null}
       </dialog>

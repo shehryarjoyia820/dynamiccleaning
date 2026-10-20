@@ -19,7 +19,7 @@ export function SemiTruck({
   s = 1,
   body = '#2A2E36',
   trailer = '#20232A',
-  accent = '#FF6B1A',
+  accent = '#F5A524',
   puff = true,
   brand = true,
 }: {
@@ -74,10 +74,10 @@ export function SemiTruck({
 function ServicePickup({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   return (
     <g transform={`translate(${x} ${y}) scale(${s})`}>
-      <path d="M0 120V64l40-4 34-50h92l26 50h96q14 0 14 14v46z" fill="#F5F6F8" />
+      <path d="M0 120V64l40-4 34-50h92l26 50h96q14 0 14 14v46z" fill="#F4F4F2" />
       <path d="M84 20h70l20 40H58z" fill="#2A2E36" opacity={0.75} />
-      <rect x={86} y={0} width={70} height={10} rx={3} fill="#FF6B1A" />
-      <rect x={0} y={92} width={302} height={8} fill="#FF6B1A" />
+      <rect x={86} y={0} width={70} height={10} rx={3} fill="#F5A524" />
+      <rect x={0} y={92} width={302} height={8} fill="#F5A524" />
       <text x={150} y={86} textAnchor="middle" fontFamily="var(--font-display), Arial Narrow, sans-serif" fontWeight={800} fontSize={20} fill="#16181D">
         MOBILE TESTING
       </text>
@@ -87,7 +87,7 @@ function ServicePickup({ x, y, s = 1 }: { x: number; y: number; s?: number }) {
   );
 }
 
-function Sky({ id, glow = '#FF6B1A' }: { id: string; glow?: string }) {
+function Sky({ id, glow = '#F5A524' }: { id: string; glow?: string }) {
   return (
     <>
       <defs>
@@ -146,11 +146,11 @@ export function SceneOnSite() {
       <SemiTruck x={880} y={455} puff={false} />
       <ServicePickup x={1160} y={580} />
       {/* tester cable to truck */}
-      <path d="M1200 650 C1150 690 1060 700 1040 640" fill="none" stroke="#FF6B1A" strokeWidth="5" strokeDasharray="10 8" />
+      <path d="M1200 650 C1150 690 1060 700 1040 640" fill="none" stroke="#F5A524" strokeWidth="5" strokeDasharray="10 8" />
       {/* location pin */}
       <g transform="translate(1290 470)">
-        <circle r="34" fill="#FF6B1A" opacity="0.25" className="motion-safe:animate-pulse-ring" style={{ transformOrigin: 'center', transformBox: 'fill-box' }} />
-        <path d="M0 -44c-20 0-34 15-34 33 0 24 34 55 34 55s34-31 34-55c0-18-14-33-34-33z" fill="#FF6B1A" />
+        <circle r="34" fill="#F5A524" opacity="0.25" className="motion-safe:animate-pulse-ring" style={{ transformOrigin: 'center', transformBox: 'fill-box' }} />
+        <path d="M0 -44c-20 0-34 15-34 33 0 24 34 55 34 55s34-31 34-55c0-18-14-33-34-33z" fill="#F5A524" />
         <circle cy="-12" r="12" fill="#16181D" />
       </g>
     </svg>

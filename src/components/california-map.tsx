@@ -28,8 +28,15 @@ const PATH = 'M' + OUTLINE.map(([lng, lat]) => project(lng, lat).join(' ')).join
 const W = Math.ceil((-113.9 - LON0) * SX);
 const H = Math.ceil((LAT0 - 32.3) * SY);
 
+// Zoomed to Southern California (lng -119.9 to -114.1, lat 35.0 to 32.3), the area Diesel Dynamix serves.
+const [VX, VY] = project(-119.9, 35.0);
+const [VX2, VY2] = project(-114.1, 32.3);
+const VIEW = { x: VX - 4, y: VY - 6, w: VX2 - VX + 8, h: VY2 - VY + 8 };
+// Strokes and markers were sized for the full-state view; scale them to the zoom.
+const K = VIEW.w / (W + 20);
+
 const REGION_COLORS: Record<string, string> = {
-  'Southern California': '#FF6B1A',
+  'Southern California': '#F5A524',
   'Central Valley': '#FFB36B',
   'Bay Area & Northern California': '#FFFFFF',
   'Central Coast': '#1E9E5A',
@@ -48,28 +55,31 @@ export function CaliforniaMap({
 }) {
   return (
     <div data-reveal className={cn('relative', className)}>
-      <svg viewBox={`-10 -10 ${W + 20} ${H + 20}`} className="h-auto w-full" role="img" aria-labelledby="ca-map-title">
-        <title id="ca-map-title">Map of California showing Diesel Dynamix service locations</title>
+      <svg viewBox={`${VIEW.x} ${VIEW.y} ${VIEW.w} ${VIEW.h}`} className="h-auto w-full" role="img" aria-labelledby="ca-map-title">
+        <title id="ca-map-title">Map of Southern California showing Diesel Dynamix service locations</title>
         <path d={PATH} fill="#2A2E36" />
-        <path className="ca-outline" d={PATH} fill="none" stroke="#FF6B1A" strokeWidth="2.5" strokeLinejoin="round" />
+        <path className="ca-outline" d={PATH} fill="none" stroke="#F5A524" strokeWidth={2.5 * K} strokeLinejoin="round" />
+        <text x={VIEW.x + 14} y={VIEW.y + VIEW.h - 14} fill="#9AA0AA" fontSize={11 * K} letterSpacing={2 * K} fontFamily="var(--font-display), sans-serif">
+          PACIFIC OCEAN
+        </text>
         {areas.map((a, i) => {
           const [x, y] = project(a.lng, a.lat);
           const on = !highlight || highlight === a.slug;
-          const color = REGION_COLORS[a.region] ?? '#FF6B1A';
+          const color = REGION_COLORS[a.region] ?? '#F5A524';
           const marker = (
             <g key={a.slug} transform={`translate(${x} ${y})`} opacity={on ? 1 : 0.45}>
               {on ? (
                 <circle
-                  r="7"
+                  r={7 * K}
                   fill={color}
                   opacity="0.5"
                   className="motion-safe:animate-pulse-ring"
                   style={{ transformBox: 'fill-box', transformOrigin: 'center', animationDelay: `${(i % 6) * 0.4}s` }}
                 />
               ) : null}
-              <circle r={highlight === a.slug ? 7 : 4.5} fill={color} stroke="#16181D" strokeWidth="1.5" />
+              <circle r={(highlight === a.slug ? 7 : 4.5) * K} fill={color} stroke="#16181D" strokeWidth={1.5 * K} />
               {highlight === a.slug ? (
-                <text x="12" y="5" fill="#fff" fontSize="16" fontWeight="700" fontFamily="var(--font-display), sans-serif">
+                <text x={12 * K} y={5 * K} fill="#fff" fontSize={16 * K} fontWeight="700" fontFamily="var(--font-display), sans-serif">
                   {a.name.toUpperCase()}
                 </text>
               ) : null}

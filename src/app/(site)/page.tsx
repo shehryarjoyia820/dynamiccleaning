@@ -2,16 +2,19 @@ import Link from 'next/link';
 import { ArrowRight, Building2, CalendarClock, MapPinned, Truck, UserRound, Warehouse } from 'lucide-react';
 import { CtaBand, FaqList, Reveal, RequirementsTable, SectionHeading } from '@/components/blocks';
 import { CaliforniaMap } from '@/components/california-map';
+import { CityTicker } from '@/components/home/city-ticker';
+import { MobileVsShop } from '@/components/home/compare';
 import { HeroSlider } from '@/components/home/hero-slider';
 import { Counters, HowItWorks } from '@/components/home/interactive';
 import { JsonLd, faqSchema, serviceSchema } from '@/components/seo';
+import { PORTS } from '@/content/ports';
 import { REGIONS } from '@/content/seed';
 import { getFaqs, getServiceAreas, getSettings } from '@/lib/content';
 
 export const revalidate = 300;
 
 const TRUST = [
-  { icon: MapPinned, title: 'Statewide coverage', text: 'From San Diego to Eureka' },
+  { icon: MapPinned, title: 'Southern California', text: 'LA, OC, Inland Empire, San Diego' },
   { icon: Truck, title: 'Mobile on-site service', text: 'We test at your yard or jobsite' },
   { icon: CalendarClock, title: 'Fleet-friendly scheduling', text: 'Built around your dispatch' },
 ];
@@ -53,7 +56,7 @@ export default async function HomePage() {
           <ul className="grid gap-px overflow-hidden rounded-xl bg-white/10 shadow-lift sm:grid-cols-3">
             {TRUST.map((t, i) => (
               <Reveal as="li" key={t.title} delay={i * 90} className="flex items-center gap-4 bg-steel p-5 text-white sm:p-6">
-                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-orange/15 text-orange">
+                <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-amber/15 text-amber">
                   <t.icon className="h-6 w-6" aria-hidden />
                 </span>
                 <span>
@@ -65,6 +68,10 @@ export default async function HomePage() {
           </ul>
         </div>
       </section>
+
+      <div className="mt-12">
+        <CityTicker areas={areas} />
+      </div>
 
       {/* What is Clean Truck Check */}
       <section className="py-section">
@@ -103,7 +110,7 @@ export default async function HomePage() {
             <HowItWorks />
           </div>
           <Reveal className="mt-12 text-center">
-            <Link href="/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-orange-ink hover:text-ink">
+            <Link href="/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-amber-ink hover:text-ink">
               What to have ready <ArrowRight className="h-5 w-5" aria-hidden />
             </Link>
           </Reveal>
@@ -119,12 +126,12 @@ export default async function HomePage() {
               <Reveal as="li" key={a.title} delay={i * 100}>
                 <Link
                   href={a.href}
-                  className="group flex h-full flex-col rounded-xl border border-white/10 bg-steel p-7 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-orange/60"
+                  className="group flex h-full flex-col rounded-xl border border-white/10 bg-steel p-7 transition-[transform,border-color] duration-300 hover:-translate-y-1 hover:border-amber/60"
                 >
-                  <a.icon className="h-10 w-10 text-orange transition-transform duration-300 group-hover:scale-110" aria-hidden />
+                  <a.icon className="h-10 w-10 text-amber transition-transform duration-300 group-hover:scale-110" aria-hidden />
                   <h3 className="mt-5 text-3xl">{a.title}</h3>
                   <p className="mt-3 flex-1 text-white/80">{a.text}</p>
-                  <span className="mt-6 inline-flex items-center gap-2 font-display font-bold uppercase text-orange">
+                  <span className="mt-6 inline-flex items-center gap-2 font-display font-bold uppercase text-amber">
                     Learn more <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" aria-hidden />
                   </span>
                 </Link>
@@ -134,16 +141,23 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* Statewide coverage */}
+      <MobileVsShop />
+
+      {/* Southern California coverage */}
       <section className="relative overflow-hidden bg-[#1B1D23] py-section text-white">
         <div className="container grid items-center gap-12 lg:grid-cols-[1fr_1.1fr]">
           <CaliforniaMap areas={areas} className="mx-auto w-full max-w-md" />
           <div>
-            <SectionHeading dark eyebrow="Statewide coverage" title="Anywhere in California" intro="Our mobile testers cover the whole state. Pick your area for local details, or just tell us where your trucks are." />
+            <SectionHeading
+              dark
+              eyebrow="Clean Truck Check near me"
+              title="Anywhere in Southern California"
+              intro="Searching for Clean Truck Check near you? Our mobile testers cover Southern California, from the Ports of Los Angeles and Long Beach to the Inland Empire, San Diego and the Imperial Valley. Pick your city, or just tell us where your trucks are."
+            />
             <div className="mt-8 grid gap-6 sm:grid-cols-2">
               {REGIONS.map((r, i) => (
                 <Reveal key={r} delay={i * 80}>
-                  <h3 className="text-xl text-orange">{r}</h3>
+                  <h3 className="text-xl text-amber">{r}</h3>
                   <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
                     {areas
                       .filter((a) => a.region === r)
@@ -157,6 +171,18 @@ export default async function HomePage() {
                   </ul>
                 </Reveal>
               ))}
+              <Reveal delay={320}>
+                <h3 className="text-xl text-amber">Ports</h3>
+                <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+                  {PORTS.map((p) => (
+                    <li key={p.slug}>
+                      <Link href={`/ports/${p.slug}`} className="text-white/80 underline-offset-4 hover:text-white hover:underline">
+                        {p.name}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </Reveal>
             </div>
             <div className="mt-10">
               <Counters items={settings.counters} dark />

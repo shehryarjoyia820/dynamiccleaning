@@ -1,37 +1,27 @@
 import 'server-only';
+import { sendMail } from '@/lib/mailer';
 import { LINKS, SITE } from '@/lib/site';
 
-const RESEND_KEY = process.env.RESEND_API_KEY;
-const FROM = process.env.EMAIL_FROM || `Diesel Dynamix <no-reply@dieseldynamix.com>`;
 export const SERVICE_INBOX = process.env.SERVICE_INBOX || SITE.emailService;
 export const INFO_INBOX = process.env.INFO_INBOX || SITE.emailInfo;
 
-function esc(s: unknown) {
+export function esc(s: unknown) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 }
 
-export async function sendEmail(opts: { to: string | string[]; subject: string; html: string; replyTo?: string }) {
-  if (!RESEND_KEY) {
-    console.warn('[email] RESEND_API_KEY not set; skipped:', opts.subject);
-    return { ok: false, skipped: true };
-  }
-  const res = await fetch('https://api.resend.com/emails', {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${RESEND_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({ from: FROM, to: opts.to, subject: opts.subject, html: opts.html, reply_to: opts.replyTo }),
-  });
-  if (!res.ok) console.error('[email] send failed', res.status, await res.text().catch(() => ''));
-  return { ok: res.ok };
+/** Transactional email (lead notifications, confirmations). */
+export function sendEmail(opts: { to: string | string[]; subject: string; html: string; replyTo?: string }) {
+  return sendMail(opts);
 }
 
-function shell(inner: string) {
+export function shell(inner: string, footer?: string) {
   return `<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#111318">
-  <div style="background:#16181D;padding:18px 24px;border-bottom:4px solid #FF6B1A">
-    <span style="color:#fff;font-weight:800;font-size:22px;letter-spacing:1px">DIESEL <span style="color:#FF6B1A">DYNAMIX</span></span>
+  <div style="background:#16181D;padding:18px 24px;border-bottom:4px solid #F5A524">
+    <span style="color:#fff;font-weight:800;font-size:22px;letter-spacing:1px">DIESEL <span style="color:#F5A524">DYNAMIX</span></span>
   </div>
   <div style="padding:24px;background:#ffffff">${inner}</div>
-  <div style="padding:16px 24px;background:#F5F6F8;font-size:12px;color:#4A5160">
-    Diesel Dynamix is an independent service provider, not CARB or a California government website.
+  <div style="padding:16px 24px;background:#F4F4F2;font-size:12px;line-height:1.6;color:#4A5160">
+    ${footer ?? ''}Diesel Dynamix is an independent service provider, not CARB or a California government website.
   </div></div>`;
 }
 
@@ -44,7 +34,7 @@ export function leadTable(fields: [string, unknown][]) {
 
 export function staffEmail(title: string, fields: [string, unknown][], adminUrl?: string) {
   return shell(`<h2 style="margin:0 0 16px">${esc(title)}</h2>${leadTable(fields)}${
-    adminUrl ? `<p style="margin-top:20px"><a href="${esc(adminUrl)}" style="background:#FF6B1A;color:#111318;padding:12px 18px;text-decoration:none;font-weight:bold;border-radius:6px">Open in admin</a></p>` : ''
+    adminUrl ? `<p style="margin-top:20px"><a href="${esc(adminUrl)}" style="background:#F5A524;color:#111318;padding:12px 18px;text-decoration:none;font-weight:bold;border-radius:6px">Open in admin</a></p>` : ''
   }`);
 }
 
@@ -56,7 +46,7 @@ export function customerConfirmation(name: string, kind: 'booking' | 'contact') 
   <p><strong>Call:</strong> <a href="${LINKS.tel}">${SITE.phoneDisplay}</a><br>
   <strong>WhatsApp:</strong> <a href="${LINKS.whatsapp}">${SITE.phoneDisplay}</a><br>
   <strong>Email:</strong> <a href="${LINKS.mailService}">${SITE.emailService}</a></p>
-  <p>Diesel Dynamix<br>Mobile Clean Truck Check testing, anywhere in California</p>`);
+  <p>Diesel Dynamix<br>Mobile Clean Truck Check testing, anywhere in Southern California</p>`);
 }
 
 /** Optional SMS alert to the team via Twilio when TWILIO_* env vars are set. */

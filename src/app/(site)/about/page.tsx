@@ -5,7 +5,7 @@ import { SITE } from '@/lib/site';
 
 export const metadata = pageMeta({
   title: 'About Us',
-  description: `Diesel Dynamix is a mobile Clean Truck Check testing company led by CEO ${SITE.ceo}, serving owner-operators and fleets across California.`,
+  description: `Diesel Dynamix is a mobile Clean Truck Check testing company led by CEO ${SITE.ceo}, serving owner-operators and fleets across Southern California.`,
   path: '/about',
 });
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
         <h2>Our mobile approach</h2>
         <Checklist
           items={[
-            <><strong>We travel statewide.</strong> From San Diego to Eureka, our testers come to where your trucks park.</>,
+            <><strong>We cover Southern California.</strong> From San Diego and the Imperial Valley to Los Angeles, Orange County and the Inland Empire, our testers come to where your trucks park.</>,
             <><strong>We work around dispatch.</strong> Early starts and fleet visits are planned so trucks rotate through without missing loads.</>,
             <><strong>We keep it simple.</strong> Clear pricing, clear results and clear next steps, with no jargon.</>,
             <><strong>We stay independent.</strong> We are a private testing service, not CARB, and we always point you to official sources for program rules.</>,

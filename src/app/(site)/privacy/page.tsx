@@ -19,7 +19,7 @@ export default function PrivacyPage() {
       <PageBody aside={<span />}>
         <h2>Who we are</h2>
         <p>
-          {SITE.name} (“we”, “us”) provides mobile Clean Truck Check testing in California. This policy explains what personal information we collect through dieseldynamix.com and how we use it.
+          {SITE.name} (“we”, “us”) provides mobile Clean Truck Check testing in Southern California. This policy explains what personal information we collect through dieseldynamix.com and how we use it.
         </p>
         <h2>Information we collect</h2>
         <ul>

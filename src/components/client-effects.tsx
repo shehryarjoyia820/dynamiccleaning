@@ -97,7 +97,7 @@ export function Analytics() {
         >
           <p>
             We use analytics cookies to understand how visitors use this site. No ads, no selling data.{' '}
-            <Link href="/privacy" className="font-semibold text-orange underline underline-offset-4">
+            <Link href="/privacy" className="font-semibold text-amber underline underline-offset-4">
               Privacy Policy
             </Link>
           </p>

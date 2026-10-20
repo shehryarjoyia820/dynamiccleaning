@@ -92,7 +92,7 @@ export default function MfaPage() {
         {error ? <p role="alert" className="mt-4 rounded-md bg-[#FEE4E2] p-3 text-sm font-semibold text-[#912018]">{error}</p> : null}
         <button
           type="button"
-          className="mt-6 text-sm font-semibold text-orange-ink underline underline-offset-4"
+          className="mt-6 text-sm font-semibold text-amber-ink underline underline-offset-4"
           onClick={async () => {
             await browserClient().auth.signOut();
             router.replace('/admin/login');

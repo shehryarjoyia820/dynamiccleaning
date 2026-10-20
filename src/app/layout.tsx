@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from 'next';
-import { Barlow_Condensed, Inter } from 'next/font/google';
+import { Barlow, Barlow_Condensed } from 'next/font/google';
 import { SITE } from '@/lib/site';
 import './globals.css';
 
@@ -10,12 +10,13 @@ const display = Barlow_Condensed({
   variable: '--font-display',
   display: 'swap',
 });
-const body = Inter({ subsets: ['latin'], variable: '--font-body', display: 'swap' });
+// Brand type (Figma): Barlow Condensed ExtraBold for headings, Barlow for body and UI.
+const body = Barlow({ subsets: ['latin'], weight: ['400', '500', '600', '700'], variable: '--font-body', display: 'swap' });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default: 'Mobile Clean Truck Check Testing in California | Diesel Dynamix',
+    default: 'Clean Truck Check California | Mobile CARB Testing | Diesel Dynamix',
     template: '%s | Diesel Dynamix',
   },
   description: SITE.description,

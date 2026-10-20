@@ -52,10 +52,10 @@ export function HowItWorks() {
     <div ref={ref} className="relative [overflow-x:clip] lg:pt-12">
       {/* Track: vertical on mobile, horizontal on desktop */}
       <div aria-hidden className="absolute left-[26px] top-0 h-full w-1 rounded bg-ink/10 lg:hidden">
-        <div className="h-full w-full origin-top rounded bg-orange" style={{ transform: `scaleY(${progress})` }} />
+        <div className="h-full w-full origin-top rounded bg-amber" style={{ transform: `scaleY(${progress})` }} />
       </div>
       <div aria-hidden className="absolute left-0 top-[74px] hidden h-1 w-full rounded bg-ink/10 lg:block">
-        <div className="h-full w-full origin-left rounded bg-orange" style={{ transform: `scaleX(${progress})` }} />
+        <div className="h-full w-full origin-left rounded bg-amber" style={{ transform: `scaleX(${progress})` }} />
       </div>
       <TruckRunner progress={progress} />
       <ol className="relative grid gap-8 lg:grid-cols-4 lg:gap-6">
@@ -64,13 +64,13 @@ export function HowItWorks() {
             <span
               className={cn(
                 'relative z-10 grid h-14 w-14 shrink-0 place-items-center rounded-full border-4 transition-colors duration-500',
-                i <= active ? 'border-orange bg-charcoal text-orange' : 'border-ink/10 bg-white text-muted',
+                i <= active ? 'border-amber bg-charcoal text-amber' : 'border-ink/10 bg-white text-muted',
               )}
             >
               <s.icon className="h-6 w-6" aria-hidden />
             </span>
             <div className="lg:mt-6">
-              <p className="font-display text-sm font-bold uppercase tracking-widest text-orange-ink">Step {i + 1}</p>
+              <p className="font-display text-sm font-bold uppercase tracking-widest text-amber-ink">Step {i + 1}</p>
               <h3 className="mt-1 text-2xl">{s.title}</h3>
               <p className="mt-2 text-muted">{s.text}</p>
             </div>
@@ -89,7 +89,7 @@ function TruckRunner({ progress }: { progress: number }) {
       className="pointer-events-none absolute inset-x-0 top-0 z-20 hidden h-10 will-change-transform lg:block"
       style={{ transform: `translate3d(${progress * 100}%,0,0)` }}
     >
-      <div className="grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-orange text-ink shadow-lift">
+      <div className="grid h-10 w-10 -translate-x-1/2 place-items-center rounded-full bg-amber text-ink shadow-lift">
         <Truck className="h-5 w-5" />
       </div>
     </div>
@@ -131,7 +131,7 @@ export function Counters({ items, dark }: { items: Counter[]; dark?: boolean }) 
       {items.map((c) => (
         <div key={c.label} className={cn('rounded-xl border p-6', dark ? 'border-white/10 bg-steel' : 'border-ink/10 bg-white shadow-card')}>
           <dt className={cn('order-2 mt-1', dark ? 'text-muted-dark' : 'text-muted')}>{c.label}</dt>
-          <dd className={cn('font-display text-6xl font-extrabold tabular-nums', dark ? 'text-orange' : 'text-orange-ink')}>
+          <dd className={cn('font-display text-6xl font-extrabold tabular-nums', dark ? 'text-amber' : 'text-amber-ink')}>
             {/* Screen readers get the final value, not the animation. */}
             <span aria-hidden>{Math.round(c.value * t).toLocaleString()}</span>
             <span className="sr-only">{c.value.toLocaleString()}</span>

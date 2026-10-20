@@ -41,7 +41,7 @@ export function Header() {
           : 'border-transparent bg-gradient-to-b from-charcoal/90 to-charcoal/0 py-4',
       )}
     >
-      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:rounded focus:bg-orange focus:px-4 focus:py-2 focus:text-ink">
+      <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:rounded focus:bg-amber focus:px-4 focus:py-2 focus:text-ink">
         Skip to content
       </a>
       <div className="container flex items-center justify-between gap-4">
@@ -57,7 +57,7 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     'flex items-center gap-1 whitespace-nowrap rounded px-3 py-2 font-display text-[1.05rem] font-semibold uppercase tracking-wide text-white/85 hover:text-white',
-                    item.children.some((c) => isActive(c.href)) && 'text-orange',
+                    item.children.some((c) => isActive(c.href)) && 'text-amber',
                   )}
                 >
                   {item.label}
@@ -69,7 +69,7 @@ export function Header() {
                       <li key={c.href}>
                         <Link
                           href={c.href}
-                          className={cn('block rounded px-3 py-2.5 text-[0.95rem] text-white/85 hover:bg-white/5 hover:text-white', isActive(c.href) && 'text-orange')}
+                          className={cn('block rounded px-3 py-2.5 text-[0.95rem] text-white/85 hover:bg-white/5 hover:text-white', isActive(c.href) && 'text-amber')}
                         >
                           {c.label}
                         </Link>
@@ -84,7 +84,7 @@ export function Header() {
                 href={item.href}
                 className={cn(
                   'whitespace-nowrap rounded px-3 py-2 font-display text-[1.05rem] font-semibold uppercase tracking-wide text-white/85 hover:text-white',
-                  isActive(item.href) && 'text-orange',
+                  isActive(item.href) && 'text-amber',
                 )}
               >
                 {item.label}
@@ -97,13 +97,13 @@ export function Header() {
           <a
             href={LINKS.tel}
             data-track="call_click"
-            className="hidden items-center gap-2 rounded-md px-3 py-2 font-display text-lg font-bold uppercase tracking-wide text-white hover:text-orange md:inline-flex"
+            className="hidden items-center gap-2 whitespace-nowrap rounded-md px-3 py-2 font-display text-lg font-bold uppercase tracking-wide text-white hover:text-amber md:inline-flex"
           >
-            <Phone className="h-5 w-5 text-orange" aria-hidden />
+            <Phone className="h-5 w-5 text-amber" aria-hidden />
             <span className="hidden xl:inline">Call Now</span>
             <span className="xl:hidden">{SITE.phoneDisplay}</span>
           </a>
-          <BookButton className="btn-primary hidden !min-h-[44px] !py-2 sm:inline-flex">Book Mobile Testing</BookButton>
+          <BookButton className="btn-primary hidden whitespace-nowrap !min-h-[44px] !py-2 sm:inline-flex">Book Mobile Testing</BookButton>
           <button
             type="button"
             className="grid h-11 w-11 place-items-center rounded-md text-white hover:bg-white/10 xl:hidden"
@@ -130,7 +130,7 @@ export function Header() {
                   href={item.href}
                   className={cn(
                     'block py-3.5 font-display text-2xl font-semibold uppercase text-white',
-                    isActive(item.href) && 'text-orange',
+                    isActive(item.href) && 'text-amber',
                   )}
                 >
                   {item.label}

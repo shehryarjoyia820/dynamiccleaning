@@ -3,7 +3,7 @@ import { PageBody } from '@/components/page-parts';
 import { pageMeta } from '@/components/seo';
 
 export const metadata = pageMeta({
-  title: 'Why California Enforces Clean Truck Check',
+  title: 'California Truck Emissions Regulations: Why Clean Truck Check Is Enforced',
   description:
     'Why California requires heavy-duty truck emissions testing: air quality goals, diesel emissions, roadside monitoring and the consequences of non-compliance.',
   path: '/why-california-enforces-it',
@@ -14,7 +14,7 @@ export default function WhyPage() {
     <>
       <PageHero
         eyebrow="Why California enforces it"
-        title="Cleaner air, working trucks"
+        title="Why California enforces Clean Truck Check"
         intro="Heavy-duty trucks are a small share of vehicles on California roads but a large share of smog-forming and diesel particulate emissions."
         crumbs={[
           { name: 'Clean Truck Check Explained', path: '/clean-truck-check' },
@@ -22,6 +22,9 @@ export default function WhyPage() {
         ]}
       />
       <PageBody>
+        <p>
+          Clean Truck Check is one of several California truck emissions regulations run by CARB. Here is why the state enforces it, and what it means for your trucks.
+        </p>
         <h2>Air quality goals</h2>
         <p>
           Several California regions, including the South Coast and San Joaquin Valley, have some of the most persistent air quality problems in the country. To meet state and

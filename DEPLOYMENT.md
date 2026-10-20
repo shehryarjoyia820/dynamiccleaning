@@ -1,50 +1,68 @@
 # Deployment
 
+The site is deployed on Vercel from the `main` branch of this repository. Every push to `main` redeploys it.
+
 ## 1. Supabase (database + admin login)
 
-1. Create a project at [supabase.com](https://supabase.com) (region: US West).
-2. **SQL Editor:** run `supabase/migrations/0001_init.sql`, then `supabase/seed.sql`.
+1. Create a project at [supabase.com](https://supabase.com) (region: US West). Alternatively, in Vercel go to **Storage → Create → Supabase**, which adds the keys to the project automatically.
+2. **SQL Editor:** run, in order:
+   1. `supabase/migrations/0001_init.sql`
+   2. `supabase/migrations/0002_email.sql`
+   3. `supabase/seed.sql`
 3. **Authentication → Providers → Email:** keep enabled. Turn **off** "Allow new users to sign up" (staff are invited only).
 4. **Authentication → Multi-Factor:** make sure TOTP is enabled.
-5. **Authentication → URL Configuration:** set Site URL to `https://dieseldynamix.com` and add `https://dieseldynamix.com/admin/**` (and `http://localhost:3000/admin/**` for local work) to Redirect URLs.
-6. **Create the first admin.** Go to Authentication → Users → Add user (email + password), then run this in the SQL editor with that user's ID:
-   ```sql
-   insert into public.profiles (id, full_name, role) values ('<user-uuid>', 'Kameron', 'admin');
-   ```
-7. Copy the Project URL, anon key and service-role key into the environment variables below.
+5. **Authentication → URL Configuration:** set the Site URL to the live site URL and add `<site>/admin/**` (and `http://localhost:3000/admin/**` for local work) to Redirect URLs.
+6. **Authentication → Emails → SMTP Settings:** enter the same SMTP details as below, so login and invite emails come from your domain (Supabase's built-in sender only allows a few emails per hour).
+7. Put the Project URL, anon key and service-role key into the Vercel environment variables.
 
-The first time an admin signs in at `/admin/login`, they scan a QR code to set up an authenticator app. After that, every sign-in needs a 6-digit code. More staff can be invited from **/admin → Team**.
+### Create the first admin (email + password)
 
-## 2. Email (Resend)
+1. Set `ADMIN_EMAIL` in Vercel to the email that should own the dashboard, and redeploy.
+2. Open **`/admin/setup`** and click **Send admin invite**. It only works while no admin exists, and only emails `ADMIN_EMAIL`.
+3. Open the email link, scan the QR code with an authenticator app (Google Authenticator, Authy, 1Password), then choose your password.
+4. From then on, sign in at **`/admin/login`** with email + password + the 6-digit code. Invite more staff from **/admin → Team**.
 
-1. Create an account at [resend.com](https://resend.com) and add the domain `dieseldynamix.com`.
-2. Add the SPF/DKIM DNS records Resend shows, and wait for "Verified".
-3. Create an API key and set `RESEND_API_KEY`.
+## 2. Email (SMTP)
 
-Bookings are emailed to `SERVICE_INBOX` and contact messages to `INFO_INBOX`. Each customer gets an automatic confirmation with the phone and WhatsApp number.
+Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and `EMAIL_FROM` in Vercel. Any provider works (Google Workspace, Microsoft 365, Zoho, SendGrid, Postmark, Amazon SES and others).
+
+- Add the SPF and DKIM records your provider gives you to the `dieseldynamix.com` DNS, plus a DMARC record. Without them, proposals land in spam.
+- `EMAIL_DAILY_LIMIT` caps marketing sends per 24 hours (default 400). Keep it under your provider's limit; for example, Google Workspace allows about 2,000 per day.
+- `UNSUBSCRIBE_SECRET` and `CRON_SECRET` should be long random strings.
+- If `SMTP_HOST` is empty, `RESEND_API_KEY` is used instead.
+
+### What the email system does
+
+- **Leads:** bookings go to `SERVICE_INBOX`, contact messages to `INFO_INBOX`, and each customer gets a confirmation. Everyone who submits a form becomes a contact.
+- **Subscribers:** the newsletter form (footer and blog) adds contacts tagged `newsletter`, with a welcome email.
+- **Proposals:** at **/admin → Contacts → Upload emails**, import a CSV or paste a list and give it a tag. Write proposals and follow-ups at **/admin → Email templates** (PDF attachments are supported). Send from **/admin → Send proposals**: pick the tag, add up to 3 follow-ups (for example 3, 7 and 14 days), and send. You can also send to a single lead from the lead page.
+- **Follow-ups** go out automatically once a day (Vercel Cron, 9 AM Pacific). They skip anyone who replied (mark the contact "replied"), unsubscribed, or whose lead is Scheduled, Completed or Closed.
+- **Compliance:** every marketing email has an unsubscribe link, a one-click unsubscribe header and your postal address. Sending is blocked until you set the address at **/admin → Settings → Email footer address** (required by US CAN-SPAM).
 
 ## 3. Spam protection (Cloudflare Turnstile)
 
-Create a Turnstile widget for `dieseldynamix.com` and set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`. The honeypot field and rate limiting (5 submissions per 10 minutes per visitor) are always on.
+Create a Turnstile widget for the domain and set `NEXT_PUBLIC_TURNSTILE_SITE_KEY` and `TURNSTILE_SECRET_KEY`. The honeypot field and rate limiting (5 submissions per 10 minutes per visitor) are always on.
 
-## 4. Vercel
+## 4. Domain
 
-1. Import the GitHub repository in Vercel (framework: Next.js; build command and output are the defaults).
-2. Add every variable from `.env.example` under Project → Settings → Environment Variables.
-3. Add the domain `dieseldynamix.com` (and `www`) under Project → Domains, then update DNS as Vercel instructs. SSL is automatic.
+Add `dieseldynamix.com` (and `www`) under Vercel → Project → Domains, update DNS as Vercel instructs (if the domain is with Squarespace, add the records under Squarespace → Domains → DNS), then set `NEXT_PUBLIC_SITE_URL=https://dieseldynamix.com` and redeploy. SSL is automatic.
 
-## 5. Analytics and search
+## 5. SEO, AEO and analytics
 
-- **GA4:** create a property, set `NEXT_PUBLIC_GA_ID`, then mark `generate_lead`, `call_click`, `whatsapp_click` and `email_click` as key events (conversions).
-- **Search Console:** verify the domain and submit `https://dieseldynamix.com/sitemap.xml`.
-- **Google Business Profile:** link it to the website.
+- **Search Console:** verify the domain and submit `/sitemap.xml`.
+- **GA4:** set `NEXT_PUBLIC_GA_ID`, then mark `generate_lead`, `call_click`, `whatsapp_click`, `email_click` and `subscribe` as key events.
+- **Google Business Profile:** link it to the website, with "service area: Southern California" (LA, Orange, Riverside, San Bernardino, San Diego and Imperial counties).
+- **AEO:** `/llms.txt` summarises the business for AI assistants. Pages carry FAQPage, HowTo, Service and BreadcrumbList structured data plus "Quick answer" boxes.
+- The California keyword plan from the brief is mapped page by page in `SEO.md`. Verify search volumes in Google Keyword Planner or Ahrefs.
 
 ## Before launch (client to verify)
 
 - [ ] WhatsApp Business is active on (858) 342-8328
-- [ ] Test types offered match Diesel Dynamix's CARB credentials and equipment (`/mobile-testing-services`)
-- [ ] Regulatory text and testing frequency reviewed (`/admin → Regulatory text`)
+- [ ] Test types offered match Diesel Dynamix's CARB credentials and equipment (`/mobile-testing-services`, `/obd-testing`, `/smoke-opacity-test`)
+- [ ] Regulatory text and testing frequency reviewed (`/admin → Settings & regulatory text`)
+- [ ] Postal address set for email footers
 - [ ] Privacy Policy and Terms reviewed by legal counsel
-- [ ] Real photos added (hero and gallery), and the logo approved or replaced with final designer files
+- [ ] Real photos added (hero and gallery)
 - [ ] Test booking reaches the Service@ inbox, the admin dashboard and the customer confirmation
+- [ ] Test proposal sent to yourself from **Email templates → Send test to me**
 - [ ] Lighthouse mobile 90+ on Home, Book and one service-area page

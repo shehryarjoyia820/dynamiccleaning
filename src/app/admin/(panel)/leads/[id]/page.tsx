@@ -2,7 +2,9 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Mail, Phone } from 'lucide-react';
 import { ENGINE_LABELS, LEAD_STATUSES, requireStaff, toLaInput, type Lead } from '@/lib/admin';
+import { mailConfigured } from '@/lib/mailer';
 import { addNote, deleteLead, updateLead } from '../../actions';
+import { emailLead } from '../../email-actions';
 import { AdminTitle, SmallButton, StatusBadge } from '../../ui';
 
 export const metadata = { title: 'Lead' };
@@ -12,10 +14,11 @@ const fmt = (iso: string) => new Date(iso).toLocaleString('en-US', { timeZone: '
 export default async function LeadPage({ params }: { params: Promise<{ id: string }> }) {
   const { id } = await params;
   const { db, profile } = await requireStaff();
-  const [{ data }, notes, team] = await Promise.all([
+  const [{ data }, notes, team, templates] = await Promise.all([
     db.from('leads').select('*').eq('id', id).maybeSingle(),
     db.from('lead_notes').select('id,body,created_at,author_id').eq('lead_id', id).order('created_at', { ascending: false }),
     db.from('profiles').select('id,full_name').order('full_name'),
+    db.from('email_templates').select('id,name,kind').order('name'),
   ]);
   if (!data) notFound();
   const lead = data as Lead;
@@ -120,6 +123,36 @@ export default async function LeadPage({ params }: { params: Promise<{ id: strin
               <button className="text-sm font-semibold text-[#B42318] underline underline-offset-4">Delete lead permanently</button>
             </form>
           ) : null}
+        </section>
+
+        <section className="card content-start xl:col-start-2">
+          <h2 className="text-2xl">Email this lead</h2>
+          {(templates.data ?? []).length ? (
+            <form action={emailLead.bind(null, lead.id)} className="mt-4 grid gap-3">
+              <label htmlFor="template_id" className="label">Proposal / email</label>
+              <select id="template_id" name="template_id" required className="field">
+                {(templates.data ?? []).filter((t) => t.kind !== 'follow_up').map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
+              </select>
+              {[3, 7].map((days, i) => (
+                <div key={i} className="grid grid-cols-[1fr_7rem] gap-2">
+                  <select name="fu_template" aria-label={`Follow-up ${i + 1}`} defaultValue="" className="field">
+                    <option value="">Follow-up {i + 1}: none</option>
+                    {(templates.data ?? []).map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
+                  </select>
+                  <label className="flex items-center gap-1 text-sm">
+                    <input name="fu_days" type="number" min={1} max={90} defaultValue={days} aria-label={`Follow-up ${i + 1} days`} className="field !px-2" /> days
+                  </label>
+                </div>
+              ))}
+              <SmallButton className="justify-self-start px-5 py-2.5" disabled={!mailConfigured()}>Send to {lead.email}</SmallButton>
+              {!mailConfigured() ? <p className="text-sm text-muted">Add SMTP settings to enable sending.</p> : null}
+              <p className="text-xs text-muted">Follow-ups stop automatically when you set this lead to Scheduled, Completed or Closed.</p>
+            </form>
+          ) : (
+            <p className="mt-2 text-sm text-muted">
+              <Link href="/admin/emails/templates/new" className="font-semibold underline">Create an email template</Link> first.
+            </p>
+          )}
         </section>
       </div>
     </>

@@ -5,7 +5,7 @@ import { getFaqs } from '@/lib/content';
 export const revalidate = 300;
 
 export const metadata = pageMeta({
-  title: 'Clean Truck Check FAQ',
+  title: 'Clean Truck Check FAQ | Cost, Deadlines, Out-of-State Trucks',
   description: 'Answers to common questions about California’s Clean Truck Check program and Diesel Dynamix mobile testing.',
   path: '/faq',
 });

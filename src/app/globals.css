@@ -15,15 +15,15 @@
     @apply font-display font-bold uppercase;
   }
   :focus-visible {
-    outline: 3px solid #FF6B1A;
+    outline: 3px solid #F5A524;
     outline-offset: 3px;
     border-radius: 4px;
   }
   .on-light :focus-visible {
-    outline-color: #B8430A;
+    outline-color: #8F5600;
   }
   ::selection {
-    background: #FF6B1A;
+    background: #F5A524;
     color: #111318;
   }
 }
@@ -32,9 +32,9 @@
   .btn {
     @apply inline-flex min-h-[48px] items-center justify-center gap-2 rounded-md px-5 py-3 font-display text-lg font-bold uppercase tracking-wide transition-[transform,background-color,box-shadow,color] duration-200 ease-out will-change-transform hover:-translate-y-0.5 active:translate-y-0 disabled:pointer-events-none disabled:opacity-60;
   }
-  /* Dark text on orange: 6.5:1 (AA). */
+  /* Dark text on amber: 6.5:1 (AA). */
   .btn-primary {
-    @apply btn bg-orange text-ink shadow-[0_10px_24px_-12px_rgba(255,107,26,0.8)] hover:bg-orange-deep;
+    @apply btn bg-amber text-ink shadow-[0_10px_24px_-12px_rgba(245,165,36,0.8)] hover:bg-amber-deep;
   }
   .btn-ghost-dark {
     @apply btn border-2 border-white/30 text-white hover:border-white hover:bg-white/10;
@@ -76,10 +76,10 @@
     @apply list-decimal space-y-2 pl-6;
   }
   .prose-dd a {
-    @apply font-semibold text-orange-ink underline underline-offset-4 hover:text-ink;
+    @apply font-semibold text-amber-ink underline underline-offset-4 hover:text-ink;
   }
   .field {
-    @apply block w-full rounded-md border border-ink/20 bg-white px-3.5 py-3 text-base text-ink placeholder:text-muted/70 focus:border-orange-ink focus:outline-none focus:ring-2 focus:ring-orange/40;
+    @apply block w-full rounded-md border border-ink/20 bg-white px-3.5 py-3 text-base text-ink placeholder:text-muted/70 focus:border-amber-ink focus:outline-none focus:ring-2 focus:ring-amber/40;
   }
   .label {
     @apply mb-1.5 block text-sm font-semibold text-ink;

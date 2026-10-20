@@ -1,10 +1,23 @@
 import { CtaBand, PageHero, Reveal, SectionHeading } from '@/components/blocks';
 import { HowItWorks } from '@/components/home/interactive';
 import { Checklist } from '@/components/page-parts';
-import { pageMeta } from '@/components/seo';
+import { JsonLd, pageMeta } from '@/components/seo';
+
+const HOWTO = {
+  '@context': 'https://schema.org',
+  '@type': 'HowTo',
+  name: 'How to get a mobile Clean Truck Check test in Southern California',
+  description: 'Book on-site CARB Clean Truck Check testing with Diesel Dynamix and have your trucks tested at your yard.',
+  step: [
+    { '@type': 'HowToStep', name: 'Contact us', text: 'Call, WhatsApp or book online with your truck count and location.' },
+    { '@type': 'HowToStep', name: 'Schedule', text: 'Confirm a time window that fits your dispatch.' },
+    { '@type': 'HowToStep', name: 'On-site testing', text: 'A tester runs the OBD, smoke opacity or visual test each truck needs at your yard.' },
+    { '@type': 'HowToStep', name: 'Results and next steps', text: 'Results are submitted and next steps are explained for every truck.' },
+  ],
+};
 
 export const metadata = pageMeta({
-  title: 'How Mobile Clean Truck Check Testing Works',
+  title: 'How Mobile Clean Truck Check Testing Works | On-Site CARB Testing',
   description: 'Step by step: how Diesel Dynamix schedules and performs on-site Clean Truck Check testing, and what to have ready before we arrive.',
   path: '/how-testing-works',
 });
@@ -12,10 +25,11 @@ export const metadata = pageMeta({
 export default function HowPage() {
   return (
     <>
+      <JsonLd data={HOWTO} />
       <PageHero
         eyebrow="How testing works"
-        title="From first call to results"
-        intro="A simple process built around your schedule."
+        title="How mobile Clean Truck Check works"
+        intro="From first call to results: on-site CARB testing built around your schedule."
         crumbs={[
           { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
           { name: 'How Testing Works', path: '/how-testing-works' },

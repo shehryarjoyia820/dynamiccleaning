@@ -3,7 +3,7 @@
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
-import { LEAD_STATUSES, fromLaInput, requireStaff } from '@/lib/admin';
+import { LEAD_STATUSES, fromLaInput, requireStaff, userError } from '@/lib/admin';
 import { CONTENT_TAG, serviceClient } from '@/lib/supabase/clients';
 import { REGIONS } from '@/content/seed';
 import { SITE } from '@/lib/site';
@@ -16,8 +16,8 @@ function contentChanged(...paths: string[]) {
   for (const p of paths) revalidatePath(p);
 }
 
-function fail(message: string): never {
-  throw new Error(message);
+function fail(message: string): Promise<never> {
+  return userError(message);
 }
 
 // ---------------------------------------------------------------- Leads
@@ -31,7 +31,7 @@ export async function updateLead(id: string, form: FormData) {
     .from('leads')
     .update({ status, assigned_to: assigned, appointment_at: appt ? fromLaInput(appt) : null })
     .eq('id', id);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   revalidatePath('/admin');
   revalidatePath(`/admin/leads/${id}`);
 }
@@ -39,7 +39,7 @@ export async function updateLead(id: string, form: FormData) {
 export async function setLeadStatus(id: string, status: string) {
   const { db } = await requireStaff();
   const { error } = await db.from('leads').update({ status: z.enum(LEAD_STATUSES).parse(status) }).eq('id', id);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   revalidatePath('/admin');
 }
 
@@ -47,14 +47,14 @@ export async function addNote(leadId: string, form: FormData) {
   const { db, user } = await requireStaff();
   const body = z.string().trim().min(1).max(4000).parse(get(form, 'body'));
   const { error } = await db.from('lead_notes').insert({ lead_id: leadId, author_id: user.id, body });
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   revalidatePath(`/admin/leads/${leadId}`);
 }
 
 export async function deleteLead(id: string) {
   const { db } = await requireStaff({ admin: true });
   const { error } = await db.from('leads').delete().eq('id', id);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   revalidatePath('/admin');
   redirect('/admin');
 }
@@ -72,14 +72,14 @@ export async function saveFaq(form: FormData) {
     published: form.get('published') === 'on',
   };
   const { error } = await db.from('faqs').upsert(row);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/faq', '/', '/admin/content/faqs');
 }
 
 export async function deleteFaq(id: string) {
   const { db } = await requireStaff();
   const { error } = await db.from('faqs').delete().eq('id', id);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/faq', '/', '/admin/content/faqs');
 }
 
@@ -98,14 +98,14 @@ export async function saveArea(form: FormData) {
     published: form.get('published') === 'on',
   };
   const { error } = await db.from('service_areas').upsert(row);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/service-areas', `/service-areas/${row.slug}`, '/', '/admin/content/areas');
 }
 
 export async function deleteArea(s: string) {
   const { db } = await requireStaff();
   const { error } = await db.from('service_areas').delete().eq('slug', s);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/service-areas', '/', '/admin/content/areas');
 }
 
@@ -123,7 +123,7 @@ export async function savePost(form: FormData) {
     published: form.get('published') === 'on',
   };
   const { error } = await db.from('posts').upsert(row);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   if (original && original !== row.slug) await db.from('posts').delete().eq('slug', original);
   contentChanged('/blog', `/blog/${row.slug}`, '/admin/content/posts');
   redirect('/admin/content/posts');
@@ -132,7 +132,7 @@ export async function savePost(form: FormData) {
 export async function deletePost(s: string) {
   const { db } = await requireStaff();
   const { error } = await db.from('posts').delete().eq('slug', s);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/blog', '/admin/content/posts');
   redirect('/admin/content/posts');
 }
@@ -158,9 +158,10 @@ export async function saveSettings(form: FormData) {
     { key: 'frequency_text', value: z.string().min(10).max(2000).parse(get(form, 'frequency_text')) },
     { key: 'requirements', value: requirements },
     { key: 'counters', value: counters },
+    { key: 'email_footer_address', value: z.string().max(300).parse(get(form, 'email_footer_address')) },
   ].map((r) => ({ ...r, updated_at: new Date().toISOString() }));
   const { error } = await db.from('site_settings').upsert(rows);
-  if (error) fail(error.message);
+  if (error) return fail(error.message);
   contentChanged('/', '/clean-truck-check', '/service-areas', '/admin/content/settings');
 }
 
@@ -169,22 +170,22 @@ export async function saveSettings(form: FormData) {
 export async function inviteStaff(form: FormData) {
   await requireStaff({ admin: true });
   const svc = serviceClient();
-  if (!svc) fail('SUPABASE_SERVICE_ROLE_KEY is not set');
+  if (!svc) return fail('SUPABASE_SERVICE_ROLE_KEY is not set');
   const email = z.string().email().parse(get(form, 'email'));
   const full_name = z.string().min(1).max(120).parse(get(form, 'full_name'));
   const role = z.enum(['admin', 'staff']).parse(get(form, 'role'));
   const { data, error } = await svc.auth.admin.inviteUserByEmail(email, { redirectTo: `${SITE.url}/admin/mfa?next=/admin/account` });
-  if (error || !data.user) fail(error?.message ?? 'Invite failed');
+  if (error || !data.user) return fail(error?.message ?? 'Invite failed');
   const { error: pErr } = await svc.from('profiles').upsert({ id: data.user.id, full_name, role });
-  if (pErr) fail(pErr.message);
+  if (pErr) return fail(pErr.message);
   revalidatePath('/admin/team');
 }
 
 export async function removeStaff(id: string) {
   const { user } = await requireStaff({ admin: true });
-  if (id === user.id) fail('You cannot remove yourself');
+  if (id === user.id) return fail('You cannot remove yourself');
   const svc = serviceClient();
-  if (!svc) fail('SUPABASE_SERVICE_ROLE_KEY is not set');
+  if (!svc) return fail('SUPABASE_SERVICE_ROLE_KEY is not set');
   await svc.from('profiles').delete().eq('id', id);
   revalidatePath('/admin/team');
 }

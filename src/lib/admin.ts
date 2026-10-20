@@ -1,4 +1,5 @@
 import 'server-only';
+import { headers } from 'next/headers';
 import { redirect } from 'next/navigation';
 import { sessionClient, supabaseConfigured } from '@/lib/supabase/clients';
 
@@ -80,4 +81,25 @@ export async function requireStaff(opts: { admin?: boolean } = {}) {
   if (opts.admin && profile.role !== 'admin') redirect('/admin');
 
   return { db, user, profile: profile as { id: string; full_name: string; role: 'admin' | 'staff' } };
+}
+
+/**
+ * Sends the user back to the page they came from with a visible message.
+ * Production builds hide thrown Server Action errors, so user-facing
+ * problems ("add SMTP settings first") go through here instead.
+ */
+export async function userError(message: string): Promise<never> {
+  const ref = (await headers()).get('referer');
+  let path = '/admin';
+  try {
+    if (ref) {
+      const u = new URL(ref);
+      u.searchParams.delete('error');
+      u.searchParams.delete('saved');
+      u.searchParams.delete('tested');
+      u.searchParams.set('error', message.slice(0, 300));
+      path = u.pathname.startsWith('/admin') ? u.pathname + u.search : path;
+    }
+  } catch {}
+  redirect(path);
 }

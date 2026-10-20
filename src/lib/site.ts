@@ -3,7 +3,7 @@ export const SITE = {
   url: (process.env.NEXT_PUBLIC_SITE_URL || 'https://dieseldynamix.com').replace(/\/$/, ''),
   tagline: 'Stay Compliant. Keep Moving.',
   description:
-    'Mobile CARB Clean Truck Check testing anywhere in California. We come to your truck or fleet yard for OBD, smoke opacity and visual inspections.',
+    'Mobile CARB Clean Truck Check testing anywhere in Southern California. Heavy-duty truck emissions testing at your yard: OBD tests, smoke opacity tests and visual inspections.',
   ceo: 'Kameron',
   phoneDisplay: '(858) 342-8328',
   phoneE164: '+18583428328',
@@ -11,7 +11,7 @@ export const SITE = {
   whatsappMessage: 'Hi Diesel Dynamix, I need Clean Truck Check testing for my truck(s).',
   emailInfo: 'Info@dieseldynamix.com',
   emailService: 'Service@dieseldynamix.com',
-  areaServed: 'California',
+  areaServed: 'Southern California',
 } as const;
 
 export const LINKS = {
@@ -41,6 +41,8 @@ export const NAV: NavItem[] = [
     label: 'Services',
     children: [
       { href: '/mobile-testing-services', label: 'Mobile Testing Services' },
+      { href: '/obd-testing', label: 'CARB OBD Test' },
+      { href: '/smoke-opacity-test', label: 'Smoke Opacity Test' },
       { href: '/how-testing-works', label: 'How Testing Works' },
       { href: '/fleet-testing', label: 'Fleet Testing' },
     ],
@@ -65,9 +67,13 @@ export const FOOTER_LINKS = [
     title: 'Services',
     links: [
       { href: '/mobile-testing-services', label: 'Mobile Testing' },
+      { href: '/obd-testing', label: 'CARB OBD Test' },
+      { href: '/smoke-opacity-test', label: 'Smoke Opacity Test' },
       { href: '/how-testing-works', label: 'How Testing Works' },
       { href: '/fleet-testing', label: 'Fleet Testing' },
       { href: '/service-areas', label: 'Service Areas' },
+      { href: '/ports/port-of-long-beach', label: 'Port of Long Beach' },
+      { href: '/ports/port-of-los-angeles', label: 'Port of Los Angeles' },
     ],
   },
   {

@@ -9,11 +9,24 @@ const securityHeaders = [
 const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  experimental: {
+    // Proposal PDFs (max 4 MB) and CSV imports go through server actions.
+    serverActions: { bodySizeLimit: '5mb' },
+  },
   images: {
     formats: ['image/avif', 'image/webp'],
   },
   compiler: {
     removeConsole: process.env.NODE_ENV === 'production' ? { exclude: ['error', 'warn'] } : false,
+  },
+  async redirects() {
+    // Service area is Southern California only; retired city pages point to the area list.
+    const retired = ['bakersfield', 'fresno', 'visalia', 'modesto', 'stockton', 'merced', 'oakland', 'san-jose', 'sacramento', 'hayward', 'redding', 'eureka', 'santa-barbara', 'san-luis-obispo', 'salinas'];
+    return [
+      { source: '/service-areas/imperial-valley', destination: '/service-areas/el-centro', permanent: true },
+      { source: '/ports/port-of-oakland', destination: '/service-areas', permanent: true },
+      ...retired.map((c) => ({ source: `/service-areas/${c}`, destination: '/service-areas', permanent: true })),
+    ];
   },
   async headers() {
     return [

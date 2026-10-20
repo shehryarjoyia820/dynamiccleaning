@@ -52,7 +52,7 @@ function Field({
   return (
     <div className={className}>
       <label htmlFor={id} className="label">
-        {label} {required ? <span className="text-orange-ink" aria-hidden>*</span> : <span className="font-normal text-muted">(optional)</span>}
+        {label} {required ? <span className="text-amber-ink" aria-hidden>*</span> : <span className="font-normal text-muted">(optional)</span>}
       </label>
       {children({ id, name, required, 'aria-invalid': error ? true : undefined, 'aria-describedby': error ? errId : undefined })}
       {hint && !error ? <p className="mt-1 text-sm text-muted">{hint}</p> : null}
@@ -91,10 +91,10 @@ function Consent({ error }: { error?: string }) {
   return (
     <div>
       <div className="flex items-start gap-3">
-        <input id={id} type="checkbox" name="consent" value="yes" required className="mt-1 h-5 w-5 shrink-0 accent-orange-ink" />
+        <input id={id} type="checkbox" name="consent" value="yes" required className="mt-1 h-5 w-5 shrink-0 accent-amber-ink" />
         <label htmlFor={id} className="text-sm text-muted">
           I agree that Diesel Dynamix may contact me by phone, text, WhatsApp or email about this request. We never sell your information. See our{' '}
-          <Link href="/privacy" className="font-semibold text-orange-ink underline underline-offset-4" target="_blank">
+          <Link href="/privacy" className="font-semibold text-amber-ink underline underline-offset-4" target="_blank">
             Privacy Policy
           </Link>
           .
@@ -126,10 +126,12 @@ function Success({ title, text }: { title: string; text: string }) {
 export function BookingForm({
   compact,
   defaultLocation,
+  defaultTrucks,
   source = 'page',
 }: {
   compact?: boolean;
   defaultLocation?: string;
+  defaultTrucks?: number;
   source?: string;
 }) {
   const [status, setStatus] = useState<Status>({ state: 'idle' });
@@ -175,7 +177,7 @@ export function BookingForm({
         {(p) => <input {...p} type="email" className="field" autoComplete="email" maxLength={160} />}
       </Field>
       <Field label="Number of trucks" name="trucks" required error={e.trucks}>
-        {(p) => <input {...p} type="number" min={1} max={5000} defaultValue={1} className="field" inputMode="numeric" />}
+        {(p) => <input {...p} type="number" min={1} max={5000} defaultValue={defaultTrucks ?? 1} className="field" inputMode="numeric" />}
       </Field>
       <Field label="Truck location (city or ZIP)" name="location" required error={e.location}>
         {(p) => <input {...p} className="field" autoComplete="postal-code" defaultValue={defaultLocation} maxLength={120} />}
@@ -217,7 +219,7 @@ export function BookingForm({
         </button>
         <p className="mt-2 text-center text-sm text-muted">
           Prefer to talk?{' '}
-          <a href={LINKS.tel} data-track="call_click" className="font-semibold text-orange-ink underline underline-offset-4">
+          <a href={LINKS.tel} data-track="call_click" className="font-semibold text-amber-ink underline underline-offset-4">
             Call {SITE.phoneDisplay}
           </a>
         </p>

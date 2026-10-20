@@ -7,7 +7,7 @@ import { LINKS, SITE } from '@/lib/site';
 
 export const metadata = pageMeta({
   title: 'Contact Us',
-  description: `Call, WhatsApp or email Diesel Dynamix for mobile Clean Truck Check testing in California. ${SITE.phoneDisplay}.`,
+  description: `Call, WhatsApp or email Diesel Dynamix for mobile Clean Truck Check testing in Southern California. ${SITE.phoneDisplay}.`,
   path: '/contact',
 });
 
@@ -34,24 +34,24 @@ export default function ContactPage() {
                     {...(c.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className="card group flex items-center gap-4 !p-5 transition-transform hover:-translate-y-0.5"
                   >
-                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-charcoal text-orange">
+                    <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-charcoal text-amber">
                       <c.icon className="h-6 w-6" aria-hidden />
                     </span>
                     <span className="min-w-0">
                       <span className="block text-sm font-semibold text-muted">{c.label}</span>
-                      <span className="block break-words font-display text-2xl font-bold group-hover:text-orange-ink">{c.value}</span>
+                      <span className="block break-words font-display text-2xl font-bold group-hover:text-amber-ink">{c.value}</span>
                     </span>
                   </a>
                 </Reveal>
               ))}
               <Reveal as="li" delay={300} className="flex items-center gap-3 px-2 text-muted">
-                <MapPin className="h-5 w-5 text-orange-ink" aria-hidden /> Mobile service across all of California
+                <MapPin className="h-5 w-5 text-amber-ink" aria-hidden /> Mobile service across Southern California
               </Reveal>
             </ul>
           </div>
           <Reveal delay={100} className="rounded-xl bg-white p-6 shadow-card sm:p-8">
             <h2 className="text-display-md">Send us a message</h2>
-            <p className="mt-2 text-muted">For bookings, the <a href="/book" className="font-semibold text-orange-ink underline underline-offset-4">booking form</a> is fastest.</p>
+            <p className="mt-2 text-muted">For bookings, the <a href="/book" className="font-semibold text-amber-ink underline underline-offset-4">booking form</a> is fastest.</p>
             <div className="mt-6">
               <ContactForm />
             </div>

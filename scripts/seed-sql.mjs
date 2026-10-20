@@ -1,7 +1,7 @@
 // Generates supabase/seed.sql from src/content/seed.ts (Node 22.18+ strips TS types natively).
 // Usage: npm run seed:sql
 import { writeFileSync } from 'node:fs';
-import { FAQS, POSTS, SERVICE_AREAS, SETTINGS } from '../src/content/seed.ts';
+import { EMAIL_TEMPLATES, FAQS, POSTS, SERVICE_AREAS, SETTINGS } from '../src/content/seed.ts';
 
 const q = (v) => (v === null || v === undefined ? 'null' : typeof v === 'number' ? String(v) : `'${String(v).replace(/'/g, "''")}'`);
 const rows = (list, cols) => list.map((r) => `  (${cols.map((c) => q(r[c])).join(', ')})`).join(',\n');
@@ -23,6 +23,11 @@ on conflict (slug) do nothing;
 insert into public.site_settings (key, value) values
 ${Object.entries(SETTINGS).map(([k, v]) => `  (${q(k)}, ${q(JSON.stringify(v))}::jsonb)`).join(',\n')}
 on conflict (key) do nothing;
+
+-- Needs supabase/migrations/0002_email.sql
+insert into public.email_templates (id, name, kind, subject, body) values
+${rows(EMAIL_TEMPLATES, ['id', 'name', 'kind', 'subject', 'body'])}
+on conflict (id) do nothing;
 `;
 
 writeFileSync(new URL('../supabase/seed.sql', import.meta.url), sql);

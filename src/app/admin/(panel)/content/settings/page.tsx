@@ -16,9 +16,9 @@ export default async function SettingsAdmin() {
   return (
     <>
       <AdminTitle title="Regulatory text" />
-      <p className="mb-6 max-w-3xl rounded-lg border-l-4 border-orange bg-white p-4 text-sm shadow-card">
+      <p className="mb-6 max-w-3xl rounded-lg border-l-4 border-amber bg-white p-4 text-sm shadow-card">
         Program rules change. Check every edit against{' '}
-        <a href={LINKS.carbCtc} target="_blank" rel="noopener noreferrer" className="font-semibold text-orange-ink underline">CARB’s Clean Truck Check pages</a> before saving.
+        <a href={LINKS.carbCtc} target="_blank" rel="noopener noreferrer" className="font-semibold text-amber-ink underline">CARB’s Clean Truck Check pages</a> before saving.
         Changes appear on the site within a few seconds.
       </p>
       <form action={saveSettings} className="grid max-w-4xl gap-8">
@@ -53,6 +53,15 @@ export default async function SettingsAdmin() {
               </div>
             ))}
           </div>
+        </section>
+
+        <section className="card">
+          <h2 className="text-2xl">Email footer address</h2>
+          <p className="mt-1 text-sm text-muted">
+            US law (CAN-SPAM) requires a valid postal address in every proposal and follow-up email. A P.O. box or registered business address is fine.
+          </p>
+          <label htmlFor="email_footer_address" className="sr-only">Email footer address</label>
+          <input id="email_footer_address" name="email_footer_address" defaultValue={s.email_footer_address} placeholder="Diesel Dynamix, 123 Main St, San Diego, CA 92101" className="field mt-3" />
         </section>
 
         <SmallButton className="justify-self-start px-6 py-3 text-base">Save all</SmallButton>

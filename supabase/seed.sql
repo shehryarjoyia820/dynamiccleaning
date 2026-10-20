@@ -5,32 +5,28 @@ insert into public.service_areas (slug, name, region, intro, lat, lng, sort) val
   ('los-angeles', 'Los Angeles', 'Southern California', 'Port drayage, last-mile delivery and construction fleets keep Los Angeles moving. Our mobile testers meet you at your yard in the Harbor area, the Valley, the Gateway Cities or downtown, so testing fits around dispatch instead of the other way round.', 34.05, -118.24, 2),
   ('orange-county', 'Orange County', 'Southern California', 'Orange County carriers, contractors and service fleets can schedule on-site Clean Truck Check testing from Anaheim and Santa Ana to Irvine and the coast. One visit can cover every truck parked at your location.', 33.75, -117.87, 3),
   ('inland-empire', 'Inland Empire', 'Southern California', 'Riverside, San Bernardino, Ontario and Fontana sit at the heart of California warehousing. We test at distribution centers, truck yards and owner-operator lots across the Inland Empire, built around your loading schedule.', 33.95, -117.4, 4),
-  ('imperial-valley', 'Imperial Valley', 'Southern California', 'Agricultural haulers and cross-border carriers in El Centro, Calexico and Brawley can get Clean Truck Check testing on-site. We travel to the Imperial Valley so your trucks never have to leave the field or the yard.', 32.79, -115.56, 5),
-  ('bakersfield', 'Bakersfield', 'Central Valley', 'Oilfield service trucks, ag haulers and Highway 99 carriers in Bakersfield and Kern County can book mobile Clean Truck Check testing at their yard, so your trucks stay compliant without losing a working day.', 35.37, -119.02, 6),
-  ('fresno', 'Fresno', 'Central Valley', 'Fresno is a hub for produce, packing and regional freight. We test single trucks and full fleets on-site across Fresno and Clovis, with scheduling around harvest-season peaks.', 36.74, -119.79, 7),
-  ('visalia', 'Visalia', 'Central Valley', 'Dairy, citrus and farm-equipment haulers in Visalia, Tulare and the surrounding county can book on-site Clean Truck Check testing at the farm, the yard or the shop.', 36.33, -119.29, 8),
-  ('modesto', 'Modesto', 'Central Valley', 'From food-processing fleets to independent owner-operators, Modesto and Stanislaus County trucks can be tested where they park. Tell us how many trucks you run and we will plan the visit.', 37.64, -120.99, 9),
-  ('stockton', 'Stockton', 'Central Valley', 'Stockton’s port, rail yards and I-5 distribution centers mean a lot of heavy-duty traffic. Our mobile testers come to your Stockton or Lodi location for OBD and opacity testing.', 37.96, -121.29, 10),
-  ('oakland', 'Oakland', 'Bay Area & Northern California', 'Port of Oakland drayage operators and East Bay fleets can have Clean Truck Check testing done on-site, avoiding Bay Area traffic and keeping trucks ready for the next turn.', 37.8, -122.27, 11),
-  ('san-jose', 'San Jose', 'Bay Area & Northern California', 'Construction, delivery and municipal-contract fleets in San Jose and the South Bay can schedule mobile testing at the yard or jobsite, early morning or late afternoon.', 37.34, -121.89, 12),
-  ('sacramento', 'Sacramento', 'Bay Area & Northern California', 'Sacramento sits where I-5 meets I-80, making it a natural base for regional carriers. We test trucks on-site across the Sacramento region, from West Sacramento to Rancho Cordova and Elk Grove.', 38.58, -121.49, 13),
-  ('redding', 'Redding', 'Bay Area & Northern California', 'Logging, construction and long-haul trucks in Redding and Shasta County are covered too. We schedule Northern California routes so remote yards get the same on-site service as the big metros.', 40.59, -122.39, 14),
-  ('eureka', 'Eureka', 'Bay Area & Northern California', 'North Coast fleets in Eureka, Arcata and Humboldt County are often hours from the nearest tester. We plan regular North Coast visits, so tell us early and we can group trucks into one trip.', 40.8, -124.16, 15),
-  ('santa-barbara', 'Santa Barbara', 'Central Coast', 'Contractors, agricultural fleets and service trucks across Santa Barbara, Goleta and Santa Maria can get mobile Clean Truck Check testing without leaving the job.', 34.42, -119.7, 16),
-  ('san-luis-obispo', 'San Luis Obispo', 'Central Coast', 'From wine-country haulers to Highway 101 carriers, San Luis Obispo County trucks can be tested on-site in SLO, Paso Robles and the Five Cities area.', 35.28, -120.66, 17),
-  ('salinas', 'Salinas', 'Central Coast', 'The Salinas Valley moves a large share of the nation’s fresh produce. We test reefer tractors, farm trucks and local fleets on-site across Salinas, Monterey and Watsonville.', 36.68, -121.66, 18)
+  ('el-centro', 'El Centro', 'Southern California', 'Agricultural haulers and cross-border carriers in El Centro, Calexico and Brawley can get Clean Truck Check testing on-site. We travel to the Imperial Valley so your trucks never have to leave the field or the yard.', 32.79, -115.56, 5),
+  ('long-beach', 'Long Beach', 'Southern California', 'Long Beach runs on the port. Drayage tractors, transload yards along the 710 and local delivery fleets can book Clean Truck Check testing at the yard, so trucks keep pulling containers instead of waiting at a test site.', 33.77, -118.19, 19),
+  ('riverside', 'Riverside', 'Southern California', 'From Riverside’s warehouses near March Air Reserve Base to construction fleets in Corona and Moreno Valley, we test trucks on-site across Riverside County with OBD, smoke opacity and visual inspections.', 33.98, -117.38, 20),
+  ('san-bernardino', 'San Bernardino', 'Southern California', 'San Bernardino’s rail yards, I-215 distribution centers and Cajon Pass carriers move freight nonstop. Our mobile testers come to your San Bernardino or Rialto yard so Clean Truck Check fits around your loads.', 34.11, -117.29, 21),
+  ('ontario', 'Ontario', 'Southern California', 'Ontario sits at the center of the Inland Empire logistics belt, near ONT airport cargo and the I-10/I-15 interchange. We bring Clean Truck Check testing to Ontario, Chino and Rancho Cucamonga yards on your schedule.', 34.06, -117.65, 22),
+  ('fontana', 'Fontana', 'Southern California', 'Fontana is home to some of the busiest truck yards and truck stops in California. Owner-operators and fleets parked in Fontana, Bloomington and Rialto can have their trucks tested where they park.', 34.09, -117.44, 23)
 on conflict (slug) do nothing;
 
 insert into public.faqs (id, question, answer, category, sort) values
   ('what-is-ctc', 'What is Clean Truck Check?', 'Clean Truck Check is the California Air Resources Board (CARB) inspection and maintenance program for heavy-duty vehicles. It requires periodic emissions testing of covered diesel and alternative-fuel trucks so that emissions-control systems are kept working and repaired.', 'Program', 1),
-  ('who-must-test', 'Does Clean Truck Check apply to my truck?', 'Most diesel and alternative-fuel vehicles over 14,000 lb GVWR that operate in California are covered, including out-of-state and Mexico-registered trucks that drive in the state. Some exemptions exist. Check your vehicle in CARB’s CTC-VIS system or ask us and we will help you work it out.', 'Program', 2),
-  ('how-often', 'How often do I need to test?', 'Most covered trucks currently test twice a year. Under the original rule, OBD-equipped vehicles move to four tests a year starting October 1, 2027, and a bill has proposed reducing testing to once a year. Requirements can change, so always confirm your deadlines in CARB’s CTC-VIS system.', 'Program', 3),
-  ('mobile', 'Do you really come to me?', 'Yes. We are a mobile testing service. We come to your truck, yard, jobsite or terminal anywhere in California. You do not need to drive to a shop.', 'Our service', 4),
+  ('who-must-test', 'Which trucks need Clean Truck Check?', 'Most diesel and alternative-fuel vehicles over 14,000 lb GVWR that operate in California are covered, including out-of-state and Mexico-registered trucks that drive in the state. Some exemptions exist. Check your vehicle in CARB’s CTC-VIS system or ask us and we will help you work it out.', 'Program', 2),
+  ('how-often', 'How often do trucks need Clean Truck Check?', 'Most covered trucks currently test twice a year. Under the original rule, OBD-equipped vehicles move to four tests a year starting October 1, 2027, and a bill has proposed reducing testing to once a year. Requirements can change, so always confirm your deadlines in CARB’s CTC-VIS system.', 'Program', 3),
+  ('mobile', 'Can Clean Truck Check be done at my yard?', 'Yes. Diesel Dynamix is a mobile testing service. We come to your yard, jobsite, terminal or parking location anywhere in Southern California, so you never drive to a test center.', 'Our service', 4),
   ('how-long', 'How long does a test take?', 'An OBD test is typically quick once we are connected to the truck. Smoke opacity tests take longer because the engine must be warmed up. For fleets, we plan the visit so trucks rotate through without holding up dispatch.', 'Our service', 5),
   ('what-ready', 'What do I need to have ready?', 'The truck’s VIN, access to the vehicle and keys, and a safe level place to park. For smoke opacity testing the engine should be able to reach normal operating temperature. We will confirm everything when we schedule.', 'Our service', 6),
   ('fleet', 'Can you test my whole fleet in one visit?', 'Yes. Tell us how many trucks you run and where they are parked. We schedule fleet visits to test as many trucks as possible per trip and can set up recurring testing so you never miss a deadline.', 'Fleets', 7),
   ('carb', 'Are you part of CARB?', 'No. Diesel Dynamix is an independent testing service. CARB runs the Clean Truck Check program; we provide mobile testing so you can meet its requirements. For official rules and deadlines, see CARB’s Clean Truck Check website.', 'Program', 8),
-  ('fail', 'What happens if my truck does not pass?', 'We explain the result and what it means in plain English. Your truck will need repairs to its emissions-control system before it can pass a retest. We can schedule the retest once repairs are done.', 'Our service', 9)
+  ('fail', 'What happens if my truck does not pass?', 'We explain the result and what it means in plain English. Your truck will need repairs to its emissions-control system before it can pass a retest. We can schedule the retest once repairs are done.', 'Our service', 9),
+  ('out-of-state', 'Does Clean Truck Check apply to out-of-state trucks?', 'Yes. Trucks over 14,000 lb GVWR that are registered in other states or in Mexico are covered when they operate in California. They must be reported in CTC-VIS and keep their testing up to date. We test out-of-state trucks anywhere in Southern California.', 'Program', 10),
+  ('cost', 'How much does Clean Truck Check cost in California?', 'There are two parts: CARB’s annual compliance fee per vehicle, paid in CTC-VIS, and the tester’s fee for each test. Our price depends on the number of trucks, the test type and the location, with per-truck pricing for fleets. Call or WhatsApp (858) 342-8328 for a quote.', 'Program', 11),
+  ('missed-deadline', 'What happens if I miss my Clean Truck Check deadline?', 'The truck becomes non-compliant. California-registered vehicles can face a DMV registration hold, and non-compliant trucks can be cited and penalized by CARB. Get tested as soon as possible: we can often schedule a mobile test quickly.', 'Program', 12),
+  ('pass-smoke', 'How do I pass the CARB smoke test?', 'Warm the engine to full operating temperature, fix exhaust leaks and engine faults, keep air filters and injectors in good shape, and make sure any diesel particulate filter is present and working. Well-maintained trucks usually pass.', 'Our service', 13)
 on conflict (id) do nothing;
 
 insert into public.posts (slug, title, excerpt, body, published_at, published) values
@@ -49,11 +45,161 @@ Most vehicles over 14,000 lb GVWR are covered, including trucks registered outsi
 
 ## Staying ahead of deadlines
 
-Testing frequency is set by CARB and can change. Always check your own deadlines in CARB’s CTC-VIS system, and book early so testing fits your schedule.', '2026-10-20', true)
+Testing frequency is set by CARB and can change. Always check your own deadlines in CARB’s CTC-VIS system, and book early so testing fits your schedule.', '2026-10-20', true),
+  ('how-often-do-trucks-need-clean-truck-check', 'How often do trucks need Clean Truck Check?', 'Most covered trucks test twice a year today, with quarterly testing for OBD trucks scheduled from October 2027. Here is what that means for your fleet.', '**Short answer:** most trucks covered by Clean Truck Check currently test **twice a year**. Under the original rule, OBD-equipped trucks move to **four tests a year (quarterly) starting October 1, 2027**. A bill has proposed reducing testing to once a year, so always confirm your schedule in CARB’s CTC-VIS system.
+
+## Why the testing frequency matters
+
+Each truck has its own deadlines in CTC-VIS. Missing one makes the truck non-compliant, which can lead to a DMV registration hold for California-registered vehicles and penalties from CARB.
+
+## Planning for Clean Truck Check 2027 quarterly testing
+
+If quarterly testing takes effect, an OBD fleet will need roughly twice as many tests per year. A few ways to stay ahead:
+
+- Group trucks by deadline so one visit covers several of them.
+- Book recurring testing instead of scheduling truck by truck.
+- Keep check-engine and emissions faults fixed between tests, so trucks pass the first time.
+
+## How Diesel Dynamix helps
+
+We bring mobile testing to your yard and can set up a recurring schedule for your whole fleet. See [fleet testing](/fleet-testing) or [book a test](/book).
+
+Official program details: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).', '2026-10-20', true),
+  ('clean-truck-check-out-of-state-trucks', 'Does Clean Truck Check apply to out-of-state trucks?', 'Yes. Out-of-state and Mexico-registered trucks over 14,000 lbs GVWR that drive in California are covered. Here is what carriers need to do.', '**Short answer: yes.** Clean Truck Check covers most diesel and alternative-fuel trucks over 14,000 lbs GVWR that operate in California, no matter where they are registered. That includes trucks from other states and from Mexico.
+
+## What out-of-state carriers need to do
+
+- Report each truck that operates in California in CARB’s CTC-VIS system and pay the annual compliance fee.
+- Pass the required emissions tests on schedule: an OBD test for newer engines, or a smoke opacity test plus visual inspection for older non-OBD diesels.
+- Keep proof of compliance current, because CARB enforces the program at the roadside and at facilities like ports.
+
+## Getting tested in Southern California
+
+Long-haul drivers don’t have time for a detour to a test site. Diesel Dynamix tests trucks on-site anywhere in Southern California: at a yard, a customer’s dock or near the [Port of Long Beach](/ports/port-of-long-beach) and the [Port of Los Angeles](/ports/port-of-los-angeles).
+
+Call or WhatsApp **(858) 342-8328** to arrange a test on your next California run.', '2026-10-20', true),
+  ('how-much-does-clean-truck-check-cost-california', 'How much does Clean Truck Check cost in California?', 'Clean Truck Check costs come in two parts: CARB’s annual compliance fee and the testing fee. Here is how to budget for both.', '**Short answer:** Clean Truck Check has two costs: **CARB’s annual compliance fee** for each vehicle, paid in CTC-VIS, and the **testing fee** charged by the credentialed tester for each test. The exact CARB fee is set by CARB and shown in CTC-VIS.
+
+## What affects the testing price
+
+- **Test type.** OBD tests are usually faster than smoke opacity tests, which need a warm engine and a visual inspection.
+- **Number of trucks.** Fleets tested in one visit usually get a better per-truck price.
+- **Location.** Mobile testing saves you the driver’s time, fuel and a lost day of work, which often costs more than the test itself.
+
+## The hidden cost: downtime
+
+Driving a truck to a test site can take half a day or more. Testing on-site at your yard keeps the truck earning. See [mobile CARB testing](/mobile-testing-services).
+
+## Get a quote
+
+Tell us how many trucks you have and where they are, and we will quote the visit. [Book online](/book) or call **(858) 342-8328**.', '2026-10-20', true),
+  ('how-to-pass-carb-smoke-test', 'How to pass the CARB smoke test', 'Practical steps to help older diesel trucks pass the Clean Truck Check smoke opacity test the first time.', '**Short answer:** warm the engine fully, fix known engine and exhaust problems first, and make sure the emissions-control parts (especially any diesel particulate filter) are present and working. Well-maintained trucks usually pass.
+
+## 1. Warm the engine
+
+A cold engine smokes more. Drive or idle the truck until it reaches normal operating temperature before the test.
+
+## 2. Fix the usual causes of smoke
+
+- Worn or leaking injectors
+- A dirty air filter or restricted intake
+- Turbocharger problems
+- Exhaust leaks upstream of the sensor
+
+## 3. Check the particulate filter
+
+If your truck has a DPF, it must be installed, intact and not overdue for cleaning. A cracked or plugged filter is a common reason for failure.
+
+## 4. Pass the visual inspection
+
+The smoke test comes with a visual inspection of emissions-control components. Missing, disconnected or tampered parts will fail the truck even if the smoke reading is fine.
+
+## If the truck fails
+
+We explain the result in plain English. Repair the problem, then we retest on-site. Learn more about the [smoke opacity test](/smoke-opacity-test).', '2026-10-20', true),
+  ('can-clean-truck-check-be-done-at-my-yard', 'Can Clean Truck Check be done at my yard?', 'Yes. Mobile Clean Truck Check testing comes to your yard, jobsite or terminal. Here is how an on-site visit works.', '**Short answer: yes.** Clean Truck Check tests can be performed on-site by a mobile tester. Diesel Dynamix comes to your yard, jobsite, terminal or parking location anywhere in Southern California.
+
+## How an on-site visit works
+
+1. You tell us how many trucks, which engine types and where they are parked.
+2. We confirm a time window that fits your dispatch.
+3. Our tester arrives and runs the right test for each truck: OBD, smoke opacity or visual inspection.
+4. Results are submitted and we explain next steps for every truck.
+
+## What we need on site
+
+- The VIN, keys and cab access for each truck
+- A safe, level spot to work
+- For smoke tests, engines that can reach operating temperature
+
+## Why fleets prefer mobile testing
+
+No drivers off the road, no fuel burned driving to a test site, and one visit covers the whole yard. See [how testing works](/how-testing-works) or [book mobile testing](/book).', '2026-10-20', true),
+  ('missed-clean-truck-check-deadline', 'What happens if I miss my Clean Truck Check deadline?', 'Missing a Clean Truck Check deadline makes a truck non-compliant. Here are the consequences and how to get back on track fast.', '**Short answer:** the truck becomes **non-compliant**. California-registered vehicles can face a **DMV registration hold**, and non-compliant trucks can be **cited and penalized** by CARB. The fix is to get tested as soon as possible.
+
+## Consequences of a missed deadline
+
+- **DMV registration hold.** The California DMV can hold registration renewal for non-compliant vehicles.
+- **Citations and penalties.** CARB enforces the program and can issue citations. Amounts are set by CARB and can change.
+- **Problems with customers.** Shippers, brokers and ports increasingly check compliance status.
+
+## How to get back on track
+
+1. Check the truck’s status and deadline in CARB’s CTC-VIS system.
+2. Make sure the vehicle is reported and the annual fee is paid.
+3. Book a test right away. We can often schedule a [mobile test](/mobile-testing-services) quickly, at your location.
+
+## Avoid it next time
+
+Set up recurring testing so every truck is tested before its window closes. See [fleet testing](/fleet-testing).
+
+Official information: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).', '2026-10-20', true)
 on conflict (slug) do nothing;
 
 insert into public.site_settings (key, value) values
   ('requirements', '[{"vehicle":"2013+ diesel engines with OBD","method":"CARB-verified OBD test"},{"vehicle":"2012 and older diesel without OBD","method":"Smoke opacity test + visual inspection"},{"vehicle":"2018+ alternative-fuel engines with OBD","method":"CARB-verified OBD test"},{"vehicle":"2017 and older alternative-fuel without OBD","method":"Visual inspection"}]'::jsonb),
   ('frequency_text', '"Most covered trucks (over 14,000 lb GVWR, including out-of-state trucks driving in California) currently test twice a year. Under the original rule, OBD-equipped vehicles move to four tests per year from October 1, 2027. A bill has proposed cutting testing to once a year, so requirements may change. Always check your own deadlines in CARB’s CTC-VIS system."'::jsonb),
-  ('counters', '[{"value":58,"label":"California counties covered"},{"value":18,"label":"Cities with local service pages"},{"value":4,"label":"Regions served statewide"}]'::jsonb)
+  ('counters', '[{"value":6,"label":"Southern California counties covered"},{"value":10,"label":"Cities with local service pages"},{"value":2,"label":"Major ports served"}]'::jsonb),
+  ('email_footer_address', '""'::jsonb)
 on conflict (key) do nothing;
+
+-- Needs supabase/migrations/0002_email.sql
+insert into public.email_templates (id, name, kind, subject, body) values
+  ('6f1b2a10-0000-4000-8000-000000000001', 'Proposal: mobile Clean Truck Check testing', 'proposal', 'Mobile Clean Truck Check testing for {{company}}', 'Hi {{first_name}},
+
+I’m reaching out from Diesel Dynamix. We provide **mobile CARB Clean Truck Check testing** anywhere in Southern California, so your trucks get tested at your yard instead of losing a day at a shop.
+
+## What we offer
+
+- On-site OBD testing, smoke opacity testing and visual inspections
+- One truck or an entire fleet in a single visit
+- Scheduling built around your dispatch, including early mornings
+- Plain-English results and help planning any retests
+
+Clean Truck Check deadlines apply to most trucks over 14,000 lb GVWR that drive in California, including out-of-state trucks. We can help {{company}} stay ahead of them.
+
+Would you like a quote? Just reply with how many trucks you run and where they are parked, or call/WhatsApp **(858) 342-8328**.
+
+Best regards,
+Kameron
+Diesel Dynamix
+[dieseldynamix.com](https://dieseldynamix.com)'),
+  ('6f1b2a10-0000-4000-8000-000000000002', 'Follow-up 1: quick check-in', 'follow_up', 'Re: Mobile Clean Truck Check testing for {{company}}', 'Hi {{first_name}},
+
+Just following up on my note about mobile Clean Truck Check testing. If your next testing window is coming up, we can usually schedule an on-site visit quickly.
+
+Reply with your truck count and location and I’ll send a quote, or call/WhatsApp **(858) 342-8328**.
+
+Thanks,
+Kameron
+Diesel Dynamix'),
+  ('6f1b2a10-0000-4000-8000-000000000003', 'Follow-up 2: last note', 'follow_up', 'Should I close your file, {{first_name}}?', 'Hi {{first_name}},
+
+I haven’t heard back, so I’ll assume the timing isn’t right. If anything changes, we’re here whenever {{company}} needs Clean Truck Check testing, anywhere in Southern California.
+
+You can book online any time at [dieseldynamix.com/book](https://dieseldynamix.com/book) or call **(858) 342-8328**.
+
+All the best,
+Kameron
+Diesel Dynamix')
+on conflict (id) do nothing;

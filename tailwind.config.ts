@@ -2,8 +2,8 @@ import type { Config } from 'tailwindcss';
 
 /**
  * Brand tokens from the Diesel Dynamix brief (section 3).
- * `orange-ink` and `green-ink` are darker variants for text on light
- * backgrounds, where the base orange/green fail WCAG AA contrast.
+ * `amber-ink` and `green-ink` are darker variants for text on light
+ * backgrounds, where the base amber/green fail WCAG AA contrast.
  */
 const config: Config = {
   content: ['./src/**/*.{ts,tsx}'],
@@ -17,10 +17,10 @@ const config: Config = {
       colors: {
         charcoal: '#16181D',
         steel: { DEFAULT: '#2A2E36', light: '#3A3F49' },
-        offwhite: '#F5F6F8',
+        offwhite: '#F4F4F2',
         ink: '#111318',
-        muted: { DEFAULT: '#4A5160', dark: '#A8AFBD' },
-        orange: { DEFAULT: '#FF6B1A', deep: '#E2550A', ink: '#B8430A' },
+        muted: { DEFAULT: '#4A5160', dark: '#9AA0AA' },
+        amber: { DEFAULT: '#F5A524', deep: '#DC8C12', ink: '#8F5600' },
         green: { DEFAULT: '#1E9E5A', ink: '#15703F' },
       },
       fontFamily: {
@@ -65,12 +65,17 @@ const config: Config = {
           from: { transform: 'translate3d(0,0,0)' },
           to: { transform: 'translate3d(-50%,0,0)' },
         },
+        marquee: {
+          from: { transform: 'translate3d(0,0,0)' },
+          to: { transform: 'translate3d(-50%,0,0)' },
+        },
       },
       animation: {
         kenburns: 'kenburns 9s ease-out both',
         'pulse-ring': 'pulse-ring 2.4s cubic-bezier(0.16,1,0.3,1) infinite',
         'fade-up': 'fade-up 0.7s cubic-bezier(0.16,1,0.3,1) both',
         road: 'road 1.6s linear infinite',
+        marquee: 'marquee 60s linear infinite',
       },
     },
   },

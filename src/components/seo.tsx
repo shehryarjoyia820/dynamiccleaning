@@ -21,6 +21,12 @@ export function pageMeta({ title, description, path }: { title: string; descript
   };
 }
 
+// Service area: Southern California only.
+const SOCAL_COUNTIES = ['Los Angeles', 'Orange', 'Riverside', 'San Bernardino', 'San Diego', 'Imperial'].map((c) => ({
+  '@type': 'AdministrativeArea',
+  name: `${c} County, California`,
+}));
+
 export function organizationSchema() {
   return {
     '@context': 'https://schema.org',
@@ -28,13 +34,13 @@ export function organizationSchema() {
     '@id': `${SITE.url}/#business`,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/brand/icon-color.svg`,
+    logo: `${SITE.url}/brand/app-icon.svg`,
     image: `${SITE.url}/opengraph-image`,
     description: SITE.description,
     telephone: SITE.phoneE164,
     email: SITE.emailInfo,
     priceRange: '$$',
-    areaServed: { '@type': 'State', name: 'California', sameAs: 'https://en.wikipedia.org/wiki/California' },
+    areaServed: SOCAL_COUNTIES,
     founder: { '@type': 'Person', name: SITE.ceo, jobTitle: 'CEO' },
     contactPoint: [
       { '@type': 'ContactPoint', telephone: SITE.phoneE164, contactType: 'customer service', email: SITE.emailService, areaServed: 'US-CA', availableLanguage: ['English'] },
@@ -54,7 +60,7 @@ export function serviceSchema(areaName?: string) {
     serviceType: 'Mobile Clean Truck Check emissions testing',
     name: areaName ? `Mobile Clean Truck Check testing in ${areaName}` : 'Mobile Clean Truck Check testing',
     provider: { '@id': `${SITE.url}/#business` },
-    areaServed: areaName ? { '@type': 'City', name: `${areaName}, California` } : { '@type': 'State', name: 'California' },
+    areaServed: areaName ? { '@type': 'City', name: `${areaName}, California` } : SOCAL_COUNTIES,
     description:
       'On-site CARB Clean Truck Check testing for heavy-duty diesel and alternative-fuel trucks: OBD testing, smoke opacity testing and visual inspections.',
     isRelatedTo: { '@type': 'GovernmentService', name: 'CARB Clean Truck Check', url: LINKS.carbCtc },

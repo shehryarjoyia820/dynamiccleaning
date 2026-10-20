@@ -1,8 +1,8 @@
 # Diesel Dynamix website
 
-Fast, animated, mobile-first website for **Diesel Dynamix**, a mobile CARB Clean Truck Check testing company serving all of California.
+Fast, animated, mobile-first website for **Diesel Dynamix**, a mobile CARB Clean Truck Check testing company serving Southern California.
 
-**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Supabase (Postgres, auth with 2FA) · Resend email · Embla carousel · deployed on Vercel.
+**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Supabase (Postgres, auth with 2FA) · SMTP email (Nodemailer) with proposals, follow-ups and subscribers · Embla carousel · deployed on Vercel.
 
 ## Quick start
 
@@ -27,6 +27,8 @@ Without Supabase keys the public site uses the built-in content in `src/content/
 | Booking and contact forms | `src/components/forms.tsx` → `src/app/api/leads/route.ts` |
 | Pages | `src/app/(site)/**` |
 | Admin dashboard (leads, notes, assignment, CSV export, content editing, team) | `src/app/admin/**` |
+| Email system: contacts, CSV upload, templates, proposals + automatic follow-ups, unsubscribe | `src/lib/campaigns.ts`, `src/app/admin/(panel)/email-actions.ts`, `src/app/api/cron/email` |
+| SEO/AEO keyword map | `SEO.md`, `src/app/llms.txt` |
 | Database schema and seed | `supabase/migrations/0001_init.sql`, `supabase/seed.sql` |
 | SEO: metadata, JSON-LD, sitemap, robots, OG image | `src/components/seo.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, `src/app/opengraph-image.tsx` |
 
