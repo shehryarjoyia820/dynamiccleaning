@@ -35,7 +35,7 @@ export default function TermsPage() {
         <p>To the extent permitted by law, {SITE.name} is not liable for indirect or consequential losses arising from use of this website.</p>
         <h2>Contact</h2>
         <p>
-          Questions? Email <a href={LINKS.mailInfo}>{SITE.emailInfo}</a> or call <a href={LINKS.tel}>{SITE.phoneDisplay}</a>.
+          Questions? Email <a href={LINKS.mailService}>{SITE.emailService}</a> or call <a href={LINKS.tel}>{SITE.phoneDisplay}</a>.
         </p>
       </PageBody>
     </>

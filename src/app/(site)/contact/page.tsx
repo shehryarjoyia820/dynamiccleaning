@@ -14,8 +14,7 @@ export const metadata = pageMeta({
 const CHANNELS = [
   { icon: Phone, label: 'Call', value: SITE.phoneDisplay, href: LINKS.tel, track: 'call_click' },
   { icon: WhatsAppIcon, label: 'WhatsApp', value: SITE.phoneDisplay, href: LINKS.whatsapp, track: 'whatsapp_click', external: true },
-  { icon: Mail, label: 'General inquiries', value: SITE.emailInfo, href: LINKS.mailInfo, track: 'email_click' },
-  { icon: Mail, label: 'Service & appointments', value: SITE.emailService, href: LINKS.mailService, track: 'email_click' },
+  { icon: Mail, label: 'Email', value: SITE.emailService, href: LINKS.mailService, track: 'email_click' },
 ];
 
 export default function ContactPage() {

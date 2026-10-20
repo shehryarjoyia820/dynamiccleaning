@@ -4,7 +4,7 @@ import { upsertContact } from '@/lib/campaigns';
 import { mailConfigured } from '@/lib/mailer';
 import { RATE_LIMIT, RATE_WINDOW, clientIpHash, limited, verifyTurnstile } from '@/lib/rate-limit';
 import { serviceClient } from '@/lib/supabase/clients';
-import { INFO_INBOX, SERVICE_INBOX, customerConfirmation, sendEmail, sendTeamSms, staffEmail } from '@/lib/email';
+import { SERVICE_INBOX, customerConfirmation, sendEmail, sendTeamSms, staffEmail } from '@/lib/email';
 import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
@@ -160,7 +160,7 @@ export async function POST(req: NextRequest) {
   } else {
     tasks.push(
       sendEmail({
-        to: INFO_INBOX,
+        to: SERVICE_INBOX,
         subject: `New message from ${d.full_name}`,
         html: staffEmail('New contact message', [
           ['Name', d.full_name],
@@ -177,7 +177,7 @@ export async function POST(req: NextRequest) {
       to: d.email,
       subject: d.kind === 'booking' ? 'We received your Clean Truck Check request' : 'We received your message',
       html: customerConfirmation(d.full_name, d.kind),
-      replyTo: d.kind === 'booking' ? SERVICE_INBOX : INFO_INBOX,
+      replyTo: d.kind === 'booking' ? SERVICE_INBOX : SERVICE_INBOX,
     }),
   );
   await Promise.allSettled(tasks);

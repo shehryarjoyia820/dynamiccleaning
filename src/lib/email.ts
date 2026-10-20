@@ -3,7 +3,6 @@ import { sendMail } from '@/lib/mailer';
 import { LINKS, SITE } from '@/lib/site';
 
 export const SERVICE_INBOX = process.env.SERVICE_INBOX || SITE.emailService;
-export const INFO_INBOX = process.env.INFO_INBOX || SITE.emailInfo;
 
 export function esc(s: unknown) {
   return String(s ?? '').replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);

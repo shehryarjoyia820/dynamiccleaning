@@ -43,14 +43,14 @@ export default function PrivacyPage() {
         <h2>Your California privacy rights</h2>
         <p>
           California residents have the right to know what personal information we collect, to request deletion or correction, and to opt out of the sale or sharing of personal information. We will not
-          discriminate against you for using these rights. To make a request, email <a href={LINKS.mailInfo}>{SITE.emailInfo}</a> or call <a href={LINKS.tel}>{SITE.phoneDisplay}</a>.
+          discriminate against you for using these rights. To make a request, email <a href={LINKS.mailService}>{SITE.emailService}</a> or call <a href={LINKS.tel}>{SITE.phoneDisplay}</a>.
         </p>
         <h2>Cookies</h2>
         <p>We only set analytics cookies if you click “Accept” on our cookie notice. You can change your choice by clearing this site’s data in your browser.</p>
         <h2>Data retention and security</h2>
         <p>We keep lead and customer records only as long as needed for the purposes above and for legal and accounting requirements. Access to our admin system is restricted and protected with two-factor authentication.</p>
         <h2>Contact</h2>
-        <p>Questions about this policy? Email <a href={LINKS.mailInfo}>{SITE.emailInfo}</a>.</p>
+        <p>Questions about this policy? Email <a href={LINKS.mailService}>{SITE.emailService}</a>.</p>
       </PageBody>
     </>
   );

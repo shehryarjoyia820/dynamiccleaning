@@ -38,7 +38,7 @@ export function organizationSchema() {
     image: `${SITE.url}/opengraph-image`,
     description: SITE.description,
     telephone: SITE.phoneE164,
-    email: SITE.emailInfo,
+    email: SITE.emailService,
     priceRange: '$$',
     areaServed: SOCAL_COUNTIES,
     founder: { '@type': 'Person', name: SITE.ceo, jobTitle: 'CEO' },

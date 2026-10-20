@@ -9,15 +9,13 @@ export const SITE = {
   phoneE164: '+18583428328',
   whatsapp: '18583428328',
   whatsappMessage: 'Hi Diesel Dynamix, I need Clean Truck Check testing for my truck(s).',
-  emailInfo: 'Info@dieseldynamix.com',
-  emailService: 'Service@dieseldynamix.com',
+  emailService: 'service@dieseldynamix.com',
   areaServed: 'Southern California',
 } as const;
 
 export const LINKS = {
   tel: `tel:${SITE.phoneE164}`,
   whatsapp: `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`,
-  mailInfo: `mailto:${SITE.emailInfo}`,
   mailService: `mailto:${SITE.emailService}`,
   carbCtc: 'https://ww2.arb.ca.gov/our-work/programs/CTC',
   carbCtcVis: 'https://cleantruckcheck.arb.ca.gov/',

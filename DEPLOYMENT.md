@@ -33,7 +33,7 @@ Set `SMTP_HOST`, `SMTP_PORT`, `SMTP_USER`, `SMTP_PASS` and `EMAIL_FROM` in Verce
 
 ### What the email system does
 
-- **Leads:** bookings go to `SERVICE_INBOX`, contact messages to `INFO_INBOX`, and each customer gets a confirmation. Everyone who submits a form becomes a contact.
+- **Leads:** bookings and contact messages go to `SERVICE_INBOX` (service@dieseldynamix.com), and each customer gets a confirmation. Everyone who submits a form becomes a contact.
 - **Subscribers:** the newsletter form (footer and blog) adds contacts tagged `newsletter`, with a welcome email.
 - **Proposals:** at **/admin → Contacts → Upload emails**, import a CSV or paste a list and give it a tag. Write proposals and follow-ups at **/admin → Email templates** (PDF attachments are supported). Send from **/admin → Send proposals**: pick the tag, add up to 3 follow-ups (for example 3, 7 and 14 days), and send. You can also send to a single lead from the lead page.
 - **Follow-ups** go out automatically once a day (Vercel Cron, 9 AM Pacific). They skip anyone who replied (mark the contact "replied"), unsubscribed, or whose lead is Scheduled, Completed or Closed.

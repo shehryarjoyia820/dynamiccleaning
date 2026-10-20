@@ -28,11 +28,6 @@ export function Footer() {
               </a>
             </li>
             <li>
-              <a href={LINKS.mailInfo} data-track="email_click" className="inline-flex items-center gap-3 hover:text-amber">
-                <Mail className="h-5 w-5 text-amber" aria-hidden /> {SITE.emailInfo}
-              </a>
-            </li>
-            <li>
               <a href={LINKS.mailService} data-track="email_click" className="inline-flex items-center gap-3 hover:text-amber">
                 <Mail className="h-5 w-5 text-amber" aria-hidden /> {SITE.emailService}
               </a>

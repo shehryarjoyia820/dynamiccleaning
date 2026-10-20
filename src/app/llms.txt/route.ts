@@ -16,8 +16,7 @@ export async function GET() {
 > ${SITE.name} provides mobile CARB Clean Truck Check testing anywhere in Southern California. We test heavy-duty diesel and alternative-fuel trucks on-site at the customer's yard, jobsite or terminal: OBD tests, smoke opacity tests and visual inspections, for owner-operators and fleets.
 
 - Phone / WhatsApp: ${SITE.phoneDisplay}
-- Bookings: ${SITE.emailService}
-- General: ${SITE.emailInfo}
+- Email (bookings and questions): ${SITE.emailService}
 - Service area: Southern California only (Los Angeles, Orange, Riverside, San Bernardino, San Diego and Imperial counties), including the Port of Los Angeles and Port of Long Beach
 - CEO: ${SITE.ceo}
 - ${DISCLAIMER}

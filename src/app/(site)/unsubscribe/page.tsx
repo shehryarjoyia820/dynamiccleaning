@@ -49,7 +49,7 @@ export default async function UnsubscribePage({ searchParams }: { searchParams: 
             ) : (
               <>
                 <h2 className="text-3xl">Link not valid</h2>
-                <p className="mt-2 text-muted">Please use the unsubscribe link in the email, or email Info@dieseldynamix.com and we will remove you.</p>
+                <p className="mt-2 text-muted">Please use the unsubscribe link in the email, or email service@dieseldynamix.com and we will remove you.</p>
               </>
             )}
           </div>

@@ -114,7 +114,7 @@ export function renderEmail(t: Pick<Template, 'subject' | 'body'>, c: Contact, o
     html,
     text,
     headers: {
-      'List-Unsubscribe': `<${urls.oneClick}>, <mailto:${SITE.emailInfo}?subject=unsubscribe>`,
+      'List-Unsubscribe': `<${urls.oneClick}>, <mailto:${SITE.emailService}?subject=unsubscribe>`,
       'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
     },
   };
