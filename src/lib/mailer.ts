@@ -62,7 +62,9 @@ export async function sendMail({ channel = 'service', ...m }: Mail): Promise<{ o
   const t = smtp(channel);
   if (t) {
     try {
-      await t.sendMail({ from, ...m });
+      const info = await t.sendMail({ from, ...m });
+      // Proof of delivery to the mail server; no addresses or content are logged.
+      console.log(`[mail] sent (${channel}) accepted=${info.accepted.length} rejected=${info.rejected.length} response="${String(info.response).slice(0, 80)}"`);
       return { ok: true };
     } catch (e) {
       const error = e instanceof Error ? e.message : String(e);
