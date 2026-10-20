@@ -23,7 +23,7 @@ export function BookCard({ location }: { location?: string }) {
       <p className="eyebrow text-accent">We come to you</p>
       <h2 className="mt-2 text-3xl">Book mobile testing</h2>
       <p className="mt-2 text-white/80">Tell us how many trucks and where. We reply fast.</p>
-      <div className="mt-5 grid gap-3">
+      <div className="mt-5 grid gap-3 sm:grid-cols-3 lg:grid-cols-1">
         <BookButton className="btn-primary w-full" location={location}>
           Book Now
         </BookButton>

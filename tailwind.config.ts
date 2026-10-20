@@ -80,6 +80,8 @@ const config: Config = {
       },
     },
   },
+  // hover: styles only on devices with a real pointer, so taps on phones/tablets don't leave menus stuck "hovered".
+  future: { hoverOnlyWhenSupported: true },
   plugins: [],
 };
 

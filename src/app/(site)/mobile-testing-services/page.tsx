@@ -82,7 +82,7 @@ export default function ServicesPage() {
               </Reveal>
             ))}
           </ul>
-          <Reveal className="mt-10 flex flex-wrap gap-4">
+          <Reveal className="btn-row mt-10">
             <Link href="/how-testing-works" className="btn-primary">How testing works</Link>
             <Link href="/fleet-testing" className="btn-ghost-dark">Fleet testing</Link>
           </Reveal>

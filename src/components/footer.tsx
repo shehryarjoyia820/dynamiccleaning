@@ -9,8 +9,8 @@ import { DISCLAIMER, FOOTER_LINKS, LINKS, SITE } from '@/lib/site';
 export function Footer() {
   return (
     <footer className="bg-charcoal pb-24 text-white md:pb-0">
-      <div className="container grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
-        <div>
+      <div className="container grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-14 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="col-span-2 md:col-span-3 lg:col-span-1">
           <Link href="/" aria-label="Diesel Dynamix home">
             <Logo />
           </Link>

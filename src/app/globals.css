@@ -42,6 +42,10 @@
   .btn-ghost-light {
     @apply btn border-2 border-ink/20 text-ink hover:border-ink hover:bg-ink/5;
   }
+  /* Button group: full-width stack on phones, inline from 640px. */
+  .btn-row {
+    @apply grid gap-3 sm:flex sm:flex-wrap sm:gap-4;
+  }
   .btn-whatsapp {
     /* WhatsApp green darkened so white text passes AA (5.0:1). */
     @apply btn bg-[#128048] text-white hover:bg-[#0e6a3b];

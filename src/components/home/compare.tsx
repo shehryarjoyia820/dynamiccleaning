@@ -15,7 +15,22 @@ export function MobileVsShop() {
     <section className="bg-white py-section">
       <div className="container">
         <SectionHeading eyebrow="Why mobile testing" title="Skip the trip to the test site" center />
-        <Reveal className="mx-auto mt-12 max-w-4xl overflow-hidden rounded-2xl border border-ink/10 shadow-card">
+        <Reveal as="div" className="mt-10 grid gap-3 sm:hidden">
+          {ROWS.map(([k, shop, us]) => (
+            <div key={k} className="overflow-hidden rounded-xl border border-ink/10 shadow-card">
+              <p className="bg-charcoal px-4 py-2.5 font-display text-base uppercase tracking-wide text-white">{k}</p>
+              <p className="flex items-start gap-2 bg-accent/10 px-4 py-3 font-semibold text-ink">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-green-ink" aria-hidden />
+                <span><span className="sr-only">Diesel Dynamix: </span>{us}</span>
+              </p>
+              <p className="flex items-start gap-2 px-4 py-3 text-sm text-muted">
+                <X className="mt-0.5 h-4 w-4 shrink-0 text-[#B42318]" aria-hidden />
+                <span><span className="font-semibold">Test site:</span> {shop}</span>
+              </p>
+            </div>
+          ))}
+        </Reveal>
+        <Reveal className="mx-auto mt-12 hidden max-w-4xl overflow-hidden rounded-2xl border border-ink/10 shadow-card sm:block">
           <table className="w-full text-left">
             <caption className="sr-only">Test site compared with Diesel Dynamix mobile testing</caption>
             <thead>

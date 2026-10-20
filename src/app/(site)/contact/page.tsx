@@ -24,7 +24,7 @@ export default function ContactPage() {
       <section className="py-section">
         <div className="container grid gap-12 lg:grid-cols-[1fr_1.3fr]">
           <div>
-            <ul className="grid gap-4">
+            <ul className="grid gap-4 sm:grid-cols-2 lg:grid-cols-1">
               {CHANNELS.map((c, i) => (
                 <Reveal as="li" key={c.label} delay={i * 70}>
                   <a
@@ -38,12 +38,12 @@ export default function ContactPage() {
                     </span>
                     <span className="min-w-0">
                       <span className="block text-sm font-semibold text-muted">{c.label}</span>
-                      <span className="block break-words font-display text-2xl font-bold group-hover:text-accent-ink">{c.value}</span>
+                      <span className="block font-display text-xl font-bold [overflow-wrap:anywhere] group-hover:text-accent-ink sm:text-2xl">{c.value}</span>
                     </span>
                   </a>
                 </Reveal>
               ))}
-              <Reveal as="li" delay={300} className="flex items-center gap-3 px-2 text-muted">
+              <Reveal as="li" delay={300} className="flex items-center gap-3 px-2 text-muted sm:col-span-2 lg:col-span-1">
                 <MapPin className="h-5 w-5 text-accent-ink" aria-hidden /> Mobile service across Southern California
               </Reveal>
             </ul>

@@ -127,11 +127,11 @@ export function Counters({ items, dark }: { items: Counter[]; dark?: boolean }) 
   }, []);
 
   return (
-    <dl ref={ref} className="grid gap-6 sm:grid-cols-3">
+    <dl ref={ref} className="grid grid-cols-3 gap-3 sm:gap-6">
       {items.map((c) => (
-        <div key={c.label} className={cn('rounded-xl border p-6', dark ? 'border-white/10 bg-steel' : 'border-ink/10 bg-white shadow-card')}>
-          <dt className={cn('order-2 mt-1', dark ? 'text-muted-dark' : 'text-muted')}>{c.label}</dt>
-          <dd className={cn('font-display text-6xl font-extrabold tabular-nums', dark ? 'text-accent' : 'text-accent-ink')}>
+        <div key={c.label} className={cn('flex flex-col rounded-xl border p-3 sm:p-6', dark ? 'border-white/10 bg-steel' : 'border-ink/10 bg-white shadow-card')}>
+          <dt className={cn('order-2 mt-1 text-xs leading-snug sm:text-base', dark ? 'text-muted-dark' : 'text-muted')}>{c.label}</dt>
+          <dd className={cn('font-display text-4xl font-extrabold tabular-nums sm:text-6xl', dark ? 'text-accent' : 'text-accent-ink')}>
             {/* Screen readers get the final value, not the animation. */}
             <span aria-hidden>{Math.round(c.value * t).toLocaleString()}</span>
             <span className="sr-only">{c.value.toLocaleString()}</span>

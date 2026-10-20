@@ -89,7 +89,7 @@ export default async function HomePage() {
                 <strong>Diesel Dynamix brings the test to you</strong>, so your trucks stay compliant without leaving the yard.
               </p>
             </Reveal>
-            <Reveal delay={180} className="mt-8 flex flex-wrap gap-4">
+            <Reveal delay={180} className="btn-row mt-8">
               <Link href="/clean-truck-check" className="btn-primary">
                 Read the full guide <ArrowRight className="h-5 w-5" aria-hidden />
               </Link>

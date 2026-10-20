@@ -52,14 +52,14 @@ export default async function ServiceAreasPage() {
               return (
                 <Reveal key={r}>
                   <h2 className="text-3xl text-accent">{r}</h2>
-                  <ul className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <ul className="mt-4 grid grid-cols-2 gap-2.5 sm:gap-3">
                     {list.map((a) => (
                       <li key={a.slug}>
                         <Link
                           href={`/service-areas/${a.slug}`}
-                          className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-accent/60"
+                          className="group flex h-full items-center justify-between gap-2 rounded-lg border border-white/10 bg-steel px-3 py-3 transition-colors hover:border-accent/60 sm:px-4 sm:py-3.5"
                         >
-                          <span className="font-display text-xl font-semibold uppercase">{a.name}</span>
+                          <span className="font-display text-base font-semibold uppercase leading-tight sm:text-xl">{a.name}</span>
                           <ArrowRight className="h-5 w-5 text-accent transition-transform group-hover:translate-x-1" aria-hidden />
                         </Link>
                       </li>

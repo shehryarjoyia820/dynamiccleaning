@@ -67,7 +67,7 @@ export function PageHero({
 }) {
   const all = [{ name: 'Home', path: '/' }, ...crumbs];
   return (
-    <section className="relative overflow-hidden bg-charcoal pb-16 pt-32 text-white sm:pb-20 sm:pt-40">
+    <section className="relative overflow-hidden bg-charcoal pb-12 pt-28 text-white sm:pb-20 sm:pt-40">
       <JsonLd data={breadcrumbSchema(all)} />
       <HeroTexture />
       <div className="container relative">
@@ -89,9 +89,9 @@ export function PageHero({
             ))}
           </ol>
         </nav>
-        <p className="eyebrow mt-8 animate-fade-up text-accent">{eyebrow}</p>
+        <p className="eyebrow mt-6 animate-fade-up text-accent sm:mt-8">{eyebrow}</p>
         <h1 className="mt-3 max-w-4xl animate-fade-up text-display-xl [animation-delay:80ms]">{title}</h1>
-        <div className="mt-5 max-w-2xl animate-fade-up text-lg text-white/80 [animation-delay:160ms]">{intro}</div>
+        <div className="mt-4 max-w-2xl animate-fade-up text-base text-white/80 [animation-delay:160ms] sm:mt-5 sm:text-lg">{intro}</div>
         <div className="mt-8 animate-fade-up [animation-delay:240ms]">{children ?? <ContactButtons />}</div>
       </div>
     </section>
@@ -111,12 +111,12 @@ export function HeroTexture() {
 
 export function ContactButtons({ location, light }: { location?: string; light?: boolean }) {
   return (
-    <div className="flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-      <BookButton className="btn-primary" location={location}>
+    <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap">
+      <BookButton className="btn-primary col-span-2" location={location}>
         Book Mobile Testing
       </BookButton>
       <a href={LINKS.tel} data-track="call_click" className={light ? 'btn-ghost-light' : 'btn-ghost-dark'}>
-        <Phone className="h-5 w-5" aria-hidden /> Call {SITE.phoneDisplay}
+        <Phone className="h-5 w-5" aria-hidden /> Call<span className="hidden sm:inline"> {SITE.phoneDisplay}</span>
       </a>
       <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" className="btn-whatsapp">
         <WhatsAppIcon className="h-5 w-5" /> WhatsApp
@@ -149,7 +149,19 @@ export function RequirementsTable({ rows, frequency }: { rows: RequirementRow[];
   return (
     <div>
       <div className="overflow-hidden rounded-xl border border-ink/10 bg-white shadow-card">
-        <table className="w-full text-left">
+        <ul className="divide-y divide-ink/10 sm:hidden" aria-label="Clean Truck Check test method by vehicle type">
+          <li className="bg-charcoal px-4 py-3 font-display text-base uppercase tracking-wide text-white">Vehicle → test method</li>
+          {rows.map((r) => (
+            <li key={r.vehicle} className="px-4 py-3.5">
+              <p className="font-semibold text-ink">{r.vehicle}</p>
+              <p className="mt-1 flex items-center gap-2 text-muted">
+                <span className="h-2 w-2 shrink-0 rounded-full bg-green" aria-hidden />
+                {r.method}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <table className="hidden w-full text-left sm:table">
           <caption className="sr-only">Clean Truck Check test method by vehicle type</caption>
           <thead className="bg-charcoal text-white">
             <tr>
