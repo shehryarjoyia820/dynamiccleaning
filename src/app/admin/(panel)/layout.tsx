@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { Contact, FileText, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
+import { Contact, ExternalLink, FileText, Globe, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
 import { LogoMark } from '@/components/brand';
 import { requireStaff } from '@/lib/admin';
 import { signOut } from './actions';
@@ -24,11 +24,31 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   return (
     <div className="min-h-screen lg:grid lg:grid-cols-[15rem_1fr]">
       <aside className="bg-charcoal text-white lg:min-h-screen">
-        <div className="flex items-center gap-2 px-5 py-4">
-          <LogoMark className="h-8 w-8" />
-          <span className="font-display text-lg font-extrabold uppercase">
-            Diesel <span className="text-accent">Dynamix</span>
-          </span>
+        <div className="flex items-center justify-between gap-2 px-5 py-4">
+          <Link href="/admin" className="flex items-center gap-2">
+            <LogoMark className="h-8 w-8" />
+            <span className="font-display text-lg font-extrabold uppercase">
+              Diesel <span className="text-accent">Dynamix</span>
+            </span>
+          </Link>
+          {/* Compact shortcut for phones, where the full nav scrolls sideways. */}
+          <a href="/" target="_blank" rel="noopener" className="inline-flex items-center gap-1 rounded-md border border-white/20 px-2.5 py-1.5 text-xs font-semibold hover:bg-white/10 lg:hidden">
+            <Globe className="h-3.5 w-3.5 text-accent" aria-hidden /> Website
+          </a>
+        </div>
+        <div className="hidden px-3 pb-2 lg:block">
+          <a
+            href="/"
+            target="_blank"
+            rel="noopener"
+            className="flex items-center justify-between gap-2 rounded-md border border-white/15 bg-white/5 px-3 py-2.5 text-sm font-semibold text-white hover:border-accent hover:bg-white/10"
+          >
+            <span className="flex items-center gap-2">
+              <Globe className="h-4 w-4 text-accent" aria-hidden /> Visit website
+            </span>
+            <ExternalLink className="h-3.5 w-3.5 text-white/60" aria-hidden />
+            <span className="sr-only">(opens in a new tab)</span>
+          </a>
         </div>
         <nav aria-label="Admin" className="flex gap-1 overflow-x-auto px-3 pb-3 lg:flex-col lg:overflow-visible">
           {NAV.map((n) => (

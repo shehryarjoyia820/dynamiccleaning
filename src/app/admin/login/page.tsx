@@ -64,6 +64,7 @@ export default function LoginPage() {
   return (
     <main className="grid min-h-screen place-items-center px-4">
       <div className="w-full max-w-sm">
+        <a href="/" className="mb-4 inline-flex items-center gap-1 text-sm font-semibold text-muted hover:text-ink">← Back to website</a>
         <div className="rounded-xl bg-charcoal p-5 text-center"><Logo /></div>
         <h1 className="mt-8 text-4xl">Staff sign in</h1>
         <p className="mt-1 text-muted">Sign in with your email and password.</p>
