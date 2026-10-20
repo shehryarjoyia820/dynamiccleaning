@@ -5,6 +5,7 @@ import { JsonLd, pageMeta } from '@/components/seo';
 import { POSTS } from '@/content/seed';
 import { getPost } from '@/lib/content';
 import { Markdown } from '@/lib/markdown';
+import { sanitizeBlogHtml } from '@/lib/sanitize';
 import { SITE } from '@/lib/site';
 import { formatDate } from '@/lib/utils';
 
@@ -19,7 +20,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPost(slug);
   if (!post) return {};
-  return pageMeta({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}` });
+  const meta = pageMeta({ title: post.title, description: post.excerpt, path: `/blog/${post.slug}` });
+  if (post.cover_url) {
+    meta.openGraph = { ...meta.openGraph, type: 'article', publishedTime: post.published_at, images: [{ url: post.cover_url, alt: post.cover_alt ?? post.title }] };
+    meta.twitter = { card: 'summary_large_image', images: [post.cover_url] };
+  }
+  return meta;
 }
 
 export default async function PostPage({ params }: { params: Promise<{ slug: string }> }) {
@@ -35,6 +41,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           headline: post.title,
           description: post.excerpt,
           datePublished: post.published_at,
+          ...(post.cover_url ? { image: post.cover_url } : {}),
           author: { '@type': 'Organization', name: SITE.name },
           publisher: { '@id': `${SITE.url}/#business` },
           mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
@@ -50,7 +57,13 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
         ]}
       />
       <PageBody>
-        <Markdown source={post.body} />
+        {post.cover_url ? (
+          <figure className="mb-8">
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img src={post.cover_url} alt={post.cover_alt ?? ''} width={1600} height={900} className="aspect-[16/9] w-full rounded-xl object-cover" fetchPriority="high" />
+          </figure>
+        ) : null}
+        {post.body_html ? <div dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.body_html) }} /> : <Markdown source={post.body} />}
         <div className="mt-10">
           <OfficialSourceNote />
         </div>

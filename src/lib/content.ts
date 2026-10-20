@@ -57,16 +57,19 @@ export function getFaqs(): Promise<Faq[]> {
   );
 }
 
-export function getPosts(): Promise<Post[]> {
-  return query(
-    (db) =>
-      db
-        .from('posts')
-        .select('slug,title,excerpt,body,published_at')
-        .eq('published', true)
-        .order('published_at', { ascending: false }) as unknown as PromiseLike<{ data: Post[] | null; error: unknown }>,
-    POSTS,
-  );
+export async function getPosts(): Promise<Post[]> {
+  const run = (cols: string) =>
+    query(
+      (db) =>
+        db
+          .from('posts')
+          .select(cols)
+          .eq('published', true)
+          .order('published_at', { ascending: false }) as unknown as PromiseLike<{ data: Post[] | null; error: unknown }>,
+      null as Post[] | null,
+    );
+  // Rich columns arrive with the blog-media upgrade; fall back to the basic ones until then.
+  return (await run('slug,title,excerpt,body,published_at,body_html,cover_url,cover_alt')) ?? (await run('slug,title,excerpt,body,published_at')) ?? POSTS;
 }
 
 export async function getPost(slug: string) {

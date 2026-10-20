@@ -24,7 +24,13 @@ export default async function BlogPage() {
           <ul className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((p, i) => (
               <Reveal as="li" key={p.slug} delay={(i % 3) * 80}>
-                <Link href={`/blog/${p.slug}`} className="card group flex h-full flex-col transition-transform duration-300 hover:-translate-y-1">
+                <Link href={`/blog/${p.slug}`} className="card group flex h-full flex-col overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+                  {p.cover_url ? (
+                    <div className="-mx-6 -mt-6 mb-5 aspect-[16/9] overflow-hidden bg-offwhite">
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img src={p.cover_url} alt={p.cover_alt ?? ''} loading={i < 3 ? 'eager' : 'lazy'} className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+                    </div>
+                  ) : null}
                   <time dateTime={p.published_at} className="text-sm text-muted">
                     {formatDate(p.published_at)}
                   </time>

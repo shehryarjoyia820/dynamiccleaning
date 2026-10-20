@@ -7,6 +7,7 @@ import { LEAD_STATUSES, fromLaInput, requireStaff, userError } from '@/lib/admin
 import { CONTENT_TAG, serviceClient } from '@/lib/supabase/clients';
 import { REGIONS } from '@/content/seed';
 import { SITE } from '@/lib/site';
+import { htmlToText, sanitizeBlogHtml } from '@/lib/sanitize';
 
 const slug = z.string().trim().toLowerCase().regex(/^[a-z0-9]+(-[a-z0-9]+)*$/, 'Use lowercase letters, numbers and dashes');
 const get = (f: FormData, k: string) => String(f.get(k) ?? '').trim();
@@ -129,14 +130,39 @@ export async function savePost(form: FormData) {
     title: z.string().min(3).max(200).parse(get(form, 'title')),
     excerpt: z.string().max(400).parse(get(form, 'excerpt')),
     body: z.string().max(50000).parse(get(form, 'body')),
+    body_html: sanitizeBlogHtml(z.string().max(300000).parse(get(form, 'body_html'))) || null,
+    cover_url: z.union([z.literal(''), z.string().url().startsWith('https://')]).parse(get(form, 'cover_url')) || null,
+    cover_alt: z.string().max(300).parse(get(form, 'cover_alt')) || null,
     published_at: z.string().regex(/^\d{4}-\d{2}-\d{2}$/).parse(get(form, 'published_at')),
     published: form.get('published') === 'on',
   };
+  if (row.cover_url && !row.cover_alt) return fail('Add alt text for the featured image (describe what it shows).');
+  if (row.body_html) row.body = htmlToText(row.body_html).slice(0, 50000);
+  if (!row.body && !row.body_html) return fail('The post body is empty.');
   const { error } = await db.from('posts').upsert(row);
   if (error) return fail(error.message);
   if (original && original !== row.slug) await db.from('posts').delete().eq('slug', original);
   contentChanged('/blog', `/blog/${row.slug}`, '/admin/content/posts');
   redirect('/admin/content/posts');
+}
+
+const IMAGE_TYPES = ['image/jpeg', 'image/png', 'image/webp', 'image/gif', 'image/avif'];
+
+/** Uploads a blog image (featured or inline) to the public bucket and returns its URL. */
+export async function uploadBlogImage(form: FormData): Promise<{ url?: string; error?: string }> {
+  await requireStaff();
+  const file = form.get('file');
+  if (!(file instanceof File) || file.size === 0) return { error: 'Choose an image.' };
+  if (!IMAGE_TYPES.includes(file.type)) return { error: 'Use a JPG, PNG, WebP, GIF or AVIF image.' };
+  if (file.size > 4 * 1024 * 1024) return { error: 'Images must be 4 MB or smaller.' };
+  const db = serviceClient();
+  if (!db) return { error: 'Storage is not configured.' };
+  const base = file.name.toLowerCase().replace(/.[a-z0-9]+$/, '').replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '').slice(0, 60) || 'image';
+  const ext = file.type.split('/')[1].replace('jpeg', 'jpg');
+  const path = `${new Date().toISOString().slice(0, 7)}/${base}-${Date.now().toString(36)}.${ext}`;
+  const { error } = await db.storage.from('blog-images').upload(path, file, { contentType: file.type, cacheControl: '31536000' });
+  if (error) return { error: error.message };
+  return { url: db.storage.from('blog-images').getPublicUrl(path).data.publicUrl };
 }
 
 export async function deletePost(s: string) {

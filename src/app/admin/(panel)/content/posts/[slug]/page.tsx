@@ -4,6 +4,8 @@ import { ArrowLeft } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { deletePost, savePost } from '../../../actions';
 import { AdminTitle, SmallButton } from '../../../ui';
+import { markdownToEditorHtml } from '@/lib/sanitize';
+import { BodyEditor, CoverField } from './post-editor';
 
 export const metadata = { title: 'Edit post' };
 
@@ -11,7 +13,17 @@ export default async function EditPost({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const { db } = await requireStaff();
   const isNew = slug === 'new';
-  let post = { slug: '', title: '', excerpt: '', body: '', published_at: new Date().toISOString().slice(0, 10), published: false };
+  let post = {
+    slug: '',
+    title: '',
+    excerpt: '',
+    body: '',
+    body_html: null as string | null,
+    cover_url: null as string | null,
+    cover_alt: null as string | null,
+    published_at: new Date().toISOString().slice(0, 10),
+    published: false,
+  };
   if (!isNew) {
     const { data } = await db.from('posts').select('*').eq('slug', slug).maybeSingle();
     if (!data) notFound();
@@ -24,7 +36,7 @@ export default async function EditPost({ params }: { params: Promise<{ slug: str
         <ArrowLeft className="h-4 w-4" aria-hidden /> All posts
       </Link>
       <AdminTitle title={isNew ? 'New post' : 'Edit post'} />
-      <form action={savePost} className="card grid max-w-4xl gap-4">
+      <form action={savePost} className="card grid max-w-5xl gap-5">
         <input type="hidden" name="original_slug" value={isNew ? '' : post.slug} />
         <div>
           <label className="label" htmlFor="title">Title</label>
@@ -44,13 +56,8 @@ export default async function EditPost({ params }: { params: Promise<{ slug: str
           <label className="label" htmlFor="excerpt">Summary (shown in lists and search results)</label>
           <textarea id="excerpt" name="excerpt" defaultValue={post.excerpt} rows={2} maxLength={400} className="field" />
         </div>
-        <div>
-          <label className="label" htmlFor="body">Body</label>
-          <textarea id="body" name="body" defaultValue={post.body} rows={18} className="field font-mono text-sm" />
-          <p className="mt-1 text-sm text-muted">
-            Blank line between paragraphs. <code>## Heading</code>, <code>- list item</code>, <code>**bold**</code>, <code>[link text](https://…)</code>.
-          </p>
-        </div>
+        <CoverField url={post.cover_url ?? ''} alt={post.cover_alt ?? ''} />
+        <BodyEditor initialHtml={post.body_html || markdownToEditorHtml(post.body)} />
         <label className="flex items-center gap-2 text-sm font-semibold">
           <input type="checkbox" name="published" defaultChecked={post.published} className="h-4 w-4" /> Published (visible on the site)
         </label>

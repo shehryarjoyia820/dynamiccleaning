@@ -27,6 +27,10 @@ export type Post = {
   excerpt: string;
   body: string;
   published_at: string;
+  /** Rich HTML from the visual/HTML editor; when set it is shown instead of the Markdown body. */
+  body_html?: string | null;
+  cover_url?: string | null;
+  cover_alt?: string | null;
 };
 
 export type RequirementRow = { vehicle: string; method: string };

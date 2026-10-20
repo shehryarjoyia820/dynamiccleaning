@@ -78,6 +78,46 @@
   .prose-dd a {
     @apply font-semibold text-accent-ink underline underline-offset-4 hover:text-ink;
   }
+  .prose-dd h4 {
+    @apply mt-6 font-display text-xl text-ink;
+  }
+  .prose-dd blockquote {
+    @apply mt-6 border-l-4 border-accent pl-4 italic text-ink/80;
+  }
+  .prose-dd img {
+    @apply mt-6 h-auto max-w-full rounded-lg;
+  }
+  .prose-dd figcaption {
+    @apply mt-2 text-sm text-muted;
+  }
+  .prose-dd hr {
+    @apply my-8 border-ink/10;
+  }
+  .prose-dd mark {
+    @apply rounded bg-green-bright/25 px-1 text-ink;
+  }
+  .prose-dd code {
+    @apply rounded bg-ink/5 px-1.5 py-0.5 font-mono text-[0.9em];
+  }
+  .prose-dd pre {
+    @apply mt-4 overflow-x-auto rounded-lg bg-charcoal p-4 text-sm text-offwhite;
+  }
+  .prose-dd pre code {
+    @apply bg-transparent p-0;
+  }
+  .prose-dd table {
+    @apply mt-6 block w-full overflow-x-auto border-collapse text-left text-base;
+  }
+  .prose-dd th,
+  .prose-dd td {
+    @apply border border-ink/10 px-3 py-2 align-top;
+  }
+  .prose-dd th {
+    @apply bg-offwhite font-semibold text-ink;
+  }
+  .prose-dd > :first-child {
+    @apply mt-0;
+  }
   .field {
     @apply block w-full rounded-md border border-ink/20 bg-white px-3.5 py-3 text-base text-ink placeholder:text-muted/70 focus:border-accent-ink focus:outline-none focus:ring-2 focus:ring-accent/40;
   }

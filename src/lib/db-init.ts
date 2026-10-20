@@ -10,6 +10,7 @@ const FILES = [
   'supabase/migrations/0002_email.sql',
   'supabase/migrations/0003_no_mfa.sql',
   'supabase/migrations/0004_tracking.sql',
+  'supabase/migrations/0005_blog_media.sql',
   'supabase/seed.sql',
 ];
 
@@ -25,6 +26,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { error } = await db.from('email_sends').select('open_count').limit(1);
+      return !error;
+    },
+  },
+  {
+    file: 'supabase/migrations/0005_blog_media.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { error } = await db.from('posts').select('cover_url').limit(1);
       return !error;
     },
   },
