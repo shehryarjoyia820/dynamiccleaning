@@ -13,6 +13,8 @@ import { getFaqs, getServiceAreas, getSettings } from '@/lib/content';
 
 export const revalidate = 300;
 
+export const metadata = { alternates: { canonical: '/' } };
+
 const TRUST = [
   { icon: MapPinned, title: 'Southern California', text: 'LA, OC, Inland Empire, San Diego' },
   { icon: Truck, title: 'Mobile on-site service', text: 'We test at your yard or jobsite' },
