@@ -2,7 +2,7 @@
 
 Fast, animated, mobile-first website for **Diesel Dynamix**, a mobile CARB Clean Truck Check testing company serving Southern California.
 
-**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Supabase (Postgres, auth with 2FA) · SMTP email (Nodemailer) with proposals, follow-ups and subscribers · Embla carousel · deployed on Vercel.
+**Stack:** Next.js 15 (App Router) · React 19 · TypeScript · Tailwind CSS · Supabase (Postgres, email + password auth) · SMTP email (Nodemailer) with proposals, follow-ups and subscribers · Embla carousel · deployed on Vercel.
 
 ## Quick start
 

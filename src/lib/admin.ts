@@ -62,8 +62,8 @@ export function fromLaInput(value: string) {
 }
 
 /**
- * Guard for every admin page and action: signed in, completed 2FA (AAL2),
- * and listed in public.profiles. Returns a session-bound client.
+ * Guard for every admin page and action: signed in and listed in
+ * public.profiles. Returns a session-bound client.
  */
 export async function requireStaff(opts: { admin?: boolean } = {}) {
   if (!supabaseConfigured()) redirect('/admin/setup');
@@ -72,9 +72,6 @@ export async function requireStaff(opts: { admin?: boolean } = {}) {
     data: { user },
   } = await db.auth.getUser();
   if (!user) redirect('/admin/login');
-
-  const { data: aal } = await db.auth.mfa.getAuthenticatorAssuranceLevel();
-  if (aal?.currentLevel !== 'aal2') redirect('/admin/mfa');
 
   const { data: profile } = await db.from('profiles').select('id,full_name,role').eq('id', user.id).maybeSingle();
   if (!profile) redirect('/admin/login?error=not-staff');

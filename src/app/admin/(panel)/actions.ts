@@ -174,7 +174,7 @@ export async function inviteStaff(form: FormData) {
   const email = z.string().email().parse(get(form, 'email'));
   const full_name = z.string().min(1).max(120).parse(get(form, 'full_name'));
   const role = z.enum(['admin', 'staff']).parse(get(form, 'role'));
-  const { data, error } = await svc.auth.admin.inviteUserByEmail(email, { redirectTo: `${SITE.url}/admin/mfa?next=/admin/account` });
+  const { data, error } = await svc.auth.admin.inviteUserByEmail(email, { redirectTo: `${SITE.url}/admin/welcome?next=/admin/account` });
   if (error || !data.user) return fail(error?.message ?? 'Invite failed');
   const { error: pErr } = await svc.from('profiles').upsert({ id: data.user.id, full_name, role });
   if (pErr) return fail(pErr.message);

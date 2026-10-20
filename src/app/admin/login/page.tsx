@@ -27,7 +27,7 @@ function LoginForm() {
         });
         setBusy(false);
         if (error) return setError('Email or password is incorrect.');
-        router.replace('/admin/mfa');
+        router.replace('/admin');
         router.refresh();
       }}
     >
@@ -50,7 +50,7 @@ function LoginForm() {
         onClick={async (e) => {
           const email = (e.currentTarget.form?.elements.namedItem('email') as HTMLInputElement | null)?.value;
           if (!email) return setError('Enter your email first.');
-          await browserClient().auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/admin/mfa?next=/admin/account` });
+          await browserClient().auth.resetPasswordForEmail(email, { redirectTo: `${location.origin}/admin/welcome?next=/admin/account` });
           setResetSent(true);
         }}
       >
@@ -66,7 +66,7 @@ export default function LoginPage() {
       <div className="w-full max-w-sm">
         <div className="rounded-xl bg-charcoal p-5 text-center"><Logo /></div>
         <h1 className="mt-8 text-4xl">Staff sign in</h1>
-        <p className="mt-1 text-muted">Two-factor authentication is required.</p>
+        <p className="mt-1 text-muted">Sign in with your email and password.</p>
         <Suspense>
           <LoginForm />
         </Suspense>

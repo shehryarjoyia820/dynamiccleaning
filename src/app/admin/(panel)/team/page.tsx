@@ -12,7 +12,7 @@ export default async function TeamPage() {
       <AdminTitle title="Team" />
       <section className="card mb-8 max-w-3xl">
         <h2 className="text-2xl">Invite a team member</h2>
-        <p className="mt-1 text-sm text-muted">They get an email link, set up two-factor authentication, then choose a password.</p>
+        <p className="mt-1 text-sm text-muted">They get an email link to choose their password.</p>
         <form action={inviteStaff} className="mt-4 grid gap-3 sm:grid-cols-[1fr_1fr_8rem_auto]">
           <input name="full_name" required placeholder="Full name" aria-label="Full name" className="field" />
           <input name="email" type="email" required placeholder="Email" aria-label="Email" className="field" />

@@ -48,7 +48,7 @@ export default function PrivacyPage() {
         <h2>Cookies</h2>
         <p>We only set analytics cookies if you click “Accept” on our cookie notice. You can change your choice by clearing this site’s data in your browser.</p>
         <h2>Data retention and security</h2>
-        <p>We keep lead and customer records only as long as needed for the purposes above and for legal and accounting requirements. Access to our admin system is restricted and protected with two-factor authentication.</p>
+        <p>We keep lead and customer records only as long as needed for the purposes above and for legal and accounting requirements. Access to our admin system is restricted to authorized staff.</p>
         <h2>Contact</h2>
         <p>Questions about this policy? Email <a href={LINKS.mailService}>{SITE.emailService}</a>.</p>
       </PageBody>

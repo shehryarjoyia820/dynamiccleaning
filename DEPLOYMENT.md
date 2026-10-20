@@ -7,18 +7,17 @@ The site is deployed on Vercel from the `main` branch of this repository. Every 
 1. Create a project at [supabase.com](https://supabase.com) (region: US West). Alternatively, in Vercel go to **Storage → Create → Supabase**, which adds the keys to the project automatically.
 2. The database tables are created automatically by `/admin/setup` (below). To do it by hand instead, run `supabase/migrations/0001_init.sql`, `0002_email.sql` and `supabase/seed.sql` in the Supabase SQL Editor.
 3. **Authentication → Providers → Email:** keep enabled. Turn **off** "Allow new users to sign up" (staff are invited only).
-4. **Authentication → Multi-Factor:** make sure TOTP is enabled.
-5. **Authentication → URL Configuration:** set the Site URL to the live site URL and add `<site>/admin/**` (and `http://localhost:3000/admin/**` for local work) to Redirect URLs.
-6. **Authentication → Emails → SMTP Settings:** enter the same SMTP details as below, so login and invite emails come from your domain (Supabase's built-in sender only allows a few emails per hour).
-7. If you created Supabase outside Vercel, put the Project URL, anon key, service-role key and `POSTGRES_URL_NON_POOLING` into the Vercel environment variables.
+4. **Authentication → URL Configuration:** set the Site URL to the live site URL and add `<site>/admin/**` (and `http://localhost:3000/admin/**` for local work) to Redirect URLs.
+5. **Authentication → Emails → SMTP Settings:** enter the same SMTP details as below, so login and invite emails come from your domain (Supabase's built-in sender only allows a few emails per hour).
+6. If you created Supabase outside Vercel, put the Project URL, anon key, service-role key and `POSTGRES_URL_NON_POOLING` into the Vercel environment variables.
 
 ### Create the first admin (email + password)
 
 1. In Vercel, set `ADMIN_EMAIL` (the admin login email) and `ADMIN_SETUP_TOKEN` (a long random code), then redeploy.
 2. Open **`/admin/setup`** and enter the setup code (Vercel → Settings → Environment Variables → `ADMIN_SETUP_TOKEN`, click the eye icon).
-3. One click creates the database tables and starter content (from `supabase/`, via the `POSTGRES_URL_NON_POOLING` the Supabase integration adds) and the admin account, then signs you in. No email is needed.
-4. Scan the QR code with an authenticator app (Google Authenticator, Authy, 1Password), then choose your password.
-5. From then on, sign in at **`/admin/login`** with email + password + the 6-digit code. The setup page switches off once an admin exists. Invite more staff from **/admin → Team**.
+3. One click creates the database tables and starter content (from `supabase/`, via the `POSTGRES_URL_NON_POOLING` the Supabase integration adds) and the admin account, then signs you in to choose your password. No email is needed.
+4. From then on, sign in at **`/admin/login`** with email + password.
+5. Forgot the password? Open `/admin/setup` again with the setup code to sign in and set a new one. Delete `ADMIN_SETUP_TOKEN` in Vercel to switch this off. Invite more staff from **/admin → Team**.
 
 ## 2. Email (SMTP)
 

@@ -4,7 +4,7 @@ import { join } from 'node:path';
 import { Client } from 'pg';
 
 // Run in order. Every file is idempotent (create if not exists / on conflict do nothing).
-const FILES = ['supabase/migrations/0001_init.sql', 'supabase/migrations/0002_email.sql', 'supabase/seed.sql'];
+const FILES = ['supabase/migrations/0001_init.sql', 'supabase/migrations/0002_email.sql', 'supabase/migrations/0003_no_mfa.sql', 'supabase/seed.sql'];
 
 /**
  * Creates the database schema and starter content using the Postgres URL that the
