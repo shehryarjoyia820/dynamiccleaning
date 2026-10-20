@@ -46,8 +46,6 @@ export const NAV: NavItem[] = [
     ],
   },
   { href: '/service-areas', label: 'Service Areas' },
-  { href: '/about', label: 'About' },
-  { href: '/blog', label: 'Updates' },
   { href: '/contact', label: 'Contact' },
 ];
 

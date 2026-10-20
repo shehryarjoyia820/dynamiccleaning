@@ -11,11 +11,13 @@ export function NewsletterForm({
   dark = true,
   label = 'Get Clean Truck Check updates',
   idPrefix = 'nl',
+  autoFocus = false,
   onSubscribed,
 }: {
   dark?: boolean;
   label?: string;
   idPrefix?: string;
+  autoFocus?: boolean;
   onSubscribed?: () => void;
 }) {
   const [state, setState] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
@@ -55,7 +57,7 @@ export function NewsletterForm({
         {label}
       </label>
       <div className="flex gap-2">
-        <input id={`${idPrefix}-email`} name="email" type="email" required placeholder="you@company.com" autoComplete="email" className="field min-w-0 flex-1" />
+        <input id={`${idPrefix}-email`} name="email" type="email" required autoFocus={autoFocus} placeholder="you@company.com" autoComplete="email" className="field min-w-0 flex-1" />
         <button className="btn-primary shrink-0 !min-h-[48px] !px-4" disabled={state === 'sending'}>
           {state === 'sending' ? <Loader2 className="h-5 w-5 animate-spin" aria-label="Subscribing" /> : 'Subscribe'}
         </button>

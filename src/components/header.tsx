@@ -49,7 +49,7 @@ export function Header() {
           <Logo />
         </Link>
 
-        <nav aria-label="Main" className="hidden items-center gap-0.5 xl:flex">
+        <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">
           {NAV.map((item) =>
             item.children ? (
               <div key={item.href} className="group relative">
@@ -106,7 +106,7 @@ export function Header() {
           <BookButton className="btn-primary hidden whitespace-nowrap !min-h-[44px] !py-2 sm:inline-flex">Book Mobile Testing</BookButton>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-md text-white hover:bg-white/10 xl:hidden"
+            className="grid h-11 w-11 place-items-center rounded-md text-white hover:bg-white/10 lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}
@@ -120,7 +120,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-charcoal pb-28 xl:hidden"
+        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-charcoal pb-28 lg:hidden"
       >
         <nav aria-label="Mobile" className="container py-4">
           <ul className="divide-y divide-white/10">

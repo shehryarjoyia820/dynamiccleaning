@@ -2,13 +2,12 @@
 
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { BellRing, X } from 'lucide-react';
+import { LogoMark } from '@/components/brand';
 import { NewsletterForm } from '@/components/newsletter';
-import { cn } from '@/lib/utils';
 
 const KEY = 'dd-subscribe-popup';
 const SNOOZE_DAYS = 30;
-// Pages where a popup would get in the way of the main task.
+// Pages where a prompt would get in the way of the main task.
 const SKIP = ['/book', '/contact', '/unsubscribe', '/privacy', '/terms', '/cookies', '/disclaimer', '/accessibility', '/do-not-sell', '/brand'];
 
 function snoozed() {
@@ -28,15 +27,16 @@ function remember(value: string) {
 }
 
 /**
- * Small subscribe notification that slides down just below the header
- * (top-right card on desktop, slim bar on phones). It never covers the page,
- * which keeps it within Google's guidance on intrusive interstitials.
- * Shows after 25 s or half-way down the page; dismissing snoozes it 30 days.
+ * Notification-style subscribe prompt that slides down at the top centre of
+ * the screen (over the header), like the browser-notification prompts on job
+ * sites. Compact: logo, one line, "Later" / "Subscribe"; the email field only
+ * appears after Subscribe. Shows after 10 s or 40% scroll; Later snoozes it
+ * for 30 days. It is small and dismissible, within Google's interstitial guidance.
  */
 export function SubscribePopup() {
   const pathname = usePathname();
   const [open, setOpen] = useState(false);
-  const [top, setTop] = useState(64);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     if (SKIP.some((p) => pathname.startsWith(p)) || snoozed()) return;
@@ -49,9 +49,9 @@ export function SubscribePopup() {
     };
     const onScroll = () => {
       const max = document.documentElement.scrollHeight - window.innerHeight;
-      if (max > 0 && window.scrollY / max > 0.5) show();
+      if (max > 0 && window.scrollY / max > 0.4) show();
     };
-    const timer = window.setTimeout(show, 25000);
+    const timer = window.setTimeout(show, 10000);
     window.addEventListener('scroll', onScroll, { passive: true });
     const cleanup = () => {
       window.clearTimeout(timer);
@@ -60,28 +60,14 @@ export function SubscribePopup() {
     return cleanup;
   }, [pathname]);
 
-  // Sit flush under the fixed header, which shrinks once the page scrolls.
   useEffect(() => {
     if (!open) return;
-    const header = document.querySelector('header');
-    const place = () => setTop(Math.round(header?.getBoundingClientRect().bottom ?? 64));
-    place();
-    window.addEventListener('scroll', place, { passive: true });
-    window.addEventListener('resize', place);
-    return () => {
-      window.removeEventListener('scroll', place);
-      window.removeEventListener('resize', place);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) return;
-    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && dismiss();
+    const onKey = (e: KeyboardEvent) => e.key === 'Escape' && later();
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [open]);
 
-  function dismiss() {
+  function later() {
     setOpen(false);
     remember(String(Date.now() + SNOOZE_DAYS * 86400000));
   }
@@ -89,46 +75,56 @@ export function SubscribePopup() {
   if (!open) return null;
 
   return (
-    <div
-      role="dialog"
-      aria-modal="false"
-      aria-labelledby="sub-pop-title"
-      className={cn(
-        'dd-slide-down fixed inset-x-0 z-40 transition-[top] duration-300 border-b border-white/10 bg-charcoal/95 text-white shadow-lift backdrop-blur-md',
-        'md:inset-x-auto md:right-6 md:mt-3 md:w-[26rem] md:rounded-2xl md:border',
-      )}
-      style={{ top }}
-    >
-      <div className="relative px-4 py-4 pr-12 md:p-6 md:pr-12">
-        <button
-          type="button"
-          onClick={dismiss}
-          aria-label="Close"
-          className="absolute right-2 top-2 grid h-10 w-10 place-items-center rounded-full text-white/70 hover:bg-white/10 hover:text-white"
-        >
-          <X className="h-5 w-5" />
-        </button>
-        <div className="flex items-start gap-3">
-          <span className="mt-0.5 hidden h-10 w-10 shrink-0 place-items-center rounded-lg bg-accent/15 text-accent sm:grid">
-            <BellRing className="h-5 w-5" aria-hidden />
+    <div className="pointer-events-none fixed inset-x-0 top-2 z-[60] flex justify-center px-3 sm:top-3">
+      <div
+        role="dialog"
+        aria-modal="false"
+        aria-labelledby="sub-pop-title"
+        aria-describedby="sub-pop-text"
+        className="dd-slide-down on-light pointer-events-auto w-full max-w-[27rem] rounded-xl border border-ink/10 bg-white p-4 text-ink shadow-[0_18px_50px_-12px_rgba(11,15,20,0.45)]"
+      >
+        <div className="flex gap-3">
+          <span className="grid h-12 w-12 shrink-0 place-items-center rounded-lg bg-charcoal">
+            <LogoMark className="h-8 w-8" />
           </span>
-          <div className="min-w-0 flex-1">
-            <p id="sub-pop-title" className="font-display text-xl font-bold uppercase leading-tight md:text-2xl">
-              Never miss a <span className="text-accent">Clean Truck Check</span> deadline
+          <div className="min-w-0">
+            <p id="sub-pop-title" className="font-semibold leading-snug">
+              Get Clean Truck Check deadline reminders
             </p>
-            <p className="mt-1 hidden text-sm text-white/75 md:block">Deadline reminders, rule changes and testing tips for Southern California truck owners.</p>
-            <div className="mt-3">
-              <NewsletterForm
-                idPrefix="pop"
-                label="Your email"
-                onSubscribed={() => {
-                  remember('subscribed');
-                  window.setTimeout(() => setOpen(false), 2500);
-                }}
-              />
-            </div>
+            <p id="sub-pop-text" className="mt-0.5 text-sm text-muted">
+              Rule changes and testing tips, by email.
+            </p>
           </div>
         </div>
+
+        {expanded ? (
+          <div className="mt-3">
+            <NewsletterForm
+              dark={false}
+              idPrefix="pop"
+              label="Your email"
+              autoFocus
+              onSubscribed={() => {
+                remember('subscribed');
+                window.setTimeout(() => setOpen(false), 2500);
+              }}
+            />
+            <div className="mt-1 text-right">
+              <button type="button" onClick={later} className="text-sm font-semibold text-muted hover:text-ink">
+                Later
+              </button>
+            </div>
+          </div>
+        ) : (
+          <div className="mt-3 flex justify-end gap-2">
+            <button type="button" onClick={later} className="rounded-md px-4 py-2 text-sm font-semibold text-accent-ink hover:bg-accent/10">
+              Later
+            </button>
+            <button type="button" onClick={() => setExpanded(true)} className="rounded-md bg-accent-deep px-5 py-2 text-sm font-bold text-white hover:bg-accent-hover">
+              Subscribe
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );
