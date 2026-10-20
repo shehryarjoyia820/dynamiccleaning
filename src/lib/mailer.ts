@@ -2,10 +2,24 @@ import 'server-only';
 import nodemailer, { type Transporter } from 'nodemailer';
 
 /**
- * One way out for every email. Uses SMTP when SMTP_HOST is set,
- * otherwise Resend's HTTP API when RESEND_API_KEY is set.
+ * One way out for every email, on two channels:
+ * - "service": lead alerts and customer confirmations (EMAIL_FROM, default service@)
+ * - "marketing": proposals, follow-ups and newsletter mail (MARKETING_FROM, default info@)
+ *
+ * Both use SMTP when SMTP_HOST is set. Marketing can log in with its own mailbox
+ * (MARKETING_SMTP_USER / MARKETING_SMTP_PASS); otherwise it uses the main SMTP
+ * login, which with Gmail requires info@ to be a "Send mail as" address of that
+ * account. Falls back to Resend's HTTP API when only RESEND_API_KEY is set.
  */
-export const FROM = process.env.EMAIL_FROM || 'Diesel Dynamix <no-reply@dieseldynamix.com>';
+export type Channel = 'service' | 'marketing';
+
+export const FROM = process.env.EMAIL_FROM || 'Diesel Dynamix <service@dieseldynamix.com>';
+export const MARKETING_FROM = process.env.MARKETING_FROM || 'Diesel Dynamix <info@dieseldynamix.com>';
+
+/** Bare address from "Name <addr>" (used as the reply-to for marketing mail). */
+export function addressOf(from: string) {
+  return from.match(/<([^>]+)>/)?.[1] ?? from;
+}
 
 export type Mail = {
   to: string | string[];
@@ -15,39 +29,44 @@ export type Mail = {
   replyTo?: string;
   headers?: Record<string, string>;
   attachments?: { filename: string; content: Buffer; contentType?: string }[];
+  channel?: Channel;
 };
 
-let transport: Transporter | null = null;
+const transports: Partial<Record<Channel, Transporter>> = {};
 
-function smtp() {
+function smtp(channel: Channel) {
   if (!process.env.SMTP_HOST) return null;
-  if (!transport) {
+  if (!transports[channel]) {
     const port = Number(process.env.SMTP_PORT || 587);
-    transport = nodemailer.createTransport({
+    const ownLogin = channel === 'marketing' && process.env.MARKETING_SMTP_USER && process.env.MARKETING_SMTP_PASS;
+    const user = ownLogin ? process.env.MARKETING_SMTP_USER : process.env.SMTP_USER;
+    const pass = ownLogin ? process.env.MARKETING_SMTP_PASS : process.env.SMTP_PASS;
+    transports[channel] = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
       port,
       secure: process.env.SMTP_SECURE ? process.env.SMTP_SECURE === 'true' : port === 465,
-      auth: process.env.SMTP_USER ? { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS } : undefined,
+      auth: user ? { user, pass } : undefined,
       pool: true,
       maxConnections: 2,
     });
   }
-  return transport;
+  return transports[channel]!;
 }
 
 export function mailConfigured() {
-  return Boolean(process.env.SMTP_HOST || process.env.RESEND_API_KEY);
+  return Boolean((process.env.SMTP_HOST && process.env.SMTP_PASS) || process.env.RESEND_API_KEY);
 }
 
-export async function sendMail(m: Mail): Promise<{ ok: boolean; skipped?: boolean; error?: string }> {
-  const t = smtp();
+export async function sendMail({ channel = 'service', ...m }: Mail): Promise<{ ok: boolean; skipped?: boolean; error?: string }> {
+  const from = channel === 'marketing' ? MARKETING_FROM : FROM;
+  const t = smtp(channel);
   if (t) {
     try {
-      await t.sendMail({ from: FROM, ...m });
+      await t.sendMail({ from, ...m });
       return { ok: true };
     } catch (e) {
       const error = e instanceof Error ? e.message : String(e);
-      console.error('[mail] smtp failed', error);
+      console.error(`[mail] smtp (${channel}) failed`, error);
       return { ok: false, error };
     }
   }
@@ -60,7 +79,7 @@ export async function sendMail(m: Mail): Promise<{ ok: boolean; skipped?: boolea
     method: 'POST',
     headers: { Authorization: `Bearer ${key}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      from: FROM,
+      from,
       to: m.to,
       subject: m.subject,
       html: m.html,

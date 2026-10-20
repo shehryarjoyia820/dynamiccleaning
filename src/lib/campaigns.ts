@@ -2,7 +2,7 @@ import 'server-only';
 import { createHmac, timingSafeEqual } from 'node:crypto';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { esc, shell } from '@/lib/email';
-import { mailConfigured, sendMail } from '@/lib/mailer';
+import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
 import { SITE } from '@/lib/site';
 
 export type Contact = {
@@ -114,7 +114,7 @@ export function renderEmail(t: Pick<Template, 'subject' | 'body'>, c: Contact, o
     html,
     text,
     headers: {
-      'List-Unsubscribe': `<${urls.oneClick}>, <mailto:${SITE.emailService}?subject=unsubscribe>`,
+      'List-Unsubscribe': `<${urls.oneClick}>, <mailto:${addressOf(MARKETING_FROM)}?subject=unsubscribe>`,
       'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
     },
   };
@@ -243,7 +243,8 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
       const res = await sendMail({
         to: c!.email,
         ...mail,
-        replyTo: process.env.EMAIL_REPLY_TO || SITE.emailService,
+        channel: 'marketing',
+        replyTo: process.env.EMAIL_REPLY_TO || addressOf(MARKETING_FROM),
         attachments: file ? [{ filename: t.attachment_name || 'proposal.pdf', content: file }] : undefined,
       });
       if (res.ok) {

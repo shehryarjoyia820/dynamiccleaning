@@ -5,7 +5,7 @@ import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { requireStaff, userError } from '@/lib/admin';
 import { processQueue, renderEmail, startCampaign, upsertContact, type Audience, type Contact, type Followup } from '@/lib/campaigns';
-import { mailConfigured, sendMail } from '@/lib/mailer';
+import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
 import { serviceClient } from '@/lib/supabase/clients';
 
 const get = (f: FormData, k: string) => String(f.get(k) ?? '').trim();
@@ -187,7 +187,7 @@ export async function sendTestEmail(templateId: string) {
     const { data } = await svc().storage.from('email-attachments').download(t.attachment_path);
     if (data) attachments = [{ filename: t.attachment_name || 'proposal.pdf', content: Buffer.from(await data.arrayBuffer()) }];
   }
-  const res = await sendMail({ to: user.email, ...mail, subject: `[TEST] ${mail.subject}`, attachments });
+  const res = await sendMail({ to: user.email, ...mail, subject: `[TEST] ${mail.subject}`, attachments, channel: 'marketing', replyTo: addressOf(MARKETING_FROM) });
   if (!res.ok) return userError(res.error ?? 'Send failed');
   redirect(`/admin/emails/templates/${templateId}?tested=1`);
 }

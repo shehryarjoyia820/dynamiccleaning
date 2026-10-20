@@ -1,7 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { z } from 'zod';
 import { renderEmail, upsertContact, type Contact } from '@/lib/campaigns';
-import { mailConfigured, sendMail } from '@/lib/mailer';
+import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
 import { clientIpHash, limited } from '@/lib/rate-limit';
 import { SITE } from '@/lib/site';
 import { serviceClient } from '@/lib/supabase/clients';
@@ -49,7 +49,7 @@ export async function POST(req: NextRequest) {
   if (contact && mailConfigured()) {
     const { data: footer } = await db.from('site_settings').select('value').eq('key', 'email_footer_address').maybeSingle();
     const mail = renderEmail(WELCOME, contact as Contact, { footerAddress: typeof footer?.value === 'string' ? footer.value : '' });
-    await sendMail({ to: (contact as Contact).email, ...mail });
+    await sendMail({ to: (contact as Contact).email, ...mail, channel: 'marketing', replyTo: addressOf(MARKETING_FROM) });
   }
   return NextResponse.json({ ok: true });
 }
