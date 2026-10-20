@@ -1,6 +1,6 @@
 'use client';
 
-import { CalendarCheck, Phone } from 'lucide-react';
+import { CalendarCheck, MessageSquareText, Phone } from 'lucide-react';
 import { useBooking } from '@/components/booking-context';
 import { LINKS } from '@/lib/site';
 
@@ -29,15 +29,19 @@ export function WhatsAppFab() {
   );
 }
 
-/** Sticky bottom action bar on phones: Call · WhatsApp · Book. */
+/** Sticky bottom action bar on phones: Call · Text · WhatsApp · Book. */
 export function StickyMobileBar() {
   const { open } = useBooking();
   return (
     <div className="fixed inset-x-0 bottom-0 z-40 border-t border-white/10 bg-charcoal/95 pb-[env(safe-area-inset-bottom)] backdrop-blur-md md:hidden">
-      <div className="grid grid-cols-3">
+      <div className="grid grid-cols-4">
         <a href={LINKS.tel} data-track="call_click" className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 text-white active:bg-white/10">
           <Phone className="h-5 w-5 text-accent" aria-hidden />
           <span className="font-display text-sm font-bold uppercase tracking-wide">Call</span>
+        </a>
+        <a href={LINKS.sms} data-track="sms_click" className="flex min-h-[60px] flex-col items-center justify-center gap-0.5 border-l border-white/10 text-white active:bg-white/10">
+          <MessageSquareText className="h-5 w-5 text-accent" aria-hidden />
+          <span className="font-display text-sm font-bold uppercase tracking-wide">Text</span>
         </a>
         <a
           href={LINKS.whatsapp}

@@ -15,6 +15,8 @@ export const SITE = {
 
 export const LINKS = {
   tel: `tel:${SITE.phoneE164}`,
+  // "?&body=" works on both iPhone and Android messaging apps.
+  sms: `sms:${SITE.phoneE164}?&body=${encodeURIComponent('Hi Diesel Dynamix, I need a Clean Truck Check test. ')}`,
   whatsapp: `https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(SITE.whatsappMessage)}`,
   mailService: `mailto:${SITE.emailService}`,
   carbCtc: 'https://ww2.arb.ca.gov/our-work/programs/CTC',

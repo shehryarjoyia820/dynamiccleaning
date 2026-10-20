@@ -95,8 +95,10 @@ export function HeroSlider() {
             <div
               key={s.title}
               className={cn(
-                'transition-all duration-700 ease-out',
-                i === index ? 'relative translate-y-0 opacity-100' : 'pointer-events-none absolute inset-x-0 top-0 translate-y-4 opacity-0',
+                'transition-[opacity,transform] ease-out',
+                i === index
+                  ? 'relative translate-y-0 opacity-100 delay-200 duration-500'
+                  : 'pointer-events-none absolute inset-x-0 top-0 -translate-y-2 opacity-0 duration-200',
               )}
               aria-hidden={i !== index}
             >

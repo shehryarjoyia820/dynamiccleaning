@@ -3,7 +3,8 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
-import { ChevronDown, ChevronRight, Menu, Phone, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Menu, MessageSquareText, Phone, X } from 'lucide-react';
+import { WhatsAppIcon } from '@/components/contact-bars';
 import { Logo } from '@/components/brand';
 import { BookButton } from '@/components/booking-context';
 import { LINKS, NAV, SITE } from '@/lib/site';
@@ -43,10 +44,21 @@ export function Header() {
   }, [openGroup]);
 
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : '';
+    if (!menuOpen) return;
+    // Lock the page behind the menu. overflow:hidden alone is ignored by iOS Safari,
+    // so pin the body in place and restore the scroll position on close.
+    const y = window.scrollY;
+    const path = window.location.pathname;
+    const body = document.body.style;
+    Object.assign(body, { position: 'fixed', top: `-${y}px`, left: '0', right: '0', overflow: 'hidden' });
     const onKey = (e: KeyboardEvent) => e.key === 'Escape' && setMenuOpen(false);
     window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
+    return () => {
+      Object.assign(body, { position: '', top: '', left: '', right: '', overflow: '' });
+      // Same page: return to where the reader was. New page: start at the top.
+      window.scrollTo(0, window.location.pathname === path ? y : 0);
+      window.removeEventListener('keydown', onKey);
+    };
   }, [menuOpen]);
 
   const isActive = (href: string) => pathname === href || pathname.startsWith(href + '/');
@@ -55,9 +67,12 @@ export function Header() {
     <header
       className={cn(
         'fixed inset-x-0 top-0 z-50 border-b transition-[background-color,border-color,padding] duration-300 ease-out',
-        scrolled || menuOpen
-          ? 'border-white/10 bg-charcoal/95 py-2 backdrop-blur-md'
-          : 'border-transparent bg-gradient-to-b from-charcoal/90 to-charcoal/0 py-4',
+        // No backdrop-blur while the menu is open: it would trap the fixed menu panel inside the header.
+        menuOpen
+          ? 'border-white/10 bg-charcoal py-2'
+          : scrolled
+            ? 'border-white/10 bg-charcoal/95 py-2 backdrop-blur-md'
+            : 'border-transparent bg-gradient-to-b from-charcoal/90 to-charcoal/0 py-4',
       )}
     >
       <a href="#main" className="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-2 focus:z-50 focus:rounded focus:bg-accent-deep focus:px-4 focus:py-2 focus:text-white">
@@ -153,7 +168,7 @@ export function Header() {
       <div
         id="mobile-menu"
         hidden={!menuOpen}
-        className="h-[calc(100dvh-4rem)] overflow-y-auto border-t border-white/10 bg-charcoal pb-28 lg:hidden"
+        className="fixed inset-x-0 bottom-0 top-16 overflow-y-auto overscroll-contain border-t border-white/10 bg-charcoal pb-[calc(1.5rem+env(safe-area-inset-bottom))] motion-safe:animate-menu-in lg:hidden"
       >
         <nav aria-label="Mobile" className="container py-4">
           <div className="grid gap-5">
@@ -185,9 +200,18 @@ export function Header() {
           </div>
           <div className="mt-6 grid gap-3">
             <BookButton className="btn-primary w-full">Book Mobile Testing</BookButton>
-            <a href={LINKS.tel} data-track="call_click" className="btn-ghost-dark w-full">
-              <Phone className="h-5 w-5" aria-hidden /> Call {SITE.phoneDisplay}
-            </a>
+            <div className="grid grid-cols-3 gap-2">
+              <a href={LINKS.tel} data-track="call_click" className="btn-ghost-dark !px-2 text-base">
+                <Phone className="h-5 w-5" aria-hidden /> Call
+              </a>
+              <a href={LINKS.sms} data-track="sms_click" className="btn-ghost-dark !px-2 text-base">
+                <MessageSquareText className="h-5 w-5" aria-hidden /> Text
+              </a>
+              <a href={LINKS.whatsapp} target="_blank" rel="noopener noreferrer" data-track="whatsapp_click" className="btn-whatsapp !px-2 text-base">
+                <WhatsAppIcon className="h-5 w-5" /> Chat
+              </a>
+            </div>
+            <p className="text-center text-sm text-white/60">{SITE.phoneDisplay} · {SITE.emailService}</p>
           </div>
         </nav>
       </div>

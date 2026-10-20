@@ -54,6 +54,10 @@ const config: Config = {
           '0%': { transform: 'scale(0.6)', opacity: '0.8' },
           '100%': { transform: 'scale(2.6)', opacity: '0' },
         },
+        'menu-in': {
+          from: { opacity: '0', transform: 'translate3d(0,-12px,0)' },
+          to: { opacity: '1', transform: 'translate3d(0,0,0)' },
+        },
         'fade-up': {
           from: { opacity: '0', transform: 'translate3d(0,16px,0)' },
           to: { opacity: '1', transform: 'translate3d(0,0,0)' },
@@ -75,6 +79,7 @@ const config: Config = {
         kenburns: 'kenburns 9s ease-out both',
         'pulse-ring': 'pulse-ring 2.4s cubic-bezier(0.16,1,0.3,1) infinite',
         'fade-up': 'fade-up 0.7s cubic-bezier(0.16,1,0.3,1) both',
+        'menu-in': 'menu-in 0.25s cubic-bezier(0.16,1,0.3,1) both',
         road: 'road 1.6s linear infinite',
         marquee: 'marquee 60s linear infinite',
       },
