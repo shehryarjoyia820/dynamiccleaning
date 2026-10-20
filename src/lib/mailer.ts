@@ -67,6 +67,15 @@ export async function sendMail({ channel = 'service', ...m }: Mail): Promise<{ o
     } catch (e) {
       const error = e instanceof Error ? e.message : String(e);
       console.error(`[mail] smtp (${channel}) failed`, error);
+      if (/535|Invalid login/i.test(error)) {
+        // Safe login diagnostics: never logs the password itself, only its shape.
+        const ownLogin = channel === 'marketing' && process.env.MARKETING_SMTP_USER && process.env.MARKETING_SMTP_PASS;
+        const user = (ownLogin ? process.env.MARKETING_SMTP_USER : process.env.SMTP_USER) ?? '';
+        const pass = (ownLogin ? process.env.MARKETING_SMTP_PASS : process.env.SMTP_PASS) ?? '';
+        console.error(
+          `[mail] login check: user="${user}" passLength=${pass.length} hasWhitespace=${/\s/.test(pass)} hasQuotes=${/["']/.test(pass)} lettersOnly=${/^[a-z]+$/i.test(pass)}`,
+        );
+      }
       return { ok: false, error };
     }
   }
