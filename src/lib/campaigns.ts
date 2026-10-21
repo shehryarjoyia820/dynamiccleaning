@@ -177,17 +177,22 @@ export async function startCampaign(db: SupabaseClient, campaignId: string) {
 
   const now = Date.now();
   const followups = (c.followups ?? []) as Followup[];
-  const rows = recipients.flatMap((r) => [
-    { campaign_id: c.id, contact_id: r.id, template_id: c.template_id, step: 0, delay_days: 0, send_after: new Date(now).toISOString() },
+  const rows = recipients.flatMap((r) => {
+    // A copy of who it went to, so the history stays readable if the contact is deleted later.
+    const who = { recipient_email: r.email, recipient_name: r.name ?? null };
+    return [
+    { campaign_id: c.id, contact_id: r.id, ...who, template_id: c.template_id, step: 0, delay_days: 0, send_after: new Date(now).toISOString() },
     ...followups.map((f, i) => ({
       campaign_id: c.id,
       contact_id: r.id,
+      ...who,
       template_id: f.template_id,
       step: i + 1,
       delay_days: f.delay_days,
       send_after: new Date(now + f.delay_days * 86400000).toISOString(),
     })),
-  ]);
+    ];
+  });
   for (let i = 0; i < rows.length; i += 500) {
     const { error: e } = await db.from('email_sends').upsert(rows.slice(i, i + 500), { onConflict: 'campaign_id,contact_id,step', ignoreDuplicates: true });
     if (e) throw new Error(e.message);

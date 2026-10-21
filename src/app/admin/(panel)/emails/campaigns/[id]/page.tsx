@@ -46,6 +46,8 @@ type SendRow = {
   open_count: number | null;
   error: string | null;
   send_after: string;
+  recipient_email?: string | null;
+  recipient_name?: string | null;
   contacts: { id: string; email: string; name: string | null; company: string | null; tags: string[] } | null;
 };
 
@@ -62,12 +64,12 @@ export default async function CampaignPage({ params, searchParams }: { params: P
   const { data: tpls } = await db.from('email_templates').select('id,name,subject').in('id', templateIds);
   const tname = new Map((tpls ?? []).map((t) => [t.id, t.name]));
 
-  const { data: sendData } = await db
-    .from('email_sends')
-    .select('id,step,status,sent_at,opened_at,open_count,error,send_after,contacts(id,email,name,company,tags)')
-    .eq('campaign_id', id)
-    .order('sent_at', { ascending: false, nullsFirst: false })
-    .limit(5000);
+  const loadSends = (cols: string) =>
+    db.from('email_sends').select(cols).eq('campaign_id', id).order('sent_at', { ascending: false, nullsFirst: false }).limit(5000);
+  const base = 'id,step,status,sent_at,opened_at,open_count,error,send_after,contacts(id,email,name,company,tags)';
+  // The recipient copy arrives with the campaign-history upgrade; read without it until then.
+  let { data: sendData, error: sendErr } = await loadSends(`${base},recipient_email,recipient_name`);
+  if (sendErr) ({ data: sendData } = await loadSends(base));
   const sends = (sendData ?? []) as unknown as SendRow[];
 
   const steps = templateIds.map((tid, step) => {
@@ -116,7 +118,7 @@ export default async function CampaignPage({ params, searchParams }: { params: P
   return (
     <>
       <Link href="/admin/emails/campaigns" className="mb-4 inline-flex items-center gap-1 text-sm font-semibold text-muted hover:text-ink">
-        <ArrowLeft className="h-4 w-4" aria-hidden /> All sends
+        <ArrowLeft className="h-4 w-4" aria-hidden /> All campaigns
       </Link>
       <AdminTitle title={c.name}>
         <span className={cn('rounded-full px-3 py-1 text-xs font-bold uppercase', CAMPAIGN_STATUS[c.status])}>{c.status}</span>
@@ -260,9 +262,13 @@ export default async function CampaignPage({ params, searchParams }: { params: P
                           {ct ? (
                             <Link href={`/admin/contacts/${ct.id}`} className="font-semibold hover:underline">{ct.email}</Link>
                           ) : (
-                            <span className="text-muted">(deleted contact)</span>
+                            <span className="font-semibold">
+                              {r.recipient_email ?? 'Unknown'} <span className="text-xs font-normal text-muted">(contact deleted)</span>
+                            </span>
                           )}
-                          {ct?.name || ct?.company ? <span className="block text-xs text-muted">{[ct.name, ct.company].filter(Boolean).join(' · ')}</span> : null}
+                          {ct?.name || ct?.company || r.recipient_name ? (
+                            <span className="block text-xs text-muted">{(ct ? [ct.name, ct.company] : [r.recipient_name]).filter(Boolean).join(' · ')}</span>
+                          ) : null}
                         </td>
                         <td className="px-4 py-3">
                           <span className={cn('inline-block rounded-full px-2.5 py-0.5 text-xs font-bold uppercase', st.cls)}>{st.label}</span>

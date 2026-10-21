@@ -12,7 +12,7 @@ export const dynamic = 'force-dynamic';
 const NAV = [
   { href: '/admin', label: 'Leads', icon: Inbox },
   { href: '/admin/contacts', label: 'Contacts & subscribers', icon: Contact },
-  { href: '/admin/emails/campaigns', label: 'Send proposals', icon: Send },
+  { href: '/admin/emails/campaigns', label: 'Campaigns', icon: Send },
   { href: '/admin/emails/templates', label: 'Email templates', icon: Mail },
   { href: '/admin/content/faqs', label: 'FAQs', icon: HelpCircle },
   { href: '/admin/content/areas', label: 'Service areas', icon: MapPin },

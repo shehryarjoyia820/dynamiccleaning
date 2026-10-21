@@ -11,6 +11,7 @@ const FILES = [
   'supabase/migrations/0003_no_mfa.sql',
   'supabase/migrations/0004_tracking.sql',
   'supabase/migrations/0005_blog_media.sql',
+  'supabase/migrations/0006_campaign_history.sql',
   'supabase/seed.sql',
 ];
 
@@ -35,6 +36,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { error } = await db.from('posts').select('cover_url').limit(1);
+      return !error;
+    },
+  },
+  {
+    file: 'supabase/migrations/0006_campaign_history.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { error } = await db.from('campaign_stats').select('campaign_id').limit(1);
       return !error;
     },
   },
