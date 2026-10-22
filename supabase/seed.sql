@@ -184,7 +184,7 @@ Regards,
 Kameron
 Diesel Dynamix
 (858) 342-8328
-info@dieseldynamix.com'),
+service@dieseldynamix.com'),
   ('6f1b2a10-0000-4000-8000-000000000002', 'Follow-up 1: quick check-in', 'follow_up', 'Re: Mobile Clean Truck Check testing for {{company}}', 'Hi {{first_name}},
 
 Just following up on my note about mobile Clean Truck Check testing. If your next testing window is coming up, we can usually schedule an on-site visit quickly.

@@ -19,6 +19,7 @@ const FILES = [
   'supabase/migrations/0011_recipient_city.sql',
   'supabase/migrations/0012_tier_templates_v2.sql',
   'supabase/migrations/0013_signature_no_whatsapp.sql',
+  'supabase/migrations/0014_signature_service_email.sql',
   'supabase/seed.sql',
 ];
 
@@ -117,6 +118,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { data } = await db.from('app_migrations').select('name').eq('name', '0013_signature_no_whatsapp').maybeSingle();
+      return !!data;
+    },
+  },
+  {
+    file: 'supabase/migrations/0014_signature_service_email.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { data } = await db.from('app_migrations').select('name').eq('name', '0014_signature_service_email').maybeSingle();
       return !!data;
     },
   },
