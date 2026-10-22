@@ -191,16 +191,20 @@ Just following up on my note about mobile Clean Truck Check testing. If your nex
 
 Reply with your truck count and location and I’ll send a quote, or call/WhatsApp **(858) 342-8328**.
 
-Thanks,
+Regards,
 Kameron
-Diesel Dynamix'),
+Diesel Dynamix
+(858) 342-8328
+service@dieseldynamix.com'),
   ('6f1b2a10-0000-4000-8000-000000000003', 'Follow-up 2: last note', 'follow_up', 'Should I close your file, {{first_name}}?', 'Hi {{first_name}},
 
 I haven’t heard back, so I’ll assume the timing isn’t right. If anything changes, we’re here whenever {{company}} needs Clean Truck Check testing, anywhere in Southern California.
 
 You can book online any time at [dieseldynamix.com/book](https://dieseldynamix.com/book) or call **(858) 342-8328**.
 
-All the best,
+Regards,
 Kameron
-Diesel Dynamix')
+Diesel Dynamix
+(858) 342-8328
+service@dieseldynamix.com')
 on conflict (id) do nothing;

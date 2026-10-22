@@ -10,7 +10,7 @@ do $$ begin
   update public.email_templates
   set body = regexp_replace(
         regexp_replace(body, '\n*\{\{\s*whatsapp_button\s*\}\}\n*', E'\n\n', 'g'),
-        '((Best regards|Kind regards|Regards|regards|Thanks|Thank you|All the best|Best|Cheers|Sincerely),\n)?Kameron\nDiesel Dynamix(\n\(858\) 342-8328)?(\n\[dieseldynamix\.com\]\(https://dieseldynamix\.com\))?(\ninfo@dieseldynamix\.com)?',
+        '((Best regards|Kind regards|Regards|regards|Thanks|Thank you|All the best|Best|Cheers|Sincerely),\n)?Kameron\nDiesel Dynamix(\n\(858\) 342-8328)?(\n\[dieseldynamix\.com\]\(https://dieseldynamix\.com\))?(\n(info|service)@dieseldynamix\.com)?',
         E'Regards,\nKameron\nDiesel Dynamix\n(858) 342-8328\nservice@dieseldynamix.com',
         'g')
   where body ~ 'whatsapp_button' or body ~ 'Kameron\nDiesel Dynamix';
