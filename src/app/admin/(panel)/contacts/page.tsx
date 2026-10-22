@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Bot, Download, Send, Upload } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { PRIORITIES, contactCity } from '@/lib/campaigns';
+import { applyFilter, readFilter } from '@/lib/contact-filter';
 import { cn } from '@/lib/utils';
 import { deleteContacts, saveContact } from '../email-actions';
 import { BulkForm, RowCheck } from '../bulk-form';
@@ -73,19 +74,27 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
     ? query.order('priority').order('trucks', { ascending: false, nullsFirst: false }).order('created_at', { ascending: false })
     : query.order('created_at', { ascending: false });
   query = query.range(page * PAGE, page * PAGE + PAGE - 1);
-  if (hasPriority && list) query = query.eq('list_name', list);
-  if (hasPriority && prio) query = query.eq('priority', prio);
-  if (sp.source && SOURCES.includes(sp.source)) query = query.eq('source', sp.source);
-  if (sp.tag) query = query.contains('tags', [sp.tag]);
-  if (sp.status) query = query.eq('status', sp.status);
-  if (q) {
-    const like = `%${q.replace(/[%_,()]/g, ' ')}%`;
-    query = query.or(`email.ilike.${like},name.ilike.${like},company.ilike.${like}`);
-  }
-  const [{ data: rawData, count }, counts] = await Promise.all([
+  // Same filter as the CSV export: list, priority, source, tag, status and the search box
+  // (email, name, company, city or ZIP; a city also matches its ZIP codes).
+  const filter = readFilter((k) => sp[k]);
+  query = applyFilter(query, filter, hasPriority);
+  const searching = !!(q || sp.source || sp.tag || sp.status);
+  const [{ data: rawData, count }, counts, searchCounts] = await Promise.all([
     query,
     Promise.all(SOURCES.map((s) => db.from('contacts').select('id', { count: 'exact', head: true }).eq('source', s).then((r) => [s, r.count ?? 0] as const))),
+    // With a search, the priority tabs count only the matching leads.
+    hasPriority && searching
+      ? Promise.all(
+          [1, 2, 3, 4].map((p) =>
+            applyFilter(db.from('contacts').select('id', { count: 'exact', head: true }), filter, true, { skipPriority: true })
+              .eq('priority', p)
+              .then((r) => [p, r.count ?? 0] as const),
+          ),
+        )
+      : Promise.resolve(null),
   ]);
+  const matchByPrio = searchCounts ? new Map(searchCounts) : null;
+  const tabTotal = (p: number) => (matchByPrio ? matchByPrio.get(p) ?? 0 : prioTotal(p));
   const data = (rawData ?? []) as unknown as Row[];
   const pages = Math.max(1, Math.ceil((count ?? 0) / PAGE));
   const qs = (extra: Record<string, string | undefined>) => {
@@ -140,7 +149,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
           <nav aria-label="Priority" className="mb-4 grid grid-cols-2 gap-2 sm:grid-cols-5">
             <Link href={`/admin/contacts${qs({ p: undefined, page: undefined })}`} className={cn('rounded-lg border px-3 py-2', !prio ? 'border-charcoal bg-charcoal text-white' : 'border-ink/10 bg-white hover:border-ink/40')}>
               <span className="block text-xs font-bold uppercase tracking-wide opacity-80">All priorities</span>
-              <span className="font-display text-2xl font-bold tabular-nums">{[1, 2, 3, 4].reduce((n, p) => n + prioTotal(p), 0).toLocaleString()}</span>
+              <span className="font-display text-2xl font-bold tabular-nums">{[1, 2, 3, 4].reduce((n, p) => n + tabTotal(p), 0).toLocaleString()}</span>
             </Link>
             {PRIORITIES.map((p) => (
               <Link
@@ -150,7 +159,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
                 className={cn('rounded-lg border px-3 py-2', prio === p.value ? 'border-charcoal bg-charcoal text-white' : 'border-ink/10 bg-white hover:border-ink/40')}
               >
                 <span className="block text-xs font-bold uppercase tracking-wide opacity-80">{p.label} · {p.hint}</span>
-                <span className="font-display text-2xl font-bold tabular-nums">{prioTotal(p.value).toLocaleString()}</span>
+                <span className="font-display text-2xl font-bold tabular-nums">{tabTotal(p.value).toLocaleString()}</span>
               </Link>
             ))}
           </nav>
@@ -177,9 +186,31 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
         {list ? <input type="hidden" name="list" value={list} /> : null}
         {prio ? <input type="hidden" name="p" value={prio} /> : null}
         <label htmlFor="cq" className="sr-only">Search contacts</label>
-        <input id="cq" name="q" defaultValue={q} placeholder="Search email, name, company" className="field max-w-md !py-2" />
+        <input id="cq" name="q" defaultValue={q} placeholder="Search email, company, city or ZIP (e.g. Fontana or 92335)" className="field max-w-md !py-2" />
         <button className="rounded-md bg-charcoal px-4 text-sm font-semibold text-white">Search</button>
       </form>
+
+      {q ? (
+        <div className="mb-4 flex flex-wrap items-center justify-between gap-3 rounded-lg bg-accent/10 p-4">
+          <p>
+            <span className="font-display text-2xl font-bold tabular-nums">{(count ?? 0).toLocaleString()}</span>{' '}
+            lead{count === 1 ? '' : 's'} match <strong>“{q}”</strong>
+            {list ? <> in {list}</> : null}
+            {prio ? <> · Priority {prio}</> : null}
+            {matchByPrio && !prio ? (
+              <span className="ml-2 text-sm text-muted">({[1, 2, 3, 4].map((p) => `P${p}: ${(matchByPrio.get(p) ?? 0).toLocaleString()}`).join(' · ')})</span>
+            ) : null}
+          </p>
+          <div className="flex flex-wrap gap-2 text-sm">
+            <a href={`/admin/contacts/export${qs({ page: undefined })}`} className="inline-flex items-center gap-2 rounded-md bg-charcoal px-3 py-2 font-semibold text-white">
+              <Download className="h-4 w-4" aria-hidden /> Export these {(count ?? 0).toLocaleString()}
+            </a>
+            <Link href={`/admin/contacts${qs({ q: undefined, page: undefined })}`} className="rounded-md border border-ink/20 bg-white px-3 py-2 font-semibold">
+              Clear search
+            </Link>
+          </div>
+        </div>
+      ) : null}
 
       <BulkForm action={deleteContacts} noun="contact" canDelete={isAdmin}>
       <div className="overflow-x-auto rounded-xl border border-ink/10 bg-white shadow-card">
