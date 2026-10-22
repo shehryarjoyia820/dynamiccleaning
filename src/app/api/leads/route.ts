@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
     leadId = data?.id ?? null;
     // Everyone who submits a form becomes a contact for proposals and follow-ups.
     try {
-      await upsertContact(db, { email: d.email, name: d.full_name, company: d.kind === 'booking' ? d.company : null, phone: d.phone || null, source: 'lead', tags: [d.kind], lead_id: leadId });
+      await upsertContact(db, { email: d.email, name: d.full_name, company: d.kind === 'booking' ? d.company : null, phone: d.phone || null, source: 'lead', tags: [d.kind], lead_id: leadId, trucks: d.kind === 'booking' ? d.trucks : null });
     } catch (e) {
       console.error('[leads] contact upsert failed', e);
     }

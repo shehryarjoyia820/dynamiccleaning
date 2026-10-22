@@ -12,6 +12,7 @@ const FILES = [
   'supabase/migrations/0004_tracking.sql',
   'supabase/migrations/0005_blog_media.sql',
   'supabase/migrations/0006_campaign_history.sql',
+  'supabase/migrations/0007_priority_lists.sql',
   'supabase/seed.sql',
 ];
 
@@ -45,6 +46,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { error } = await db.from('campaign_stats').select('campaign_id').limit(1);
+      return !error;
+    },
+  },
+  {
+    file: 'supabase/migrations/0007_priority_lists.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { error } = await db.from('contacts').select('priority,list_name').limit(1);
       return !error;
     },
   },

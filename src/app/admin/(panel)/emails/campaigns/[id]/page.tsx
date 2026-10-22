@@ -16,6 +16,8 @@ function audienceLabel(a: Audience) {
   if (a.type === 'tags') return `Tag: ${a.tags.join(', ')}`;
   if (a.type === 'sources') return `Source: ${a.sources.join(', ')}`;
   if (a.type === 'contacts') return `${a.ids.length} selected contact(s)`;
+  if (a.type === 'priority')
+    return `${a.lists.length ? a.lists.join(', ') : 'All lists'} · ${a.picks.map((p) => `P${p.priority}: ${p.limit.toLocaleString()}`).join(', ')}${a.skipEmailed ? ' · only contacts not emailed before' : ''}`;
   return 'All subscribed contacts';
 }
 

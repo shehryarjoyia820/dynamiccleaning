@@ -4,7 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 import { z } from 'zod';
 import { requireStaff, userError } from '@/lib/admin';
-import { INTERESTED_TAG, processQueue, renderEmail, startCampaign, upsertContact, type Audience, type Contact, type Followup } from '@/lib/campaigns';
+import { INTERESTED_TAG, truckPriority, processQueue, renderEmail, startCampaign, upsertContact, type Audience, type Contact, type Followup } from '@/lib/campaigns';
 import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
 import { serviceClient } from '@/lib/supabase/clients';
 
@@ -38,6 +38,17 @@ export async function saveContact(form: FormData) {
     phone: get(form, 'phone') || null,
     tags: tagList(get(form, 'tags')),
   };
+  // Fleet size and priority (contact page). A manual priority overrides the one from the truck count.
+  const fleet: Record<string, unknown> = {};
+  if (form.has('trucks')) {
+    const t = parseInt(get(form, 'trucks'), 10);
+    fleet.trucks = t > 0 ? t : null;
+    fleet.priority = truckPriority(t > 0 ? t : null);
+  }
+  const p = Number(get(form, 'priority'));
+  if ([1, 2, 3, 4].includes(p)) fleet.priority = p;
+  if (form.has('list_name') && get(form, 'list_name')) fleet.list_name = get(form, 'list_name').slice(0, 60);
+  Object.assign(row, fleet);
   const { error } = id
     ? await db.from('contacts').update(row).eq('id', id)
     : await db.from('contacts').insert({ ...row, source: 'manual' });
@@ -90,6 +101,40 @@ export async function deleteContacts(form: FormData) {
   const { error } = await db.from('contacts').delete().in('id', ids);
   if (error) return userError(error.message);
   revalidatePath('/admin/contacts');
+}
+
+export type ImportRow = {
+  email: string;
+  name?: string | null;
+  company?: string | null;
+  phone?: string | null;
+  trucks?: number | null;
+  details?: Record<string, string>;
+};
+
+/**
+ * One batch (up to 1,000 rows) from the browser uploader. New emails are added to the named list;
+ * existing ones keep their subscribe status and pick up the list tag and newer fleet details.
+ */
+export async function importContactRows(list: string, rows: ImportRow[]): Promise<{ inserted: number; updated: number; error?: string }> {
+  await requireStaff();
+  const name = list.trim().replace(/s+/g, ' ').slice(0, 60);
+  if (!name) return { inserted: 0, updated: 0, error: 'Give this upload a list name.' };
+  if (!Array.isArray(rows) || rows.length > 1000) return { inserted: 0, updated: 0, error: 'Send at most 1,000 rows at a time.' };
+  const clean = rows.map((r) => ({
+    email: String(r.email ?? '').trim().toLowerCase().slice(0, 254),
+    name: r.name ? String(r.name).slice(0, 160) : null,
+    company: r.company ? String(r.company).slice(0, 200) : null,
+    phone: r.phone ? String(r.phone).slice(0, 40) : null,
+    trucks: Number.isFinite(Number(r.trucks)) && Number(r.trucks) > 0 ? Math.min(Math.round(Number(r.trucks)), 100000) : null,
+    details: Object.fromEntries(Object.entries(r.details ?? {}).slice(0, 40).map(([k, v]) => [String(k).slice(0, 60), String(v).slice(0, 500)])),
+  }));
+  const tag = tagList(name)[0] || 'import';
+  const { data, error } = await svc().rpc('import_contacts', { p_rows: clean, p_list: name, p_tag: tag });
+  if (error) return { inserted: 0, updated: 0, error: error.message };
+  const row = (Array.isArray(data) ? data[0] : data) as { inserted: number; updated: number } | null;
+  revalidatePath('/admin/contacts');
+  return { inserted: row?.inserted ?? 0, updated: row?.updated ?? 0 };
 }
 
 export type ImportResult ={ ok: boolean; message: string; tag?: string; added?: number; invalid?: string[] };
@@ -228,6 +273,15 @@ function parseFollowups(form: FormData): Followup[] {
 
 async function parseAudience(form: FormData): Promise<Audience> {
   const type = get(form, 'audience');
+  if (type === 'priority') {
+    const lists = form.getAll('lists').map(String).filter(Boolean).slice(0, 20);
+    const picks = [1, 2, 3, 4]
+      .filter((p) => form.get(`prio_${p}`) === 'on')
+      .map((p) => ({ priority: p, limit: Math.min(Math.max(0, parseInt(get(form, `limit_${p}`), 10) || 0), 50000) }))
+      .filter((p) => p.limit > 0);
+    if (!picks.length) return userError('Tick at least one priority and enter how many contacts to email.');
+    return { type, lists, picks, skipEmailed: form.get('skip_emailed') === 'on' };
+  }
   if (type === 'tags') {
     const tags = form.getAll('tags').map(String).filter(Boolean);
     if (!tags.length) return userError('Choose at least one tag');

@@ -1,9 +1,11 @@
 import Link from 'next/link';
 import { requireStaff } from '@/lib/admin';
+import { PRIORITIES } from '@/lib/campaigns';
+import { cn } from '@/lib/utils';
 import { createCampaign } from '../../../email-actions';
 import { AdminTitle, SmallButton } from '../../../ui';
 
-export const metadata = { title: 'New send' };
+export const metadata = { title: 'New campaign' };
 
 const SOURCES = [
   ['lead', 'Website form leads'],
@@ -12,9 +14,28 @@ const SOURCES = [
   ['manual', 'Added manually'],
 ];
 
-export default async function NewCampaign({ searchParams }: { searchParams: Promise<Record<string, string | undefined>> }) {
-  const sp = await searchParams;
+export default async function NewCampaign({ searchParams }: { searchParams: Promise<Record<string, string | string[] | undefined>> }) {
+  const raw = await searchParams;
+  const sp = Object.fromEntries(Object.entries(raw).map(([k, v]) => [k, Array.isArray(v) ? v[0] : v])) as Record<string, string | undefined>;
+  // Lists picked for a priority send (?list=A&list=B); toggled with the chips below.
+  const picked = [raw.list ?? []].flat().filter(Boolean).slice(0, 20);
   const { db } = await requireStaff();
+
+  // Lists and how many contacts each priority has, in total and not yet emailed.
+  const [{ data: countRows }, { data: freshRows }, { data: allRows }] = await Promise.all([
+    db.rpc('contact_counts'),
+    db.rpc('priority_available', { p_lists: picked, p_skip_emailed: true }),
+    db.rpc('priority_available', { p_lists: picked, p_skip_emailed: false }),
+  ]);
+  const lists = [...new Set(((countRows ?? []) as { list_name: string }[]).map((r) => r.list_name))].sort();
+  const avail = (rows: unknown, p: number) => Number(((rows ?? []) as { priority: number; total: number }[]).find((r) => r.priority === p)?.total ?? 0);
+  const hasPriority = lists.length > 0;
+  const toggleHref = (l: string) => {
+    const next = picked.includes(l) ? picked.filter((x) => x !== l) : [...picked, l];
+    const u = new URLSearchParams();
+    next.forEach((x) => u.append('list', x));
+    return `/admin/emails/campaigns/new${u.size ? `?${u}` : ''}`;
+  };
   const [{ data: templates }, { data: tagRows }] = await Promise.all([
     db.from('email_templates').select('id,name,kind').order('kind').order('name'),
     db.from('contacts').select('tags').eq('status', 'subscribed').limit(5000),
@@ -38,12 +59,18 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
 
   return (
     <>
-      <AdminTitle title="Send a proposal" />
+      <AdminTitle title="New campaign" />
       <form action={createCampaign} className="grid max-w-3xl gap-6">
         <section className="card grid gap-4">
           <div>
             <label className="label" htmlFor="name">Name (internal)</label>
-            <input id="name" name="name" required className="field" defaultValue={sp.tag ? `Proposal to ${sp.tag}` : `Proposal ${new Date().toLocaleDateString('en-US')}`} />
+            <input
+              id="name"
+              name="name"
+              required
+              className="field"
+              defaultValue={picked.length ? `${picked.join(' + ')} · ${new Date().toLocaleDateString('en-US')}` : sp.tag ? `Proposal to ${sp.tag}` : `Proposal ${new Date().toLocaleDateString('en-US')}`}
+            />
           </div>
           <div>
             <label className="label" htmlFor="template_id">Email to send</label>
@@ -56,8 +83,73 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
         <fieldset className="card grid gap-3">
           <legend className="float-left mb-2 font-display text-2xl font-bold uppercase">Who receives it</legend>
           <p className="clear-left text-sm text-muted">Only subscribed contacts are included. Unsubscribed people are always skipped.</p>
+          {hasPriority ? (
+            <div className="rounded-lg border-2 border-accent/40 bg-accent/5 p-4">
+              <label className="flex items-center gap-2 font-semibold">
+                <input type="radio" name="audience" value="priority" defaultChecked={!sp.tag} className="h-4 w-4" /> By list and priority
+              </label>
+              <p className="mt-1 text-sm text-muted">Choose the lists, tick the priorities, and enter how many people to email from each. Biggest fleets in each priority go first.</p>
+              <div className="mt-3 flex flex-wrap items-center gap-2">
+                <span className="text-xs font-bold uppercase tracking-wide text-muted">Lists</span>
+                {lists.map((l) => (
+                  <Link
+                    key={l}
+                    href={toggleHref(l)}
+                    scroll={false}
+                    aria-pressed={picked.includes(l)}
+                    className={cn('rounded-full border px-3 py-1 text-sm font-semibold', picked.includes(l) ? 'border-charcoal bg-charcoal text-white' : 'border-ink/15 bg-white')}
+                  >
+                    {picked.includes(l) ? '✓ ' : ''}
+                    {l}
+                  </Link>
+                ))}
+                <span className="text-xs text-muted">{picked.length ? '' : '(none picked = all lists)'}</span>
+              </div>
+              {picked.map((l) => <input key={l} type="hidden" name="lists" value={l} />)}
+              <div className="mt-4 overflow-x-auto">
+                <table className="w-full min-w-[30rem] text-left text-sm">
+                  <thead className="text-xs uppercase tracking-wide text-muted">
+                    <tr>
+                      <th className="py-2 pr-3">Priority</th>
+                      <th className="py-2 pr-3 text-right">Not emailed yet</th>
+                      <th className="py-2 pr-3 text-right">Total</th>
+                      <th className="py-2">How many to email</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-ink/10">
+                    {PRIORITIES.map((p) => (
+                      <tr key={p.value}>
+                        <td className="py-2 pr-3">
+                          <label className="flex items-center gap-2 font-semibold">
+                            <input type="checkbox" name={`prio_${p.value}`} className="h-4 w-4" /> {p.label}
+                            <span className="font-normal text-muted">{p.hint}</span>
+                          </label>
+                        </td>
+                        <td className="py-2 pr-3 text-right tabular-nums">{avail(freshRows, p.value).toLocaleString()}</td>
+                        <td className="py-2 pr-3 text-right tabular-nums text-muted">{avail(allRows, p.value).toLocaleString()}</td>
+                        <td className="py-2">
+                          <input
+                            type="number"
+                            name={`limit_${p.value}`}
+                            min={0}
+                            max={50000}
+                            placeholder="e.g. 100"
+                            aria-label={`How many ${p.label} contacts to email`}
+                            className="field !w-32 !py-1.5"
+                          />
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <label className="mt-3 flex items-center gap-2 text-sm">
+                <input type="checkbox" name="skip_emailed" defaultChecked className="h-4 w-4" /> Only contacts who have not been emailed before (work through a list in batches)
+              </label>
+            </div>
+          ) : null}
           <label className="flex items-center gap-2 font-semibold">
-            <input type="radio" name="audience" value="tags" defaultChecked={!!sp.tag || tags.length > 0} className="h-4 w-4" /> Contacts with tag
+            <input type="radio" name="audience" value="tags" defaultChecked={!!sp.tag || (!hasPriority && tags.length > 0)} className="h-4 w-4" /> Contacts with tag
           </label>
           <div className="ml-6 flex flex-wrap gap-2">
             {tags.map(([t, n]) => (
@@ -68,7 +160,7 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
             {!tags.length ? <span className="text-sm text-muted">No tags yet. <Link href="/admin/contacts/import" className="underline">Upload emails</Link></span> : null}
           </div>
           <label className="mt-2 flex items-center gap-2 font-semibold">
-            <input type="radio" name="audience" value="sources" defaultChecked={!sp.tag && !tags.length} className="h-4 w-4" /> Contacts from
+            <input type="radio" name="audience" value="sources" defaultChecked={!sp.tag && !hasPriority && !tags.length} className="h-4 w-4" /> Contacts from
           </label>
           <div className="ml-6 flex flex-wrap gap-2">
             {SOURCES.map(([v, l]) => (

@@ -16,7 +16,26 @@ export type Contact = {
   status: 'subscribed' | 'unsubscribed' | 'bounced';
   replied_at: string | null;
   lead_id: string | null;
+  priority?: number;
+  trucks?: number | null;
+  list_name?: string;
 };
+
+/** Priority by fleet size: 1 = one truck, 2 = up to 3, 3 = up to 10, 4 = more than 10. */
+export function truckPriority(trucks: number | null | undefined) {
+  const n = Number(trucks) || 0;
+  return n <= 1 ? 1 : n <= 3 ? 2 : n <= 10 ? 3 : 4;
+}
+
+export const PRIORITIES = [
+  { value: 1, label: 'Priority 1', hint: '1 truck' },
+  { value: 2, label: 'Priority 2', hint: '2–3 trucks' },
+  { value: 3, label: 'Priority 3', hint: '4–10 trucks' },
+  { value: 4, label: 'Priority 4', hint: '11+ trucks' },
+] as const;
+
+/** List that website signups and form leads belong to. */
+export const WEBSITE_LIST = 'Website';
 
 export type Template = {
   id: string;
@@ -32,7 +51,9 @@ export type Audience =
   | { type: 'all' }
   | { type: 'tags'; tags: string[] }
   | { type: 'sources'; sources: string[] }
-  | { type: 'contacts'; ids: string[] };
+  | { type: 'contacts'; ids: string[] }
+  /** Up to `limit` contacts from each chosen priority, optionally only those never emailed before. */
+  | { type: 'priority'; lists: string[]; picks: { priority: number; limit: number }[]; skipEmailed: boolean };
 
 export type Followup = { template_id: string; delay_days: number };
 
@@ -154,6 +175,19 @@ export function renderEmail(t: Pick<Template, 'subject' | 'body'>, c: Contact, o
 
 export async function resolveAudience(db: SupabaseClient, a: Audience) {
   const out: Contact[] = [];
+  if (a.type === 'priority') {
+    for (const p of a.picks) {
+      const { data, error } = await db.rpc('pick_priority_contacts', {
+        p_priority: p.priority,
+        p_limit: p.limit,
+        p_lists: a.lists,
+        p_skip_emailed: a.skipEmailed,
+      });
+      if (error) throw new Error(error.message);
+      out.push(...((data ?? []) as Contact[]));
+    }
+    return out;
+  }
   for (let from = 0; ; from += 1000) {
     let q = db.from('contacts').select('*').eq('status', 'subscribed').order('created_at').range(from, from + 999);
     if (a.type === 'tags') q = q.overlaps('tags', a.tags);
@@ -323,12 +357,23 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
 /** Adds or refreshes a contact without ever re-subscribing someone who opted out. */
 export async function upsertContact(
   db: SupabaseClient,
-  c: { email: string; name?: string | null; company?: string | null; phone?: string | null; source: Contact['source']; tags?: string[]; lead_id?: string | null },
+  c: {
+    email: string;
+    name?: string | null;
+    company?: string | null;
+    phone?: string | null;
+    source: Contact['source'];
+    tags?: string[];
+    lead_id?: string | null;
+    /** Fleet size from a booking form; sets the contact's priority. */
+    trucks?: number | null;
+  },
 ) {
   const email = c.email.trim().toLowerCase();
-  const { data: existing } = await db.from('contacts').select('id,tags,name,company,phone').eq('email', email).maybeSingle();
+  const { data: existing } = await db.from('contacts').select('id,tags,name,company,phone,trucks').eq('email', email).maybeSingle();
   if (existing) {
     const tags = Array.from(new Set([...(existing.tags ?? []), ...(c.tags ?? [])]));
+    const trucks = c.trucks ? Math.max(c.trucks, existing.trucks ?? 0) : existing.trucks;
     await db
       .from('contacts')
       .update({
@@ -337,15 +382,16 @@ export async function upsertContact(
         company: existing.company || c.company || null,
         phone: existing.phone || c.phone || null,
         ...(c.lead_id ? { lead_id: c.lead_id } : {}),
+        ...(c.trucks ? { trucks, priority: truckPriority(trucks) } : {}),
       })
       .eq('id', existing.id);
     return existing.id as string;
   }
-  const { data, error } = await db
-    .from('contacts')
-    .insert({ email, name: c.name || null, company: c.company || null, phone: c.phone || null, source: c.source, tags: c.tags ?? [], lead_id: c.lead_id ?? null })
-    .select('id')
-    .single();
-  if (error) throw new Error(error.message);
+  const base = { email, name: c.name || null, company: c.company || null, phone: c.phone || null, source: c.source, tags: c.tags ?? [], lead_id: c.lead_id ?? null };
+  const insert = (row: Record<string, unknown>) => db.from('contacts').insert(row).select('id').single();
+  let { data, error } = await insert({ ...base, list_name: WEBSITE_LIST, trucks: c.trucks ?? null, priority: truckPriority(c.trucks) });
+  // Until the priority upgrade has run on this database, store the contact without those columns.
+  if (error && /list_name|priority|trucks/.test(error.message)) ({ data, error } = await insert(base));
+  if (error || !data) throw new Error(error?.message ?? 'Contact not saved');
   return data.id as string;
 }

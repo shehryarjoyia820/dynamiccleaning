@@ -4,6 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { deleteContact, saveContact, setContactStatus, setInterested, setReplied } from '../../email-actions';
 import { AdminTitle, SmallButton } from '../../ui';
+import { PRIORITIES } from '@/lib/campaigns';
 
 export const metadata = { title: 'Contact' };
 
@@ -39,6 +40,27 @@ export default async function ContactPage({ params }: { params: Promise<{ id: st
             <input id="company" name="company" defaultValue={c.company ?? ''} className="field" />
             <label className="label" htmlFor="phone">Phone</label>
             <input id="phone" name="phone" defaultValue={c.phone ?? ''} className="field" />
+            {'priority' in c ? (
+              <div className="grid grid-cols-3 gap-3">
+                <div>
+                  <label className="label" htmlFor="trucks">Trucks</label>
+                  <input id="trucks" name="trucks" type="number" min={0} defaultValue={c.trucks ?? ''} className="field" />
+                </div>
+                <div>
+                  <label className="label" htmlFor="priority">Priority</label>
+                  <select id="priority" name="priority" defaultValue="" className="field">
+                    <option value="">From trucks (now P{c.priority})</option>
+                    {PRIORITIES.map((p) => (
+                      <option key={p.value} value={p.value}>{p.label} · {p.hint}</option>
+                    ))}
+                  </select>
+                </div>
+                <div>
+                  <label className="label" htmlFor="list_name">List</label>
+                  <input id="list_name" name="list_name" defaultValue={c.list_name ?? ''} className="field" />
+                </div>
+              </div>
+            ) : null}
             <label className="label" htmlFor="tags">Tags (comma separated)</label>
             <input id="tags" name="tags" defaultValue={(c.tags as string[]).join(', ')} className="field" />
             <SmallButton className="justify-self-start">Save</SmallButton>
@@ -63,6 +85,19 @@ export default async function ContactPage({ params }: { params: Promise<{ id: st
             ) : null}
           </div>
           <p className="mt-4 text-xs text-muted">Source: {c.source} · added {fmt(c.created_at)}{c.unsubscribed_at ? ` · unsubscribed ${fmt(c.unsubscribed_at)}` : ''}</p>
+          {c.details && Object.keys(c.details).length ? (
+            <div className="mt-6 border-t border-ink/10 pt-4">
+              <h2 className="text-xl">Company details</h2>
+              <dl className="mt-3 grid gap-x-6 gap-y-2 text-sm sm:grid-cols-2">
+                {Object.entries(c.details as Record<string, string>).map(([k, v]) => (
+                  <div key={k} className={v.length > 60 ? 'sm:col-span-2' : undefined}>
+                    <dt className="text-xs font-semibold uppercase tracking-wide text-muted">{k}</dt>
+                    <dd className="break-words">{v}</dd>
+                  </div>
+                ))}
+              </dl>
+            </div>
+          ) : null}
         </section>
 
         <section className="card content-start">
