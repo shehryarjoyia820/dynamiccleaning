@@ -13,6 +13,7 @@ const FILES = [
   'supabase/migrations/0005_blog_media.sql',
   'supabase/migrations/0006_campaign_history.sql',
   'supabase/migrations/0007_priority_lists.sql',
+  'supabase/migrations/0008_priority_templates.sql',
   'supabase/seed.sql',
 ];
 
@@ -56,6 +57,16 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       if (!db) return true;
       const { error } = await db.from('contacts').select('priority,list_name').limit(1);
       return !error;
+    },
+  },
+  {
+    // Starter templates per priority; only re-added if every one of them was deleted.
+    file: 'supabase/migrations/0008_priority_templates.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { count, error } = await db.from('email_templates').select('id', { count: 'exact', head: true }).like('name', 'P_ %·%');
+      return !!error || (count ?? 0) > 0;
     },
   },
 ];

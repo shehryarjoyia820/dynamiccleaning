@@ -34,6 +34,14 @@ export const PRIORITIES = [
   { value: 4, label: 'Priority 4', hint: '11+ trucks' },
 ] as const;
 
+/** Starter proposal and follow-up for each priority (migration 0008). */
+export const PRIORITY_TEMPLATES: Record<number, { proposal: string; followUp: string }> = {
+  1: { proposal: '6f1b2a10-0000-4000-8000-000000000101', followUp: '6f1b2a10-0000-4000-8000-000000000201' },
+  2: { proposal: '6f1b2a10-0000-4000-8000-000000000102', followUp: '6f1b2a10-0000-4000-8000-000000000202' },
+  3: { proposal: '6f1b2a10-0000-4000-8000-000000000103', followUp: '6f1b2a10-0000-4000-8000-000000000203' },
+  4: { proposal: '6f1b2a10-0000-4000-8000-000000000104', followUp: '6f1b2a10-0000-4000-8000-000000000204' },
+};
+
 /** List that website signups and form leads belong to. */
 export const WEBSITE_LIST = 'Website';
 
@@ -115,7 +123,10 @@ export function markdownToHtml(md: string) {
 }
 
 export function applyMergeTags(text: string, c: Pick<Contact, 'email' | 'name' | 'company'>) {
-  const first = (c.name ?? '').trim().split(/\s+/)[0] || 'there';
+  // Imported officer names look like "R. THOMAS JACQUES": skip initials and fix all-caps.
+  const word = (c.name ?? '').trim().split(/\s+/).find((w) => w.replace(/[^a-z]/gi, '').length > 1) ?? '';
+  const clean = word.replace(/[^a-z'-]/gi, '');
+  const first = clean ? (clean === clean.toUpperCase() ? clean[0] + clean.slice(1).toLowerCase() : clean) : 'there';
   return text
     .replace(/{{\s*first_name\s*}}/g, first)
     .replace(/{{\s*name\s*}}/g, c.name?.trim() || 'there')

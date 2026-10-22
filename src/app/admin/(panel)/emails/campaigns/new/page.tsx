@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { requireStaff } from '@/lib/admin';
-import { PRIORITIES } from '@/lib/campaigns';
+import { PRIORITIES, PRIORITY_TEMPLATES } from '@/lib/campaigns';
 import { cn } from '@/lib/utils';
 import { createCampaign } from '../../../email-actions';
 import { AdminTitle, SmallButton } from '../../../ui';
@@ -34,6 +34,7 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
     const next = picked.includes(l) ? picked.filter((x) => x !== l) : [...picked, l];
     const u = new URLSearchParams();
     next.forEach((x) => u.append('list', x));
+    if (sp.p) u.set('p', sp.p);
     return `/admin/emails/campaigns/new${u.size ? `?${u}` : ''}`;
   };
   const [{ data: templates }, { data: tagRows }] = await Promise.all([
@@ -44,6 +45,12 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
   for (const r of tagRows ?? []) for (const t of r.tags as string[]) tagCounts.set(t, (tagCounts.get(t) ?? 0) + 1);
   const tags = Array.from(tagCounts.entries()).sort((a, b) => a[0].localeCompare(b[0]));
   const proposals = (templates ?? []).filter((t) => t.kind !== 'follow_up');
+  // ?p=2 preselects that priority and its own proposal + follow-up.
+  const prio = [1, 2, 3, 4].includes(Number(sp.p)) ? Number(sp.p) : 0;
+  const has = (id?: string) => !!id && (templates ?? []).some((t) => t.id === id);
+  const tierTpl = prio ? PRIORITY_TEMPLATES[prio] : undefined;
+  const defaultProposal = has(tierTpl?.proposal) ? tierTpl!.proposal : undefined;
+  const defaultFollowUp = has(tierTpl?.followUp) ? tierTpl!.followUp : '';
   const followups = templates ?? [];
 
   if (!templates?.length) {
@@ -69,12 +76,12 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
               name="name"
               required
               className="field"
-              defaultValue={picked.length ? `${picked.join(' + ')} · ${new Date().toLocaleDateString('en-US')}` : sp.tag ? `Proposal to ${sp.tag}` : `Proposal ${new Date().toLocaleDateString('en-US')}`}
+              defaultValue={picked.length || prio ? `${[picked.join(' + '), prio ? `Priority ${prio}` : ''].filter(Boolean).join(' · ')} · ${new Date().toLocaleDateString('en-US')}` : sp.tag ? `Proposal to ${sp.tag}` : `Proposal ${new Date().toLocaleDateString('en-US')}`}
             />
           </div>
           <div>
             <label className="label" htmlFor="template_id">Email to send</label>
-            <select id="template_id" name="template_id" required className="field">
+            <select id="template_id" name="template_id" required className="field" defaultValue={defaultProposal}>
               {proposals.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
             </select>
           </div>
@@ -121,7 +128,7 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
                       <tr key={p.value}>
                         <td className="py-2 pr-3">
                           <label className="flex items-center gap-2 font-semibold">
-                            <input type="checkbox" name={`prio_${p.value}`} className="h-4 w-4" /> {p.label}
+                            <input type="checkbox" name={`prio_${p.value}`} defaultChecked={prio === p.value} className="h-4 w-4" /> {p.label}
                             <span className="font-normal text-muted">{p.hint}</span>
                           </label>
                         </td>
@@ -181,7 +188,7 @@ export default async function NewCampaign({ searchParams }: { searchParams: Prom
           </p>
           {[3, 7, 14].map((days, i) => (
             <div key={i} className="grid gap-2 sm:grid-cols-[1fr_9rem]">
-              <select name="fu_template" aria-label={`Follow-up ${i + 1} template`} className="field" defaultValue="">
+              <select name="fu_template" aria-label={`Follow-up ${i + 1} template`} className="field" defaultValue={i === 0 ? defaultFollowUp : ''}>
                 <option value="">Follow-up {i + 1}: none</option>
                 {followups.map((t) => <option key={t.id} value={t.id}>{t.name}</option>)}
               </select>

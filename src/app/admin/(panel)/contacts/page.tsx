@@ -102,8 +102,15 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
           <Link href="/admin/contacts/import" className="inline-flex items-center gap-2 rounded-md bg-accent-deep px-3 py-2 text-sm font-bold text-white hover:bg-accent-hover">
             <Upload className="h-4 w-4" aria-hidden /> Upload leads
           </Link>
-          <Link href={`/admin/emails/campaigns/new${list ? `?list=${encodeURIComponent(list)}` : sp.tag ? `?tag=${encodeURIComponent(sp.tag)}` : ''}`} className="inline-flex items-center gap-2 rounded-md bg-charcoal px-3 py-2 text-sm font-semibold text-white">
-            <Send className="h-4 w-4" aria-hidden /> Send proposal
+          <Link
+            href={`/admin/emails/campaigns/new${
+              list || prio
+                ? `?${new URLSearchParams([...(list ? [['list', list]] : []), ...(prio ? [['p', String(prio)]] : [])])}`
+                : sp.tag
+                  ? `?tag=${encodeURIComponent(sp.tag)}`
+                  : ''
+            }`} className="inline-flex items-center gap-2 rounded-md bg-charcoal px-3 py-2 text-sm font-semibold text-white">
+            <Send className="h-4 w-4" aria-hidden /> {prio ? `Email Priority ${prio}` : 'Send proposal'}
           </Link>
           <a href={`/admin/contacts/export${qs({ page: undefined })}`} className="inline-flex items-center gap-2 rounded-md border border-ink/20 bg-white px-3 py-2 text-sm font-semibold hover:border-ink">
             <Download className="h-4 w-4" aria-hidden /> Export CSV
