@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Download, Send, Upload } from 'lucide-react';
+import { Bot, Download, Send, Upload } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { PRIORITIES } from '@/lib/campaigns';
 import { cn } from '@/lib/utils';
@@ -111,6 +111,12 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
                   : ''
             }`} className="inline-flex items-center gap-2 rounded-md bg-charcoal px-3 py-2 text-sm font-semibold text-white">
             <Send className="h-4 w-4" aria-hidden /> {prio ? `Email Priority ${prio}` : 'Send proposal'}
+          </Link>
+          <Link
+            href={`/admin/automation/new${list ? `?list=${encodeURIComponent(list)}` : ''}`}
+            className="inline-flex items-center gap-2 rounded-md bg-green-ink px-3 py-2 text-sm font-bold text-white hover:opacity-90"
+          >
+            <Bot className="h-4 w-4" aria-hidden /> Start automation
           </Link>
           <a href={`/admin/contacts/export${qs({ page: undefined })}`} className="inline-flex items-center gap-2 rounded-md border border-ink/20 bg-white px-3 py-2 text-sm font-semibold hover:border-ink">
             <Download className="h-4 w-4" aria-hidden /> Export CSV

@@ -15,6 +15,7 @@ export const metadata = { title: 'Send' };
 function audienceLabel(a: Audience) {
   if (a.type === 'tags') return `Tag: ${a.tags.join(', ')}`;
   if (a.type === 'sources') return `Source: ${a.sources.join(', ')}`;
+  if ((a as { type: string }).type === 'automation') return `Automation: daily emails by priority${(a as unknown as { lists?: string[] }).lists?.length ? ` · ${(a as unknown as { lists: string[] }).lists.join(', ')}` : ''}`;
   if (a.type === 'contacts') return `${a.ids.length} selected contact(s)`;
   if (a.type === 'priority')
     return `${a.lists.length ? a.lists.join(', ') : 'All lists'} · ${a.picks.map((p) => `P${p.priority}: ${p.limit.toLocaleString()}`).join(', ')}${a.skipEmailed ? ' · only contacts not emailed before' : ''}`;
@@ -79,7 +80,7 @@ export default async function CampaignPage({ params, searchParams }: { params: P
     const by = (st: string) => rows.filter((r) => r.status === st).length;
     return {
       step,
-      name: tname.get(tid) ?? '—',
+      name: c.automation ? (step ? 'Follow-ups (repeat openers)' : 'Proposals (by priority)') : tname.get(tid) ?? '—',
       delay: step ? followups[step - 1].delay_days : 0,
       total: rows.length,
       sent: by('sent'),
@@ -152,7 +153,14 @@ export default async function CampaignPage({ params, searchParams }: { params: P
 
       {c.status !== 'draft' ? (
         <>
-          {c.status === 'sending' ? <SendRunner hasDue={steps[0].queued > 0} /> : null}
+          {c.automation ? (
+            <p className="mb-4 rounded-lg bg-accent/10 p-4 text-sm">
+              This campaign is the record of an automation: new emails are added every day.{' '}
+              <Link href="/admin/automation" className="font-semibold text-accent-ink underline">Open Automation</Link> to see the live feed, or to stop or change it.
+            </p>
+          ) : c.status === 'sending' ? (
+            <SendRunner hasDue={steps[0].queued > 0} />
+          ) : null}
 
           <div className="overflow-x-auto rounded-xl border border-ink/10 bg-white shadow-card">
             <table className="w-full min-w-[44rem] text-left text-sm">
@@ -187,13 +195,13 @@ export default async function CampaignPage({ params, searchParams }: { params: P
           <p className="mt-2 text-xs text-muted">Opens are approximate: some mail apps block tracking images. Skipped = replied, unsubscribed or already booked.</p>
 
           <div className="mt-6 flex flex-wrap items-center gap-3">
-            {c.status === 'sending' ? (
+            {c.status === 'sending' && !c.automation ? (
               <form action={setCampaignPaused.bind(null, c.id, true)}><button className="rounded-md border border-ink/20 px-4 py-2 text-sm font-semibold">Pause</button></form>
             ) : null}
-            {c.status === 'paused' ? (
+            {c.status === 'paused' && !c.automation ? (
               <form action={setCampaignPaused.bind(null, c.id, false)}><SmallButton>Resume</SmallButton></form>
             ) : null}
-            {c.status === 'sending' || c.status === 'paused' ? (
+            {(c.status === 'sending' || c.status === 'paused') && !c.automation ? (
               <form action={cancelCampaign.bind(null, c.id)}><button className="text-sm font-semibold text-[#B42318] underline underline-offset-4">Stop &amp; cancel remaining</button></form>
             ) : null}
             <Link

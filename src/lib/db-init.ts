@@ -14,6 +14,7 @@ const FILES = [
   'supabase/migrations/0006_campaign_history.sql',
   'supabase/migrations/0007_priority_lists.sql',
   'supabase/migrations/0008_priority_templates.sql',
+  'supabase/migrations/0009_automation.sql',
   'supabase/seed.sql',
 ];
 
@@ -69,9 +70,18 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       return !!error || (count ?? 0) > 0;
     },
   },
+  {
+    file: 'supabase/migrations/0009_automation.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { error } = await db.from('automations').select('id').limit(1);
+      return !error;
+    },
+  },
 ];
 
-async function withClient<T>(run: (c: Client) => Promise<T>) {
+export async function withClient<T>(run: (c: Client) => Promise<T>) {
   const raw = process.env.POSTGRES_URL_NON_POOLING || process.env.POSTGRES_URL;
   if (!raw) throw new Error('POSTGRES_URL_NON_POOLING is not set. Connect Supabase to the Vercel project first.');
   // Supabase uses its own CA; pg treats sslmode=require as full verification, so set TLS explicitly.

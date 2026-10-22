@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ChevronRight, Eye, Search, Send } from 'lucide-react';
+import { Bot, ChevronRight, Eye, Search, Send } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
 import { cn } from '@/lib/utils';
 import { AdminTitle, CAMPAIGN_STATUS } from '../../ui';
@@ -45,9 +45,14 @@ export default async function CampaignsPage({ searchParams }: { searchParams: Pr
   return (
     <>
       <AdminTitle title="Campaigns">
+        <div className="flex flex-wrap gap-2">
+        <Link href="/admin/automation/new" className="inline-flex items-center gap-2 rounded-md bg-green-ink px-4 py-2 text-sm font-bold text-white hover:opacity-90">
+          <Bot className="h-4 w-4" aria-hidden /> Start automation
+        </Link>
         <Link href="/admin/emails/campaigns/new" className="inline-flex items-center gap-2 rounded-md bg-accent-deep px-4 py-2 text-sm font-bold text-white hover:bg-accent-hover">
           <Send className="h-4 w-4" aria-hidden /> New campaign
         </Link>
+        </div>
       </AdminTitle>
 
       <ol className="mb-6 grid max-w-4xl gap-3 text-sm sm:grid-cols-3">

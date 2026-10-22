@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
-import { Contact, ExternalLink, FileText, Globe, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
+import { Bot, Contact, ExternalLink, FileText, Globe, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
 import { LogoMark } from '@/components/brand';
 import { requireStaff } from '@/lib/admin';
 import { ensureSchema } from '@/lib/db-init';
@@ -12,6 +12,7 @@ export const dynamic = 'force-dynamic';
 const NAV = [
   { href: '/admin', label: 'Leads', icon: Inbox },
   { href: '/admin/contacts', label: 'Contacts & subscribers', icon: Contact },
+  { href: '/admin/automation', label: 'Automation', icon: Bot },
   { href: '/admin/emails/campaigns', label: 'Campaigns', icon: Send },
   { href: '/admin/emails/templates', label: 'Email templates', icon: Mail },
   { href: '/admin/content/faqs', label: 'FAQs', icon: HelpCircle },

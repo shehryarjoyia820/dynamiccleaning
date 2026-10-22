@@ -359,7 +359,8 @@ export async function processQueue(db: SupabaseClient, opts: { maxMs?: number; b
   // Close campaigns that have nothing left to send.
   for (const id of touched) {
     const { count } = await db.from('email_sends').select('id', { count: 'exact', head: true }).eq('campaign_id', id).in('status', ['queued', 'sending']);
-    if (!count) await db.from('campaigns').update({ status: 'sent' }).eq('id', id).eq('status', 'sending');
+    // Automation campaigns stay open: they keep getting new emails every day.
+    if (!count) await db.from('campaigns').update({ status: 'sent' }).eq('id', id).eq('status', 'sending').eq('automation', false);
   }
   const { count: due } = await db.from('email_sends').select('id', { count: 'exact', head: true }).eq('status', 'queued').lte('send_after', new Date().toISOString());
   return { ...stats, due: due ?? 0, feed };
