@@ -17,6 +17,7 @@ const FILES = [
   'supabase/migrations/0009_automation.sql',
   'supabase/migrations/0010_priority_cities.sql',
   'supabase/migrations/0011_recipient_city.sql',
+  'supabase/migrations/0012_tier_templates_v2.sql',
   'supabase/seed.sql',
 ];
 
@@ -97,6 +98,16 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       if (!db) return true;
       const { error } = await db.from('email_sends').select('recipient_city').limit(1);
       return !error;
+    },
+  },
+  {
+    // One-time rewrite of the tier templates; tracked so later admin edits are kept.
+    file: 'supabase/migrations/0012_tier_templates_v2.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { data } = await db.from('app_migrations').select('name').eq('name', '0012_tier_templates_v2').maybeSingle();
+      return !!data;
     },
   },
 ];

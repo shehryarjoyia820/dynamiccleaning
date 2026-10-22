@@ -135,10 +135,17 @@ export function markdownToHtml(md: string) {
       const b = esc(block.trim());
       if (!b) return '';
       if (BUTTONS[b]) return BUTTONS[b]();
+      if (b === '---') return '<hr style="border:0;border-top:1px solid #E5E7EB;margin:24px 0">';
+      if (b.startsWith('### ')) return `<h3 style="font-size:16px;margin:20px 0 6px;color:#0F172A">${inlineMd(b.slice(4))}</h3>`;
       if (b.startsWith('## ')) return `<h2 style="font-size:20px;margin:24px 0 8px">${inlineMd(b.slice(3))}</h2>`;
       const lines = b.split('\n');
       if (lines.every((l) => /^[-*] /.test(l)))
         return `<ul style="padding-left:20px;margin:12px 0">${lines.map((l) => `<li style="margin:4px 0">${inlineMd(l.slice(2))}</li>`).join('')}</ul>`;
+      if (lines.every((l) => /^\d+\. /.test(l)))
+        return `<ol style="padding-left:20px;margin:12px 0">${lines.map((l) => `<li style="margin:6px 0">${inlineMd(l.replace(/^\d+\. /, ''))}</li>`).join('')}</ol>`;
+      // "> " lines: a highlighted note box.
+      if (lines.every((l) => l.startsWith('&gt; ')))
+        return `<div style="margin:16px 0;padding:14px 16px;background:#EEF4FF;border-left:4px solid #4C8DFF;border-radius:6px;line-height:1.6">${lines.map((l) => inlineMd(l.slice(5))).join('<br>')}</div>`;
       return `<p style="margin:12px 0;line-height:1.6">${lines.map(inlineMd).join('<br>')}</p>`;
     })
     .join('');
