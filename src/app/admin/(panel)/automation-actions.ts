@@ -55,13 +55,15 @@ export async function saveAutomation(form: FormData) {
   const lists = form.getAll('lists').map(String).filter(Boolean).slice(0, 20);
   const name = get(form, 'name').slice(0, 120) || `Automation · ${lists.join(' + ') || 'All lists'}`;
   const priority_cities = [...new Set(get(form, 'priority_cities').split(',').map((c) => c.trim().replace(/\s+/g, ' ')).filter(Boolean))].slice(0, 30);
+  const only_cities = [...new Set(get(form, 'only_cities').split(',').map((c) => c.trim().replace(/\s+/g, ' ')).filter(Boolean))].slice(0, 30);
+  const only_zips = [...new Set([...zipsFor(only_cities), ...get(form, 'only_zips').split(/[\s,]+/).filter((z) => /^\d{5}$/.test(z))])];
   const priority_zips = [
     ...new Set([...zipsFor(priority_cities), ...get(form, 'priority_zips').split(/[\s,]+/).filter((z) => /^\d{5}$/.test(z))]),
   ];
   const id = get(form, 'id');
 
   if (id) {
-    const { error } = await db.from('automations').update({ name, lists, tiers, priority_cities, priority_zips }).eq('id', id);
+    const { error } = await db.from('automations').update({ name, lists, tiers, priority_cities, priority_zips, only_cities, only_zips }).eq('id', id);
     if (error) return userError(error.message);
     revalidatePath('/admin/automation');
     redirect('/admin/automation');
@@ -86,7 +88,7 @@ export async function saveAutomation(form: FormData) {
     .select('id')
     .single();
   if (ce) return userError(ce.message);
-  const { error } = await db.from('automations').insert({ name, lists, tiers, priority_cities, priority_zips, campaign_id: camp.id, created_by: user.id });
+  const { error } = await db.from('automations').insert({ name, lists, tiers, priority_cities, priority_zips, only_cities, only_zips, campaign_id: camp.id, created_by: user.id });
   if (error) return userError(error.message);
 
   const sched = await ensureScheduler();

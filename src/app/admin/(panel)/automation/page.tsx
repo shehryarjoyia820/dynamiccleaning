@@ -44,7 +44,7 @@ export default async function AutomationPage() {
           .order('created_at', { ascending: false })
           .limit(25),
         db.from('email_sends').select('priority').eq('campaign_id', a.campaign_id).eq('step', 0).gte('open_count', 2).limit(10000),
-        db.rpc('priority_available', { p_lists: a.lists, p_skip_emailed: true }),
+        db.rpc('priority_available', { p_lists: a.lists, p_skip_emailed: true, p_only_cities: a.only_cities ?? [], p_only_zips: a.only_zips ?? [] }),
         db.from('email_sends').select('id', { count: 'exact', head: true }).eq('campaign_id', a.campaign_id).eq('status', 'queued'),
         a.priority_cities?.length || a.priority_zips?.length
           ? db.rpc('priority_area_available', { p_lists: a.lists, p_cities: a.priority_cities ?? [], p_zips: a.priority_zips ?? [] })
@@ -110,6 +110,11 @@ export default async function AutomationPage() {
                     Lists: {a.lists.length ? a.lists.join(', ') : 'All lists'} · started {pt(a.started_at)}
                     {a.last_run_at ? ` · last check ${pt(a.last_run_at)}` : ''}
                   </p>
+                  {a.only_cities?.length || a.only_zips?.length ? (
+                    <p className="mt-1 inline-block rounded-md bg-[#FEF0C7] px-2 py-0.5 text-sm text-[#7A4A06]">
+                      <span className="font-semibold">Only emailing:</span> {[...(a.only_cities ?? []), ...(a.only_zips ?? []).filter((z) => !(a.only_cities ?? []).length)].join(', ')}
+                    </p>
+                  ) : null}
                   {a.priority_cities?.length ? (
                     <p className="mt-1 text-sm">
                       <span className="font-semibold">Priority cities first:</span> {a.priority_cities.join(', ')}

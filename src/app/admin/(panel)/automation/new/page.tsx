@@ -71,6 +71,32 @@ export default async function NewAutomation({ searchParams }: { searchParams: Pr
             </fieldset>
           </section>
 
+          <section className="card grid gap-3 border-2 border-accent/30">
+            <div>
+              <label className="label" htmlFor="only_cities">Only email these cities (optional)</label>
+              <input
+                id="only_cities"
+                name="only_cities"
+                defaultValue={(existing?.only_cities ?? []).join(', ')}
+                placeholder="Leave empty to email every city. e.g. Ontario, Fontana"
+                className="field"
+              />
+              <p className="mt-1 text-sm text-muted">
+                When filled in, <strong>nobody outside these cities is emailed</strong>. Matched by city name and ZIP code. Separate from priority cities below.
+              </p>
+            </div>
+            <div>
+              <label className="label" htmlFor="only_zips">Only these extra ZIP codes (optional)</label>
+              <input
+                id="only_zips"
+                name="only_zips"
+                defaultValue={(existing?.only_zips ?? []).filter((z) => !Object.values(CITY_ZIPS).flat().includes(z)).join(', ')}
+                placeholder="e.g. 92324, 92316"
+                className="field max-w-md"
+              />
+            </div>
+          </section>
+
           <section className="card grid gap-3">
             <div>
               <label className="label" htmlFor="priority_cities">Priority cities (emailed first in every priority)</label>

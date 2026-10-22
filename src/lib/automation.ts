@@ -31,6 +31,9 @@ export type Automation = {
   /** Emailed first inside every priority (matched by city name or ZIP). */
   priority_cities?: string[];
   priority_zips?: string[];
+  /** When set, only contacts in these cities/ZIPs are emailed at all. */
+  only_cities?: string[];
+  only_zips?: string[];
   last_run_at: string | null;
   last_run: Record<string, unknown> | null;
   started_at: string;
@@ -148,9 +151,23 @@ export async function runAutomations(db: SupabaseClient, opts: { maxMs?: number 
       const take = Math.ceil(remaining / ticksLeft);
       // Priority cities first, then biggest fleets.
       const base = { p_priority: t.priority, p_limit: take, p_lists: a.lists, p_skip_emailed: true };
-      let { data: picks, error } = await db.rpc('pick_priority_contacts', { ...base, p_cities: a.priority_cities ?? [], p_zips: a.priority_zips ?? [] });
-      // Database not upgraded yet: pick without the city preference rather than stall.
-      if (error && /pick_priority_contacts/.test(error.message)) ({ data: picks, error } = await db.rpc('pick_priority_contacts', base));
+      const onlySome = !!(a.only_cities?.length || a.only_zips?.length);
+      let { data: picks, error } = await db.rpc('pick_priority_contacts', {
+        ...base,
+        p_cities: a.priority_cities ?? [],
+        p_zips: a.priority_zips ?? [],
+        p_only_cities: a.only_cities ?? [],
+        p_only_zips: a.only_zips ?? [],
+      });
+      // Database not upgraded yet: never ignore an "only these cities" limit (wait instead);
+      // otherwise pick without the newer options rather than stall.
+      if (error && /pick_priority_contacts/.test(error.message)) {
+        if (onlySome) {
+          tiers.push({ priority: t.priority, picked: 0, reason: 'waiting for database update' });
+          continue;
+        }
+        ({ data: picks, error } = await db.rpc('pick_priority_contacts', { ...base, p_cities: a.priority_cities ?? [], p_zips: a.priority_zips ?? [] }));
+      }
       if (error) {
         tiers.push({ priority: t.priority, picked: 0, reason: error.message });
         continue;
