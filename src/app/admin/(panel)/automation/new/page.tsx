@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Play } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
-import { DEFAULT_TIERS, type Automation } from '@/lib/automation';
+import { CITY_ZIPS, DEFAULT_PRIORITY_CITIES, DEFAULT_TIERS, type Automation } from '@/lib/automation';
 import { PRIORITIES } from '@/lib/campaigns';
 import { saveAutomation } from '../../automation-actions';
 import { AdminTitle } from '../../ui';
@@ -69,6 +69,33 @@ export default async function NewAutomation({ searchParams }: { searchParams: Pr
               </div>
               <p className="mt-1 text-sm text-muted">Nothing ticked = all lists. Each contact gets the proposal once; anyone emailed before is skipped.</p>
             </fieldset>
+          </section>
+
+          <section className="card grid gap-3">
+            <div>
+              <label className="label" htmlFor="priority_cities">Priority cities (emailed first in every priority)</label>
+              <input
+                id="priority_cities"
+                name="priority_cities"
+                defaultValue={(existing ? existing.priority_cities ?? [] : DEFAULT_PRIORITY_CITIES).join(', ')}
+                placeholder="e.g. Ontario, Fontana, Rancho Cucamonga, Rialto"
+                className="field"
+              />
+              <p className="mt-1 text-sm text-muted">
+                Comma separated. Matched by city name and by ZIP code, so misspellings like “Rch Cucamonga” still count. ZIPs are built in for{' '}
+                {Object.keys(CITY_ZIPS).map((c) => c.replace(/\b\w/g, (x) => x.toUpperCase())).join(', ')}.
+              </p>
+            </div>
+            <div>
+              <label className="label" htmlFor="priority_zips">Extra ZIP codes (optional)</label>
+              <input
+                id="priority_zips"
+                name="priority_zips"
+                defaultValue={(existing?.priority_zips ?? []).filter((z) => !Object.values(CITY_ZIPS).flat().includes(z)).join(', ')}
+                placeholder="e.g. 92324, 92316"
+                className="field max-w-md"
+              />
+            </div>
           </section>
 
           <section className="card">

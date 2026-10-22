@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { runAutomations } from '@/lib/automation';
+import { ensureSchema } from '@/lib/db-init';
 import { serviceClient } from '@/lib/supabase/clients';
 
 export const runtime = 'nodejs';
@@ -14,6 +15,8 @@ export async function GET(req: NextRequest) {
   }
   const db = serviceClient();
   if (!db) return NextResponse.json({ error: 'Supabase not configured' }, { status: 503 });
+  // Apply pending database upgrades first, so new automation features work without an admin visit.
+  await ensureSchema();
   const result = await runAutomations(db, { maxMs: 50000 });
   console.log(`[automation] tick: ${result.automations.length} running, sent=${result.sent.sent} failed=${result.sent.failed}`);
   return NextResponse.json(result);

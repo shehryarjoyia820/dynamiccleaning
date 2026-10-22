@@ -33,8 +33,8 @@ export default async function AutomationPage() {
 
   const details = await Promise.all(
     autos.map(async (a) => {
-      if (!a.campaign_id) return { daily: [] as Daily[], feed: [] as Feed[], interested: new Map<number, number>(), pending: new Map<number, number>(), waiting: 0 };
-      const [daily, feed, openers, avail, waiting] = await Promise.all([
+      if (!a.campaign_id) return { daily: [] as Daily[], feed: [] as Feed[], interested: new Map<number, number>(), pending: new Map<number, number>(), areaPending: new Map<number, number>(), waiting: 0 };
+      const [daily, feed, openers, avail, waiting, area] = await Promise.all([
         db.rpc('campaign_daily', { p_campaign: a.campaign_id }),
         db
           .from('email_sends')
@@ -46,11 +46,15 @@ export default async function AutomationPage() {
         db.from('email_sends').select('priority').eq('campaign_id', a.campaign_id).eq('step', 0).gte('open_count', 2).limit(10000),
         db.rpc('priority_available', { p_lists: a.lists, p_skip_emailed: true }),
         db.from('email_sends').select('id', { count: 'exact', head: true }).eq('campaign_id', a.campaign_id).eq('status', 'queued'),
+        a.priority_cities?.length || a.priority_zips?.length
+          ? db.rpc('priority_area_available', { p_lists: a.lists, p_cities: a.priority_cities ?? [], p_zips: a.priority_zips ?? [] })
+          : Promise.resolve({ data: [] }),
       ]);
+      const areaPending = new Map(((area.data ?? []) as { priority: number; total: number }[]).map((r) => [r.priority, Number(r.total)]));
       const interested = new Map<number, number>();
       for (const o of openers.data ?? []) interested.set(o.priority as number, (interested.get(o.priority as number) ?? 0) + 1);
       const pending = new Map(((avail.data ?? []) as { priority: number; total: number }[]).map((r) => [r.priority, Number(r.total)]));
-      return { daily: (daily.data ?? []) as Daily[], feed: (feed.data ?? []) as Feed[], interested, pending, waiting: waiting.count ?? 0 };
+      return { daily: (daily.data ?? []) as Daily[], feed: (feed.data ?? []) as Feed[], interested, pending, areaPending, waiting: waiting.count ?? 0 };
     }),
   );
 
@@ -106,6 +110,11 @@ export default async function AutomationPage() {
                     Lists: {a.lists.length ? a.lists.join(', ') : 'All lists'} · started {pt(a.started_at)}
                     {a.last_run_at ? ` · last check ${pt(a.last_run_at)}` : ''}
                   </p>
+                  {a.priority_cities?.length ? (
+                    <p className="mt-1 text-sm">
+                      <span className="font-semibold">Priority cities first:</span> {a.priority_cities.join(', ')}
+                    </p>
+                  ) : null}
                 </div>
                 <div className="flex flex-wrap items-center gap-2">
                   <span className={cn('rounded-full px-3 py-1 text-xs font-bold uppercase', running ? 'bg-green/15 text-green-ink' : 'bg-ink/10 text-muted')}>{running ? '● Running' : 'Stopped'}</span>
@@ -174,6 +183,12 @@ export default async function AutomationPage() {
                         <dd className="text-right font-semibold tabular-nums">{sum(p.value, 'sent').toLocaleString()}</dd>
                         <dt className="text-muted">Pending</dt>
                         <dd className="text-right font-semibold tabular-nums">{(d.pending.get(p.value) ?? 0).toLocaleString()}</dd>
+                        {a.priority_cities?.length ? (
+                          <>
+                            <dt className="text-muted">↳ in priority cities</dt>
+                            <dd className="text-right font-semibold tabular-nums text-accent-ink">{(d.areaPending.get(p.value) ?? 0).toLocaleString()}</dd>
+                          </>
+                        ) : null}
                         <dt className="text-muted">Opened</dt>
                         <dd className="text-right font-semibold tabular-nums text-green-ink">{sum(p.value, 'opened').toLocaleString()}</dd>
                         <dt className="text-muted">★ Interested</dt>

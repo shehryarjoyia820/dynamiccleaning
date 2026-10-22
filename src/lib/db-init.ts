@@ -15,6 +15,7 @@ const FILES = [
   'supabase/migrations/0007_priority_lists.sql',
   'supabase/migrations/0008_priority_templates.sql',
   'supabase/migrations/0009_automation.sql',
+  'supabase/migrations/0010_priority_cities.sql',
   'supabase/seed.sql',
 ];
 
@@ -76,6 +77,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { error } = await db.from('automations').select('id').limit(1);
+      return !error;
+    },
+  },
+  {
+    file: 'supabase/migrations/0010_priority_cities.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { error } = await db.from('automations').select('priority_cities').limit(1);
       return !error;
     },
   },

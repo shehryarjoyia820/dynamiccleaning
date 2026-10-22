@@ -26,12 +26,31 @@ export type Automation = {
   tiers: Tier[];
   status: 'running' | 'stopped';
   campaign_id: string | null;
+  /** Emailed first inside every priority (matched by city name or ZIP). */
+  priority_cities?: string[];
+  priority_zips?: string[];
   last_run_at: string | null;
   last_run: Record<string, unknown> | null;
   started_at: string;
   stopped_at: string | null;
   created_at: string;
 };
+
+/** ZIP codes for priority cities, so misspelled city names in imported lists still match. */
+export const CITY_ZIPS: Record<string, string[]> = {
+  ontario: ['91758', '91761', '91762', '91764'],
+  fontana: ['92334', '92335', '92336', '92337'],
+  'rancho cucamonga': ['91701', '91729', '91730', '91737', '91739'],
+  rialto: ['92376', '92377'],
+  'san bernardino': ['92401', '92404', '92405', '92407', '92408', '92410', '92411'],
+  riverside: ['92501', '92503', '92504', '92505', '92506', '92507', '92508'],
+  'long beach': ['90802', '90803', '90804', '90805', '90806', '90807', '90810', '90813', '90814', '90815'],
+  'el centro': ['92243'],
+};
+
+export const DEFAULT_PRIORITY_CITIES = ['Ontario', 'Fontana', 'Rancho Cucamonga', 'Rialto'];
+
+export const zipsFor = (cities: string[]) => [...new Set(cities.flatMap((c) => CITY_ZIPS[c.trim().toLowerCase()] ?? []))];
 
 /** Default plan: priority, California window and daily emails. */
 export const DEFAULT_TIERS: Tier[] = [
@@ -136,7 +155,11 @@ export async function runAutomations(db: SupabaseClient, opts: { maxMs?: number 
       // Spread the day's emails over the rest of the window instead of sending them all at once.
       const ticksLeft = Math.max(1, Math.ceil((toMin(t.end) - now.minutes) / TICK_MINUTES));
       const take = Math.ceil(remaining / ticksLeft);
-      const { data: picks, error } = await db.rpc('pick_priority_contacts', { p_priority: t.priority, p_limit: take, p_lists: a.lists, p_skip_emailed: true });
+      // Priority cities first, then biggest fleets.
+      const base = { p_priority: t.priority, p_limit: take, p_lists: a.lists, p_skip_emailed: true };
+      let { data: picks, error } = await db.rpc('pick_priority_contacts', { ...base, p_cities: a.priority_cities ?? [], p_zips: a.priority_zips ?? [] });
+      // Database not upgraded yet: pick without the city preference rather than stall.
+      if (error && /pick_priority_contacts/.test(error.message)) ({ data: picks, error } = await db.rpc('pick_priority_contacts', base));
       if (error) {
         tiers.push({ priority: t.priority, picked: 0, reason: error.message });
         continue;
