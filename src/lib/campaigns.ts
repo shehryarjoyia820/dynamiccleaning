@@ -3,7 +3,7 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import type { SupabaseClient } from '@supabase/supabase-js';
 import { esc, shell } from '@/lib/email';
 import { MARKETING_FROM, addressOf, mailConfigured, sendMail } from '@/lib/mailer';
-import { LINKS, SITE } from '@/lib/site';
+import { SITE } from '@/lib/site';
 
 export type Contact = {
   id: string;
@@ -87,7 +87,7 @@ export type Audience =
 
 export type Followup = { template_id: string; delay_days: number };
 
-export const MERGE_TAGS = ['{{first_name}}', '{{name}}', '{{company}}', '{{email}}', '{{book_button}}', '{{whatsapp_button}}'];
+export const MERGE_TAGS = ['{{first_name}}', '{{name}}', '{{company}}', '{{email}}', '{{book_button}}'];
 
 /** Tag used for contacts staff mark as interested. */
 export const INTERESTED_TAG = 'interested';
@@ -104,14 +104,15 @@ function inlineMd(s: string) {
 }
 
 /** Minimal Markdown → email-safe HTML. Text is escaped before any markup is added. */
-// Email-safe (table-based) call-to-action buttons, placed with {{book_button}} / {{whatsapp_button}}.
+// Email-safe (table-based) call-to-action button, placed with {{book_button}}.
+// The WhatsApp button was retired at the owner's request: the booking page covers it, so the tag renders nothing.
 export const BOOK_URL = () => `${SITE.url}/book?utm_source=email&utm_medium=proposal`;
 function emailButton(href: string, label: string, bg: string) {
   return `<table role="presentation" cellspacing="0" cellpadding="0" style="margin:20px 0"><tr><td style="border-radius:8px;background:${bg}"><a href="${href}" style="display:inline-block;padding:14px 26px;font-family:Arial,Helvetica,sans-serif;font-size:16px;font-weight:bold;color:#ffffff;text-decoration:none;border-radius:8px">${label}</a></td></tr></table>`;
 }
 const BUTTONS: Record<string, () => string> = {
   '{{book_button}}': () => emailButton(BOOK_URL(), 'Schedule Your Booking &rarr;', '#1F5FE0'),
-  '{{whatsapp_button}}': () => emailButton(LINKS.whatsapp, 'Chat on WhatsApp', '#128048'),
+  '{{whatsapp_button}}': () => '',
 };
 
 /**
@@ -119,11 +120,10 @@ const BUTTONS: Record<string, () => string> = {
  * the end, unless the template already places them with merge tags.
  */
 export function withDefaultButtons(md: string) {
-  if (md.includes('{{book_button}}') || md.includes('{{whatsapp_button}}')) return md;
+  if (md.includes('{{book_button}}')) return md;
   const blocks = md.replace(/\r\n/g, '\n').split(/\n{2,}/);
   const firstPara = blocks.findIndex((b, i) => i > 0 && b.trim() && !b.trim().startsWith('## '));
   blocks.splice(firstPara > 0 ? firstPara + 1 : Math.min(1, blocks.length), 0, '{{book_button}}');
-  blocks.push('{{whatsapp_button}}');
   return blocks.join('\n\n');
 }
 
@@ -199,7 +199,7 @@ export function renderEmail(t: Pick<Template, 'subject' | 'body'>, c: Contact, o
   const text = `${bodyMd
     .replace(/\*\*/g, '')
     .replace('{{book_button}}', `Schedule your booking: ${BOOK_URL()}`)
-    .replace('{{whatsapp_button}}', `Chat on WhatsApp: ${LINKS.whatsapp}`)}\n\n--\n${opts.footerAddress}\nUnsubscribe: ${urls.page}`;
+    .replace('{{whatsapp_button}}', '')}\n\n--\n${opts.footerAddress}\nUnsubscribe: ${urls.page}`;
   return {
     subject,
     html,

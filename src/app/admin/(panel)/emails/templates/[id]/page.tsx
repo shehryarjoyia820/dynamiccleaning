@@ -66,7 +66,7 @@ export default async function TemplateEditor({ params, searchParams }: { params:
             <textarea id="body" name="body" defaultValue={t.body} required rows={16} className="field font-mono text-sm" />
             <p className="mt-1 text-sm text-muted">
               Merge tags: {MERGE_TAGS.map((m) => <code key={m} className="mr-2">{m}</code>)}<br />
-              Blank line between paragraphs · <code>**bold**</code> · <code>- bullet</code> · <code>## Heading</code> · <code>[link](https://…)</code>. A blue “Schedule Your Booking” button goes after the first paragraph and a green “Chat on WhatsApp” button at the end, automatically (or place them yourself with <code>{'{{book_button}}'}</code> / <code>{'{{whatsapp_button}}'}</code>). The unsubscribe link and address are added too.
+              Blank line between paragraphs · <code>**bold**</code> · <code>- bullet</code> · <code>## Heading</code> · <code>[link](https://…)</code>. <code>1. step</code> · <code>&gt; note box</code> · <code>---</code> divider. A blue “Schedule Your Booking” button goes after the first paragraph automatically (or place it yourself with <code>{'{{book_button}}'}</code>). The unsubscribe link and address are added too.
             </p>
           </div>
           <div>

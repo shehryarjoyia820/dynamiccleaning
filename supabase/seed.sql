@@ -180,10 +180,11 @@ Clean Truck Check deadlines apply to most trucks over 14,000 lb GVWR that drive 
 
 Would you like a quote? Just reply with how many trucks you run and where they are parked, or call/WhatsApp **(858) 342-8328**.
 
-Best regards,
+Regards,
 Kameron
 Diesel Dynamix
-[dieseldynamix.com](https://dieseldynamix.com)'),
+(858) 342-8328
+info@dieseldynamix.com'),
   ('6f1b2a10-0000-4000-8000-000000000002', 'Follow-up 1: quick check-in', 'follow_up', 'Re: Mobile Clean Truck Check testing for {{company}}', 'Hi {{first_name}},
 
 Just following up on my note about mobile Clean Truck Check testing. If your next testing window is coming up, we can usually schedule an on-site visit quickly.
