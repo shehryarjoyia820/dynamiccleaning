@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Bot, Download, Send, Upload } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
-import { PRIORITIES } from '@/lib/campaigns';
+import { PRIORITIES, contactCity } from '@/lib/campaigns';
 import { cn } from '@/lib/utils';
 import { deleteContacts, saveContact } from '../email-actions';
 import { BulkForm, RowCheck } from '../bulk-form';
@@ -213,7 +213,7 @@ export default async function ContactsPage({ searchParams }: { searchParams: Pro
                 </td>
                 <td className="px-4 py-3">{c.company ?? c.name ?? '—'}{c.company && c.name ? <span className="block text-xs text-muted">{c.name}</span> : null}</td>
                 {hasPriority ? <td className="px-4 py-3 text-right tabular-nums">{c.trucks ?? '—'}</td> : null}
-                {hasPriority ? <td className="px-4 py-3">{c.details?.City ?? '—'}</td> : null}
+                {hasPriority ? <td className="px-4 py-3">{contactCity(c.details) ?? '—'}</td> : null}
                 <td className="px-4 py-3">{c.list_name ?? '—'}<span className="block text-xs capitalize text-muted">{c.source}</span></td>
                 <td className="px-4 py-3">
                   <div className="flex flex-wrap gap-1">

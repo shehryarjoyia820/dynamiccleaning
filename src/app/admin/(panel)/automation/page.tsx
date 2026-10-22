@@ -13,7 +13,7 @@ export const metadata = { title: 'Automation' };
 export const dynamic = 'force-dynamic';
 
 type Daily = { day: string; priority: number; picked: number; sent: number; opened: number; follow_ups: number };
-type Feed = { id: string; step: number; status: string; priority: number | null; recipient_email: string | null; open_count: number | null; sent_at: string | null; send_after: string; created_at: string };
+type Feed = { id: string; step: number; status: string; priority: number | null; recipient_email: string | null; recipient_city?: string | null; open_count: number | null; sent_at: string | null; send_after: string; created_at: string };
 
 const pt = (iso: string) => new Date(iso).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
 
@@ -38,7 +38,7 @@ export default async function AutomationPage() {
         db.rpc('campaign_daily', { p_campaign: a.campaign_id }),
         db
           .from('email_sends')
-          .select('id,step,status,priority,recipient_email,open_count,sent_at,send_after,created_at')
+          .select('*')
           .eq('campaign_id', a.campaign_id)
           .order('sent_at', { ascending: false, nullsFirst: false })
           .order('created_at', { ascending: false })
@@ -211,6 +211,11 @@ export default async function AutomationPage() {
                         <span className="min-w-0">
                           <span className="mr-2 rounded bg-ink/10 px-1.5 py-0.5 text-[11px] font-bold">P{f.priority ?? '–'}</span>
                           <span className="font-semibold">{f.recipient_email ?? '(deleted contact)'}</span>
+                          {f.recipient_city ? (
+                            <span className={cn('ml-2 text-xs', a.priority_cities?.some((c) => c.toLowerCase() === f.recipient_city!.toLowerCase()) ? 'font-semibold text-accent-ink' : 'text-muted')}>
+                              {f.recipient_city}
+                            </span>
+                          ) : null}
                           <span className="ml-2 text-xs text-muted">{f.step ? 'Follow-up' : 'Proposal'}</span>
                         </span>
                         <span className="flex items-center gap-3 text-xs">

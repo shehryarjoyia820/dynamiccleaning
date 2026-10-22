@@ -42,6 +42,28 @@ export const PRIORITY_TEMPLATES: Record<number, { proposal: string; followUp: st
   4: { proposal: '6f1b2a10-0000-4000-8000-000000000104', followUp: '6f1b2a10-0000-4000-8000-000000000204' },
 };
 
+/** ZIP codes for priority cities, so misspelled city names in imported lists still match. */
+export const CITY_ZIPS: Record<string, string[]> = {
+  ontario: ['91758', '91761', '91762', '91764'],
+  fontana: ['92334', '92335', '92336', '92337'],
+  'rancho cucamonga': ['91701', '91729', '91730', '91737', '91739'],
+  rialto: ['92376', '92377'],
+  'san bernardino': ['92401', '92404', '92405', '92407', '92408', '92410', '92411'],
+  riverside: ['92501', '92503', '92504', '92505', '92506', '92507', '92508'],
+  'long beach': ['90802', '90803', '90804', '90805', '90806', '90807', '90810', '90813', '90814', '90815'],
+  'el centro': ['92243'],
+};
+
+const ZIP_CITY = new Map(Object.entries(CITY_ZIPS).flatMap(([city, zips]) => zips.map((z) => [z, city.replace(/\b\w/g, (x) => x.toUpperCase())] as const)));
+
+/** Clean city for a contact: from the ZIP when known (lists misspell names), else the City column. */
+export function contactCity(details: Record<string, string> | null | undefined) {
+  const d = details ?? {};
+  const zip = String(d.ZIP ?? d.Zip ?? d.zip ?? '').slice(0, 5);
+  const named = String(d.City ?? d.city ?? '').trim().toLowerCase().replace(/\b\w/g, (x) => x.toUpperCase());
+  return ZIP_CITY.get(zip) ?? (named || null);
+}
+
 /** List that website signups and form leads belong to. */
 export const WEBSITE_LIST = 'Website';
 
@@ -224,7 +246,7 @@ export async function startCampaign(db: SupabaseClient, campaignId: string) {
   const followups = (c.followups ?? []) as Followup[];
   const rows = recipients.flatMap((r) => {
     // A copy of who it went to, so the history stays readable if the contact is deleted later.
-    const who = { recipient_email: r.email, recipient_name: r.name ?? null };
+    const who = { recipient_email: r.email, recipient_name: r.name ?? null, recipient_city: contactCity((r as { details?: Record<string, string> }).details) };
     return [
     { campaign_id: c.id, contact_id: r.id, ...who, template_id: c.template_id, step: 0, delay_days: 0, send_after: new Date(now).toISOString() },
     ...followups.map((f, i) => ({

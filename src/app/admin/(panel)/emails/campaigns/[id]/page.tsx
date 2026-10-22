@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, Eye, Star } from 'lucide-react';
 import { requireStaff } from '@/lib/admin';
-import { INTERESTED_TAG, resolveAudience, type Audience, type Followup } from '@/lib/campaigns';
+import { INTERESTED_TAG, contactCity, resolveAudience, type Audience, type Followup } from '@/lib/campaigns';
 import { mailConfigured } from '@/lib/mailer';
 import { serviceClient } from '@/lib/supabase/clients';
 import { cn } from '@/lib/utils';
@@ -51,7 +51,8 @@ type SendRow = {
   send_after: string;
   recipient_email?: string | null;
   recipient_name?: string | null;
-  contacts: { id: string; email: string; name: string | null; company: string | null; tags: string[] } | null;
+  recipient_city?: string | null;
+  contacts: { id: string; email: string; name: string | null; company: string | null; tags: string[]; details?: Record<string, string> } | null;
 };
 
 const fmt = (iso: string) => new Date(iso).toLocaleString('en-US', { timeZone: 'America/Los_Angeles', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
@@ -69,9 +70,9 @@ export default async function CampaignPage({ params, searchParams }: { params: P
 
   const loadSends = (cols: string) =>
     db.from('email_sends').select(cols).eq('campaign_id', id).order('sent_at', { ascending: false, nullsFirst: false }).limit(5000);
-  const base = 'id,step,status,sent_at,opened_at,open_count,error,send_after,contacts(id,email,name,company,tags)';
+  const base = 'id,step,status,sent_at,opened_at,open_count,error,send_after,contacts(id,email,name,company,tags,details)';
   // The recipient copy arrives with the campaign-history upgrade; read without it until then.
-  let { data: sendData, error: sendErr } = await loadSends(`${base},recipient_email,recipient_name`);
+  let { data: sendData, error: sendErr } = await loadSends(`${base},recipient_email,recipient_name,recipient_city`);
   if (sendErr) ({ data: sendData } = await loadSends(base));
   const sends = (sendData ?? []) as unknown as SendRow[];
 
@@ -254,6 +255,7 @@ export default async function CampaignPage({ params, searchParams }: { params: P
                 <thead className="bg-offwhite text-xs uppercase tracking-wide text-muted">
                   <tr>
                     <th className="px-4 py-3">Recipient</th>
+                    <th className="px-4 py-3">City</th>
                     <th className="px-4 py-3">Status</th>
                     <th className="px-4 py-3">Sent</th>
                     <th className="px-4 py-3">Opens</th>
@@ -280,6 +282,7 @@ export default async function CampaignPage({ params, searchParams }: { params: P
                             <span className="block text-xs text-muted">{(ct ? [ct.name, ct.company] : [r.recipient_name]).filter(Boolean).join(' · ')}</span>
                           ) : null}
                         </td>
+                        <td className="px-4 py-3 text-muted">{r.recipient_city ?? contactCity(ct?.details) ?? '—'}</td>
                         <td className="px-4 py-3">
                           <span className={cn('inline-block rounded-full px-2.5 py-0.5 text-xs font-bold uppercase', st.cls)}>{st.label}</span>
                           {r.error && r.status !== 'sent' ? <span className="mt-0.5 block max-w-[16rem] truncate text-xs text-muted" title={r.error}>{r.error}</span> : null}

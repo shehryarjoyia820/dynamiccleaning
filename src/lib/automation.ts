@@ -1,6 +1,8 @@
 import 'server-only';
 import type { SupabaseClient } from '@supabase/supabase-js';
-import { INTERESTED_TAG, PRIORITY_TEMPLATES, processQueue } from '@/lib/campaigns';
+import { CITY_ZIPS, INTERESTED_TAG, PRIORITY_TEMPLATES, contactCity, processQueue } from '@/lib/campaigns';
+
+export { CITY_ZIPS };
 
 export const TZ = 'America/Los_Angeles';
 /** How often the scheduler calls /api/cron/automation (minutes). */
@@ -36,17 +38,6 @@ export type Automation = {
   created_at: string;
 };
 
-/** ZIP codes for priority cities, so misspelled city names in imported lists still match. */
-export const CITY_ZIPS: Record<string, string[]> = {
-  ontario: ['91758', '91761', '91762', '91764'],
-  fontana: ['92334', '92335', '92336', '92337'],
-  'rancho cucamonga': ['91701', '91729', '91730', '91737', '91739'],
-  rialto: ['92376', '92377'],
-  'san bernardino': ['92401', '92404', '92405', '92407', '92408', '92410', '92411'],
-  riverside: ['92501', '92503', '92504', '92505', '92506', '92507', '92508'],
-  'long beach': ['90802', '90803', '90804', '90805', '90806', '90807', '90810', '90813', '90814', '90815'],
-  'el centro': ['92243'],
-};
 
 export const DEFAULT_PRIORITY_CITIES = ['Ontario', 'Fontana', 'Rancho Cucamonga', 'Rialto'];
 
@@ -164,18 +155,25 @@ export async function runAutomations(db: SupabaseClient, opts: { maxMs?: number 
         tiers.push({ priority: t.priority, picked: 0, reason: error.message });
         continue;
       }
-      const rows = ((picks ?? []) as { id: string; email: string; name: string | null }[]).map((c) => ({
+      const rows = ((picks ?? []) as { id: string; email: string; name: string | null; details?: Record<string, string> }[]).map((c) => ({
         campaign_id: a.campaign_id,
         contact_id: c.id,
         recipient_email: c.email,
         recipient_name: c.name,
+        recipient_city: contactCity(c.details),
         template_id: t.proposal,
         step: 0,
         delay_days: 0,
         priority: t.priority,
         send_after: new Date().toISOString(),
       }));
-      if (rows.length) await db.from('email_sends').upsert(rows, { onConflict: 'campaign_id,contact_id,step', ignoreDuplicates: true });
+      if (rows.length) {
+        const { error: ue } = await db.from('email_sends').upsert(rows, { onConflict: 'campaign_id,contact_id,step', ignoreDuplicates: true });
+        // Before the city upgrade is applied, save the rows without it.
+        if (ue && /recipient_city/.test(ue.message)) {
+          await db.from('email_sends').upsert(rows.map(({ recipient_city: _c, ...r }) => r), { onConflict: 'campaign_id,contact_id,step', ignoreDuplicates: true });
+        }
+      }
       tiers.push({ priority: t.priority, picked: rows.length, reason: rows.length ? undefined : 'no contacts left' });
     }
 
@@ -193,7 +191,7 @@ export async function runAutomations(db: SupabaseClient, opts: { maxMs?: number 
 async function handleRepeatOpeners(db: SupabaseClient, a: Automation, today: string) {
   const { data: openers } = await db
     .from('email_sends')
-    .select('contact_id,priority,recipient_email,recipient_name')
+    .select('*')
     .eq('campaign_id', a.campaign_id!)
     .eq('step', 0)
     .eq('status', 'sent')
@@ -224,6 +222,7 @@ async function handleRepeatOpeners(db: SupabaseClient, a: Automation, today: str
       contact_id: o.contact_id,
       recipient_email: o.recipient_email,
       recipient_name: o.recipient_name,
+      recipient_city: o.recipient_city ?? null,
       template_id: t.follow_up,
       step: 1,
       delay_days: t.follow_up_days,
