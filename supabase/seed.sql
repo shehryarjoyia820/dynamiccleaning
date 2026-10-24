@@ -62,7 +62,7 @@ If quarterly testing takes effect, an OBD fleet will need roughly twice as many 
 
 ## How Diesel Dynamix helps
 
-We bring mobile testing to your yard and can set up a recurring schedule for your whole fleet. See [fleet testing](/fleet-testing) or [book a test](/book).
+We bring mobile testing to your yard and can set up a recurring schedule for your whole fleet. See [fleet testing](/services/fleet-testing) or [book a test](/book).
 
 Official program details: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).', '2026-10-20', true),
   ('clean-truck-check-out-of-state-trucks', 'Does Clean Truck Check apply to out-of-state trucks?', 'Yes. Out-of-state and Mexico-registered trucks over 14,000 lbs GVWR that drive in California are covered. Here is what carriers need to do.', '**Short answer: yes.** Clean Truck Check covers most diesel and alternative-fuel trucks over 14,000 lbs GVWR that operate in California, no matter where they are registered. That includes trucks from other states and from Mexico.
@@ -75,7 +75,7 @@ Official program details: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-wo
 
 ## Getting tested in Southern California
 
-Long-haul drivers don’t have time for a detour to a test site. Diesel Dynamix tests trucks on-site anywhere in Southern California: at a yard, a customer’s dock or near the [Port of Long Beach](/ports/port-of-long-beach) and the [Port of Los Angeles](/ports/port-of-los-angeles).
+Long-haul drivers don’t have time for a detour to a test site. Diesel Dynamix tests trucks on-site anywhere in Southern California: at a yard, a customer’s dock or near the [Port of Long Beach](/service-areas/ports/port-of-long-beach) and the [Port of Los Angeles](/service-areas/ports/port-of-los-angeles).
 
 Call or WhatsApp **(858) 342-8328** to arrange a test on your next California run.', '2026-10-20', true),
   ('how-much-does-clean-truck-check-cost-california', 'How much does Clean Truck Check cost in California?', 'Clean Truck Check costs come in two parts: CARB’s annual compliance fee and the testing fee. Here is how to budget for both.', '**Short answer:** Clean Truck Check has two costs: **CARB’s annual compliance fee** for each vehicle, paid in CTC-VIS, and the **testing fee** charged by the credentialed tester for each test. The exact CARB fee is set by CARB and shown in CTC-VIS.
@@ -88,7 +88,7 @@ Call or WhatsApp **(858) 342-8328** to arrange a test on your next California ru
 
 ## The hidden cost: downtime
 
-Driving a truck to a test site can take half a day or more. Testing on-site at your yard keeps the truck earning. See [mobile CARB testing](/mobile-testing-services).
+Driving a truck to a test site can take half a day or more. Testing on-site at your yard keeps the truck earning. See [mobile CARB testing](/services).
 
 ## Get a quote
 
@@ -116,7 +116,7 @@ The smoke test comes with a visual inspection of emissions-control components. M
 
 ## If the truck fails
 
-We explain the result in plain English. Repair the problem, then we retest on-site. Learn more about the [smoke opacity test](/smoke-opacity-test).', '2026-10-20', true),
+We explain the result in plain English. Repair the problem, then we retest on-site. Learn more about the [smoke opacity test](/services/smoke-opacity-test).', '2026-10-20', true),
   ('can-clean-truck-check-be-done-at-my-yard', 'Can Clean Truck Check be done at my yard?', 'Yes. Mobile Clean Truck Check testing comes to your yard, jobsite or terminal. Here is how an on-site visit works.', '**Short answer: yes.** Clean Truck Check tests can be performed on-site by a mobile tester. Diesel Dynamix comes to your yard, jobsite, terminal or parking location anywhere in Southern California.
 
 ## How an on-site visit works
@@ -134,7 +134,7 @@ We explain the result in plain English. Repair the problem, then we retest on-si
 
 ## Why fleets prefer mobile testing
 
-No drivers off the road, no fuel burned driving to a test site, and one visit covers the whole yard. See [how testing works](/how-testing-works) or [book mobile testing](/book).', '2026-10-20', true),
+No drivers off the road, no fuel burned driving to a test site, and one visit covers the whole yard. See [how testing works](/services/how-testing-works) or [book mobile testing](/book).', '2026-10-20', true),
   ('missed-clean-truck-check-deadline', 'What happens if I miss my Clean Truck Check deadline?', 'Missing a Clean Truck Check deadline makes a truck non-compliant. Here are the consequences and how to get back on track fast.', '**Short answer:** the truck becomes **non-compliant**. California-registered vehicles can face a **DMV registration hold**, and non-compliant trucks can be **cited and penalized** by CARB. The fix is to get tested as soon as possible.
 
 ## Consequences of a missed deadline
@@ -147,11 +147,11 @@ No drivers off the road, no fuel burned driving to a test site, and one visit co
 
 1. Check the truck’s status and deadline in CARB’s CTC-VIS system.
 2. Make sure the vehicle is reported and the annual fee is paid.
-3. Book a test right away. We can often schedule a [mobile test](/mobile-testing-services) quickly, at your location.
+3. Book a test right away. We can often schedule a [mobile test](/services) quickly, at your location.
 
 ## Avoid it next time
 
-Set up recurring testing so every truck is tested before its window closes. See [fleet testing](/fleet-testing).
+Set up recurring testing so every truck is tested before its window closes. See [fleet testing](/services/fleet-testing).
 
 Official information: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).', '2026-10-20', true)
 on conflict (slug) do nothing;

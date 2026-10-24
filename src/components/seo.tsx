@@ -12,12 +12,20 @@ export function JsonLd({ data }: { data: object }) {
   );
 }
 
+const BRAND_SUFFIX = ` | ${SITE.name}`;
+/** Google shows about 60 characters of a title; longer ones drop the brand suffix instead of getting cut. */
+const TITLE_MAX = 60;
+export const OG_IMAGE = { url: '/opengraph-image', width: 1200, height: 630, alt: `${SITE.name}: mobile Clean Truck Check testing in Southern California` };
+
 export function pageMeta({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+  const fits = title.length + BRAND_SUFFIX.length <= TITLE_MAX;
   return {
-    title,
+    title: fits ? title : { absolute: title },
     description,
     alternates: { canonical: path },
-    openGraph: { title, description, url: path },
+    // A page-level openGraph replaces the site-wide one, so it repeats the shared fields and image.
+    openGraph: { type: 'website', siteName: SITE.name, locale: 'en_US', title: fits ? title + BRAND_SUFFIX : title, description, url: path, images: [OG_IMAGE] },
+    twitter: { card: 'summary_large_image', title, description, images: [OG_IMAGE.url] },
   };
 }
 

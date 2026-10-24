@@ -100,7 +100,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <Cpu className="h-8 w-8 text-accent-ink" aria-hidden />
                 <h2 className="mt-3 text-2xl">Mobile CARB testing in {area.name}</h2>
                 <p className="mt-2 text-muted">
-                  CARB-verified <Link href="/obd-testing" className="font-semibold text-accent-ink underline">OBD tests</Link> for 2013+ diesel and 2018+
+                  CARB-verified <Link href="/services/obd-testing" className="font-semibold text-accent-ink underline">OBD tests</Link> for 2013+ diesel and 2018+
                   alternative-fuel trucks, done at your {area.name} location.
                 </p>
               </Reveal>
@@ -108,7 +108,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <Gauge className="h-8 w-8 text-accent-ink" aria-hidden />
                 <h2 className="mt-3 text-2xl">Smoke test in {area.name}</h2>
                 <p className="mt-2 text-muted">
-                  <Link href="/smoke-opacity-test" className="font-semibold text-accent-ink underline">Smoke opacity tests</Link> and visual inspections for
+                  <Link href="/services/smoke-opacity-test" className="font-semibold text-accent-ink underline">Smoke opacity tests</Link> and visual inspections for
                   older non-OBD engines, on-site in {area.name}.
                 </p>
               </Reveal>
@@ -131,7 +131,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
                 <ul className="mt-3 flex flex-wrap gap-2">
                   {ports.map((p) => (
                     <li key={p.slug}>
-                      <Link href={`/ports/${p.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-accent-ink hover:text-accent-ink">
+                      <Link href={`/service-areas/ports/${p.slug}`} className="inline-flex items-center gap-1.5 rounded-full border border-ink/15 bg-white px-4 py-2 font-semibold hover:border-accent-ink hover:text-accent-ink">
                         <MapPin className="h-4 w-4" aria-hidden /> Clean Truck Check {p.name}
                       </Link>
                     </li>

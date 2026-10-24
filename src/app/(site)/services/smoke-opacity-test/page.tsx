@@ -9,7 +9,7 @@ export const metadata = pageMeta({
   title: 'Smoke Opacity Test California | Mobile Diesel Smoke Test',
   description:
     'Mobile diesel smoke opacity test in Southern California for non-OBD trucks (2012 and older). On-site Clean Truck Check smoke testing plus tips to pass the CARB smoke test.',
-  path: '/smoke-opacity-test',
+  path: '/services/smoke-opacity-test',
 });
 
 const FAQS = [
@@ -46,8 +46,8 @@ export default function SmokePage() {
         title="Smoke opacity test in Southern California"
         intro="Mobile diesel smoke testing for non-OBD trucks, done at your yard as part of Clean Truck Check."
         crumbs={[
-          { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
-          { name: 'Smoke Opacity Test', path: '/smoke-opacity-test' },
+          { name: 'Services', path: '/services' },
+          { name: 'Smoke Opacity Test', path: '/services/smoke-opacity-test' },
         ]}
       />
       <PageBody>
@@ -82,7 +82,7 @@ export default function SmokePage() {
         <h2>Non-OBD truck testing in California</h2>
         <p>
           Older alternative-fuel engines (2017 and older) without OBD need a visual inspection rather than a smoke test. Newer trucks use the{' '}
-          <Link href="/obd-testing">CARB OBD test</Link>.
+          <Link href="/services/obd-testing">CARB OBD test</Link>.
         </p>
         <h2>Smoke test FAQ</h2>
         <div className="not-prose mt-4">

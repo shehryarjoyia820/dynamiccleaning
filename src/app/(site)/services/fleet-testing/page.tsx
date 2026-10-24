@@ -7,7 +7,7 @@ export const metadata = pageMeta({
   title: 'Fleet Clean Truck Check Testing Southern California | CARB Compliance for Fleets',
   description:
     'Fleet Clean Truck Check testing across Southern California: fleet emissions testing and fleet OBD testing at your yard, recurring CARB compliance plans for fleets and owner-operators.',
-  path: '/fleet-testing',
+  path: '/services/fleet-testing',
 });
 
 const FEATURES = [
@@ -26,8 +26,8 @@ export default function FleetPage() {
         title="Fleet Clean Truck Check testing"
         intro="Fleet emissions testing in Southern California made simple: we bring OBD and smoke testing to your yard and keep every truck on track for CARB compliance."
         crumbs={[
-          { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
-          { name: 'Fleet Testing', path: '/fleet-testing' },
+          { name: 'Services', path: '/services' },
+          { name: 'Fleet Testing', path: '/services/fleet-testing' },
         ]}
       />
       <section className="py-section">

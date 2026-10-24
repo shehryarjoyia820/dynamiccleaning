@@ -19,7 +19,7 @@ const HOWTO = {
 export const metadata = pageMeta({
   title: 'How Mobile Clean Truck Check Testing Works | On-Site CARB Testing',
   description: 'Step by step: how Diesel Dynamix schedules and performs on-site Clean Truck Check testing, and what to have ready before we arrive.',
-  path: '/how-testing-works',
+  path: '/services/how-testing-works',
 });
 
 export default function HowPage() {
@@ -31,8 +31,8 @@ export default function HowPage() {
         title="How mobile Clean Truck Check works"
         intro="From first call to results: on-site CARB testing built around your schedule."
         crumbs={[
-          { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
-          { name: 'How Testing Works', path: '/how-testing-works' },
+          { name: 'Services', path: '/services' },
+          { name: 'How Testing Works', path: '/services/how-testing-works' },
         ]}
       />
       <section className="bg-white py-section">

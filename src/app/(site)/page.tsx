@@ -26,19 +26,19 @@ const AUDIENCES = [
     icon: UserRound,
     title: 'Owner-operators',
     text: 'One truck, one call. We meet you where you park and get you back on the road without a trip to a shop.',
-    href: '/mobile-testing-services',
+    href: '/services',
   },
   {
     icon: Building2,
     title: 'Small carriers',
     text: 'Test a handful of trucks in one visit and keep every deadline in view without adding admin work.',
-    href: '/how-testing-works',
+    href: '/services/how-testing-works',
   },
   {
     icon: Warehouse,
     title: 'Large fleets',
     text: 'Multi-truck scheduling, recurring testing plans and a single point of contact across your locations.',
-    href: '/fleet-testing',
+    href: '/services/fleet-testing',
   },
 ];
 
@@ -93,7 +93,7 @@ export default async function HomePage() {
               <Link href="/clean-truck-check" className="btn-primary">
                 Read the full guide <ArrowRight className="h-5 w-5" aria-hidden />
               </Link>
-              <Link href="/why-california-enforces-it" className="btn-ghost-light">
+              <Link href="/clean-truck-check/why-california-enforces-it" className="btn-ghost-light">
                 Why it’s enforced
               </Link>
             </Reveal>
@@ -112,7 +112,7 @@ export default async function HomePage() {
             <HowItWorks />
           </div>
           <Reveal className="mt-12 text-center">
-            <Link href="/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-accent-ink hover:text-ink">
+            <Link href="/services/how-testing-works" className="inline-flex items-center gap-2 font-display text-lg font-bold uppercase text-accent-ink hover:text-ink">
               What to have ready <ArrowRight className="h-5 w-5" aria-hidden />
             </Link>
           </Reveal>
@@ -178,7 +178,7 @@ export default async function HomePage() {
                 <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
                   {PORTS.map((p) => (
                     <li key={p.slug}>
-                      <Link href={`/ports/${p.slug}`} className="text-white/80 underline-offset-4 hover:text-white hover:underline">
+                      <Link href={`/service-areas/ports/${p.slug}`} className="text-white/80 underline-offset-4 hover:text-white hover:underline">
                         {p.name}
                       </Link>
                     </li>
@@ -199,7 +199,7 @@ export default async function HomePage() {
           <div>
             <SectionHeading eyebrow="FAQ" title="Questions we hear every day" intro="Straight answers about the program and our mobile service." />
             <Reveal delay={120} className="mt-8">
-              <Link href="/faq" className="btn-ghost-light">
+              <Link href="/clean-truck-check/faq" className="btn-ghost-light">
                 See all FAQs <ArrowRight className="h-5 w-5" aria-hidden />
               </Link>
             </Reveal>

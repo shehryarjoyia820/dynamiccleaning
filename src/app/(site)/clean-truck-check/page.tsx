@@ -82,13 +82,13 @@ export default async function CleanTruckCheckPage() {
         <h2>Clean Truck Check for out-of-state trucks</h2>
         <p>
           Trucks registered in other states or in Mexico are covered when they drive in California. Out-of-state carriers also report their vehicles in CTC-VIS and keep testing up to
-          date. We test out-of-state trucks anywhere in Southern California, including at the <Link href="/ports/port-of-long-beach">ports</Link>.
+          date. We test out-of-state trucks anywhere in Southern California, including at the <Link href="/service-areas/ports/port-of-long-beach">ports</Link>.
         </p>
 
         <h2>Which test does my truck need?</h2>
         <p>
-          The test depends on the engine model year and whether it has on-board diagnostics. See our <Link href="/obd-testing">CARB OBD test</Link> and{' '}
-          <Link href="/smoke-opacity-test">smoke opacity test</Link> pages.
+          The test depends on the engine model year and whether it has on-board diagnostics. See our <Link href="/services/obd-testing">CARB OBD test</Link> and{' '}
+          <Link href="/services/smoke-opacity-test">smoke opacity test</Link> pages.
         </p>
         <div className="not-prose my-6">
           <RequirementsTable rows={settings.requirements} frequency={settings.frequency_text} />
@@ -114,13 +114,13 @@ export default async function CleanTruckCheckPage() {
         <p>
           Trucks that are out of compliance can face DMV registration holds for California-registered vehicles, plus citations and penalties set by CARB. Amounts and procedures can
           change, so rely on CARB for current figures. The simplest protection is testing on time. See{' '}
-          <Link href="/why-california-enforces-it">why California enforces it</Link>.
+          <Link href="/clean-truck-check/why-california-enforces-it">why California enforces it</Link>.
         </p>
 
         <h2>How Diesel Dynamix helps</h2>
         <p>
-          We handle the testing at your location, so you do not lose a day driving to a test site. See <Link href="/mobile-testing-services">mobile CARB testing</Link>,{' '}
-          <Link href="/fleet-testing">fleet testing</Link> or <Link href="/how-testing-works">how a test visit works</Link>.
+          We handle the testing at your location, so you do not lose a day driving to a test site. See <Link href="/services">mobile CARB testing</Link>,{' '}
+          <Link href="/services/fleet-testing">fleet testing</Link> or <Link href="/services/how-testing-works">how a test visit works</Link>.
         </p>
         <div className="not-prose mt-8">
           <OfficialSourceNote />

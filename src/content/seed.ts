@@ -301,7 +301,7 @@ If quarterly testing takes effect, an OBD fleet will need roughly twice as many 
 
 ## How Diesel Dynamix helps
 
-We bring mobile testing to your yard and can set up a recurring schedule for your whole fleet. See [fleet testing](/fleet-testing) or [book a test](/book).
+We bring mobile testing to your yard and can set up a recurring schedule for your whole fleet. See [fleet testing](/services/fleet-testing) or [book a test](/book).
 
 Official program details: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).`,
   },
@@ -321,7 +321,7 @@ Official program details: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-wo
 
 ## Getting tested in Southern California
 
-Long-haul drivers don’t have time for a detour to a test site. Diesel Dynamix tests trucks on-site anywhere in Southern California: at a yard, a customer’s dock or near the [Port of Long Beach](/ports/port-of-long-beach) and the [Port of Los Angeles](/ports/port-of-los-angeles).
+Long-haul drivers don’t have time for a detour to a test site. Diesel Dynamix tests trucks on-site anywhere in Southern California: at a yard, a customer’s dock or near the [Port of Long Beach](/service-areas/ports/port-of-long-beach) and the [Port of Los Angeles](/service-areas/ports/port-of-los-angeles).
 
 Call or WhatsApp **(858) 342-8328** to arrange a test on your next California run.`,
   },
@@ -341,7 +341,7 @@ Call or WhatsApp **(858) 342-8328** to arrange a test on your next California ru
 
 ## The hidden cost: downtime
 
-Driving a truck to a test site can take half a day or more. Testing on-site at your yard keeps the truck earning. See [mobile CARB testing](/mobile-testing-services).
+Driving a truck to a test site can take half a day or more. Testing on-site at your yard keeps the truck earning. See [mobile CARB testing](/services).
 
 ## Get a quote
 
@@ -376,7 +376,7 @@ The smoke test comes with a visual inspection of emissions-control components. M
 
 ## If the truck fails
 
-We explain the result in plain English. Repair the problem, then we retest on-site. Learn more about the [smoke opacity test](/smoke-opacity-test).`,
+We explain the result in plain English. Repair the problem, then we retest on-site. Learn more about the [smoke opacity test](/services/smoke-opacity-test).`,
   },
   {
     slug: 'can-clean-truck-check-be-done-at-my-yard',
@@ -401,7 +401,7 @@ We explain the result in plain English. Repair the problem, then we retest on-si
 
 ## Why fleets prefer mobile testing
 
-No drivers off the road, no fuel burned driving to a test site, and one visit covers the whole yard. See [how testing works](/how-testing-works) or [book mobile testing](/book).`,
+No drivers off the road, no fuel burned driving to a test site, and one visit covers the whole yard. See [how testing works](/services/how-testing-works) or [book mobile testing](/book).`,
   },
   {
     slug: 'missed-clean-truck-check-deadline',
@@ -421,11 +421,11 @@ No drivers off the road, no fuel burned driving to a test site, and one visit co
 
 1. Check the truck’s status and deadline in CARB’s CTC-VIS system.
 2. Make sure the vehicle is reported and the annual fee is paid.
-3. Book a test right away. We can often schedule a [mobile test](/mobile-testing-services) quickly, at your location.
+3. Book a test right away. We can often schedule a [mobile test](/services) quickly, at your location.
 
 ## Avoid it next time
 
-Set up recurring testing so every truck is tested before its window closes. See [fleet testing](/fleet-testing).
+Set up recurring testing so every truck is tested before its window closes. See [fleet testing](/services/fleet-testing).
 
 Official information: [CARB Clean Truck Check](https://ww2.arb.ca.gov/our-work/programs/CTC).`,
   },

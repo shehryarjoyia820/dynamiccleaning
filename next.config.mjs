@@ -27,6 +27,17 @@ const nextConfig = {
     return [
       { source: '/service-areas/imperial-valley', destination: '/service-areas/el-centro', permanent: true },
       { source: '/ports/port-of-oakland', destination: '/service-areas', permanent: true },
+      { source: '/service-areas/ports/port-of-oakland', destination: '/service-areas', permanent: true },
+      // Pages moved under their menu section (Oct 2026): /services/..., /clean-truck-check/..., /service-areas/ports/...
+      { source: '/mobile-testing-services', destination: '/services', permanent: true },
+      { source: '/obd-testing', destination: '/services/obd-testing', permanent: true },
+      { source: '/smoke-opacity-test', destination: '/services/smoke-opacity-test', permanent: true },
+      { source: '/how-testing-works', destination: '/services/how-testing-works', permanent: true },
+      { source: '/fleet-testing', destination: '/services/fleet-testing', permanent: true },
+      { source: '/why-california-enforces-it', destination: '/clean-truck-check/why-california-enforces-it', permanent: true },
+      { source: '/faq', destination: '/clean-truck-check/faq', permanent: true },
+      { source: '/ports', destination: '/service-areas', permanent: true },
+      { source: '/ports/:slug', destination: '/service-areas/ports/:slug', permanent: true },
       ...retired.map((c) => ({ source: `/service-areas/${c}`, destination: '/service-areas', permanent: true })),
     ];
   },

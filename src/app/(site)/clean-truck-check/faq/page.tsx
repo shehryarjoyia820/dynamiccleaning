@@ -7,7 +7,7 @@ export const revalidate = 300;
 export const metadata = pageMeta({
   title: 'Clean Truck Check FAQ | Cost, Deadlines, Out-of-State Trucks',
   description: 'Answers to common questions about California’s Clean Truck Check program and Diesel Dynamix mobile testing.',
-  path: '/faq',
+  path: '/clean-truck-check/faq',
 });
 
 export default async function FaqPage() {
@@ -16,7 +16,7 @@ export default async function FaqPage() {
   return (
     <>
       <JsonLd data={faqSchema(faqs)} />
-      <PageHero eyebrow="FAQ" title="Frequently asked questions" intro="Can’t find your answer? Call or WhatsApp us and we will help." crumbs={[{ name: 'FAQ', path: '/faq' }]} />
+      <PageHero eyebrow="FAQ" title="Frequently asked questions" intro="Can’t find your answer? Call or WhatsApp us and we will help." crumbs={[{ name: 'Clean Truck Check', path: '/clean-truck-check' }, { name: 'FAQ', path: '/clean-truck-check/faq' }]} />
       <section className="py-section">
         <div className="container grid max-w-4xl gap-12">
           {categories.map((c) => (

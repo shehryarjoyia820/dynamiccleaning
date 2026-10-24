@@ -84,14 +84,14 @@ export async function saveFaq(form: FormData) {
   };
   const { error } = await db.from('faqs').upsert(row);
   if (error) return fail(error.message);
-  contentChanged('/faq', '/', '/admin/content/faqs');
+  contentChanged('/clean-truck-check/faq', '/', '/admin/content/faqs');
 }
 
 export async function deleteFaq(id: string) {
   const { db } = await requireStaff();
   const { error } = await db.from('faqs').delete().eq('id', id);
   if (error) return fail(error.message);
-  contentChanged('/faq', '/', '/admin/content/faqs');
+  contentChanged('/clean-truck-check/faq', '/', '/admin/content/faqs');
 }
 
 // ---------------------------------------------------------------- Service areas

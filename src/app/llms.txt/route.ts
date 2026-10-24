@@ -28,17 +28,17 @@ Testing frequency: ${settings.frequency_text}
 
 ## Key pages
 - [Clean Truck Check explained](${u}/clean-truck-check): requirements, deadlines, CTC-VIS, out-of-state trucks, fines and DMV holds
-- [Mobile CARB testing](${u}/mobile-testing-services)
-- [CARB OBD test](${u}/obd-testing)
-- [Smoke opacity test](${u}/smoke-opacity-test)
-- [Fleet testing](${u}/fleet-testing)
-- [How testing works](${u}/how-testing-works)
-- [FAQ](${u}/faq)
+- [Mobile CARB testing](${u}/services)
+- [CARB OBD test](${u}/services/obd-testing)
+- [Smoke opacity test](${u}/services/smoke-opacity-test)
+- [Fleet testing](${u}/services/fleet-testing)
+- [How testing works](${u}/services/how-testing-works)
+- [FAQ](${u}/clean-truck-check/faq)
 - [Book testing](${u}/book)
 
 ## Service areas
 ${areas.map((a) => `- [Clean Truck Check ${a.name}](${u}/service-areas/${a.slug}) (${a.region})`).join('\n')}
-${PORTS.map((p) => `- [Clean Truck Check ${p.name}](${u}/ports/${p.slug})`).join('\n')}
+${PORTS.map((p) => `- [Clean Truck Check ${p.name}](${u}/service-areas/ports/${p.slug})`).join('\n')}
 
 ## Frequently asked questions
 ${faqs.map((f) => `### ${f.question}\n${f.answer}`).join('\n\n')}

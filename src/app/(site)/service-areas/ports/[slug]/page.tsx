@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return pageMeta({
     title: `Clean Truck Check ${port.name} | Mobile Drayage Truck Testing`,
     description: `Mobile Clean Truck Check testing for ${port.name} drayage trucks. OBD and smoke opacity tests at your yard. Call ${SITE.phoneDisplay}.`,
-    path: `/ports/${port.slug}`,
+    path: `/service-areas/ports/${port.slug}`,
   });
 }
 
@@ -67,7 +67,7 @@ export default async function PortPage({ params }: { params: Promise<{ slug: str
         intro={port.intro}
         crumbs={[
           { name: 'Service Areas', path: '/service-areas' },
-          { name: port.name, path: `/ports/${port.slug}` },
+          { name: port.name, path: `/service-areas/ports/${port.slug}` },
         ]}
       />
       <section className="py-section">
@@ -81,7 +81,7 @@ export default async function PortPage({ params }: { params: Promise<{ slug: str
               <Checklist items={port.points} />
               <p>
                 Need testing elsewhere? See <Link href={`/service-areas/${port.areaSlug}`}>Clean Truck Check in {port.city.split(' / ')[0]}</Link> or our{' '}
-                <Link href="/fleet-testing">fleet testing</Link> options.
+                <Link href="/services/fleet-testing">fleet testing</Link> options.
               </p>
             </Reveal>
             <div>

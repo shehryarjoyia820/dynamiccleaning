@@ -36,7 +36,7 @@ export default async function ServiceAreasPage() {
                 {PORTS.map((p) => (
                   <li key={p.slug}>
                     <Link
-                      href={`/ports/${p.slug}`}
+                      href={`/service-areas/ports/${p.slug}`}
                       className="group flex items-center justify-between rounded-lg border border-white/10 bg-steel px-4 py-3.5 transition-colors hover:border-accent/60"
                     >
                       <span className="font-display text-xl font-semibold uppercase">{p.name}</span>

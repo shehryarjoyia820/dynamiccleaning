@@ -6,7 +6,7 @@ import type { ServiceArea } from '@/content/seed';
 export function CityTicker({ areas }: { areas: ServiceArea[] }) {
   const items = [
     ...areas.map((a) => ({ href: `/service-areas/${a.slug}`, label: a.name })),
-    ...PORTS.map((p) => ({ href: `/ports/${p.slug}`, label: p.name })),
+    ...PORTS.map((p) => ({ href: `/service-areas/ports/${p.slug}`, label: p.name })),
   ];
   const row = (hidden: boolean) => (
     <ul className="flex shrink-0 items-center" aria-hidden={hidden || undefined}>

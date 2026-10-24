@@ -9,7 +9,7 @@ export const metadata = pageMeta({
   title: 'CARB OBD Test California | Clean Truck Check OBD Testing',
   description:
     'Mobile CARB OBD test for California Clean Truck Check: 2013+ diesel and 2018+ alternative-fuel trucks tested on-site at your yard. Book Diesel Dynamix.',
-  path: '/obd-testing',
+  path: '/services/obd-testing',
 });
 
 const FAQS = [
@@ -45,8 +45,8 @@ export default function ObdPage() {
         title="CARB OBD test in Southern California"
         intro="The Clean Truck Check OBD test for 2013+ diesel and 2018+ alternative-fuel trucks, done on-site by our mobile testers."
         crumbs={[
-          { name: 'Mobile Testing Services', path: '/mobile-testing-services' },
-          { name: 'CARB OBD Test', path: '/obd-testing' },
+          { name: 'Services', path: '/services' },
+          { name: 'CARB OBD Test', path: '/services/obd-testing' },
         ]}
       />
       <PageBody>
@@ -73,7 +73,7 @@ export default function ObdPage() {
         <h2>Alternative fuel truck emissions test in California</h2>
         <p>
           Natural gas and other alternative-fuel trucks with 2018 and newer engines also use the OBD test. Older alternative-fuel engines without OBD need a visual
-          inspection instead. See <Link href="/smoke-opacity-test">non-OBD truck testing</Link>.
+          inspection instead. See <Link href="/services/smoke-opacity-test">non-OBD truck testing</Link>.
         </p>
         <h2>Before your OBD test</h2>
         <ul>

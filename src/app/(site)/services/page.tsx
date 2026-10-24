@@ -7,7 +7,7 @@ export const metadata = pageMeta({
   title: 'Mobile CARB Testing Southern California | On-Site Clean Truck Check',
   description:
     'Mobile CARB testing anywhere in Southern California: on-site Clean Truck Check with mobile OBD testing, mobile smoke tests and visual inspections at your yard. Mobile diesel emissions testing for every truck.',
-  path: '/mobile-testing-services',
+  path: '/services',
 });
 
 // Keep this list to the test types Diesel Dynamix is credentialed and equipped for.
@@ -15,21 +15,21 @@ const TESTS = [
   {
     icon: Cpu,
     title: 'Mobile OBD testing',
-    href: '/obd-testing',
+    href: '/services/obd-testing',
     who: '2013+ diesel and 2018+ alternative-fuel engines',
     text: 'We connect to the truck’s on-board diagnostics and capture the data the program requires. Quick, clean and done right at your truck.',
   },
   {
     icon: Gauge,
     title: 'Mobile smoke test',
-    href: '/smoke-opacity-test',
+    href: '/services/smoke-opacity-test',
     who: '2012 and older diesel engines without OBD',
     text: 'A snap-acceleration smoke opacity test measures how much soot the engine emits, combined with a visual inspection.',
   },
   {
     icon: Eye,
     title: 'Visual inspection',
-    href: '/smoke-opacity-test',
+    href: '/services/smoke-opacity-test',
     who: 'Older engines and alternative-fuel vehicles without OBD',
     text: 'We check that the required emissions-control components are present, connected and undamaged.',
   },
@@ -49,7 +49,7 @@ export default function ServicesPage() {
         eyebrow="Mobile testing services"
         title="Mobile CARB testing in Southern California"
         intro="On-site Clean Truck Check at your location: mobile truck emissions testing at your yard, jobsite or terminal across Southern California."
-        crumbs={[{ name: 'Mobile Testing Services', path: '/mobile-testing-services' }]}
+        crumbs={[{ name: 'Services', path: '/services' }]}
       />
       <section className="py-section">
         <div className="container">
@@ -83,8 +83,8 @@ export default function ServicesPage() {
             ))}
           </ul>
           <Reveal className="btn-row mt-10">
-            <Link href="/how-testing-works" className="btn-primary">How testing works</Link>
-            <Link href="/fleet-testing" className="btn-ghost-dark">Fleet testing</Link>
+            <Link href="/services/how-testing-works" className="btn-primary">How testing works</Link>
+            <Link href="/services/fleet-testing" className="btn-ghost-dark">Fleet testing</Link>
           </Reveal>
         </div>
       </section>

@@ -6,7 +6,7 @@ export const metadata = pageMeta({
   title: 'California Truck Emissions Regulations: Why Clean Truck Check Is Enforced',
   description:
     'Why California requires heavy-duty truck emissions testing: air quality goals, diesel emissions, roadside monitoring and the consequences of non-compliance.',
-  path: '/why-california-enforces-it',
+  path: '/clean-truck-check/why-california-enforces-it',
 });
 
 export default function WhyPage() {
@@ -18,7 +18,7 @@ export default function WhyPage() {
         intro="Heavy-duty trucks are a small share of vehicles on California roads but a large share of smog-forming and diesel particulate emissions."
         crumbs={[
           { name: 'Clean Truck Check Explained', path: '/clean-truck-check' },
-          { name: 'Why California Enforces It', path: '/why-california-enforces-it' },
+          { name: 'Why California Enforces It', path: '/clean-truck-check/why-california-enforces-it' },
         ]}
       />
       <PageBody>
