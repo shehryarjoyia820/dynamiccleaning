@@ -28,6 +28,8 @@ export const metadata: Metadata = {
   },
   twitter: { card: 'summary_large_image' },
   formatDetection: { telephone: false },
+  // Google Search Console ownership check for dieseldynamix.com.
+  verification: { google: 'UKZDM6bQPORKowgeNLDj3_Q0b8y5y7lz-CfLFNZEN9M' },
   // Lets Google AdSense verify site ownership.
   ...(process.env.NEXT_PUBLIC_ADSENSE_CLIENT ? { other: { 'google-adsense-account': process.env.NEXT_PUBLIC_ADSENSE_CLIENT } } : {}),
 };
