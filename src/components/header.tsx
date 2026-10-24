@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { ChevronDown, ChevronRight, Menu, MessageSquareText, Phone, X } from 'lucide-react';
 import { WhatsAppIcon } from '@/components/contact-bars';
+import { LangToggle } from '@/components/lang-toggle';
 import { Logo } from '@/components/brand';
 import { BookButton } from '@/components/booking-context';
 import { LINKS, NAV, SITE } from '@/lib/site';
@@ -79,8 +80,8 @@ export function Header() {
         Skip to content
       </a>
       <div className="container flex items-center justify-between gap-4">
-        <Link href="/" aria-label="Diesel Dynamix home" className={cn('transition-transform duration-300', scrolled && 'scale-[0.92] origin-left')}>
-          <Logo />
+        <Link href="/" aria-label="Diesel Dynamix home" translate="no" className={cn('transition-transform duration-300', scrolled && 'scale-[0.92] origin-left')}>
+          <Logo compact />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">
@@ -141,7 +142,8 @@ export function Header() {
           )}
         </nav>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-1 min-[360px]:gap-1.5 sm:gap-2">
+          <LangToggle />
           <a
             href={LINKS.tel}
             data-track="call_click"
@@ -149,12 +151,12 @@ export function Header() {
           >
             <Phone className="h-5 w-5 text-accent" aria-hidden />
             <span className="hidden xl:inline">Call Now</span>
-            <span className="xl:hidden">{SITE.phoneDisplay}</span>
+            <span className="xl:hidden" translate="no">{SITE.phoneDisplay}</span>
           </a>
           <BookButton className="btn-primary hidden whitespace-nowrap !min-h-[44px] !py-2 sm:inline-flex">Book Mobile Testing</BookButton>
           <button
             type="button"
-            className="grid h-11 w-11 place-items-center rounded-md text-white hover:bg-white/10 lg:hidden"
+            className="grid h-11 w-10 place-items-center rounded-md text-white hover:bg-white/10 min-[360px]:w-11 lg:hidden"
             aria-expanded={menuOpen}
             aria-controls="mobile-menu"
             aria-label={menuOpen ? 'Close menu' : 'Open menu'}

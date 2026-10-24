@@ -37,11 +37,14 @@ export function Logo({
   variant = 'horizontal',
   onDark = true,
   tagline = true,
+  compact = false,
 }: {
   className?: string;
   variant?: 'horizontal' | 'stacked';
   onDark?: boolean;
   tagline?: boolean;
+  /** Smaller on phones (header), full size from 640px. */
+  compact?: boolean;
 }) {
   const name = (
     <span className="block whitespace-nowrap font-display font-extrabold uppercase leading-[0.9] tracking-[0.01em]">
@@ -64,11 +67,11 @@ export function Logo({
     );
   }
   return (
-    <span className={cn('inline-flex items-center gap-2.5', className)}>
-      <LogoMark tone={onDark ? 'dark' : 'light'} className="h-10 w-10 shrink-0" />
+    <span className={cn('inline-flex items-center', compact ? 'gap-2 sm:gap-2.5' : 'gap-2.5', className)}>
+      <LogoMark tone={onDark ? 'dark' : 'light'} className={cn('shrink-0', compact ? 'h-8 w-8 sm:h-10 sm:w-10' : 'h-10 w-10')} />
       <span className="flex flex-col">
-        <span className="text-[1.6rem]">{name}</span>
-        <span className="text-[0.5rem]">{tag}</span>
+        <span className={compact ? 'text-[1.3rem] sm:text-[1.6rem]' : 'text-[1.6rem]'}>{name}</span>
+        <span className={compact ? 'text-[0.42rem] [&>span]:tracking-[0.2em] sm:text-[0.5rem] sm:[&>span]:tracking-[0.28em]' : 'text-[0.5rem]'}>{tag}</span>
       </span>
     </span>
   );
