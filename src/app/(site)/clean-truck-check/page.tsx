@@ -4,6 +4,8 @@ import { PageBody } from '@/components/page-parts';
 import { JsonLd, faqSchema, pageMeta } from '@/components/seo';
 import { getSettings } from '@/lib/content';
 import { LINKS } from '@/lib/site';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 export const revalidate = 300;
 
@@ -47,7 +49,7 @@ export default async function CleanTruckCheckPage() {
   const settings = await getSettings();
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={faqSchema(withSeoFaqs('/clean-truck-check', FAQS))} />
       <PageHero
         eyebrow="Clean Truck Check explained"
         title="What is Clean Truck Check?"
@@ -126,6 +128,7 @@ export default async function CleanTruckCheckPage() {
           <OfficialSourceNote />
         </div>
       </PageBody>
+      <SeoExtras path={'/clean-truck-check'} schema={false} />
       <CtaBand />
     </>
   );

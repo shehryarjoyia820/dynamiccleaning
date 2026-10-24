@@ -7,6 +7,8 @@ import { JsonLd, faqSchema, pageMeta, serviceSchema } from '@/components/seo';
 import { PORTS } from '@/content/ports';
 import { getSettings } from '@/lib/content';
 import { SITE } from '@/lib/site';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 export const revalidate = 300;
 export const dynamicParams = false;
@@ -60,7 +62,7 @@ export default async function PortPage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <JsonLd data={serviceSchema(port.city)} />
-      <JsonLd data={faqSchema(faqs)} />
+      <JsonLd data={faqSchema(withSeoFaqs(`/service-areas/ports/${port.slug}`, faqs))} />
       <PageHero
         eyebrow="Port drayage testing"
         title={`Clean Truck Check at the ${port.name}`}
@@ -104,6 +106,7 @@ export default async function PortPage({ params }: { params: Promise<{ slug: str
           </Reveal>
         </div>
       </section>
+      <SeoExtras path={`/service-areas/ports/${port.slug}`} schema={false} area={port.name} />
       <CtaBand title={`Trucks at the ${port.name}? We come to you.`} />
     </>
   );

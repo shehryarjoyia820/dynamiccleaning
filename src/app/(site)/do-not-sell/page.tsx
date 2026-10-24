@@ -6,7 +6,7 @@ import { pageMeta } from '@/components/seo';
 import { LINKS, SITE } from '@/lib/site';
 
 export const metadata = pageMeta({
-  title: 'Your Privacy Choices: Do Not Sell or Share My Personal Information',
+  title: 'Do Not Sell or Share My Personal Information',
   description: 'How California residents can opt out of the sale or sharing of personal information with Diesel Dynamix, including Global Privacy Control.',
   path: '/do-not-sell',
 });

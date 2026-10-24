@@ -1,6 +1,8 @@
 import { CtaBand, FaqList, OfficialSourceNote, PageHero, Reveal } from '@/components/blocks';
 import { JsonLd, faqSchema, pageMeta } from '@/components/seo';
 import { getFaqs } from '@/lib/content';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 export const revalidate = 300;
 
@@ -15,7 +17,7 @@ export default async function FaqPage() {
   const categories = Array.from(new Set(faqs.map((f) => f.category)));
   return (
     <>
-      <JsonLd data={faqSchema(faqs)} />
+      <JsonLd data={faqSchema(withSeoFaqs('/clean-truck-check/faq', faqs))} />
       <PageHero eyebrow="FAQ" title="Frequently asked questions" intro="Can’t find your answer? Call or WhatsApp us and we will help." crumbs={[{ name: 'Clean Truck Check', path: '/clean-truck-check' }, { name: 'FAQ', path: '/clean-truck-check/faq' }]} />
       <section className="py-section">
         <div className="container grid max-w-4xl gap-12">
@@ -30,6 +32,7 @@ export default async function FaqPage() {
           <OfficialSourceNote />
         </div>
       </section>
+      <SeoExtras path={'/clean-truck-check/faq'} schema={false} />
       <CtaBand />
     </>
   );

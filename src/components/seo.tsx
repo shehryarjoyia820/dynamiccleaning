@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { LINKS, SITE } from '@/lib/site';
 import type { Faq } from '@/content/seed';
+import { pageSeo } from '@/lib/page-seo';
 
 export function JsonLd({ data }: { data: object }) {
   return (
@@ -17,7 +18,11 @@ const BRAND_SUFFIX = ` | ${SITE.name}`;
 const TITLE_MAX = 60;
 export const OG_IMAGE = { url: '/opengraph-image', width: 1200, height: 630, alt: `${SITE.name}: mobile Clean Truck Check testing in Southern California` };
 
-export function pageMeta({ title, description, path }: { title: string; description: string; path: string }): Metadata {
+export function pageMeta({ title: baseTitle, description: baseDescription, path }: { title: string; description: string; path: string }): Metadata {
+  // Keyword-researched title and description win when the page has one (src/content/page-seo.json).
+  const seo = pageSeo(path);
+  const title = seo?.title || baseTitle;
+  const description = seo?.description || baseDescription;
   const fits = title.length + BRAND_SUFFIX.length <= TITLE_MAX;
   return {
     title: fits ? title : { absolute: title },

@@ -50,3 +50,10 @@ Pages for cities outside Southern California were removed and now redirect to `/
 - Google Business Profile with service area "California", plus reviews from real customers.
 - Real photos with descriptive alt text (for example "Diesel Dynamix technician performing OBD test on a semi truck in Fresno").
 - Publish a new blog post every 2–4 weeks (CARB updates, deadline reminders).
+
+## Keyword content (October 2026)
+
+- `docs/seo-keywords-socal.json`: 1,079 Southern California keywords in 43 clusters (volume band, intent, difficulty and target page), researched with Claude Fable. Volumes are estimates, not tool data.
+- `src/content/page-seo.json`: per-page titles, descriptions, extra sections, FAQs and nearby areas written from those clusters. `pageMeta()` uses the title/description; `<SeoExtras>` renders the sections, nearby-area links and FAQs (merged into the page's FAQPage schema when it already has one).
+- 14 keyword guides and the Rancho Cucamonga and Rialto city pages are added by migration 0017 (and mirrored in `seed.ts`).
+- Pages follow the menu: `/services/...`, `/clean-truck-check/...`, `/service-areas/ports/...`; old addresses 301 in `next.config.mjs`.

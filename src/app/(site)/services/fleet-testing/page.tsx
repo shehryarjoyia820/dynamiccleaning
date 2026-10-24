@@ -2,6 +2,7 @@ import { CalendarRange, ClipboardList, Layers, Repeat, UserRound } from 'lucide-
 import { CtaBand, PageHero, Reveal, SectionHeading } from '@/components/blocks';
 import { BookingForm } from '@/components/forms';
 import { pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const metadata = pageMeta({
   title: 'Fleet Clean Truck Check Testing Southern California | CARB Compliance for Fleets',
@@ -52,6 +53,7 @@ export default function FleetPage() {
           </Reveal>
         </div>
       </section>
+      <SeoExtras path={'/services/fleet-testing'} />
       <CtaBand />
     </>
   );

@@ -9,6 +9,8 @@ import { PORTS } from '@/content/ports';
 import { SERVICE_AREAS, type ServiceArea } from '@/content/seed';
 import { getServiceArea, getServiceAreas, getSettings } from '@/lib/content';
 import { SITE } from '@/lib/site';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 export const revalidate = 300;
 export const dynamicParams = true;
@@ -66,7 +68,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
   return (
     <>
       <JsonLd data={serviceSchema(area.name)} />
-      <JsonLd data={faqSchema(faqs)} />
+      <JsonLd data={faqSchema(withSeoFaqs(`/service-areas/${area.slug}`, faqs))} />
       <PageHero
         eyebrow={`${area.region} · Mobile CARB testing`}
         title={`Clean Truck Check in ${area.name}`}
@@ -156,6 +158,7 @@ export default async function AreaPage({ params }: { params: Promise<{ slug: str
           </div>
         </div>
       </section>
+      <SeoExtras path={`/service-areas/${area.slug}`} schema={false} area={area.name} />
       <CtaBand title={`Trucks in ${area.name}? We’ll come to you.`} />
     </>
   );

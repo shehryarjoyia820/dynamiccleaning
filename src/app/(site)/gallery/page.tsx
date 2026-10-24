@@ -4,7 +4,7 @@ import { pageMeta } from '@/components/seo';
 import { SceneFleet, SceneHighway, SceneOnSite } from '@/components/home/scenes';
 
 export const metadata = pageMeta({
-  title: 'Gallery',
+  title: 'Mobile Truck Testing Photos, SoCal',
   description: 'Photos of the Diesel Dynamix mobile testing vehicle, equipment and technicians at work across Southern California.',
   path: '/gallery',
 });

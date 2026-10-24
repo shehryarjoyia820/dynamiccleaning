@@ -22,6 +22,7 @@ const FILES = [
   'supabase/migrations/0014_signature_service_email.sql',
   'supabase/migrations/0015_only_cities.sql',
   'supabase/migrations/0016_menu_paths.sql',
+  'supabase/migrations/0017_keyword_content.sql',
   'supabase/seed.sql',
 ];
 
@@ -147,6 +148,16 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { data } = await db.from('app_migrations').select('name').eq('name', '0016_menu_paths').maybeSingle();
+      return !!data;
+    },
+  },
+  {
+    // New city pages and keyword guides; inserts skip rows that already exist.
+    file: 'supabase/migrations/0017_keyword_content.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { data } = await db.from('posts').select('slug').eq('slug', 'ctc-vis-registration-guide').maybeSingle();
       return !!data;
     },
   },

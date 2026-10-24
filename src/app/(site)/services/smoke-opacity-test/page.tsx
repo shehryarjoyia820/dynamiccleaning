@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { CtaBand, FaqList, OfficialSourceNote, PageHero, QuickAnswer } from '@/components/blocks';
 import { Checklist, PageBody } from '@/components/page-parts';
 import { JsonLd, faqSchema, pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 // Keywords: smoke opacity test California, diesel smoke test California, truck smoke opacity testing,
 // mobile smoke test California, non-OBD truck testing California, how to pass CARB smoke test.
@@ -40,7 +42,7 @@ const FAQS = [
 export default function SmokePage() {
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={faqSchema(withSeoFaqs('/services/smoke-opacity-test', FAQS))} />
       <PageHero
         eyebrow="Testing types · Smoke opacity"
         title="Smoke opacity test in Southern California"
@@ -92,6 +94,7 @@ export default function SmokePage() {
           <OfficialSourceNote />
         </div>
       </PageBody>
+      <SeoExtras path={'/services/smoke-opacity-test'} schema={false} />
       <CtaBand title="Book a mobile smoke test" />
     </>
   );

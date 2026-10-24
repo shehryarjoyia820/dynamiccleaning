@@ -1,0 +1,6951 @@
+{
+ "clusters": [
+  {
+   "name": "Program head terms",
+   "target": "/",
+   "primary": "Clean Truck Check California",
+   "keywords": [
+    {
+     "k": "clean truck check",
+     "vol": "1k+",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "clean truck check california",
+     "vol": "1k+",
+     "intent": "commercial",
+     "kd": "high"
+    },
+    {
+     "k": "carb clean truck check",
+     "vol": "1k+",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "california clean truck check program",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "clean truck check testing",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check test",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "carb truck emissions testing",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "carb emissions test for trucks",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "heavy duty truck emissions testing california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck emissions testing california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "truck emissions test california",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "heavy duty inspection and maintenance program california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "hd i/m program california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb hd i/m",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "truck smog check california",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck smog check california",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "semi truck smog check california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "big rig smog check",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "commercial truck smog test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty smog check",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smog check for trucks over 14000 lbs",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb truck inspection",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb compliance for trucks california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "california truck emissions compliance",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check company",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check service",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix clean truck check",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Mobile and near-me service terms",
+   "target": "/services",
+   "primary": "mobile Clean Truck Check",
+   "keywords": [
+    {
+     "k": "mobile clean truck check",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check california",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check near me",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "mobile carb testing",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile carb testing california",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions testing",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "mobile diesel emissions testing",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile diesel emissions testing california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "on-site clean truck check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at your location",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile smog check for trucks",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile semi truck smog check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile emissions testing for semi trucks",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing near me",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "diesel emissions test near me truck",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "truck smog test near me",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "semi truck smog check near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty emissions testing near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check tester near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "carb certified tester near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "carb credentialed tester",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check credentialed tester",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check testing locations",
+     "vol": "200-1k",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check testing locations near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "where to get clean truck check done",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "where to get clean truck check test",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check test station",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "med"
+    },
+    {
+     "k": "mobile heavy duty emissions testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions tester that comes to you",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "weekend clean truck check testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "same day clean truck check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "after hours truck emissions testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at jobsite",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at my yard",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at home",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile emissions testing for fleets",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "emergency clean truck check test",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck inspection southern california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile smoke test california",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile obd testing for trucks",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check mobile tester",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing services",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    }
+   ]
+  },
+  {
+   "name": "CARB OBD test",
+   "target": "/services/obd-testing",
+   "primary": "CARB OBD test",
+   "keywords": [
+    {
+     "k": "carb obd test",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "carb obd test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check obd test",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "obd test for trucks",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "heavy duty obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "hd obd test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "obd emissions test truck",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "obd test for semi truck",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "2013 and newer diesel truck obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "truck obd compliance test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb verified obd device",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check obd device",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "carb approved obd scanner clean truck check",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "obd data submission carb",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd test cost truck",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "obd scan for clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check obd requirements",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "what is a carb obd test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how long does a carb obd test take",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd test vs smoke test truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "alternative fuel truck emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "cng truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "natural gas truck obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "lng truck emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "propane truck emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "hybrid truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "gasoline truck over 14000 lbs clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd test near me truck",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "obd emissions test for box truck",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check obd pass requirements",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what does carb obd test check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "2018 and newer alternative fuel truck obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Smoke opacity test",
+   "target": "/services/smoke-opacity-test",
+   "primary": "smoke opacity test California",
+   "keywords": [
+    {
+     "k": "smoke opacity test",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "smoke opacity test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel smoke opacity test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "truck smoke test",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel smoke test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "carb smoke test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "sae j1667",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "j1667 snap acceleration test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "snap idle test diesel",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "opacity test for trucks",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "opacity meter test diesel truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "smoke opacity test near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile smoke opacity test",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "smoke test for older diesel trucks",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "pre 2013 diesel truck emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "2012 and older truck smoke test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "non-obd truck testing california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "california smoke opacity limits",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "5 percent opacity limit diesel",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "20 percent opacity limit diesel",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "smoke opacity limits by model year",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb visual inspection diesel truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "emissions visual inspection truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "emission control label check truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ecl check clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "tamper inspection diesel truck california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "smoke test cost truck",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "psip periodic smoke inspection program",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "psip vs clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is psip still required california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "psip replaced by clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel opacity testing southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smoke test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "opacity test for motorhome diesel",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smoke opacity testing",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test near me",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "what is a smoke opacity test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how is a smoke opacity test done",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "opacity test pre 2018 alternative fuel truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "How testing works",
+   "target": "/services/how-testing-works",
+   "primary": "how does Clean Truck Check work",
+   "keywords": [
+    {
+     "k": "how does clean truck check work",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how does clean truck check testing work",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how long does clean truck check take",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what do i need for clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check test process",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check checklist",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to prepare for clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what happens during a clean truck check test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check test results how long",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check certificate of compliance",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how to get clean truck check certificate",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check proof of compliance",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check pass certificate",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "does the truck need to be warmed up for smoke test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check test steps",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check mobile testing how it works",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what documents needed for clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vin requirement",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do i need to be present for mobile truck emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how long is a clean truck check test valid",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Fleet testing and recurring compliance",
+   "target": "/services/fleet-testing",
+   "primary": "fleet Clean Truck Check testing",
+   "keywords": [
+    {
+     "k": "fleet clean truck check testing",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check for fleets",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "fleet emissions testing california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "fleet obd testing california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb compliance for fleets",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "carb fleet compliance services",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "trucking company emissions compliance california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet compliance testing southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing company",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "on-site fleet emissions testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "bulk truck emissions testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "multi truck clean truck check discount",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fleet reporting",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "fleet clean truck check reminders",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check reminder service",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check due date reminder",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "recurring truck emissions testing",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "vin compliance tracking trucks",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check compliance tracking",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check recordkeeping requirements",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "fleet compliance calendar clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to track clean truck check deadlines for a fleet",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb fleet audit clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "construction fleet emissions testing california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "waste hauler clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "refuse truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "agricultural truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "farm truck emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "school bus clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "transit bus emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "charter bus carb test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "tow truck clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "concrete mixer truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "water truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "landscaping truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "moving company fleet emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "food distribution fleet carb compliance",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "rental truck fleet emissions testing",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck dealer clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "used truck lot emissions testing",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "leased truck clean truck check who pays",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "owner operator clean truck check",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "small carrier clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "yard truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "terminal tractor emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check compliance record per vin",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Program explained and regulation",
+   "target": "/clean-truck-check",
+   "primary": "Clean Truck Check requirements",
+   "keywords": [
+    {
+     "k": "what is clean truck check",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check requirements",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check regulation",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check deadline",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check 2026",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check 2027",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check 14000 lbs",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check gvwr 14001",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "which trucks need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check exemptions",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check exempt vehicles",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check compliance fee",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check annual fee",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb compliance fee heavy duty",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check penalty",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check fines",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check citation",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check enforcement",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb roadside emissions testing trucks",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb roadside inspection truck california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb remote sensing devices trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb smoke checkpoints southern california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check dmv registration hold",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check testing frequency",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check twice a year",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check quarterly testing",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check semi annual testing",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check phases",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check phase 2",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check phase 3",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty inspection and maintenance regulation",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "hd i/m regulation carb",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "sb 210 heavy duty inspection and maintenance",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "senate bill 210 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vs truck and bus regulation",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check tractor trailers",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check emergency vehicles exempt",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check military vehicles",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check zero emission trucks exempt",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check new truck first test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 4 model years exemption",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check age exemption new vehicles",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check farm vehicle exemption",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check historical vehicle exemption",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check low use exemption",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "california clean truck check law",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb heavy duty vehicle inspection program",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check gasoline trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check interstate trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check compliance deadline by dmv registration",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check deadline based on registration month",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "when is my clean truck check due",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90 day testing window",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check testing window",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check deadline lookup",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 2025 requirements",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    }
+   ]
+  },
+  {
+   "name": "Why California enforces it",
+   "target": "/clean-truck-check/why-california-enforces-it",
+   "primary": "California truck emissions regulations",
+   "keywords": [
+    {
+     "k": "california truck emissions regulations",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "why does california test truck emissions",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb heavy duty emissions rules",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "california diesel emissions laws trucks",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "nox emissions heavy duty trucks california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "truck pollution southern california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "south coast air basin truck emissions",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel particulate matter health california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb truck and bus regulation",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "carb truck regulations 2026",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "high"
+    },
+    {
+     "k": "truck and bus rule california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "who enforces clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb enforcement division trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "california trucking emissions requirements",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "california heavy duty truck regulations 2026",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "carb truck rules explained",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "inland empire warehouse truck emissions rules",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port of la truck pollution regulations",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "why clean truck check exists",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "FAQ and do-I-need questions",
+   "target": "/clean-truck-check/faq",
+   "primary": "Clean Truck Check FAQ",
+   "keywords": [
+    {
+     "k": "clean truck check faq",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check questions",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is clean truck check mandatory",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do i need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "does my truck need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do pickup trucks need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do i need a smog check for my diesel truck in california",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "do semi trucks need smog check in california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do box trucks need smog check in california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do dump trucks need smog check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do motorhomes need smog check in california",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how do i know if my truck needs clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is clean truck check the same as smog check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is there a grace period for clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "can i drive without clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "can i do clean truck check myself",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diy clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "can i buy my own obd device for clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "who can perform clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "who can do a carb obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how much do clean truck check testers charge",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check for one truck",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "can i get clean truck check early",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what year trucks need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "does clean truck check apply to trailers",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is diesel dynamix part of carb",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check help",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check phone number help",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check customer service",
+     "vol": "50-200",
+     "intent": "navigational",
+     "kd": "med"
+    }
+   ]
+  },
+  {
+   "name": "CTC-VIS registration and portal help",
+   "target": "NEW: /blog/ctc-vis-registration-guide",
+   "primary": "CTC-VIS registration",
+   "keywords": [
+    {
+     "k": "ctc-vis",
+     "vol": "1k+",
+     "intent": "navigational",
+     "kd": "high"
+    },
+    {
+     "k": "ctc vis login",
+     "vol": "1k+",
+     "intent": "navigational",
+     "kd": "high"
+    },
+    {
+     "k": "ctc-vis registration",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check registration",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how to register truck in clean truck check",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "ctc-vis account setup",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis vehicle registration",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check portal",
+     "vol": "200-1k",
+     "intent": "navigational",
+     "kd": "med"
+    },
+    {
+     "k": "cleantruckcheck arb ca gov",
+     "vol": "200-1k",
+     "intent": "navigational",
+     "kd": "high"
+    },
+    {
+     "k": "clean truck check login",
+     "vol": "200-1k",
+     "intent": "navigational",
+     "kd": "high"
+    },
+    {
+     "k": "how to pay clean truck check fee",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis fee payment",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis certificate download",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis test submission",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis add vehicle",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis fleet account",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis out of state registration",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis not working",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check status lookup",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "check clean truck check compliance status",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vin lookup",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis tester submission",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis help",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check reporting requirements",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check vis reporting",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ctc-vis compliance certificate",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check registration deadline",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how to update vehicle info ctc-vis",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check registration help southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Compliance fee explained",
+   "target": "NEW: /blog/clean-truck-check-compliance-fee-explained",
+   "primary": "Clean Truck Check compliance fee",
+   "keywords": [
+    {
+     "k": "clean truck check $30 fee",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee per vehicle",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee 2026",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "when is clean truck check fee due",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee vs test cost",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do i pay clean truck check fee every year",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee not paid dmv",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee out of state trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb compliance fee invoice",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fee refund",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Cost and pricing",
+   "target": "/blog/how-much-does-clean-truck-check-cost-california",
+   "primary": "how much does Clean Truck Check cost",
+   "keywords": [
+    {
+     "k": "how much does clean truck check cost",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check cost",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check price",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check test price",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "how much is clean truck check",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test cost",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "smoke opacity test cost",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check cost california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck emissions test price",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions testing cost",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cost of clean truck check per truck",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cheap clean truck check",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "affordable clean truck check testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fleet pricing",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check cost",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty smog check price",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check cost vs penalty",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mobile smoke test price truck",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check retest cost",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "how much is a diesel smog check for a truck in california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    }
+   ]
+  },
+  {
+   "name": "Testing frequency",
+   "target": "/blog/how-often-do-trucks-need-clean-truck-check",
+   "primary": "how often do trucks need Clean Truck Check",
+   "keywords": [
+    {
+     "k": "how often do trucks need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how often is clean truck check required",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how often do semi trucks need emissions testing in california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check once a year",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check every 6 months",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 4 times a year 2027",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check how many times a year",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check frequency 2026",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check frequency 2027",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how often smoke opacity test required california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check due twice a year when",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check schedule by truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Missed deadline and DMV hold",
+   "target": "/blog/missed-clean-truck-check-deadline",
+   "primary": "missed Clean Truck Check deadline",
+   "keywords": [
+    {
+     "k": "missed clean truck check deadline",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "late clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check past due",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check expired",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check out of compliance",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check non compliant status",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to fix clean truck check non compliance",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what happens if i miss clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check late penalty",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check registration block",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "DMV registration hold",
+   "target": "NEW: /blog/dmv-registration-hold-clean-truck-check",
+   "primary": "DMV registration hold Clean Truck Check",
+   "keywords": [
+    {
+     "k": "dmv registration hold carb",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "dmv hold heavy duty vehicle emissions",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "cant register truck carb hold",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb hold on registration truck",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "how to remove dmv hold clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check hold release time",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how long after clean truck check test dmv hold clears",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb registration hold release",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dmv says carb compliance required truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dmv registration renewal clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "truck registration denied emissions california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb dmv hold phone number",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check dmv hold los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check dmv hold inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Out-of-state and cross-border trucks",
+   "target": "/blog/clean-truck-check-out-of-state-trucks",
+   "primary": "Clean Truck Check out of state trucks",
+   "keywords": [
+    {
+     "k": "clean truck check out of state trucks",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "does clean truck check apply to out of state trucks",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state trucks california emissions requirements",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "out of state truck carb compliance",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "arizona trucks entering california emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "nevada trucks california carb requirements",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "texas trucks clean truck check california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mexican trucks clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mexico registered trucks california emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "cross border trucks emissions test otay mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "irp trucks clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "apportioned plate truck california emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "canadian trucks clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck ctc-vis registration",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do out of state trucks need carb",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "california emissions test for out of state semi",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck emissions test san diego",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck emissions test ontario ca",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check for trucks entering california",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck emissions test near port of los angeles",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck testing near blythe",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check interstate carriers",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state clean truck check testing southern california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check non california registered truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state truck clean truck check deadline",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Failed test and retest",
+   "target": "NEW: /blog/failed-clean-truck-check-what-to-do",
+   "primary": "failed Clean Truck Check",
+   "keywords": [
+    {
+     "k": "failed clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "truck failed obd test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "truck failed smoke test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "failed opacity test what to do",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check retest",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "what happens if my truck fails clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check after repair",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd communication failure clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "truck wont communicate obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd port not working emissions test truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ecm not responding obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vin mismatch",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd vin mismatch failure carb",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test result rejected",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "test result not showing in ctc-vis",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "why does my truck show non compliant clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "nox sensor fail clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "def system fault emissions test truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "scr fault carb obd test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "emissions repair diesel truck southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel emissions repair shop near me heavy duty",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check fail how many times",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check failed obd repair cost",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Check engine light and readiness monitors",
+   "target": "NEW: /blog/readiness-monitors-check-engine-light-clean-truck-check",
+   "primary": "check engine light Clean Truck Check",
+   "keywords": [
+    {
+     "k": "check engine light clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "will check engine light fail clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mil on fail obd test truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mil commanded on carb test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "readiness monitors not ready truck",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "readiness monitors incomplete clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to set readiness monitors diesel truck",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck drive cycle readiness monitors",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "readiness monitors not ready fail carb test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "pending codes clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "permanent codes clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to clear codes before clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "battery disconnect readiness monitors semi truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "cleared codes not ready for obd test truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how many monitors can be not ready clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "check engine light on semi truck emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "freightliner cascadia readiness monitors not ready",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "peterbilt check engine light emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "obd not ready message carb test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "DPF, deletes and smoke causes",
+   "target": "NEW: /blog/dpf-deletes-and-smoke-clean-truck-check",
+   "primary": "DPF delete Clean Truck Check",
+   "keywords": [
+    {
+     "k": "dpf clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dpf delete clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "deleted truck clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "tuned truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "egr delete emissions test california truck",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "dpf regen before emissions test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "will a deleted truck pass carb obd test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "dpf fault code clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "excessive smoke diesel causes",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "black smoke diesel fails opacity test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "blue smoke diesel opacity test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to reduce smoke opacity diesel",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test preparation",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "injector problems smoke opacity test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "turbo failure smoke test fail",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dirty air filter smoke opacity",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "reinstall dpf to pass clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dpf cleaning before clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb delete fines trucks",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    }
+   ]
+  },
+  {
+   "name": "How to pass the smoke test",
+   "target": "/blog/how-to-pass-carb-smoke-test",
+   "primary": "how to pass CARB smoke test",
+   "keywords": [
+    {
+     "k": "how to pass carb smoke test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to pass smoke opacity test",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "how to pass diesel smog check truck",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "tips to pass truck smoke test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "snap test fail how to fix",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "pass opacity test older diesel",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "fuel additive for smoke test diesel",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "italian tune up before smoke test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Yard and on-site testing",
+   "target": "/blog/can-clean-truck-check-be-done-at-my-yard",
+   "primary": "can Clean Truck Check be done at my yard",
+   "keywords": [
+    {
+     "k": "can clean truck check be done at my yard",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "can clean truck check be done on site",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "do i have to take my truck somewhere for clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check truck parking lot testing",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at truck stop southern california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at warehouse dock",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check at construction site",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Comparisons",
+   "target": "NEW: /blog/clean-truck-check-vs-smog-check",
+   "primary": "Clean Truck Check vs smog check",
+   "keywords": [
+    {
+     "k": "clean truck check vs smog check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vs psip",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions testing vs test station",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check mobile vs shop",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb test vs bar smog check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty vs light duty smog check california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "difference between carb and bar smog",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "difference between hd i/m and smog check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "star station truck smog over 14000",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel truck smog check 14000 lbs or less vs over",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vs dot inspection",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vs bit inspection",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Which vehicles and truck types",
+   "target": "NEW: /blog/which-vehicles-need-clean-truck-check",
+   "primary": "which vehicles need Clean Truck Check",
+   "keywords": [
+    {
+     "k": "semi truck emissions test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "box truck emissions test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "box truck smog check",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "dump truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smog check california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "tow truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "flatbed truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "garbage truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "roll off truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "bucket truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "crane truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "delivery truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "step van emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "isuzu npr clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "isuzu box truck smog check california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "hino truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ford f650 emissions test california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ford f550 clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ford f450 clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ram 5500 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ram 4500 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "chevy silverado 6500 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "bus emissions test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "school bus smoke test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "coach bus clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "shuttle bus clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "reefer truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "tanker truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "car hauler emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "heavy haul truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "day cab obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "sleeper truck obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "livestock truck emissions test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "hay truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "street sweeper clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "fire truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check class 4 trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check class 8 trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check medium duty trucks",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Pickups and light-heavy trucks",
+   "target": "NEW: /blog/does-my-pickup-need-clean-truck-check",
+   "primary": "does my F-350 need Clean Truck Check",
+   "keywords": [
+    {
+     "k": "does my f350 need clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "f350 clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "ram 3500 clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "silverado 3500 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "one ton diesel clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "3/4 ton diesel clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dually clean truck check california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "pickup truck gvwr 14000 clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel pickup smog check vs clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "where to find gvwr on truck door sticker",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check f250",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 2500 diesel",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "hot shot truck clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "hotshot f450 california emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Motorhomes and RVs",
+   "target": "NEW: /blog/motorhome-clean-truck-check",
+   "primary": "motorhome Clean Truck Check",
+   "keywords": [
+    {
+     "k": "clean truck check motorhome",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "motorhome emissions test california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "motorhome smog check california diesel",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "rv clean truck check",
+     "vol": "200-1k",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "diesel pusher clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "class a motorhome smog check california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "motorhome over 14000 lbs emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "rv obd test california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile motorhome smog check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "motorhome smog check at rv park southern california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "super c motorhome clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "rv clean truck check exemption",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "out of state motorhome clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "motorhome ctc-vis registration",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "rv smog check san diego diesel",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "motorhome smog check inland empire",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Truck brands and engines OBD",
+   "target": "NEW: /blog/obd-test-by-truck-brand",
+   "primary": "Freightliner OBD test",
+   "keywords": [
+    {
+     "k": "freightliner obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "freightliner cascadia clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "freightliner cascadia emissions test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "freightliner m2 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "peterbilt obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "peterbilt 579 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "peterbilt 389 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "kenworth obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "kenworth t680 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "kenworth t880 emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "international obd test truck",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "international lt clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "international prostar emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "volvo vnl obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "volvo truck clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mack obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mack anthem clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mack granite emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "western star clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "hino obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "isuzu obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cummins isx obd test",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cummins x15 clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "detroit dd15 obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "paccar mx-13 obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "navistar maxxforce emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "volvo d13 emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mack mp8 emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "detroit series 60 smoke test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cummins n14 opacity test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "caterpillar c15 smoke opacity test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "kenworth dpf regen before emissions test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "freightliner readiness monitors drive cycle",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "international obd port location truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "9 pin vs 16 pin obd connector truck carb test",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Spanish keywords",
+   "target": "NEW: /blog/clean-truck-check-en-espanol",
+   "primary": "prueba de emisiones camiones California",
+   "keywords": [
+    {
+     "k": "prueba de emisiones camiones california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check en español",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check que es",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo camiones california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo para camiones",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de opacidad camiones",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba obd camiones california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "inspección de emisiones camiones diesel",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "smog para camiones diesel california",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "smog check camiones los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camión cerca de mí",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones a domicilio camiones",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "servicio móvil prueba de humo camiones",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "carb camiones requisitos",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check requisitos",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "cuánto cuesta el clean truck check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cada cuánto es el clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "multa clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dmv hold carb camiones",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "registro ctc-vis en español",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "como registrar camion en clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones los ángeles",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo camiones fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo camiones ontario california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo camiones inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones san bernardino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones para troqueros",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "troqueros california carb clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "camiones de otro estado california emisiones",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "camiones mexicanos clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones otay mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de humo camiones el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones calexico",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "tester certificado carb cerca de mi",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones flotilla camiones",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "cuota anual clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "falló prueba de humo camión",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "luz check engine prueba obd camión",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "dpf prueba de emisiones camión",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones casa rodante california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "prueba de emisiones camiones de volteo",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check puerto de long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fecha limite",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "certificado clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Los Angeles",
+   "target": "/service-areas/los-angeles",
+   "primary": "Clean Truck Check Los Angeles",
+   "keywords": [
+    {
+     "k": "clean truck check los angeles",
+     "vol": "200-1k",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check los angeles",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing los angeles",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "truck smog check los angeles",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck smog check los angeles",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "smoke opacity test los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check los angeles",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "heavy duty emissions testing los angeles county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check los angeles county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vernon ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check commerce ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check city of industry",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check carson ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check compton",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check wilmington ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san pedro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check gardena",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check torrance",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check south gate",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check santa fe springs",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check pico rivera",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check sun valley ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check pacoima",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san fernando valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check santa clarita",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lancaster palmdale",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check antelope valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check downey",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check montebello",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check el monte",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check pomona",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check irwindale",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check baldwin park",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lynwood",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check paramount ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check huntington park",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check bell gardens",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check whittier",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check la puente",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check glendale ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check inglewood",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check hawthorne ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check harbor gateway",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check east los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check vernon",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test carson ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check compton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check pomona",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check santa fe springs",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test city of industry",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check downtown los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 90058",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90040",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90745",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90744",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90220",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 91748",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 91744",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90670",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check los angeles",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check alameda corridor",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smog check los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "box truck smog check los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check south la",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san gabriel valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check gateway cities",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Long Beach",
+   "target": "/service-areas/long-beach",
+   "primary": "Clean Truck Check Long Beach",
+   "keywords": [
+    {
+     "k": "clean truck check long beach",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check long beach",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing long beach",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check long beach",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check signal hill",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lakewood ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check bellflower",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check cerritos",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check norwalk ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check artesia ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90802",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90810",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 90813",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check west long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check long beach",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test 710 corridor",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check la mirada",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Orange County",
+   "target": "/service-areas/orange-county",
+   "primary": "Clean Truck Check Orange County",
+   "keywords": [
+    {
+     "k": "clean truck check orange county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check orange county",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing orange county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check orange county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel truck smog check orange county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "smoke opacity test orange county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test orange county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check anaheim",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check santa ana",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check irvine",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check garden grove",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fullerton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check huntington beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check costa mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check orange ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check buena park",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check la habra",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check brea",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check placentia",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check stanton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check westminster ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lake forest",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check mission viejo",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san clemente",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check tustin",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check cypress ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fountain valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san juan capistrano",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check anaheim",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check santa ana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test irvine",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check fullerton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check garden grove",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92805",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92707",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check orange county",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check south orange county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check north orange county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing orange county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Inland Empire",
+   "target": "/service-areas/inland-empire",
+   "primary": "Clean Truck Check Inland Empire",
+   "keywords": [
+    {
+     "k": "clean truck check inland empire",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check inland empire",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing inland empire",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check inland empire",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check rancho cucamonga",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check rialto",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check mira loma",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check jurupa valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check eastvale",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check chino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check chino hills",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check corona ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check norco",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check perris",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check moreno valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check redlands",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check colton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check bloomington ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check highland ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check loma linda",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check yucaipa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check beaumont ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check banning",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check hemet",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check temecula",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check murrieta",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lake elsinore",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check menifee",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check victorville",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check hesperia",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check apple valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check adelanto",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check barstow",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check high desert",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check coachella valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check indio",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check palm springs",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check blythe",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check upland",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check montclair ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check rancho cucamonga",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check mira loma",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check jurupa valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check victorville",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test moreno valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check perris",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check colton",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check temecula",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check chino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check corona ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 91752",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92376",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92316",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92392",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test 92571",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test 92324",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check warehouse fleet inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check inland empire",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smog check inland empire",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check i-10 corridor",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check i-15 corridor",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Riverside",
+   "target": "/service-areas/riverside",
+   "primary": "Clean Truck Check Riverside",
+   "keywords": [
+    {
+     "k": "clean truck check riverside",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check riverside ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check riverside",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing riverside",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check riverside ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check riverside county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check riverside county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92507",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92509",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92501",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check riverside ca",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smog check riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check woodcrest",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check highgrove",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "San Bernardino",
+   "target": "/service-areas/san-bernardino",
+   "primary": "Clean Truck Check San Bernardino",
+   "keywords": [
+    {
+     "k": "clean truck check san bernardino",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check san bernardino",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing san bernardino",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check san bernardino",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test san bernardino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test san bernardino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san bernardino county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check san bernardino county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92408",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92410",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92411",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check near san bernardino airport",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check san bernardino",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check san bernardino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check grand terrace",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check cajon pass trucks",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing san bernardino",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Ontario",
+   "target": "/service-areas/ontario",
+   "primary": "Clean Truck Check Ontario CA",
+   "keywords": [
+    {
+     "k": "clean truck check ontario ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check ontario california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check ontario ca",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing ontario ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check ontario ca",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test ontario ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test ontario ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 91761",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 91762",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 91764",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check near ontario airport",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check ontario ca",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check ontario ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing ontario ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check ontario truck parking",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test ontario mills area",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Fontana",
+   "target": "/service-areas/fontana",
+   "primary": "Clean Truck Check Fontana",
+   "keywords": [
+    {
+     "k": "clean truck check fontana",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check fontana",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing fontana",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check fontana",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check fontana ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92335",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92336",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92337",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check fontana",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fontana truck parking",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check south fontana",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "San Diego",
+   "target": "/service-areas/san-diego",
+   "primary": "Clean Truck Check San Diego",
+   "keywords": [
+    {
+     "k": "clean truck check san diego",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "mobile clean truck check san diego",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing san diego",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check san diego",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "med"
+    },
+    {
+     "k": "diesel truck smog check san diego",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "smoke opacity test san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san diego county",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check otay mesa",
+     "vol": "50-200",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test otay mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check otay mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check chula vista",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check national city",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check el cajon",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check escondido",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check oceanside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check vista ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san marcos ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check carlsbad",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check santee",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check la mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lemon grove",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check poway",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check miramar",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check kearny mesa",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check spring valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check lakeside ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check ramona",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check fallbrook",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check san ysidro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check chula vista",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check el cajon",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check escondido",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check oceanside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test 92154",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test 92173",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 92020",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check san diego",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "semi truck smog check san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check north county san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check east county san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test south bay san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check near otay mesa port of entry",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "fleet emissions testing san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "dump truck smog check san diego",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "El Centro and Imperial Valley",
+   "target": "/service-areas/el-centro",
+   "primary": "Clean Truck Check El Centro",
+   "keywords": [
+    {
+     "k": "clean truck check el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check el centro",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "diesel smoke test el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb obd test el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check imperial valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check imperial county",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check calexico",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test calexico",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check calexico",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check brawley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check imperial ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check holtville",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check heber ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check westmorland",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check calipatria",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "farm truck emissions test imperial valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "agricultural truck smoke test el centro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92243",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check 92231",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "hay truck emissions test imperial valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "produce hauler clean truck check imperial valley",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check near calexico east port of entry",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mexican trucks emissions test calexico",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck smog check el centro",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions test imperial valley",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Port of Los Angeles",
+   "target": "/service-areas/ports/port-of-los-angeles",
+   "primary": "Clean Truck Check Port of Los Angeles",
+   "keywords": [
+    {
+     "k": "clean truck check port of los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "port of los angeles truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck emissions test los angeles",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "drayage clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port truck carb compliance",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port of la drayage carb requirements",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port drayage truck registry clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck smog check",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck obd test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions test wilmington ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check wilmington ca",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check san pedro",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check terminal island",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check harbor city",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "port of los angeles clean truck program vs clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "mobile emissions testing near port of los angeles",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing near la harbor",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck out of state clean truck check",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check for port trucks",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port of la truck compliance 2026",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Port of Long Beach",
+   "target": "/service-areas/ports/port-of-long-beach",
+   "primary": "Clean Truck Check Port of Long Beach",
+   "keywords": [
+    {
+     "k": "clean truck check port of long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "port of long beach truck emissions test",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "port of long beach clean truck program carb",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck emissions test long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "polb drayage truck requirements",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check polb",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check near port of long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile clean truck check port of long beach",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "port of long beach truck compliance 2026",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "drayage truck clean truck check deadline",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "port truck emissions testing carson yards",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "container truck emissions test long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "drayage fleet clean truck check long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check pier area long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Service areas hub",
+   "target": "/service-areas",
+   "primary": "Clean Truck Check near me Southern California",
+   "keywords": [
+    {
+     "k": "clean truck check southern california service areas",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions testing southern california",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "truck smog check southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check socal",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "carb testing southern california trucks",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check near ports of la and long beach",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check la county orange county riverside",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    },
+    {
+     "k": "truck emissions testing six counties southern california",
+     "vol": "10-50",
+     "intent": "commercial",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Booking and contact",
+   "target": "/book",
+   "primary": "book Clean Truck Check",
+   "keywords": [
+    {
+     "k": "book clean truck check",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "schedule clean truck check",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check appointment",
+     "vol": "50-200",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check online booking",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "schedule truck emissions test online",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check quote",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "mobile truck emissions test quote",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "request fleet testing quote clean truck check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "get clean truck check today",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "schedule mobile smoke test truck",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix phone number",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix reviews",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix san diego",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "diesel dynamix contact",
+     "vol": "10-50",
+     "intent": "navigational",
+     "kd": "low"
+    },
+    {
+     "k": "text to schedule clean truck check",
+     "vol": "10-50",
+     "intent": "transactional",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "2026-2027 deadlines and changes",
+   "target": "NEW: /blog/clean-truck-check-2026-2027-deadlines",
+   "primary": "Clean Truck Check 2027 quarterly testing",
+   "keywords": [
+    {
+     "k": "clean truck check 2027 quarterly testing",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check changes 2026",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check new rules 2027",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check deadline 2026 by registration",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb clean truck check update",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check news",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "med"
+    },
+    {
+     "k": "clean truck check enforcement start date",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check january 2027",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check periodic testing start",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "carb hd i/m timeline",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  },
+  {
+   "name": "Exemptions",
+   "target": "NEW: /blog/clean-truck-check-exemptions",
+   "primary": "Clean Truck Check exemptions list",
+   "keywords": [
+    {
+     "k": "clean truck check exemption list",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "is my truck exempt from clean truck check",
+     "vol": "50-200",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check exempt agricultural vehicles",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check exempt new vehicles how long",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check electric truck registration required",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check 2 engine sweeper exemption",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check off road vehicles",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check non operational truck pno",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check truck not driven in california",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    },
+    {
+     "k": "clean truck check seasonal use truck",
+     "vol": "10-50",
+     "intent": "informational",
+     "kd": "low"
+    }
+   ]
+  }
+ ],
+ "new_posts": [
+  {
+   "slug": "ctc-vis-registration-guide",
+   "title": "CTC-VIS registration, step by step: how to register your truck, pay the fee and find your compliance certificate",
+   "primary": "CTC-VIS registration",
+   "questions": [
+    "How do I register my truck in CTC-VIS?",
+    "How do I pay the Clean Truck Check compliance fee?",
+    "Where do I download my Clean Truck Check certificate?",
+    "How do I add a vehicle or a fleet to CTC-VIS?",
+    "Why is my test not showing in CTC-VIS?",
+    "Can an out-of-state truck register in CTC-VIS?"
+   ]
+  },
+  {
+   "slug": "clean-truck-check-compliance-fee-explained",
+   "title": "The Clean Truck Check compliance fee explained: what it costs, when it's due and what it does not cover",
+   "primary": "Clean Truck Check compliance fee",
+   "questions": [
+    "How much is the Clean Truck Check compliance fee?",
+    "Is the compliance fee the same as the test cost?",
+    "Do I pay the fee every year?",
+    "What happens if the fee is not paid?",
+    "Do out-of-state trucks pay the fee?"
+   ]
+  },
+  {
+   "slug": "dmv-registration-hold-clean-truck-check",
+   "title": "DMV registration hold for Clean Truck Check: why it happens and how to clear it fast in Southern California",
+   "primary": "DMV registration hold Clean Truck Check",
+   "questions": [
+    "Why does DMV say CARB compliance is required for my truck?",
+    "How do I remove a CARB hold on my registration?",
+    "How long after a passed test does the DMV hold clear?",
+    "Can a mobile tester clear my DMV hold?",
+    "Can I renew registration while the hold is pending?"
+   ]
+  },
+  {
+   "slug": "failed-clean-truck-check-what-to-do",
+   "title": "Failed your Clean Truck Check? What to fix, how to retest and how to get compliant again",
+   "primary": "failed Clean Truck Check",
+   "questions": [
+    "What happens if my truck fails Clean Truck Check?",
+    "How soon can I retest after a failed test?",
+    "Does a failed test get reported to CARB?",
+    "Why did my OBD test get rejected for VIN mismatch?",
+    "What if my truck will not communicate with the OBD tester?"
+   ]
+  },
+  {
+   "slug": "readiness-monitors-check-engine-light-clean-truck-check",
+   "title": "Check engine light and readiness monitors: will your truck pass the CARB OBD test?",
+   "primary": "check engine light Clean Truck Check",
+   "questions": [
+    "Will a check engine light fail the Clean Truck Check OBD test?",
+    "How many readiness monitors can be not ready?",
+    "How do I set readiness monitors on a diesel truck?",
+    "Do pending or permanent codes fail the test?",
+    "Should I clear codes before the test?"
+   ]
+  },
+  {
+   "slug": "dpf-deletes-and-smoke-clean-truck-check",
+   "title": "DPF, EGR deletes and smoke: why deleted or tuned trucks fail Clean Truck Check and what it takes to pass",
+   "primary": "DPF delete Clean Truck Check",
+   "questions": [
+    "Will a deleted truck pass the CARB OBD test?",
+    "Do I need a DPF regen before the test?",
+    "What causes a diesel to fail the opacity test?",
+    "What are CARB penalties for emissions deletes?",
+    "Can a reinstalled DPF pass Clean Truck Check?"
+   ]
+  },
+  {
+   "slug": "clean-truck-check-vs-smog-check",
+   "title": "Clean Truck Check vs smog check vs PSIP: which test does your truck actually need?",
+   "primary": "Clean Truck Check vs smog check",
+   "questions": [
+    "Is Clean Truck Check the same as a smog check?",
+    "Did Clean Truck Check replace PSIP?",
+    "Can a STAR smog station test a truck over 14,000 lb?",
+    "What is the difference between CARB and BAR testing?",
+    "Is mobile testing the same as going to a station?"
+   ]
+  },
+  {
+   "slug": "which-vehicles-need-clean-truck-check",
+   "title": "Which vehicles need Clean Truck Check? Semis, box trucks, dump trucks, buses, motorhomes and more",
+   "primary": "which vehicles need Clean Truck Check",
+   "questions": [
+    "Does my box truck need Clean Truck Check?",
+    "Do dump trucks and tow trucks need the test?",
+    "Do buses and school buses need Clean Truck Check?",
+    "Does an Isuzu NPR or Ford F-550 need it?",
+    "Are agricultural trucks exempt?"
+   ]
+  },
+  {
+   "slug": "does-my-pickup-need-clean-truck-check",
+   "title": "Does my F-350, Ram 3500 or other diesel pickup need Clean Truck Check? The 14,000 lb GVWR rule",
+   "primary": "does my F-350 need Clean Truck Check",
+   "questions": [
+    "Does a one-ton diesel pickup need Clean Truck Check?",
+    "Where do I find GVWR on my truck?",
+    "Do hotshot F-450s and F-550s need it?",
+    "Is a 3/4-ton diesel under the threshold?",
+    "Smog check or Clean Truck Check for my pickup?"
+   ]
+  },
+  {
+   "slug": "motorhome-clean-truck-check",
+   "title": "Clean Truck Check for motorhomes and RVs over 14,000 lb: who must test and how mobile testing works",
+   "primary": "motorhome Clean Truck Check",
+   "questions": [
+    "Does my diesel motorhome need Clean Truck Check?",
+    "Are RVs exempt from Clean Truck Check?",
+    "Can the test be done at an RV park or storage lot?",
+    "Do out-of-state motorhomes need it in California?",
+    "OBD test or smoke test for my motorhome?"
+   ]
+  },
+  {
+   "slug": "obd-test-by-truck-brand",
+   "title": "CARB OBD test by truck brand: Freightliner, Peterbilt, Kenworth, International, Volvo and Mack",
+   "primary": "Freightliner OBD test",
+   "questions": [
+    "Where is the OBD port on a Freightliner Cascadia?",
+    "Does a 9-pin or 16-pin connector matter for the CARB test?",
+    "Why are my Kenworth readiness monitors not ready?",
+    "Do Cummins ISX and Detroit DD15 trucks test the same way?",
+    "Which model years need the OBD test instead of a smoke test?"
+   ]
+  },
+  {
+   "slug": "clean-truck-check-en-espanol",
+   "title": "Clean Truck Check en español: prueba de emisiones móvil para camiones en el sur de California",
+   "primary": "prueba de emisiones camiones California",
+   "questions": [
+    "¿Qué es el Clean Truck Check?",
+    "¿Cuánto cuesta la prueba de emisiones para camiones?",
+    "¿Cada cuánto tengo que hacer la prueba?",
+    "¿Cómo registro mi camión en CTC-VIS?",
+    "¿Aplica a camiones de otro estado o de México?",
+    "¿Pueden venir a mi yarda?"
+   ]
+  },
+  {
+   "slug": "clean-truck-check-2026-2027-deadlines",
+   "title": "Clean Truck Check deadlines for 2026 and 2027: testing windows, frequency changes and what to do now",
+   "primary": "Clean Truck Check 2027 quarterly testing",
+   "questions": [
+    "When is my Clean Truck Check due in 2026?",
+    "When does quarterly testing start?",
+    "How is my deadline tied to my DMV registration month?",
+    "How early can I test before my deadline?",
+    "What changed in the program this year?"
+   ]
+  },
+  {
+   "slug": "clean-truck-check-exemptions",
+   "title": "Clean Truck Check exemptions: new trucks, zero-emission, agricultural, PNO and other cases explained",
+   "primary": "Clean Truck Check exemptions list",
+   "questions": [
+    "Which vehicles are exempt from Clean Truck Check?",
+    "How long are new trucks exempt?",
+    "Do electric trucks still have to register?",
+    "Is my farm truck exempt?",
+    "What if my truck is on non-operational status?"
+   ]
+  }
+ ]
+}

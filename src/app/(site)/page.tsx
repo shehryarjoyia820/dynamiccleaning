@@ -6,14 +6,20 @@ import { CityTicker } from '@/components/home/city-ticker';
 import { MobileVsShop } from '@/components/home/compare';
 import { HeroSlider } from '@/components/home/hero-slider';
 import { Counters, HowItWorks } from '@/components/home/interactive';
-import { JsonLd, faqSchema, serviceSchema } from '@/components/seo';
+import { JsonLd, faqSchema, pageMeta, serviceSchema } from '@/components/seo';
 import { PORTS } from '@/content/ports';
 import { REGIONS } from '@/content/seed';
 import { getFaqs, getServiceAreas, getSettings } from '@/lib/content';
+import { SeoExtras } from '@/components/seo-extras';
+import { SITE } from '@/lib/site';
+import { pageSeo, withSeoFaqs } from '@/lib/page-seo';
 
 export const revalidate = 300;
 
-export const metadata = { alternates: { canonical: '/' } };
+// Home title/description come from the keyword research when set (page-seo.json), else the site default.
+export const metadata = pageSeo('/')?.title
+  ? pageMeta({ title: pageSeo('/')!.title!, description: pageSeo('/')!.description ?? SITE.description, path: '/' })
+  : { alternates: { canonical: '/' } };
 
 const TRUST = [
   { icon: MapPinned, title: 'Southern California', text: 'LA, OC, Inland Empire, San Diego' },
@@ -49,7 +55,7 @@ export default async function HomePage() {
   return (
     <>
       <JsonLd data={serviceSchema()} />
-      <JsonLd data={faqSchema(preview)} />
+      <JsonLd data={faqSchema(withSeoFaqs('/', preview))} />
       <HeroSlider />
 
       {/* Trust bar */}
@@ -210,6 +216,7 @@ export default async function HomePage() {
         </div>
       </section>
 
+      <SeoExtras path={'/'} schema={false} />
       <CtaBand />
     </>
   );

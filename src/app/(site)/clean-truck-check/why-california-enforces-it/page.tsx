@@ -1,6 +1,7 @@
 import { CtaBand, OfficialSourceNote, PageHero } from '@/components/blocks';
 import { PageBody } from '@/components/page-parts';
 import { pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const metadata = pageMeta({
   title: 'California Truck Emissions Regulations: Why Clean Truck Check Is Enforced',
@@ -57,6 +58,7 @@ export default function WhyPage() {
           <OfficialSourceNote />
         </div>
       </PageBody>
+      <SeoExtras path={'/clean-truck-check/why-california-enforces-it'} />
       <CtaBand />
     </>
   );

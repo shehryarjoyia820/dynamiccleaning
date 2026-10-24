@@ -2,6 +2,7 @@ import { Clock, MapPinned, ShieldCheck } from 'lucide-react';
 import { PageHero } from '@/components/blocks';
 import { BookingForm } from '@/components/forms';
 import { pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const metadata = pageMeta({
   title: 'Book Mobile Clean Truck Check Testing',
@@ -31,6 +32,7 @@ export default function BookPage() {
           </div>
         </div>
       </section>
+      <SeoExtras path={'/book'} />
     </>
   );
 }

@@ -6,6 +6,7 @@ import { pageMeta } from '@/components/seo';
 import { PORTS } from '@/content/ports';
 import { REGIONS } from '@/content/seed';
 import { getServiceAreas } from '@/lib/content';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const revalidate = 300;
 
@@ -71,6 +72,7 @@ export default async function ServiceAreasPage() {
           </div>
         </div>
       </section>
+      <SeoExtras path={'/service-areas'} />
       <CtaBand title="Don’t see your city?" text="We cover all of Southern California. Tell us where your trucks are and we will plan the visit." />
     </>
   );

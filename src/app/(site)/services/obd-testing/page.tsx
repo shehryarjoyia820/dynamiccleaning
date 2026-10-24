@@ -2,6 +2,8 @@ import Link from 'next/link';
 import { CtaBand, FaqList, OfficialSourceNote, PageHero, QuickAnswer } from '@/components/blocks';
 import { Checklist, PageBody } from '@/components/page-parts';
 import { JsonLd, faqSchema, pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
+import { withSeoFaqs } from '@/lib/page-seo';
 
 // Keywords: CARB OBD test California, Clean Truck Check OBD test, mobile OBD testing for trucks,
 // alternative fuel truck emissions test California.
@@ -39,7 +41,7 @@ const FAQS = [
 export default function ObdPage() {
   return (
     <>
-      <JsonLd data={faqSchema(FAQS)} />
+      <JsonLd data={faqSchema(withSeoFaqs('/services/obd-testing', FAQS))} />
       <PageHero
         eyebrow="Testing types · OBD"
         title="CARB OBD test in Southern California"
@@ -89,6 +91,7 @@ export default function ObdPage() {
           <OfficialSourceNote />
         </div>
       </PageBody>
+      <SeoExtras path={'/services/obd-testing'} schema={false} />
       <CtaBand title="Book a mobile OBD test" />
     </>
   );

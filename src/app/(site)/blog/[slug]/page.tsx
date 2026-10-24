@@ -8,6 +8,7 @@ import { Markdown } from '@/lib/markdown';
 import { sanitizeBlogHtml } from '@/lib/sanitize';
 import { SITE } from '@/lib/site';
 import { formatDate } from '@/lib/utils';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const revalidate = 300;
 export const dynamicParams = true;
@@ -68,6 +69,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           <OfficialSourceNote />
         </div>
       </PageBody>
+      <SeoExtras path={`/blog/${post.slug}`} />
       <CtaBand />
     </>
   );

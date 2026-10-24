@@ -2,6 +2,7 @@ import { CtaBand, PageHero, Reveal, SectionHeading } from '@/components/blocks';
 import { HowItWorks } from '@/components/home/interactive';
 import { Checklist } from '@/components/page-parts';
 import { JsonLd, pageMeta } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
 
 const HOWTO = {
   '@context': 'https://schema.org',
@@ -70,6 +71,7 @@ export default function HowPage() {
           </div>
         </div>
       </section>
+      <SeoExtras path={'/services/how-testing-works'} />
       <CtaBand title="Ready to schedule?" />
     </>
   );

@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { Clock, Cpu, Eye, Gauge, MapPin, Users } from 'lucide-react';
 import { CtaBand, PageHero, Reveal, SectionHeading } from '@/components/blocks';
 import { JsonLd, pageMeta, serviceSchema } from '@/components/seo';
+import { SeoExtras } from '@/components/seo-extras';
 
 export const metadata = pageMeta({
   title: 'Mobile CARB Testing Southern California | On-Site Clean Truck Check',
@@ -88,6 +89,7 @@ export default function ServicesPage() {
           </Reveal>
         </div>
       </section>
+      <SeoExtras path={'/services'} />
       <CtaBand />
     </>
   );
