@@ -1,6 +1,7 @@
 import type { MetadataRoute } from 'next';
 import { PORTS } from '@/content/ports';
 import { getPosts, getServiceAreas } from '@/lib/content';
+import { ensureSchema } from '@/lib/db-init';
 import { SITE } from '@/lib/site';
 
 export const revalidate = 3600;
@@ -30,6 +31,8 @@ const STATIC = [
 ];
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // New guides and city pages from a pending upgrade should be listed as soon as Google asks.
+  await ensureSchema().catch(() => undefined);
   const [areas, posts] = await Promise.all([getServiceAreas(), getPosts()]);
   const now = new Date();
   return [

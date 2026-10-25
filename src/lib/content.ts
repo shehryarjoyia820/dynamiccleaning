@@ -1,5 +1,6 @@
 import 'server-only';
-import { publicClient } from '@/lib/supabase/clients';
+import { publicClient, serviceClient } from '@/lib/supabase/clients';
+import { ensureSchema } from '@/lib/db-init';
 import {
   FAQS,
   POSTS,
@@ -42,7 +43,7 @@ export function getServiceAreas(): Promise<ServiceArea[]> {
 
 export async function getServiceArea(slug: string) {
   const areas = await getServiceAreas();
-  return areas.find((a) => a.slug === slug) ?? null;
+  return areas.find((a) => a.slug === slug) ?? (await freshRow<ServiceArea>('service_areas', slug, true));
 }
 
 export function getFaqs(): Promise<Faq[]> {
@@ -74,7 +75,26 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPost(slug: string) {
   const posts = await getPosts();
-  return posts.find((p) => p.slug === slug) ?? null;
+  return posts.find((p) => p.slug === slug) ?? (await freshRow<Post>('posts', slug, true));
+}
+
+/**
+ * A page that isn't in the cached content yet may have just been added by a pending database
+ * upgrade (new guides, new city pages). Apply pending upgrades, then read that one row uncached,
+ * so new content goes live on its first visit without anyone opening the admin.
+ */
+async function freshRow<T>(table: 'posts' | 'service_areas', slug: string, needsPublished: boolean): Promise<T | null> {
+  const db = serviceClient();
+  if (!db || !/^[a-z0-9]+(-[a-z0-9]+)*$/.test(slug)) return null;
+  try {
+    await ensureSchema();
+    let q = db.from(table).select('*').eq('slug', slug);
+    if (needsPublished) q = q.eq('published', true);
+    const { data } = await q.maybeSingle();
+    return (data as T) ?? null;
+  } catch {
+    return null;
+  }
 }
 
 export async function getSettings(): Promise<Settings> {

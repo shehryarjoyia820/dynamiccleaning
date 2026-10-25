@@ -10,7 +10,14 @@ const nextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
   // The SQL files are read at runtime by /admin/setup to initialise the database.
-  outputFileTracingIncludes: { '/admin/**': ['./supabase/**/*.sql'], '/api/**': ['./supabase/**/*.sql'] },
+  // Public guide/city pages and the sitemap can apply pending upgrades too, so new content publishes on its own.
+  outputFileTracingIncludes: {
+    '/admin/**': ['./supabase/**/*.sql'],
+    '/api/**': ['./supabase/**/*.sql'],
+    '/blog/**': ['./supabase/**/*.sql'],
+    '/service-areas/**': ['./supabase/**/*.sql'],
+    '/sitemap.xml': ['./supabase/**/*.sql'],
+  },
   experimental: {
     // Proposal PDFs (max 4 MB) and CSV imports go through server actions.
     serverActions: { bodySizeLimit: '5mb' },
