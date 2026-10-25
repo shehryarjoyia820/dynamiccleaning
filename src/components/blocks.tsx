@@ -137,7 +137,7 @@ export function CtaBand({ title = 'Need your trucks tested?', text }: { title?: 
             {text ?? 'One truck or an entire fleet, anywhere in Southern California. Book online, call or WhatsApp. We reply fast.'}
           </p>
         </Reveal>
-        <Reveal delay={120}>
+        <Reveal delay={120} className="md:pr-20">
           <ContactButtons />
         </Reveal>
       </div>

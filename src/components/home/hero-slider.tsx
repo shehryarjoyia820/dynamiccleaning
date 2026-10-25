@@ -81,7 +81,7 @@ export function HeroSlider() {
         </div>
       </div>
       {/* Overlay: at least 60% dark behind all text, per the brief. */}
-      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-charcoal/95 via-charcoal/75 to-charcoal/30" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 bg-gradient-to-r from-charcoal/95 from-30% via-charcoal/80 via-55% to-charcoal/40" />
       <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-charcoal to-transparent" />
 
       <div className="container relative grid min-h-[100svh] items-center gap-10 pb-16 pt-24 sm:pb-24 sm:pt-28 lg:grid-cols-[minmax(0,1fr)_23rem]">

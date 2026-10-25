@@ -58,12 +58,15 @@ export async function SeoExtras({ path, faqs = true, schema = true, area }: { pa
         ) : null}
 
         {list.length ? (
-          <div>
+          <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.6fr)] lg:gap-12">
             {schema ? <JsonLd data={faqSchema(list)} /> : null}
-            <SectionHeading eyebrow="Questions" title={schema ? 'Frequently asked questions' : 'More questions'} />
-            <div className="mt-8 max-w-4xl">
-              <FaqList faqs={list} />
+            <div className="lg:sticky lg:top-28 lg:self-start">
+              <SectionHeading eyebrow="Questions" title={schema ? 'Frequently asked questions' : 'More questions'} />
+              <p className="mt-4 text-muted">
+                Still unsure? Call or text <a href="tel:+18583428328" className="font-semibold text-accent-ink underline underline-offset-4">(858) 342-8328</a> and we will help.
+              </p>
             </div>
+            <FaqList faqs={list} />
           </div>
         ) : null}
       </div>

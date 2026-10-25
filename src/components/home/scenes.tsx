@@ -38,7 +38,7 @@ export function SemiTruck({
       <rect x={-540} y={-20} width={640} height={240} rx={6} fill={trailer} stroke="#3A3F49" strokeWidth={3} />
       <rect x={-540} y={196} width={640} height={10} fill={accent} />
       {brand ? (
-        <text x={-220} y={110} textAnchor="middle" fontFamily="var(--font-display), Arial Narrow, sans-serif" fontWeight={800} fontSize={64} letterSpacing={4} fill="#FFFFFF" opacity={0.92}>
+        <text x={-220} y={110} textAnchor="middle" fontFamily="var(--font-display), Arial Narrow, sans-serif" fontWeight={800} fontSize={64} letterSpacing={4} fill="#FFFFFF" opacity={0.3}>
           DIESEL <tspan fill={accent}>DYNAMIX</tspan>
         </text>
       ) : null}

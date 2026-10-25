@@ -193,7 +193,7 @@ export default async function HomePage() {
               </Reveal>
             </div>
             <div className="mt-10">
-              <Counters items={settings.counters} dark />
+              <Counters items={settings.counters.map((c) => (/cities/i.test(c.label) ? { ...c, value: areas.length } : c))} dark />
             </div>
           </div>
         </div>
