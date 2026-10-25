@@ -11,6 +11,9 @@ import { formatDate } from '@/lib/utils';
 import { SeoExtras } from '@/components/seo-extras';
 
 export const revalidate = 300;
+
+/** Guides written in Spanish: marked lang="es" so search engines read them as Spanish. */
+const SPANISH = new Set(['clean-truck-check-en-espanol', 'prueba-de-humo-camiones-sur-de-california']);
 export const dynamicParams = true;
 
 export function generateStaticParams() {
@@ -42,9 +45,12 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           headline: post.title,
           description: post.excerpt,
           datePublished: post.published_at,
-          ...(post.cover_url ? { image: post.cover_url } : {}),
-          author: { '@type': 'Organization', name: SITE.name },
-          publisher: { '@id': `${SITE.url}/#business` },
+          dateModified: post.published_at,
+          // Google needs an image for Article rich results: the cover, else the site's share image.
+          image: post.cover_url ? [post.cover_url] : [`${SITE.url}/opengraph-image`],
+          inLanguage: SPANISH.has(post.slug) ? 'es' : 'en-US',
+          author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
+          publisher: { '@type': 'Organization', '@id': `${SITE.url}/#business`, name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/brand/app-icon.svg` } },
           mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
         }}
       />
@@ -64,7 +70,9 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
             <img src={post.cover_url} alt={post.cover_alt ?? ''} width={1600} height={900} className="aspect-[16/9] w-full rounded-xl object-cover" fetchPriority="high" />
           </figure>
         ) : null}
-        {post.body_html ? <div dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.body_html) }} /> : <Markdown source={post.body} />}
+        <div lang={SPANISH.has(post.slug) ? 'es' : undefined}>
+          {post.body_html ? <div dangerouslySetInnerHTML={{ __html: sanitizeBlogHtml(post.body_html) }} /> : <Markdown source={post.body} />}
+        </div>
         <div className="mt-10">
           <OfficialSourceNote />
         </div>

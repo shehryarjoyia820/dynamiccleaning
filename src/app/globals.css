@@ -203,3 +203,10 @@ body {
   background: none !important;
   box-shadow: none !important;
 }
+
+/* Speed: sections below the first screen are laid out only when they come near the viewport.
+   contain-intrinsic-size keeps the scrollbar steady until then. */
+main#main > section ~ section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 900px;
+}

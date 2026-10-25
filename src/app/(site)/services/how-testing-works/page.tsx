@@ -38,7 +38,10 @@ export default function HowPage() {
       />
       <section className="bg-white py-section">
         <div className="container">
-          <HowItWorks />
+          <SectionHeading eyebrow="Step by step" title="Mobile Clean Truck Check in four steps" />
+          <div className="mt-10">
+            <HowItWorks />
+          </div>
         </div>
       </section>
       <section className="py-section">

@@ -23,6 +23,7 @@ const FILES = [
   'supabase/migrations/0015_only_cities.sql',
   'supabase/migrations/0016_menu_paths.sql',
   'supabase/migrations/0017_keyword_content.sql',
+  'supabase/migrations/0018_more_guides.sql',
   'supabase/seed.sql',
 ];
 
@@ -158,6 +159,15 @@ const UPGRADES: { file: string; applied: () => Promise<boolean> }[] = [
       const db = serviceClient();
       if (!db) return true;
       const { data } = await db.from('posts').select('slug').eq('slug', 'ctc-vis-registration-guide').maybeSingle();
+      return !!data;
+    },
+  },
+  {
+    file: 'supabase/migrations/0018_more_guides.sql',
+    applied: async () => {
+      const db = serviceClient();
+      if (!db) return true;
+      const { data } = await db.from('posts').select('slug').eq('slug', 'truck-smog-check-inland-empire-cities').maybeSingle();
       return !!data;
     },
   },

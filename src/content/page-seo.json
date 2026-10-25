@@ -2063,6 +2063,318 @@
      "a": "No. Diesel Dynamix is an independent tester, not CARB, and exemptions are CARB's decision. We can help you read what CTC-VIS shows and test the truck if it is covered."
     }
    ]
+  },
+  {
+   "path": "/blog/mobile-truck-smog-check-southern-california",
+   "faqs": [
+    {
+     "q": "How do I find a Clean Truck Check tester near me in Southern California?",
+     "a": "You do not need to find a test site. Diesel Dynamix drives to your truck in Los Angeles, Orange County, the Inland Empire, San Diego and the Imperial Valley. Book online or call or text (858) 342-8328."
+    },
+    {
+     "q": "Can a mobile tester do both the OBD test and the smoke opacity test?",
+     "a": "Yes. We run CARB-verified OBD tests on 2013 and newer diesel engines and smoke opacity tests with a visual inspection on 2012 and older diesel engines, all on site."
+    },
+    {
+     "q": "Is a mobile semi truck smog check the same as Clean Truck Check?",
+     "a": "Yes. For trucks over 14,000 lb GVWR, what drivers call a truck smog check is CARB's Clean Truck Check test. Mobile testing is the same test, done where your truck is parked."
+    },
+    {
+     "q": "Can you test my truck early in the morning before it leaves the yard?",
+     "a": "Yes. We offer early-morning visits so trucks can be tested before they head out. Call or text to set a time that works for your schedule."
+    },
+    {
+     "q": "What should I have ready when the mobile tester arrives?",
+     "a": "Have the truck parked where it can run safely, the VIN and plate handy, and the OBD port easy to reach. Older diesels for a smoke test should be warmed up."
+    }
+   ]
+  },
+  {
+   "path": "/blog/clean-truck-check-penalties-enforcement",
+   "faqs": [
+    {
+     "q": "What happens if I don't do Clean Truck Check?",
+     "a": "The truck becomes non-compliant. California-registered trucks can get a DMV registration hold, and CARB can issue citations and penalties to non-compliant vehicles."
+    },
+    {
+     "q": "How much is the fine for missing Clean Truck Check?",
+     "a": "CARB sets penalty amounts and they can change, so check CARB's Clean Truck Check program page or contact CARB about any notice you received."
+    },
+    {
+     "q": "Can I drive my truck in California without a Clean Truck Check?",
+     "a": "A covered vehicle that operates in California is expected to stay compliant. Driving a non-compliant truck risks CARB citations and, for California-registered trucks, a registration hold."
+    },
+    {
+     "q": "Why did the DMV deny my truck registration over emissions?",
+     "a": "It usually means CARB shows the truck as non-compliant with Clean Truck Check, such as a missed test, unpaid compliance fee or failed test. Check the truck's status in CTC-VIS."
+    },
+    {
+     "q": "When did Clean Truck Check enforcement start?",
+     "a": "The program is in effect now, with DMV holds and CARB citations for non-compliant vehicles. For official enforcement start dates, see CARB's Clean Truck Check website."
+    }
+   ]
+  },
+  {
+   "path": "/blog/smoke-opacity-test-sae-j1667-explained",
+   "faqs": [
+    {
+     "q": "What is the SAE J1667 snap acceleration test?",
+     "a": "It is a standard procedure for measuring diesel smoke. The engine is revved quickly from idle while an opacity meter reads how much light the exhaust blocks, and the result is compared to CARB's limit."
+    },
+    {
+     "q": "How are pre-2013 diesel trucks emissions tested in California?",
+     "a": "Under Clean Truck Check, 2012 and older diesel trucks without OBD get a smoke opacity test plus a visual inspection of the emissions equipment."
+    },
+    {
+     "q": "What opacity limit does my diesel truck have to meet?",
+     "a": "CARB sets the opacity limit based on the engine model year, so it is not the same for every truck. Check CARB's current rules for your engine, or ask your tester to explain your result."
+    },
+    {
+     "q": "Is PSIP still required in California?",
+     "a": "PSIP is CARB's older periodic smoke inspection program. For how it applies to your fleet today alongside Clean Truck Check, check CARB's current guidance."
+    },
+    {
+     "q": "Does the J1667 smoke test require a dyno or road test?",
+     "a": "No. The snap test is done with the truck parked and in neutral, which is why it can be done on site at a yard, jobsite or home."
+    }
+   ]
+  },
+  {
+   "path": "/blog/who-can-perform-clean-truck-check",
+   "faqs": [
+    {
+     "q": "Who is allowed to submit a Clean Truck Check test to CARB?",
+     "a": "A tester who meets CARB's credential requirements and uses CARB-verified equipment. Check CARB's Clean Truck Check rules for the current requirements."
+    },
+    {
+     "q": "Can a regular repair shop scan count as a CARB OBD test?",
+     "a": "Not automatically. The test must be done with CARB-verified equipment by a tester who meets CARB's requirements, and the result must be submitted to CARB."
+    },
+    {
+     "q": "Can I book Clean Truck Check for just one truck?",
+     "a": "Yes. Owner-operators can book mobile testing for a single truck at home, a yard or a jobsite. Price depends on test type and location."
+    },
+    {
+     "q": "Does registration state matter for whether I need Clean Truck Check?",
+     "a": "No. Covered vehicles over 14,000 lb GVWR that operate in California need it, including out-of-state and international trucks."
+    },
+    {
+     "q": "Who should I contact with Clean Truck Check questions?",
+     "a": "Contact CARB about fees, citations and program rules. Contact your tester about booking, results and CTC-VIS questions. Diesel Dynamix is reachable at (858) 342-8328."
+    }
+   ]
+  },
+  {
+   "path": "/blog/truck-wont-communicate-obd-test",
+   "faqs": [
+    {
+     "q": "Can a broken OBD port fail Clean Truck Check?",
+     "a": "Yes. If the tester's equipment cannot connect to the truck's computer, the OBD test cannot be completed, and the truck stays non-compliant until it is repaired and passes."
+    },
+    {
+     "q": "Will a DEF system fault fail the CARB OBD test?",
+     "a": "It can. DEF faults usually turn on the check engine light and store a code, and an active MIL or emissions fault can cause the OBD test to fail."
+    },
+    {
+     "q": "Does an SCR fault code fail Clean Truck Check?",
+     "a": "An SCR fault that sets the check engine light or stores an emissions fault can cause a failed OBD test. Have it repaired, then retest."
+    },
+    {
+     "q": "Does Diesel Dynamix repair emissions faults?",
+     "a": "No. We test and explain the results. We recommend a qualified heavy-duty repair shop for diagnosis and repair, then we can retest on site."
+    },
+    {
+     "q": "What should I tell the repair shop after a failed OBD test?",
+     "a": "Share what the tester reported, such as no communication, MIL on, readiness monitors not set or stored fault codes, so the shop knows where to start."
+    }
+   ]
+  },
+  {
+   "path": "/blog/fleet-clean-truck-check-compliance-program",
+   "faqs": [
+    {
+     "q": "Who is responsible for Clean Truck Check on a leased truck?",
+     "a": "The owner and operator should agree in writing on who reports the truck, pays the compliance fee and books testing. CARB's rules decide legal responsibility, so check CARB for leased vehicles."
+    },
+    {
+     "q": "How does Clean Truck Check fleet reporting work in CTC-VIS?",
+     "a": "Owners add each covered truck by VIN, pay CARB's annual compliance fee per vehicle and track each truck's deadlines and status in CTC-VIS."
+    },
+    {
+     "q": "Do farm trucks need an emissions test in California?",
+     "a": "Agricultural vehicles over 14,000 lb can fall under Clean Truck Check. Whether a specific farm truck must test depends on CARB's rules, so check CARB for your vehicle."
+    },
+    {
+     "q": "Can you set up recurring Clean Truck Check visits for my fleet?",
+     "a": "Yes. We schedule recurring on-site fleet visits, including early-morning visits, and keep records and next due dates for each truck and VIN."
+    },
+    {
+     "q": "What records should a trucking company keep for Clean Truck Check?",
+     "a": "For each VIN, keep the test date, test type, result, next due date, any repairs and retests, and the CTC-VIS status and fee payment."
+    },
+    {
+     "q": "How do I request a fleet testing quote?",
+     "a": "Call or text (858) 342-8328, message us on WhatsApp or email service@dieseldynamix.com with your truck count, test types and location."
+    }
+   ]
+  },
+  {
+   "path": "/blog/truck-smog-check-los-angeles-county-cities",
+   "faqs": [
+    {
+     "q": "Can I get a truck emissions test in Carson, CA without driving to a station?",
+     "a": "Yes. Diesel Dynamix tests trucks at yards, container lots and homes in Carson, so the truck stays where it is parked."
+    },
+    {
+     "q": "Do you do a truck smog check in Compton for one owner-operator truck?",
+     "a": "Yes. You can book a single truck in Compton, and we test it at the yard or at the home where you park it."
+    },
+    {
+     "q": "Which trucks need a diesel smoke test in City of Industry?",
+     "a": "Diesel trucks with 2012 and older engines that do not have OBD need a smoke opacity test plus a visual inspection. Newer diesel trucks get a CARB-verified OBD test instead."
+    },
+    {
+     "q": "Do you cover Pomona and Santa Fe Springs for truck testing?",
+     "a": "Yes. Both are part of our Los Angeles County service area, and we test at yards, warehouses and jobsites in each."
+    },
+    {
+     "q": "Is heavy duty emissions testing in Los Angeles County different from other counties?",
+     "a": "No. Clean Truck Check rules are statewide, so the test type depends on engine model year and fuel, not the county."
+    }
+   ]
+  },
+  {
+   "path": "/blog/truck-smog-check-inland-empire-cities",
+   "faqs": [
+    {
+     "q": "Can you do a truck smog check in Perris at a distribution center?",
+     "a": "Yes. We test trucks at distribution centers, trailer yards and homes in Perris, so the truck does not have to leave."
+    },
+    {
+     "q": "Is a truck emissions test in Moreno Valley an OBD test or a smoke test?",
+     "a": "It depends on the engine. Diesel engines 2013 and newer get a CARB-verified OBD test, and 2012 and older diesel engines without OBD get a smoke opacity test plus a visual inspection."
+    },
+    {
+     "q": "Do you test trucks at warehouses in Mira Loma?",
+     "a": "Yes. Mira Loma, in Jurupa Valley, is one of the warehouse areas we visit, and we test at the dock or trailer yard."
+    },
+    {
+     "q": "Does a truck smog check in Corona, CA follow the same rules as Riverside?",
+     "a": "Yes. Clean Truck Check rules are statewide, so a truck in Corona needs the same reporting, fee and test as one in Riverside."
+    },
+    {
+     "q": "Can Victorville trucks get mobile testing in the High Desert?",
+     "a": "Yes. We drive up the 15 to Victorville for scheduled visits at yards, jobsites and homes."
+    }
+   ]
+  },
+  {
+   "path": "/blog/truck-smog-check-san-diego-county",
+   "faqs": [
+    {
+     "q": "Where can I get a semi truck smog check in San Diego without leaving my yard?",
+     "a": "Diesel Dynamix does mobile semi truck testing at yards, jobsites and homes across San Diego County. We bring the OBD and smoke test equipment to the truck."
+    },
+    {
+     "q": "Can you do a truck smog check in Otay Mesa before a truck crosses the border?",
+     "a": "Yes. We test at Otay Mesa yards and offer early-morning visits, so testing can fit in before the truck heads out."
+    },
+    {
+     "q": "Do you test construction trucks at El Cajon jobsites?",
+     "a": "Yes. We test dump trucks and other work trucks at jobsites and yards in El Cajon and the rest of East County."
+    },
+    {
+     "q": "Do Escondido and Oceanside trucks follow the same Clean Truck Check rules as San Diego?",
+     "a": "Yes. The rules are statewide, so trucks in Escondido and Oceanside need the same CTC-VIS reporting, fee and test."
+    },
+    {
+     "q": "Can a Chula Vista owner-operator book a test for one truck?",
+     "a": "Yes. You can book a single truck in Chula Vista, and we test it at your yard or at home."
+    }
+   ]
+  },
+  {
+   "path": "/blog/ctc-vis-login-compliance-status-certificate",
+   "faqs": [
+    {
+     "q": "How do I log in to CTC-VIS?",
+     "a": "Start from CARB's Clean Truck Check page, follow the link to CTC-VIS and sign in with the email you registered with. Use the reset option on the login screen if you forget your password."
+    },
+    {
+     "q": "How do I check my truck's Clean Truck Check compliance status?",
+     "a": "Log in to CTC-VIS and open the vehicle's record. It shows whether the truck is compliant and when the next test is due."
+    },
+    {
+     "q": "Can I look up Clean Truck Check status by VIN?",
+     "a": "Yes, for trucks in your own CTC-VIS account, since each record is tied to its VIN. For a truck you do not own, ask the owner to show you its CTC-VIS record."
+    },
+    {
+     "q": "Is there a Clean Truck Check pass certificate I can print?",
+     "a": "Compliance shows as a status in CTC-VIS. Use whatever record CTC-VIS shows for the truck, and contact CARB's Clean Truck Check help if you need an official document."
+    },
+    {
+     "q": "Who submits my test results to CTC-VIS?",
+     "a": "The credentialed tester submits the result to CARB after the test. You do not upload it yourself."
+    },
+    {
+     "q": "Where can I find Clean Truck Check news and rule updates?",
+     "a": "Check CARB's Clean Truck Check page. CARB runs the program and posts official updates and deadlines there."
+    }
+   ]
+  },
+  {
+   "path": "/blog/box-truck-medium-duty-clean-truck-check",
+   "faqs": [
+    {
+     "q": "Do Class 4 trucks need Clean Truck Check?",
+     "a": "Class 4 trucks are rated from 14,001 to 16,000 lb GVWR, so diesel and alternative-fuel Class 4 trucks that operate in California are generally covered. Check the GVWR on your door label and CARB's rules for your vehicle."
+    },
+    {
+     "q": "Does a Hino box truck get an OBD test or a smoke test?",
+     "a": "A Hino with a 2013 or newer diesel engine gets a CARB-verified OBD test. An older Hino diesel without OBD gets a smoke opacity test plus a visual inspection."
+    },
+    {
+     "q": "Is the Isuzu OBD test different from other truck brands?",
+     "a": "No. The CARB OBD test is decided by engine model year, not brand, so an Isuzu goes through the same OBD test as other covered trucks."
+    },
+    {
+     "q": "Does a flatbed truck need an emissions test in California?",
+     "a": "A diesel or alternative-fuel flatbed over 14,000 lb GVWR that operates in California generally needs Clean Truck Check. The body type does not change the rule."
+    },
+    {
+     "q": "What test does an older school bus get in California?",
+     "a": "A school bus with a 2012 or older diesel engine and no OBD gets a smoke opacity test plus a visual inspection."
+    }
+   ]
+  },
+  {
+   "path": "/blog/prueba-de-humo-camiones-sur-de-california",
+   "faqs": [
+    {
+     "q": "¿Hacen la prueba de humo para camiones en Fontana y Ontario?",
+     "a": "Sí. Hacemos la prueba de humo y la prueba OBD en yardas, bodegas y casas en Fontana, Ontario y el resto del Inland Empire."
+    },
+    {
+     "q": "¿Dónde encuentro un tester certificado de CARB cerca de mí?",
+     "a": "Diesel Dynamix tiene servicio móvil en el sur de California. Un tester con credencial de CARB va a su yarda, obra o casa y envía el resultado a CARB."
+    },
+    {
+     "q": "¿Hay un certificado del Clean Truck Check?",
+     "a": "El cumplimiento aparece como estatus del camión en CTC-VIS. Revise lo que muestra CTC-VIS para su VIN, y nosotros le damos un registro de la prueba."
+    },
+    {
+     "q": "¿Hacen pruebas de emisiones para camiones en San Diego y El Centro?",
+     "a": "Sí. Cubrimos Otay Mesa, Chula Vista, El Cajon, Escondido y Oceanside en San Diego, y El Centro, Calexico y Brawley en el Valle Imperial."
+    },
+    {
+     "q": "¿El precio de la prueba incluye la cuota de CARB?",
+     "a": "No. La cuota anual de cumplimiento se paga a CARB en CTC-VIS, y el costo de la prueba lo cobra el tester."
+    },
+    {
+     "q": "¿Qué pasa si mi camión no pasa la prueba de humo?",
+     "a": "El camión necesita reparación y después otra prueba. Nosotros le explicamos el resultado para que su mecánico sepa qué revisar."
+    }
+   ]
   }
  ]
 }
