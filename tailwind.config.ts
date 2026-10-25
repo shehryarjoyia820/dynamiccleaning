@@ -12,7 +12,8 @@ const config: Config = {
     container: {
       center: true,
       padding: { DEFAULT: '1rem', sm: '1.5rem', lg: '2rem' },
-      screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1240px' },
+      // 1440px on large monitors so wide screens are not mostly empty margin.
+      screens: { sm: '640px', md: '768px', lg: '1024px', xl: '1240px', '2xl': '1440px' },
     },
     extend: {
       colors: {
@@ -37,7 +38,7 @@ const config: Config = {
       spacing: {
         section: 'clamp(3.5rem, 8vw, 7rem)',
       },
-      maxWidth: { prose: '68ch' },
+      maxWidth: { prose: '76ch' },
       boxShadow: {
         lift: '0 20px 50px -20px rgb(0 0 0 / 0.55)',
         card: '0 1px 2px rgb(17 19 24 / 0.06), 0 8px 24px -12px rgb(17 19 24 / 0.18)',

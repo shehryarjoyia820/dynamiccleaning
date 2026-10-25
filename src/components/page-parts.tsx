@@ -7,7 +7,7 @@ import { LINKS, SITE } from '@/lib/site';
 export function PageBody({ children, aside }: { children: React.ReactNode; aside?: React.ReactNode }) {
   return (
     <section className="py-section">
-      <div className="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem]">
+      <div className="container grid gap-12 lg:grid-cols-[minmax(0,1fr)_22rem] 2xl:grid-cols-[minmax(0,1fr)_24rem] 2xl:gap-16">
         <div data-reveal className="prose-dd">
           {children}
         </div>
