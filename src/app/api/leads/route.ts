@@ -4,7 +4,11 @@ import { upsertContact } from '@/lib/campaigns';
 import { mailConfigured } from '@/lib/mailer';
 import { RATE_LIMIT, RATE_WINDOW, clientIpHash, limited, verifyTurnstile } from '@/lib/rate-limit';
 import { serviceClient } from '@/lib/supabase/clients';
-import { SERVICE_INBOX, customerConfirmation, sendEmail, sendTeamSms, staffEmail } from '@/lib/email';
+import { SERVICE_INBOX, customerConfirmation, sendEmail, staffEmail } from '@/lib/email';
+import { sendLeadAlert } from '@/lib/alerts';
+
+// Line break for phone alerts (SMS / WhatsApp).
+const NL = String.fromCharCode(10);
 import { SITE } from '@/lib/site';
 
 export const runtime = 'nodejs';
@@ -155,7 +159,17 @@ export async function POST(req: NextRequest) {
         html: staffEmail('New booking request', fields, adminUrl),
         replyTo: d.email,
       }),
-      sendTeamSms(`New Diesel Dynamix booking: ${d.full_name}, ${d.phone}, ${d.trucks} truck(s) in ${d.location}`),
+      sendLeadAlert(
+        [
+          '🚚 New booking: Diesel Dynamix',
+          `${d.full_name}${d.company ? ` (${d.company})` : ''}`,
+          `📞 ${d.phone}`,
+          `✉️ ${d.email}`,
+          `${d.trucks} truck(s) · ${d.location}`,
+          d.preferred_date ? `Preferred date: ${d.preferred_date}` : '',
+          adminUrl ?? '',
+        ].filter(Boolean).join(NL),
+      ),
     );
   } else {
     tasks.push(
@@ -170,6 +184,16 @@ export async function POST(req: NextRequest) {
         ], adminUrl),
         replyTo: d.email,
       }),
+      sendLeadAlert(
+        [
+          '💬 New message: Diesel Dynamix',
+          d.full_name,
+          d.phone ? `📞 ${d.phone}` : '',
+          `✉️ ${d.email}`,
+          `"${d.message.slice(0, 300)}${d.message.length > 300 ? '…' : ''}"`,
+          adminUrl ?? '',
+        ].filter(Boolean).join(NL),
+      ),
     );
   }
   tasks.push(

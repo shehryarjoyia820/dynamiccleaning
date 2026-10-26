@@ -49,19 +49,8 @@ export function customerConfirmation(name: string, kind: 'booking' | 'contact') 
 }
 
 /** Optional SMS alert to the team via Twilio when TWILIO_* env vars are set. */
+/** @deprecated use sendLeadAlert (SMS and/or WhatsApp). */
 export async function sendTeamSms(body: string) {
-  const sid = process.env.TWILIO_ACCOUNT_SID;
-  const token = process.env.TWILIO_AUTH_TOKEN;
-  const from = process.env.TWILIO_FROM;
-  const to = process.env.TEAM_ALERT_PHONE;
-  if (!sid || !token || !from || !to) return;
-  const res = await fetch(`https://api.twilio.com/2010-04-01/Accounts/${sid}/Messages.json`, {
-    method: 'POST',
-    headers: {
-      Authorization: 'Basic ' + Buffer.from(`${sid}:${token}`).toString('base64'),
-      'Content-Type': 'application/x-www-form-urlencoded',
-    },
-    body: new URLSearchParams({ From: from, To: to, Body: body.slice(0, 600) }),
-  });
-  if (!res.ok) console.error('[sms] failed', res.status);
+  const { sendLeadAlert } = await import('@/lib/alerts');
+  return sendLeadAlert(body);
 }
