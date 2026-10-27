@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-// Black, blue and green scheme. Logo shape from the Figma logo file.
+// Black, blue and green scheme. Logo: Clean Truck Check artwork (navy + green).
 const COLORS = [
   { name: 'Black', role: 'Primary dark: header, hero, footer, logo “D” on light', hex: '#0B0F14', rgb: '11, 15, 20', cmyk: '45, 25, 0, 92' },
   { name: 'Steel', role: 'Cards and panels on dark', hex: '#161C24', rgb: '22, 28, 36', cmyk: '39, 22, 0, 86' },
@@ -17,6 +17,8 @@ const COLORS = [
   { name: 'Pass green', role: 'Logo checkmark on dark, success states', hex: '#22C55E', rgb: '34, 197, 94', cmyk: '83, 0, 52, 23' },
   { name: 'Green', role: 'Logo checkmark on light, “compliant” badges', hex: '#16A34A', rgb: '22, 163, 74', cmyk: '87, 0, 55, 36' },
   { name: 'Off-white', role: 'Light backgrounds, text on dark', hex: '#F4F6F9', rgb: '244, 246, 249', cmyk: '2, 1, 0, 2' },
+  { name: 'Logo navy', role: 'Logo truck and “TRUCK CHECK” on light', hex: '#0E3B55', rgb: '14, 59, 85', cmyk: '84, 31, 0, 67' },
+  { name: 'Logo green', role: 'Logo “CLEAN” wordmark', hex: '#2FB35A', rgb: '47, 179, 90', cmyk: '74, 0, 50, 30' },
   { name: 'Slate', role: 'Secondary text on dark', hex: '#94A3B8', rgb: '148, 163, 184', cmyk: '20, 11, 0, 28' },
 ];
 
@@ -24,6 +26,7 @@ const FILES = [
   ['Primary logo, for dark backgrounds', '/brand/logo-primary-dark.svg'],
   ['Primary logo, for light backgrounds', '/brand/logo-primary-light.svg'],
   ['Stacked logo, for dark backgrounds', '/brand/logo-stacked-dark.svg'],
+  ['Stacked logo, for light backgrounds', '/brand/logo-stacked-light.svg'],
   ['Mark, on dark', '/brand/mark-on-dark.svg'],
   ['Mark, on light', '/brand/mark-on-light.svg'],
   ['Mark, one color (e.g. white on blue)', '/brand/mark-one-color.svg'],
@@ -41,12 +44,13 @@ export default function BrandPage() {
           <div>
             <h2 className="text-display-md">The logo</h2>
             <p className="mt-3 max-w-prose text-muted">
-              A bold “D” holding a pass checkmark, with three speed lines for our mobile service. The wordmark is Barlow Condensed ExtraBold with the tagline “Mobile Clean Truck Check”.
+              A truck cab with a pass checkmark cut through it, over the CLEAN / TRUCK CHECK wordmark in green and navy. On dark backgrounds the navy is lightened to a sky blue so it stays readable.
             </p>
             <div className="mt-8 grid gap-6 md:grid-cols-2">
               <div className="grid min-h-[12rem] place-items-center rounded-xl bg-charcoal p-10"><Logo /></div>
               <div className="grid min-h-[12rem] place-items-center rounded-xl bg-white p-10 shadow-card"><Logo onDark={false} /></div>
-              <div className="grid min-h-[16rem] place-items-center rounded-xl bg-charcoal p-10"><Logo variant="stacked" /></div>
+              <div className="grid min-h-[16rem] place-items-center rounded-xl bg-charcoal p-10"><Logo variant="stacked" className="h-36" /></div>
+              <div className="grid min-h-[16rem] place-items-center rounded-xl bg-white p-10 shadow-card"><Logo variant="stacked" onDark={false} className="h-36" /></div>
               <div className="grid gap-6 sm:grid-cols-3">
                 <div className="grid place-items-center rounded-xl bg-charcoal p-6"><LogoMark className="h-16 w-16" /></div>
                 <div className="grid place-items-center rounded-xl bg-white p-6 shadow-card"><LogoMark tone="light" className="h-16 w-16" /></div>
@@ -62,7 +66,7 @@ export default function BrandPage() {
           <div>
             <h2 className="text-display-md">Usage</h2>
             <ul className="prose-dd mt-3">
-              <li>Clear space around the logo: at least the width of the “D” stem on every side.</li>
+              <li>Clear space around the logo: at least the height of the “TRUCK CHECK” line on every side.</li>
               <li>Minimum size: mark 16 px / 5 mm; horizontal logo 140 px / 35 mm wide.</li>
               <li>Use the light version on white or off-white, and the one-color mark (white) on blue.</li>
               <li>Do not stretch, recolor, rotate, add effects, or place the logo on busy photos without a dark overlay.</li>
@@ -115,7 +119,7 @@ export default function BrandPage() {
                 </li>
               ))}
             </ul>
-            <p className="mt-3 text-sm text-muted">Logo shape from the Diesel Dynamix Figma file, recolored to the black, blue and green scheme.</p>
+            <p className="mt-3 text-sm text-muted">Vector files traced from the approved Clean Truck Check artwork.</p>
           </div>
         </div>
       </section>

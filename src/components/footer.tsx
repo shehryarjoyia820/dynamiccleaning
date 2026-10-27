@@ -12,7 +12,7 @@ export function Footer() {
       <div className="container grid grid-cols-2 gap-x-6 gap-y-10 py-12 sm:py-14 md:grid-cols-3 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div className="col-span-2 md:col-span-3 lg:col-span-1">
           <Link href="/" aria-label="Diesel Dynamix home">
-            <Logo />
+            <Logo variant="stacked" className="h-24 sm:h-28" />
           </Link>
           <p className="mt-4 max-w-sm text-muted-dark">
             Mobile CARB Clean Truck Check testing for owner-operators, carriers and fleets. We come to you, anywhere in Southern California.

@@ -17,6 +17,7 @@ const nextConfig = {
     '/blog/**': ['./supabase/**/*.sql'],
     '/service-areas/**': ['./supabase/**/*.sql'],
     '/sitemap.xml': ['./supabase/**/*.sql'],
+    '/opengraph-image': ['./public/brand/logo-primary-dark.svg'],
   },
   experimental: {
     // Proposal PDFs (max 4 MB) and CSV imports go through server actions.

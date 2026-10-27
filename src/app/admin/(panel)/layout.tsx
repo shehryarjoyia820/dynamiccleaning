@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { Suspense } from 'react';
 import { Bot, Contact, ExternalLink, FileText, Globe, HelpCircle, Inbox, LogOut, Mail, MapPin, Send, Settings2, UserCog, Users } from 'lucide-react';
-import { LogoMark } from '@/components/brand';
+import { Logo } from '@/components/brand';
 import { requireStaff } from '@/lib/admin';
 import { ensureSchema } from '@/lib/db-init';
 import { signOut } from './actions';
@@ -30,10 +30,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
       <aside className="bg-charcoal text-white lg:min-h-screen">
         <div className="flex items-center justify-between gap-2 px-5 py-4">
           <Link href="/admin" className="flex items-center gap-2">
-            <LogoMark className="h-8 w-8" />
-            <span className="font-display text-lg font-extrabold uppercase">
-              Diesel <span className="text-accent">Dynamix</span>
-            </span>
+            <Logo className="h-8" />
           </Link>
           {/* Compact shortcut for phones, where the full nav scrolls sideways. */}
           <a href="/" target="_blank" rel="noopener" className="inline-flex items-center gap-1 rounded-md border border-white/20 px-2.5 py-1.5 text-xs font-semibold hover:bg-white/10 lg:hidden">

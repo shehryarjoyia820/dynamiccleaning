@@ -1,16 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { cn } from '@/lib/utils';
 
-// Diesel Dynamix mark from the approved Figma logo file: a "D" with a pass
-// checkmark and three speed lines for the mobile service. 64-unit grid.
-const D_PATH =
-  'M18 8H36C42.3652 8 48.4697 10.5286 52.9706 15.0294C57.4714 19.5303 60 25.6348 60 32C60 38.3652 57.4714 44.4697 52.9706 48.9706C48.4697 53.4714 42.3652 56 36 56H18V8ZM28 18H36C39.713 18 43.274 19.475 45.8995 22.1005C48.525 24.726 50 28.287 50 32C50 35.713 48.525 39.274 45.8995 41.8995C43.274 44.525 39.713 46 36 46H28V18Z';
-const LINES_PATH = 'M12 16H2a2 2 0 0 0 0 4h10a2 2 0 0 0 0-4ZM12 30H6a2 2 0 0 0 0 4h6a2 2 0 0 0 0-4ZM12 44h-2a2 2 0 0 0 0 4h2a2 2 0 0 0 0-4Z';
+// Clean Truck Check logo (traced to vector from the approved artwork, Oct 2026).
+// Files live in /public/brand: "-dark" versions use a lighter blue so they read on black,
+// "-light" versions use the original navy for white / off-white backgrounds.
+const ALT = 'Clean Truck Check by Diesel Dynamix';
 
-const TONES = {
-  dark: { lines: '#4C8DFF', d: '#4C8DFF', check: '#22C55E' }, // blue D, green pass check, on black
-  light: { lines: '#1F5FE0', d: '#0B0F14', check: '#16A34A' }, // black D, on white / off-white
-  mono: { lines: 'currentColor', d: 'currentColor', check: 'currentColor' }, // one color, e.g. white on blue
-} as const;
+// Aspect ratios (width / height) of each file's viewBox, so the images never reflow.
+const RATIO = { horizontal: 4232 / 778, stacked: 2809 / 1655, mark: 1313 / 787 } as const;
 
 export function LogoMark({
   className,
@@ -18,17 +15,30 @@ export function LogoMark({
   title,
 }: {
   className?: string;
-  tone?: keyof typeof TONES;
+  tone?: 'dark' | 'light' | 'mono';
   title?: string;
 }) {
-  const c = TONES[tone];
+  if (tone === 'mono') {
+    // One color (inherits currentColor), e.g. white on blue.
+    return (
+      <span
+        role={title ? 'img' : undefined}
+        aria-label={title}
+        aria-hidden={title ? undefined : true}
+        className={cn('inline-block bg-current', className)}
+        style={{ mask: 'url(/brand/mark-one-color.svg) center / contain no-repeat', WebkitMask: 'url(/brand/mark-one-color.svg) center / contain no-repeat' }}
+      />
+    );
+  }
   return (
-    <svg viewBox="0 0 64 64" fill="none" className={className} role={title ? 'img' : undefined} aria-hidden={title ? undefined : true}>
-      {title ? <title>{title}</title> : null}
-      <path d={LINES_PATH} fill={c.lines} />
-      <path fillRule="evenodd" clipRule="evenodd" d={D_PATH} fill={c.d} />
-      <path d="M30.5 32.5 36 38l9-13" stroke={c.check} strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>
+    <img
+      src={tone === 'dark' ? '/brand/mark-on-dark.svg' : '/brand/mark-on-light.svg'}
+      alt={title ?? ''}
+      aria-hidden={title ? undefined : true}
+      width={64}
+      height={Math.round(64 / RATIO.mark)}
+      className={cn('object-contain', className)}
+    />
   );
 }
 
@@ -36,43 +46,37 @@ export function Logo({
   className,
   variant = 'horizontal',
   onDark = true,
-  tagline = true,
   compact = false,
+  priority = false,
 }: {
   className?: string;
   variant?: 'horizontal' | 'stacked';
   onDark?: boolean;
-  tagline?: boolean;
   /** Smaller on phones (header), full size from 640px. */
   compact?: boolean;
+  /** Load straight away (above-the-fold header logo). */
+  priority?: boolean;
 }) {
-  const name = (
-    <span className="block whitespace-nowrap font-display font-extrabold uppercase leading-[0.9] tracking-[0.01em]">
-      <span className={onDark ? 'text-offwhite' : 'text-ink'}>Diesel</span> <span className={onDark ? 'text-accent' : 'text-accent-ink'}>Dynamix</span>
-    </span>
-  );
-  const tag = tagline ? (
-    <span className={cn('mt-1 block whitespace-nowrap font-sans font-semibold uppercase tracking-[0.28em]', onDark ? 'text-muted-dark' : 'text-muted')}>
-      Mobile Clean Truck Check
-    </span>
-  ) : null;
-
+  const tone = onDark ? 'dark' : 'light';
   if (variant === 'stacked') {
     return (
-      <span className={cn('inline-flex flex-col items-center text-center', className)}>
-        <LogoMark tone={onDark ? 'dark' : 'light'} className="h-16 w-16" />
-        <span className="mt-3 text-4xl">{name}</span>
-        <span className="text-[0.6rem]">{tag}</span>
-      </span>
+      <img
+        src={`/brand/logo-stacked-${tone}.svg`}
+        alt={ALT}
+        width={170}
+        height={Math.round(170 / RATIO.stacked)}
+        className={cn('h-24 w-auto', className)}
+      />
     );
   }
   return (
-    <span className={cn('inline-flex items-center', compact ? 'gap-2 sm:gap-2.5' : 'gap-2.5', className)}>
-      <LogoMark tone={onDark ? 'dark' : 'light'} className={cn('shrink-0', compact ? 'h-8 w-8 sm:h-10 sm:w-10' : 'h-10 w-10')} />
-      <span className="flex flex-col">
-        <span className={compact ? 'text-[1.3rem] sm:text-[1.6rem]' : 'text-[1.6rem]'}>{name}</span>
-        <span className={compact ? 'text-[0.42rem] [&>span]:tracking-[0.2em] sm:text-[0.5rem] sm:[&>span]:tracking-[0.28em]' : 'text-[0.5rem]'}>{tag}</span>
-      </span>
-    </span>
+    <img
+      src={`/brand/logo-primary-${tone}.svg`}
+      alt={ALT}
+      width={240}
+      height={Math.round(240 / RATIO.horizontal)}
+      fetchPriority={priority ? 'high' : undefined}
+      className={cn('w-auto', compact ? 'h-8 sm:h-10 xl:h-11' : 'h-11', className)}
+    />
   );
 }

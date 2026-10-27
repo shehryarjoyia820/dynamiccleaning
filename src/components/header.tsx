@@ -81,7 +81,7 @@ export function Header() {
       </a>
       <div className="container flex items-center justify-between gap-4">
         <Link href="/" aria-label="Diesel Dynamix home" translate="no" className={cn('transition-transform duration-300', scrolled && 'scale-[0.92] origin-left')}>
-          <Logo compact />
+          <Logo compact priority />
         </Link>
 
         <nav aria-label="Main" className="hidden items-center gap-0.5 lg:flex">

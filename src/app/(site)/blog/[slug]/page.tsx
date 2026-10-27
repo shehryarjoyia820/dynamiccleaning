@@ -50,7 +50,7 @@ export default async function PostPage({ params }: { params: Promise<{ slug: str
           image: post.cover_url ? [post.cover_url] : [`${SITE.url}/opengraph-image`],
           inLanguage: SPANISH.has(post.slug) ? 'es' : 'en-US',
           author: { '@type': 'Organization', name: SITE.name, url: SITE.url },
-          publisher: { '@type': 'Organization', '@id': `${SITE.url}/#business`, name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/brand/app-icon.svg` } },
+          publisher: { '@type': 'Organization', '@id': `${SITE.url}/#business`, name: SITE.name, logo: { '@type': 'ImageObject', url: `${SITE.url}/brand/logo-stacked-light.png` } },
           mainEntityOfPage: `${SITE.url}/blog/${post.slug}`,
         }}
       />

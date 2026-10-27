@@ -47,7 +47,7 @@ export function organizationSchema() {
     '@id': `${SITE.url}/#business`,
     name: SITE.name,
     url: SITE.url,
-    logo: `${SITE.url}/brand/app-icon.svg`,
+    logo: `${SITE.url}/brand/logo-stacked-light.png`,
     image: `${SITE.url}/opengraph-image`,
     description: SITE.description,
     telephone: SITE.phoneE164,
