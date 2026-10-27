@@ -16,7 +16,7 @@ export function sendEmail(opts: { to: string | string[]; subject: string; html: 
 export function shell(inner: string, footer?: string) {
   return `<div style="font-family:Arial,Helvetica,sans-serif;max-width:600px;margin:0 auto;color:#111318">
   <div style="background:#0B0F14;padding:18px 24px;border-bottom:4px solid #4C8DFF">
-    <img src="${SITE.url}/brand/logo-primary-dark.png" width="240" height="44" alt="Clean Truck Check by Diesel Dynamix" style="display:block;border:0;height:44px;width:240px">
+    <img src="${SITE.url}/brand/logo-primary-dark.png?v=2" width="240" height="44" alt="Clean Truck Check by Diesel Dynamix" style="display:block;border:0;height:44px;width:240px">
   </div>
   <div style="padding:24px;background:#ffffff">${inner}</div>
   <div style="padding:16px 24px;background:#F4F6F9;font-size:12px;line-height:1.6;color:#4A5160">

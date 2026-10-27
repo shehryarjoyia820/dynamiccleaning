@@ -5,6 +5,8 @@ import { cn } from '@/lib/utils';
 // Files live in /public/brand: "-dark" versions use a lighter blue so they read on black,
 // "-light" versions use the original navy for white / off-white backgrounds.
 const ALT = 'Clean Truck Check by Diesel Dynamix';
+// Bump when the logo files change: the file names stayed the same, so this stops browsers showing the old logo.
+const V = '?v=2';
 
 // Aspect ratios (width / height) of each file's viewBox, so the images never reflow.
 const RATIO = { horizontal: 4232 / 778, stacked: 2809 / 1655, mark: 1313 / 787 } as const;
@@ -26,13 +28,13 @@ export function LogoMark({
         aria-label={title}
         aria-hidden={title ? undefined : true}
         className={cn('inline-block bg-current', className)}
-        style={{ mask: 'url(/brand/mark-one-color.svg) center / contain no-repeat', WebkitMask: 'url(/brand/mark-one-color.svg) center / contain no-repeat' }}
+        style={{ mask: 'url(/brand/mark-one-color.svg?v=2) center / contain no-repeat', WebkitMask: 'url(/brand/mark-one-color.svg?v=2) center / contain no-repeat' }}
       />
     );
   }
   return (
     <img
-      src={tone === 'dark' ? '/brand/mark-on-dark.svg' : '/brand/mark-on-light.svg'}
+      src={tone === 'dark' ? `/brand/mark-on-dark.svg${V}` : `/brand/mark-on-light.svg${V}`}
       alt={title ?? ''}
       aria-hidden={title ? undefined : true}
       width={64}
@@ -61,7 +63,7 @@ export function Logo({
   if (variant === 'stacked') {
     return (
       <img
-        src={`/brand/logo-stacked-${tone}.svg`}
+        src={`/brand/logo-stacked-${tone}.svg${V}`}
         alt={ALT}
         width={170}
         height={Math.round(170 / RATIO.stacked)}
@@ -71,7 +73,7 @@ export function Logo({
   }
   return (
     <img
-      src={`/brand/logo-primary-${tone}.svg`}
+      src={`/brand/logo-primary-${tone}.svg${V}`}
       alt={ALT}
       width={240}
       height={Math.round(240 / RATIO.horizontal)}
